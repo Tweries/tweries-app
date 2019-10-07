@@ -17,6 +17,7 @@ function App() {
       <h1>Serial Twitter</h1>
       <form onSubmit={e => e.preventDefault()}>
         <input
+          data-testid="hashtags"
           onChange={e =>
             dispatch({ type: 'UPDATE_HASHTAGS', value: e.target.value })
           }
@@ -38,9 +39,24 @@ function App() {
             />
           ))}
         </ul>
-        <button onClick={() => dispatch({ type: 'ADD_ITEM' })}>+</button>
-        <button onClick={() => dispatch({ type: 'REMOVE_ITEM' })}>-</button>
-        <button onClick={() => console.log('now:', new Date())}>Tweet</button>
+        <button
+          data-testid="add"
+          onClick={() => dispatch({ type: 'ADD_ITEM' })}
+        >
+          +
+        </button>
+        <button
+          data-testid="remove"
+          onClick={() => dispatch({ type: 'REMOVE_ITEM' })}
+        >
+          -
+        </button>
+        <button
+          data-testid="tweet"
+          onClick={() => console.log('now:', new Date())}
+        >
+          Tweet
+        </button>
       </form>
       <footer>v{version}</footer>
     </article>

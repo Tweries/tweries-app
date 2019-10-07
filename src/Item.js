@@ -8,7 +8,13 @@ const ROWS = 10;
 function Item({ onChange, source, tweet }) {
   return (
     <li>
-      <textarea cols={COLS} onChange={onChange} rows={ROWS} value={source} />
+      <textarea
+        cols={COLS}
+        data-testid="source"
+        onChange={onChange}
+        rows={ROWS}
+        value={source}
+      />
       <textarea
         className={classnames({ warning: tweet.length > 280 })}
         cols={COLS}

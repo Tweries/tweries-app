@@ -8,6 +8,7 @@ exports[`App to match snapshot 1`] = `
     </h1>
     <form>
       <input
+        data-testid="hashtags"
         type="text"
         value="#prodmgmt"
       />
@@ -15,6 +16,7 @@ exports[`App to match snapshot 1`] = `
         <li>
           <textarea
             cols="40"
+            data-testid="source"
             rows="10"
           >
             Foo
@@ -31,6 +33,7 @@ exports[`App to match snapshot 1`] = `
         <li>
           <textarea
             cols="40"
+            data-testid="source"
             rows="10"
           >
             Bar
@@ -47,6 +50,7 @@ exports[`App to match snapshot 1`] = `
         <li>
           <textarea
             cols="40"
+            data-testid="source"
             rows="10"
           >
             Barfood
@@ -63,6 +67,7 @@ exports[`App to match snapshot 1`] = `
         <li>
           <textarea
             cols="40"
+            data-testid="source"
             rows="10"
           >
             Barfood at bar
@@ -77,13 +82,19 @@ exports[`App to match snapshot 1`] = `
           </textarea>
         </li>
       </ul>
-      <button>
+      <button
+        data-testid="add"
+      >
         +
       </button>
-      <button>
+      <button
+        data-testid="remove"
+      >
         -
       </button>
-      <button>
+      <button
+        data-testid="tweet"
+      >
         Tweet
       </button>
     </form>
