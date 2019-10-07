@@ -7,6 +7,10 @@ article {
   justify-content: center;
 }
 
+footer {
+  margin-bottom: 8px;
+}
+
 form {
   display: flex;
   flex-direction: column;

@@ -1,4 +1,5 @@
 import React, { useReducer } from 'react';
+import { version } from '../package.json';
 import './App.css';
 import augment from './augment';
 import initialState from './initialState';
@@ -41,6 +42,7 @@ function App() {
         <button onClick={() => dispatch({ type: 'REMOVE_ITEM' })}>-</button>
         <button onClick={() => console.log('now:', new Date())}>Tweet</button>
       </form>
+      <footer>v{version}</footer>
     </article>
   );
 }
