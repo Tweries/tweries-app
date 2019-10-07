@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`makeItem Foo 1`] = `
+Object {
+  "id": Any<String>,
+  "position": 1,
+  "source": "Foo",
+  "tweet": "1/4 Foo #prodmgmt",
+}
+`;

@@ -1,41 +1,15 @@
 import React, { useReducer } from 'react';
 import './App.css';
+import augment from './augment';
+import initialState from './initialState';
 import Item from './Item';
+import reducer from './reducer';
 
 function App() {
-  function reducer(state = initialState, action) {
-    switch (action.type) {
-      case 'ADD_ITEM': {
-        return {
-          ...state,
-          items: [...state.items, {}]
-        };
-      }
-      case 'REMOVE_ITEM': {
-        const copy = [...state.items];
-        copy.pop();
-        return {
-          ...state,
-          items: copy
-        };
-      }
-      case 'UPDATE_HASHTAGS': {
-        return {
-          ...state,
-          hashtags: action.value
-        };
-      }
-      default:
-        return state;
-    }
-  }
-
-  const initialState = {
-    hashtags: '',
-    items: [{}]
-  };
-
-  const [{ hashtags, items }, dispatch] = useReducer(reducer, initialState);
+  const [{ hashtags, items }, dispatch] = useReducer(
+    augment(reducer),
+    initialState
+  );
 
   return (
     <article>
@@ -49,18 +23,23 @@ function App() {
           value={hashtags}
         />
         <ul>
-          {items.map((item, index, items) => (
+          {items.map(item => (
             <Item
-              hashtags={hashtags}
-              index={index}
-              key={index}
-              lenght={items.length}
+              key={item.id}
+              onChange={e =>
+                dispatch({
+                  type: 'CHANGE_SOURCE',
+                  value: { id: item.id, source: e.target.value }
+                })
+              }
+              source={item.source}
+              tweet={item.tweet}
             />
           ))}
         </ul>
         <button onClick={() => dispatch({ type: 'ADD_ITEM' })}>+</button>
         <button onClick={() => dispatch({ type: 'REMOVE_ITEM' })}>-</button>
-        <button onClick={console.log}>Tweet</button>
+        <button onClick={() => console.log('now:', new Date())}>Tweet</button>
       </form>
     </article>
   );

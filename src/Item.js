@@ -1,33 +1,20 @@
 import classnames from 'classnames';
-import React, { useState } from 'react';
+import React from 'react';
 import './Item.css';
 
 const COLS = 40;
 const ROWS = 10;
 
-function Item({ hashtags, index, lenght }) {
-  const [source, setSource] = useState('');
-
-  function makeTweet() {
-    return `${index + 1}/${lenght} ${source} ${hashtags}`;
-  }
-
+function Item({ onChange, source, tweet }) {
   return (
     <li>
+      <textarea cols={COLS} onChange={onChange} rows={ROWS} value={source} />
       <textarea
-        cols={COLS}
-        onChange={e => {
-          setSource(e.target.value);
-        }}
-        rows={ROWS}
-        value={source}
-      />
-      <textarea
-        className={classnames({ warning: makeTweet().length > 280 })}
+        className={classnames({ warning: tweet.length > 280 })}
         cols={COLS}
         disabled="disabled"
         rows={ROWS}
-        value={makeTweet()}
+        value={tweet}
       />
     </li>
   );
