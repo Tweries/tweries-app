@@ -1,0 +1,96 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App to match snapshot 1`] = `
+<div>
+  <article>
+    <h1>
+      Serial Twitter
+    </h1>
+    <form>
+      <input
+        type="text"
+        value="#prodmgmt"
+      />
+      <ul>
+        <li>
+          <textarea
+            cols="40"
+            rows="10"
+          >
+            Foo
+          </textarea>
+          <textarea
+            class=""
+            cols="40"
+            disabled=""
+            rows="10"
+          >
+            1/4 Foo #prodmgmt
+          </textarea>
+        </li>
+        <li>
+          <textarea
+            cols="40"
+            rows="10"
+          >
+            Bar
+          </textarea>
+          <textarea
+            class=""
+            cols="40"
+            disabled=""
+            rows="10"
+          >
+            2/4 Bar #prodmgmt
+          </textarea>
+        </li>
+        <li>
+          <textarea
+            cols="40"
+            rows="10"
+          >
+            Barfood
+          </textarea>
+          <textarea
+            class=""
+            cols="40"
+            disabled=""
+            rows="10"
+          >
+            3/4 Barfood #prodmgmt
+          </textarea>
+        </li>
+        <li>
+          <textarea
+            cols="40"
+            rows="10"
+          >
+            Barfood at bar
+          </textarea>
+          <textarea
+            class=""
+            cols="40"
+            disabled=""
+            rows="10"
+          >
+            4/4 Barfood at bar #prodmgmt
+          </textarea>
+        </li>
+      </ul>
+      <button>
+        +
+      </button>
+      <button>
+        -
+      </button>
+      <button>
+        Tweet
+      </button>
+    </form>
+    <footer>
+      v
+      0.1.0
+    </footer>
+  </article>
+</div>
+`;
