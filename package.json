@@ -5,6 +5,7 @@
   "description": "an app that will send a file to Twitter, one line per tweet",
   "dependencies": {
     "classnames": "^2.2.6",
+    "gh-pages": "^2.1.1",
     "prettier": "^1.18.2",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
@@ -12,7 +13,9 @@
   },
   "scripts": {
     "build": "react-scripts build",
+    "deploy": "gh-pages -d build",
     "eject": "react-scripts eject",
+    "predeploy": "npm run build",
     "start": "react-scripts start",
     "test": "react-scripts test"
   },
@@ -40,5 +43,6 @@
       "!src/index.js",
       "!src/serviceWorker.js"
     ]
-  }
+  },
+  "homepage": "https://mattiaerre.github.io/china-musk"
 }

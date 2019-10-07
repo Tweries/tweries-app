@@ -7,3 +7,7 @@
 - https://twitter.com/allenholub/status/1178729543432953856
 
 - https://twitter.com/johncutlefish/status/1178880760830287872
+
+## Resources
+
+- https://create-react-app.dev/docs/deployment#github-pages-https-pagesgithubcom
