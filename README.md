@@ -16,7 +16,7 @@
 
 - [ ] Breaking lines at reasonable punctuation, with a preference to periods over commas.
 
-- [ ] I want to be able to override its choices with a manual linefeed.
+- [x] I want to be able to override its choices with a manual linefeed.
 
 ## Resources
 
