@@ -37,7 +37,7 @@ function App() {
         >
           Generate Tweetstorm
         </button>
-        <ul>
+        <ul data-testid="list">
           {items.map((item, index) => (
             <li key={index}>
               <textarea readOnly rows={8} value={item.tweet} />

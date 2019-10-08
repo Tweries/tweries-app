@@ -25,6 +25,12 @@ describe('App', () => {
     expect(getByTestId('hashtags').value).toEqual(HASHTAGS);
   });
 
+  it('click on generate', () => {
+    const { getByTestId } = render(<App />);
+    fireEvent.click(getByTestId('generate'));
+    expect(getByTestId('list')).toMatchSnapshot();
+  });
+
   it('tweet', () => {
     const { getByTestId } = render(<App />);
     fireEvent.click(getByTestId('tweet'));
