@@ -1,10 +1,10 @@
 import React, { useReducer } from 'react';
-import { version } from '../package.json';
+import { version } from '../../../package.json';
+import Item from '../../components/Item';
+import initialState from '../../store/initialState';
+import reducer from '../../store/reducer';
 import './App.css';
 import augment from './augment';
-import initialState from './initialState';
-import Item from './Item';
-import reducer from './reducer';
 
 function App() {
   const [{ hashtags, items }, dispatch] = useReducer(
