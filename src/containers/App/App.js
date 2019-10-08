@@ -16,9 +16,8 @@ function App() {
       <h1>Serial Twitter</h1>
       <form onSubmit={e => e.preventDefault()}>
         <textarea
-          cols={80}
           data-testid="source"
-          rows={10}
+          rows={16}
           value={source}
           onChange={e =>
             dispatch({ type: 'CHANGE_SOURCE', value: e.target.value })
@@ -41,7 +40,7 @@ function App() {
         <ul>
           {items.map((item, index) => (
             <li key={index}>
-              <textarea cols={80} readOnly rows={5} value={item.tweet} />
+              <textarea readOnly rows={8} value={item.tweet} />
             </li>
           ))}
         </ul>

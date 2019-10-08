@@ -12,18 +12,3 @@ textarea {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
-button,
-input,
-textarea {
-  font-size: 16px;
-}
-
-textarea {
-  border: none;
-}
