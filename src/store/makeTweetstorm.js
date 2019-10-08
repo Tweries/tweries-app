@@ -13,18 +13,24 @@ function makeTweetstorm(source, suffix) {
   const parts = [];
 
   while (copy.length !== 0) {
-    const take = v.prune(
+    let take = v.prune(
       copy,
       MAX_LENGTH - makePrefix().length - suffix.length - 2, // INFO: 1 space after the prefix and one space before the suffix
       ''
     );
+    if (take.indexOf('[..]') > -1) {
+      take = v.substr(take, 0, take.indexOf('[..]'));
+      copy = v.substr(copy, take.length + 4); // INFO: 4 is the lenght of the linefeed
+    } else {
+      copy = v.substr(copy, take.length + 1);
+    }
     parts.push(take);
-    copy = v.substr(copy, take.length + 1);
   }
 
   const tweetstorm = parts.map((part, index) => {
-    // expect(part).toEqual(v.trim(part)); // INFO: to make sure that part does not contain whitespace from both sides
-    const tweet = `${makePrefix(index, parts.length)} ${part} ${suffix}`;
+    const tweet = `${makePrefix(index, parts.length)} ${v.trim(
+      part
+    )} ${suffix}`;
     return { length: tweet.length, tweet };
   });
 
