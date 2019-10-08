@@ -7,91 +7,24 @@ exports[`App to match snapshot 1`] = `
       Serial Twitter
     </h1>
     <form>
+      <textarea
+        cols="80"
+        data-testid="source"
+        rows="10"
+      >
+        Although the Duke of Windsor never specifically used the Windsor knot, he did favor a wide triangular knot. In actuality, the Duke achieved his trendsetting look by tying a Four-in-Hand with specially made wide and extra thick ties. The Windsor knot was invented by the public as a way to imitate the Duke's knot style. There are several derivatives of the Windsor that are all referred to by the same name. The Windsor delivers a symmetrical and solid triangular knot that works best with a spread collar. This knot is also mistakenly referred to as the "Double Windsor" knot.
+      </textarea>
       <input
         data-testid="hashtags"
         type="text"
-        value="#prodmgmt"
+        value="#howto #tieatie"
       />
-      <ul>
-        <li>
-          <textarea
-            cols="40"
-            data-testid="source"
-            rows="10"
-          >
-            Foo
-          </textarea>
-          <textarea
-            class=""
-            cols="40"
-            disabled=""
-            rows="10"
-          >
-            1/4 Foo #prodmgmt
-          </textarea>
-        </li>
-        <li>
-          <textarea
-            cols="40"
-            data-testid="source"
-            rows="10"
-          >
-            Bar
-          </textarea>
-          <textarea
-            class=""
-            cols="40"
-            disabled=""
-            rows="10"
-          >
-            2/4 Bar #prodmgmt
-          </textarea>
-        </li>
-        <li>
-          <textarea
-            cols="40"
-            data-testid="source"
-            rows="10"
-          >
-            Barfood
-          </textarea>
-          <textarea
-            class=""
-            cols="40"
-            disabled=""
-            rows="10"
-          >
-            3/4 Barfood #prodmgmt
-          </textarea>
-        </li>
-        <li>
-          <textarea
-            cols="40"
-            data-testid="source"
-            rows="10"
-          >
-            Barfood at bar
-          </textarea>
-          <textarea
-            class=""
-            cols="40"
-            disabled=""
-            rows="10"
-          >
-            4/4 Barfood at bar #prodmgmt
-          </textarea>
-        </li>
-      </ul>
       <button
-        data-testid="add"
+        data-testid="generate"
       >
-        +
+        Generate Tweetstorm
       </button>
-      <button
-        data-testid="remove"
-      >
-        -
-      </button>
+      <ul />
       <button
         data-testid="tweet"
       >

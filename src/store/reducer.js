@@ -1,79 +1,24 @@
 import initialState from './initialState';
-import makeItem from './makeItem';
+import makeTweetstorm from './makeTweetstorm';
 
 function reducer(state = initialState, action) {
   switch (action.type) {
-    case 'ADD_ITEM': {
+    case 'CHANGE_HASHTAGS': {
       return {
         ...state,
-        items: [
-          ...state.items.map(
-            item =>
-              (item = makeItem(
-                state.hashtags,
-                item.id,
-                state.items.length + 1,
-                item.position,
-                item.source
-              ))
-          ),
-          makeItem(
-            state.hashtags,
-            null,
-            state.items.length + 1,
-            state.items.length + 1
-          )
-        ]
+        hashtags: action.value
       };
     }
     case 'CHANGE_SOURCE': {
       return {
         ...state,
-        items: state.items.map(item => {
-          if (item.id === action.value.id) {
-            item = makeItem(
-              state.hashtags,
-              item.id,
-              state.items.length,
-              item.position,
-              action.value.source
-            );
-          }
-          return item;
-        })
+        source: action.value
       };
     }
-    case 'REMOVE_ITEM': {
-      const copy = [...state.items];
-      copy.pop();
+    case 'GENERATE_TWEETSTORM': {
       return {
         ...state,
-        items: copy.map(
-          item =>
-            (item = makeItem(
-              state.hashtags,
-              item.id,
-              copy.length,
-              item.position,
-              item.source
-            ))
-        )
-      };
-    }
-    case 'UPDATE_HASHTAGS': {
-      return {
-        ...state,
-        hashtags: action.value,
-        items: state.items.map(
-          item =>
-            (item = makeItem(
-              action.value,
-              item.id,
-              state.items.length,
-              item.position,
-              item.source
-            ))
-        )
+        items: makeTweetstorm(state.source, state.hashtags)
       };
     }
     default:

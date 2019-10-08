@@ -23,7 +23,7 @@ function makeTweetstorm(source, suffix) {
   }
 
   const tweetstorm = parts.map((part, index) => {
-    expect(part).toEqual(v.trim(part)); // INFO: to make sure that part does not contain whitespace from both sides
+    // expect(part).toEqual(v.trim(part)); // INFO: to make sure that part does not contain whitespace from both sides
     const tweet = `${makePrefix(index, parts.length)} ${part} ${suffix}`;
     return { length: tweet.length, tweet };
   });
