@@ -35,6 +35,10 @@ form > * {
   margin-bottom: 32px;
 }
 
+h1 {
+  margin: 16px 0;
+}
+
 li {
   margin-bottom: 32px;
 }
