@@ -23,7 +23,7 @@ render(
     client_id={config.clientId}
     domain={config.domain}
     onRedirectCallback={onRedirectCallback}
-    redirect_uri={window.location.origin}
+    redirect_uri={window.location.href}
   >
     <App />
   </Auth0Provider>,
