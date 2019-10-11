@@ -14,9 +14,13 @@
 
 - [x] I want the app to then break that up into tweet-length chunks
 
-- [ ] Breaking lines at reasonable punctuation, with a preference to periods over commas.
+- [x] Breaking lines at reasonable punctuation, with a preference to periods over commas.
 
 - [x] I want to be able to override its choices with a manual linefeed.
+
+- [x] Login w/ Twitter
+
+- [ ] Post tweetstorm to Twitter API
 
 ## Resources
 
@@ -33,3 +37,7 @@
 - https://splitters.co/
 
 - https://www.shoutmeloud.com/5-tools-to-tweet-lengthy-messages-on-twitter.html
+
+- https://auth0.com/docs/quickstart/spa/react
+
+- https://auth0.com/docs/connections/social/twitter
