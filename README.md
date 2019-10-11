@@ -18,7 +18,9 @@
 
 - [x] I want to be able to override its choices with a manual linefeed.
 
-- [ ] Login w/ Twitter
+- [x] Login w/ Twitter
+
+- [ ] Post tweetstorm to Twitter API
 
 ## Resources
 
