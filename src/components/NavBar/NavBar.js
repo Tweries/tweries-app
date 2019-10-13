@@ -31,7 +31,14 @@ const NavBar = () => {
     <header className="NavBar">
       {isAuthenticated ? (
         [
-          <button key="button" onClick={() => logout()}>
+          <button
+            key="button"
+            onClick={() =>
+              logout({
+                returnTo: window.location.href
+              })
+            }
+          >
             Log out
           </button>,
           <img alt={user.name} key="img" src={user.picture} />
