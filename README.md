@@ -20,6 +20,8 @@
 
 - [x] Login w/ Twitter
 
+- [x] Add an API endpoint on heroku
+
 - [ ] Post tweetstorm to Twitter API
 
 ## Resources

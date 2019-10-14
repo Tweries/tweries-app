@@ -20,8 +20,13 @@ article {
 }
 
 footer {
+  color: red;
   font-size: 12px;
   margin-bottom: 8px;
+}
+
+footer.healthy {
+  color: green;
 }
 
 form {

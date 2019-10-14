@@ -21,6 +21,12 @@ function reducer(state = initialState, action) {
         items: makeTweetstorm(state.source, state.hashtags)
       };
     }
+    case 'SET_HEALTHY': {
+      return {
+        ...state,
+        healthy: action.value
+      };
+    }
     default:
       return state;
   }
