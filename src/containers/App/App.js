@@ -1,4 +1,5 @@
-import React, { useReducer } from 'react';
+import classnames from 'classnames';
+import React, { useEffect, useReducer } from 'react';
 import { version } from '../../../package.json';
 import NavBar from '../../components/NavBar/NavBar';
 import initialState from '../../store/initialState';
@@ -9,7 +10,22 @@ import augment from './augment';
 
 function App() {
   const { loading } = useAuth0();
-  const [{ hashtags, items, source }, dispatch] = useReducer(
+
+  useEffect(() => {
+    const baseUrl = 'https://china-musk-api.herokuapp.com'; // 'http://localhost:9000'
+    fetch(`${baseUrl}/api/v1/health`)
+      .then(response => response.json())
+      .then(data => {
+        console.log(data);
+        dispatch({ type: 'SET_HEALTHY', value: true });
+      })
+      .catch(error => {
+        console.log(error);
+        dispatch({ type: 'SET_HEALTHY', value: false });
+      });
+  }, []);
+
+  const [{ hashtags, healthy, items, source }, dispatch] = useReducer(
     augment(reducer),
     initialState
   );
@@ -57,7 +73,7 @@ function App() {
           Tweet
         </button>
       </form>
-      <footer>v{version}</footer>
+      <footer className={classnames({ healthy: healthy })}>v{version}</footer>
     </article>
   );
 }

@@ -19,6 +19,7 @@ Gotta leave you all behind and face the truth`;
 
 const initialState = {
   hashtags: HASHTAGS,
+  healthy: false,
   items: [],
   source: SOURCE
 };

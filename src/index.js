@@ -1,9 +1,9 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { Auth0Provider } from './react-auth0-wrapper';
-import config from './auth_config.json';
 import App from './containers/App/App';
+import config from './auth_config.json';
 import './index.css';
+import { Auth0Provider } from './react-auth0-wrapper';
 import * as serviceWorker from './serviceWorker';
 
 // TUTORIAL: https://manage.auth0.com/dashboard/us/dev-17-x3zfb/applications/iqgFXkcTFo9l80i7llzcurmrfgVsn3TZ/quickstart
