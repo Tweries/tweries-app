@@ -8,12 +8,13 @@ import { useAuth0 } from '../../react-auth0-wrapper';
 import './App.css';
 import augment from './augment';
 
+const BASE_URL = 'https://china-musk-api.herokuapp.com'; // 'https://china-musk-api.herokuapp.com' | 'http://localhost:9000'
+
 function App() {
-  const { loading } = useAuth0();
+  const { isAuthenticated, loading } = useAuth0();
 
   useEffect(() => {
-    const baseUrl = 'https://china-musk-api.herokuapp.com'; // 'http://localhost:9000'
-    fetch(`${baseUrl}/api/v1/health`)
+    fetch(`${BASE_URL}/api/v1/health`)
       .then(response => response.json())
       .then(data => {
         console.log(data);
@@ -29,6 +30,10 @@ function App() {
     augment(reducer),
     initialState
   );
+
+  function disabled() {
+    return !isAuthenticated || !items.length > 0 || !healthy;
+  }
 
   return loading ? (
     <article>...</article>
@@ -68,7 +73,25 @@ function App() {
         </ul>
         <button
           data-testid="tweet"
-          onClick={() => console.log('now:', new Date())}
+          disabled={disabled()}
+          onClick={() => {
+            fetch(`${BASE_URL}/api/v1/tweetstorm`, {
+              body: JSON.stringify({ items }),
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              method: 'POST'
+            })
+              .then(response => response.json())
+              .then(data => {
+                console.log(data);
+                dispatch({ type: 'RESET_TWEETSTORM' });
+              })
+              .catch(error => {
+                console.log(error);
+                dispatch({ type: 'RESET_TWEETSTORM' });
+              });
+          }}
         >
           Tweet
         </button>
