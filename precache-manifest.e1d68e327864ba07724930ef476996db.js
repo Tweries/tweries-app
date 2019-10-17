@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "2b7d18d596edf6d1f5e99df54f71cf9e",
+    "revision": "e747c086ffabbcf35190c3e5f469ad8f",
     "url": "/china-musk/index.html"
   },
   {
-    "revision": "b968b10f5e95013d6474",
+    "revision": "0245f3d59f13fae04776",
     "url": "/china-musk/static/css/main.256aa670.chunk.css"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/china-musk/static/js/2.011f0b45.chunk.js"
   },
   {
-    "revision": "b968b10f5e95013d6474",
-    "url": "/china-musk/static/js/main.0864e47b.chunk.js"
+    "revision": "0245f3d59f13fae04776",
+    "url": "/china-musk/static/js/main.74ca57c1.chunk.js"
   },
   {
     "revision": "5ac4669fa9f5046b5d95",
