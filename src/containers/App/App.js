@@ -40,7 +40,7 @@ function App() {
   ) : (
     <article>
       <NavBar dispatch={dispatch} />
-      <h1>Serial Twitter</h1>
+      <h1>Tweries</h1>
       <form onSubmit={e => e.preventDefault()}>
         <textarea
           data-testid="source"
@@ -50,11 +50,12 @@ function App() {
             dispatch({ type: 'CHANGE_SOURCE', value: e.target.value })
           }
         />
-        <input
+        <textarea
           data-testid="hashtags"
           onChange={e =>
             dispatch({ type: 'CHANGE_HASHTAGS', value: e.target.value })
           }
+          rows={1}
           type="text"
           value={hashtags}
         />

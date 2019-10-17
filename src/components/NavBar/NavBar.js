@@ -15,6 +15,13 @@ const NavBar = ({ dispatch }) => {
     <header className="NavBar">
       {isAuthenticated ? (
         [
+          <img alt={user.name} key="img" src={user.picture} />,
+          <span key="span">
+            <span aria-label="hello" role="img">
+              👋
+            </span>{' '}
+            {user.name}
+          </span>,
           <button
             key="button"
             onClick={() =>
@@ -24,8 +31,7 @@ const NavBar = ({ dispatch }) => {
             }
           >
             Log out
-          </button>,
-          <img alt={user.name} key="img" src={user.picture} />
+          </button>
         ]
       ) : (
         <button onClick={() => loginWithRedirect({})}>Log in</button>

@@ -22,7 +22,11 @@
 
 - [x] Add an API endpoint on heroku
 
-- [ ] Post tweetstorm to Twitter API
+- [x] Post tweetstorm to Twitter API
+
+- [ ] UI improvements
+
+- [ ] Copy
 
 ## Resources
 
