@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/china-musk/static/css/main.0f5c340c.chunk.css",
-    "main.js": "/china-musk/static/js/main.8b4dd73f.chunk.js",
-    "main.js.map": "/china-musk/static/js/main.8b4dd73f.chunk.js.map",
+    "main.js": "/china-musk/static/js/main.f2016aef.chunk.js",
+    "main.js.map": "/china-musk/static/js/main.f2016aef.chunk.js.map",
     "runtime-main.js": "/china-musk/static/js/runtime-main.e5217d98.js",
     "runtime-main.js.map": "/china-musk/static/js/runtime-main.e5217d98.js.map",
     "static/js/2.011f0b45.chunk.js": "/china-musk/static/js/2.011f0b45.chunk.js",
     "static/js/2.011f0b45.chunk.js.map": "/china-musk/static/js/2.011f0b45.chunk.js.map",
     "index.html": "/china-musk/index.html",
-    "precache-manifest.3cfe8edb174531630877a544368dcd78.js": "/china-musk/precache-manifest.3cfe8edb174531630877a544368dcd78.js",
+    "precache-manifest.44867fbf0fa48a3086b96112659730ab.js": "/china-musk/precache-manifest.44867fbf0fa48a3086b96112659730ab.js",
     "service-worker.js": "/china-musk/service-worker.js",
     "static/css/main.0f5c340c.chunk.css.map": "/china-musk/static/css/main.0f5c340c.chunk.css.map"
   },
@@ -16,6 +16,6 @@
     "static/js/runtime-main.e5217d98.js",
     "static/js/2.011f0b45.chunk.js",
     "static/css/main.0f5c340c.chunk.css",
-    "static/js/main.8b4dd73f.chunk.js"
+    "static/js/main.f2016aef.chunk.js"
   ]
 }
