@@ -42,4 +42,4 @@
 
 - https://auth0.com/docs/quickstart/spa/react
 
-- https://auth0.com/docs/connections/social/twitter
+- https://auth0.com/docs/connections/social/twitter#6-access-twitter-api

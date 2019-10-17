@@ -33,6 +33,12 @@ function reducer(state = initialState, action) {
         healthy: action.value
       };
     }
+    case 'SET_USER_ID': {
+      return {
+        ...state,
+        userId: action.value
+      };
+    }
     default:
       return state;
   }

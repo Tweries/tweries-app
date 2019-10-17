@@ -26,7 +26,7 @@ function App() {
       });
   }, []);
 
-  const [{ hashtags, healthy, items, source }, dispatch] = useReducer(
+  const [{ hashtags, healthy, items, source, userId }, dispatch] = useReducer(
     augment(reducer),
     initialState
   );
@@ -39,7 +39,7 @@ function App() {
     <article>...</article>
   ) : (
     <article>
-      <NavBar />
+      <NavBar dispatch={dispatch} />
       <h1>Serial Twitter</h1>
       <form onSubmit={e => e.preventDefault()}>
         <textarea
@@ -76,7 +76,7 @@ function App() {
           disabled={disabled()}
           onClick={() => {
             fetch(`${BASE_URL}/api/v1/tweetstorm`, {
-              body: JSON.stringify({ items }),
+              body: JSON.stringify({ items, userId }),
               headers: {
                 'Content-Type': 'application/json'
               },

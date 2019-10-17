@@ -21,7 +21,8 @@ const initialState = {
   hashtags: HASHTAGS,
   healthy: false,
   items: [],
-  source: SOURCE
+  source: SOURCE,
+  userId: null
 };
 
 export default initialState;
