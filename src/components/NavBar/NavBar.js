@@ -3,18 +3,13 @@ import { useAuth0 } from '../../react-auth0-wrapper';
 import './NavBar.css';
 
 const NavBar = ({ dispatch }) => {
-  const {
-    isAuthenticated,
-    loginWithRedirect,
-    logout,
-    user: { name, picture, sub }
-  } = useAuth0();
+  const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0();
 
   useEffect(() => {
     if (isAuthenticated) {
-      dispatch({ type: 'SET_USER_ID', value: sub });
+      dispatch({ type: 'SET_USER_ID', value: user.sub });
     }
-  }, [dispatch, isAuthenticated, sub]);
+  }, [dispatch, isAuthenticated, user]);
 
   return (
     <header className="NavBar">
@@ -30,7 +25,7 @@ const NavBar = ({ dispatch }) => {
           >
             Log out
           </button>,
-          <img alt={name} key="img" src={picture} />
+          <img alt={user.name} key="img" src={user.picture} />
         ]
       ) : (
         <button onClick={() => loginWithRedirect({})}>Log in</button>
