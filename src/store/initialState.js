@@ -1,4 +1,5 @@
-const HASHTAGS = '#QueenFTW';
+//const HASHTAGS = '#QueenFTW';
+/*
 const SOURCE = `Mama, just killed a man
 Put a gun against his head
 Pulled my trigger, now he's dead
@@ -16,12 +17,13 @@ Sends shivers down my spine
 Body's aching all the time
 Goodbye everybody, I've got to go
 Gotta leave you all behind and face the truth`;
+*/
 
 const initialState = {
-  hashtags: HASHTAGS,
+  hashtags: '',
   healthy: false,
   items: [],
-  source: SOURCE,
+  source: '',
   userId: null
 };
 

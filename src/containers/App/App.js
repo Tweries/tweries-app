@@ -44,6 +44,7 @@ function App() {
       <form onSubmit={e => e.preventDefault()}>
         <textarea
           data-testid="source"
+          placeholder="What's happening?"
           rows={16}
           value={source}
           onChange={e =>
@@ -55,6 +56,7 @@ function App() {
           onChange={e =>
             dispatch({ type: 'CHANGE_HASHTAGS', value: e.target.value })
           }
+          placeholder="#hashtags"
           rows={1}
           type="text"
           value={hashtags}

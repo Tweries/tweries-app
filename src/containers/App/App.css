@@ -6,7 +6,8 @@ button {
 button,
 input,
 textarea {
-  border: 1px solid rgb(230, 236, 240);
+  background-color: rgb(230, 236, 240);
+  border: 1px solid rgb(204, 214, 221);
   font-size: 16px;
 }
 
@@ -24,7 +25,7 @@ body {
 }
 
 button:disabled {
-  background-color: rgb(230, 236, 240);
+  background-color: rgb(204, 214, 221);
 }
 
 footer {
