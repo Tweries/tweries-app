@@ -1,6 +1,6 @@
 {
   "name": "china-musk",
-  "version": "0.7.2",
+  "version": "0.7.3",
   "private": true,
   "description": "an app that will send a file to Twitter, one line per tweet",
   "dependencies": {
@@ -46,6 +46,6 @@
       "!src/serviceWorker.js"
     ]
   },
-  "homepage": "https://mattiaerre.github.io/china-musk",
+  "homepage": "https://tweries.com",
   "proxy": "http://localhost:9000"
 }
