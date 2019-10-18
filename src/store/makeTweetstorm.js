@@ -31,10 +31,10 @@ function makeTweetstorm(source, hashtags) {
   }
 
   const tweetstorm = parts.map((part, index) => {
-    const tweet = `${v.trim(part)} ${makeSequenceNumber(
+    const tweet = `${v.trim(part)} ${hashtags} ${makeSequenceNumber(
       index,
       parts.length
-    )} ${hashtags}`;
+    )}`;
     return { length: tweet.length, tweet };
   });
 
