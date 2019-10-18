@@ -1,21 +1,21 @@
 {
   "files": {
-    "main.css": "/china-musk/static/css/main.e274bb65.chunk.css",
-    "main.js": "/china-musk/static/js/main.bb897bcf.chunk.js",
-    "main.js.map": "/china-musk/static/js/main.bb897bcf.chunk.js.map",
-    "runtime-main.js": "/china-musk/static/js/runtime-main.e5217d98.js",
-    "runtime-main.js.map": "/china-musk/static/js/runtime-main.e5217d98.js.map",
-    "static/js/2.011f0b45.chunk.js": "/china-musk/static/js/2.011f0b45.chunk.js",
-    "static/js/2.011f0b45.chunk.js.map": "/china-musk/static/js/2.011f0b45.chunk.js.map",
-    "index.html": "/china-musk/index.html",
-    "precache-manifest.d95c533d09793851577a4d712d237aa5.js": "/china-musk/precache-manifest.d95c533d09793851577a4d712d237aa5.js",
-    "service-worker.js": "/china-musk/service-worker.js",
-    "static/css/main.e274bb65.chunk.css.map": "/china-musk/static/css/main.e274bb65.chunk.css.map"
+    "main.css": "/static/css/main.e274bb65.chunk.css",
+    "main.js": "/static/js/main.8fc6862d.chunk.js",
+    "main.js.map": "/static/js/main.8fc6862d.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.e0250af1.js",
+    "runtime-main.js.map": "/static/js/runtime-main.e0250af1.js.map",
+    "static/js/2.011f0b45.chunk.js": "/static/js/2.011f0b45.chunk.js",
+    "static/js/2.011f0b45.chunk.js.map": "/static/js/2.011f0b45.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.8e800604c5f56a267e27942000094b63.js": "/precache-manifest.8e800604c5f56a267e27942000094b63.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.e274bb65.chunk.css.map": "/static/css/main.e274bb65.chunk.css.map"
   },
   "entrypoints": [
-    "static/js/runtime-main.e5217d98.js",
+    "static/js/runtime-main.e0250af1.js",
     "static/js/2.011f0b45.chunk.js",
     "static/css/main.e274bb65.chunk.css",
-    "static/js/main.bb897bcf.chunk.js"
+    "static/js/main.8fc6862d.chunk.js"
   ]
 }
