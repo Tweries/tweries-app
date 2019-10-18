@@ -44,7 +44,7 @@ function App() {
       <form onSubmit={e => e.preventDefault()}>
         <textarea
           data-testid="source"
-          placeholder="What's happening?"
+          placeholder="Start typing, to insert a break prior to reaching 280 characters please use [..]"
           rows={8}
           value={source}
           onChange={e =>
