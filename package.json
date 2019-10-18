@@ -1,17 +1,13 @@
 {
   "name": "china-musk",
-  "version": "0.7.4",
+  "version": "0.7.5",
   "private": true,
   "description": "an app that will send a file to Twitter, one line per tweet",
   "dependencies": {
-    "@auth0/auth0-spa-js": "^1.2.4",
+    "@auth0/auth0-spa-js": "^1.3.2",
     "classnames": "^2.2.6",
-    "gh-pages": "^2.1.1",
-    "prettier": "^1.18.2",
     "react": "^16.10.2",
-    "react-dom": "^16.10.2",
-    "react-scripts": "3.2.0",
-    "voca": "^1.4.0"
+    "react-dom": "^16.10.2"
   },
   "scripts": {
     "build": "react-scripts build",
@@ -37,7 +33,10 @@
     ]
   },
   "devDependencies": {
-    "@testing-library/react": "^9.3.0"
+    "@testing-library/react": "^9.3.0",
+    "gh-pages": "^2.1.1",
+    "prettier": "^1.18.2",
+    "react-scripts": "^3.2.0"
   },
   "jest": {
     "collectCoverageFrom": [
