@@ -30,6 +30,8 @@
 
 - [x] Sequence number at the end of the tweet
 
+- [ ] Favicon and font
+
 - [ ] Copy
 
 ## Resources

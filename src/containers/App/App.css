@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Leckerli+One&display=swap');
+
 article,
 button {
   color: rgb(20, 23, 26);
@@ -50,6 +52,9 @@ form > * {
 }
 
 h1 {
+  color: rgb(20, 23, 26);
+  font-family: 'Leckerli One', cursive;
+  font-size: 40px;
   margin: 16px 0;
 }
 
