@@ -24,7 +24,11 @@
 
 - [x] Post tweetstorm to Twitter API
 
-- [ ] UI improvements
+- [x] Textarea full width
+
+- [x] Live tweetstorm generation
+
+- [x] Sequence number at the end of the tweet
 
 - [ ] Copy
 

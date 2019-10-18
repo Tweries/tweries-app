@@ -18,6 +18,7 @@ article {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding: 8px;
 }
 
 body {
@@ -41,8 +42,7 @@ footer.healthy {
 form {
   display: flex;
   flex-direction: column;
-  max-width: 320px;
-  width: 320px;
+  width: 100%;
 }
 
 form > * {
@@ -54,10 +54,9 @@ h1 {
 }
 
 li {
+  display: flex;
+  flex-direction: column;
   margin-bottom: 32px;
-}
-
-textarea {
   width: 100%;
 }
 

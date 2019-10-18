@@ -1,5 +1,8 @@
-//const HASHTAGS = '#QueenFTW';
+import makeTweetstorm from './makeTweetstorm';
+
 /*
+const HASHTAGS = '#QueenFTW';
+
 const SOURCE = `Mama, just killed a man
 Put a gun against his head
 Pulled my trigger, now he's dead
@@ -22,7 +25,7 @@ Gotta leave you all behind and face the truth`;
 const initialState = {
   hashtags: '',
   healthy: false,
-  items: [],
+  items: makeTweetstorm('', ''),
   source: '',
   userId: null
 };

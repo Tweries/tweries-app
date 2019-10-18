@@ -6,19 +6,15 @@ function reducer(state = initialState, action) {
     case 'CHANGE_HASHTAGS': {
       return {
         ...state,
-        hashtags: action.value
+        hashtags: action.value,
+        items: makeTweetstorm(state.source, action.value)
       };
     }
     case 'CHANGE_SOURCE': {
       return {
         ...state,
+        items: makeTweetstorm(action.value, state.hashtags),
         source: action.value
-      };
-    }
-    case 'GENERATE_TWEETSTORM': {
-      return {
-        ...state,
-        items: makeTweetstorm(state.source, state.hashtags)
       };
     }
     case 'RESET_TWEETSTORM': {

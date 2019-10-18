@@ -45,7 +45,7 @@ function App() {
         <textarea
           data-testid="source"
           placeholder="What's happening?"
-          rows={16}
+          rows={8}
           value={source}
           onChange={e =>
             dispatch({ type: 'CHANGE_SOURCE', value: e.target.value })
@@ -61,16 +61,10 @@ function App() {
           type="text"
           value={hashtags}
         />
-        <button
-          data-testid="generate"
-          onClick={() => dispatch({ type: 'GENERATE_TWEETSTORM' })}
-        >
-          Generate Tweetstorm
-        </button>
         <ul data-testid="list">
           {items.map((item, index) => (
             <li key={index}>
-              <textarea readOnly rows={8} value={item.tweet} />
+              <textarea readOnly rows={4} value={item.tweet} />
             </li>
           ))}
         </ul>

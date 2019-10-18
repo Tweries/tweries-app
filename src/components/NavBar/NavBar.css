@@ -1,13 +1,11 @@
 .NavBar {
+  align-items: center;
   background-color: rgb(230, 236, 240);
   border: 1px solid rgb(204, 214, 221);
   display: flex;
   flex-direction: column;
-  align-items: center;
-  max-width: 320px;
-  margin-top: 16px;
-  padding: 8px;
-  width: 320px;
+  padding: 8px 0;
+  width: 100%;
 }
 
 .NavBar img {

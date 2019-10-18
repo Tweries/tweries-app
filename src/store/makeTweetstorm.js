@@ -4,21 +4,21 @@ const LINEFEED = '[..]';
 const MAX_LENGTH = 280;
 const PREFIX_PLACEHOLDER = '_/_';
 
-function makePrefix(index, length) {
+function makeSequenceNumber(index, length) {
   if (index === undefined && length === undefined) {
     return PREFIX_PLACEHOLDER;
   }
   return `${index + 1}/${length}`;
 }
 
-function makeTweetstorm(source, suffix) {
+function makeTweetstorm(source, hashtags) {
   let copy = source.slice();
   const parts = [];
 
   while (copy.length !== 0) {
     let take = v.prune(
       copy,
-      MAX_LENGTH - makePrefix().length - suffix.length - 2, // INFO: 1 space after the prefix and one space before the suffix
+      MAX_LENGTH - makeSequenceNumber().length - hashtags.length - 2, // INFO: 1 space after the prefix and one space before the suffix
       ''
     );
     if (take.indexOf(LINEFEED) > -1) {
@@ -31,9 +31,10 @@ function makeTweetstorm(source, suffix) {
   }
 
   const tweetstorm = parts.map((part, index) => {
-    const tweet = `${makePrefix(index, parts.length)} ${v.trim(
-      part
-    )} ${suffix}`;
+    const tweet = `${v.trim(part)} ${makeSequenceNumber(
+      index,
+      parts.length
+    )} ${hashtags}`;
     return { length: tweet.length, tweet };
   });
 
