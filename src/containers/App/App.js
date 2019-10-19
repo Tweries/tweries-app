@@ -3,8 +3,8 @@ import React, { useEffect, useReducer } from 'react';
 import { version } from '../../../package.json';
 import NavBar from '../../components/NavBar/NavBar';
 import useLocalStorage from '../../hooks/useLocalStorage';
-import makeInitialState from '../../store/initialState';
-import reducer from '../../store/reducer';
+import makeInitialState from '../../store/makeInitialState';
+import reducer, { types } from '../../store/reducer';
 import { useAuth0 } from '../../react-auth0-wrapper';
 import './App.css';
 import augment from './augment';
@@ -19,11 +19,11 @@ function App() {
       .then(response => response.json())
       .then(data => {
         console.log(data);
-        dispatch({ type: 'SET_HEALTHY', value: true });
+        dispatch({ type: types.SET_HEALTHY, value: true });
       })
       .catch(error => {
         console.log(error);
-        dispatch({ type: 'SET_HEALTHY', value: false });
+        dispatch({ type: types.SET_HEALTHY, value: false });
       });
   }, []);
 
@@ -56,14 +56,14 @@ function App() {
           rows={8}
           value={source}
           onChange={e => {
-            dispatch({ type: 'CHANGE_SOURCE', value: e.target.value });
+            dispatch({ type: types.CHANGE_SOURCE, value: e.target.value });
             setSource(e.target.value);
           }}
         />
         <textarea
           data-testid="hashtags"
           onChange={e => {
-            dispatch({ type: 'CHANGE_HASHTAGS', value: e.target.value });
+            dispatch({ type: types.CHANGE_HASHTAGS, value: e.target.value });
             setHashtags(e.target.value);
           }}
           placeholder="#hashtags"
@@ -95,13 +95,13 @@ function App() {
               .then(response => response.json())
               .then(data => {
                 console.log(data);
-                dispatch({ type: 'RESET_TWEETSTORM' });
+                dispatch({ type: types.RESET_TWEETSTORM });
                 setSource('');
                 setHashtags('');
               })
               .catch(error => {
                 console.log(error);
-                dispatch({ type: 'RESET_TWEETSTORM' });
+                dispatch({ type: types.RESET_TWEETSTORM });
                 setSource('');
                 setHashtags('');
               });

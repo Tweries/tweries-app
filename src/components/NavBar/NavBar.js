@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { types } from '../../store/reducer';
 import { useAuth0 } from '../../react-auth0-wrapper';
 import './NavBar.css';
 
@@ -7,7 +8,7 @@ const NavBar = ({ dispatch }) => {
 
   useEffect(() => {
     if (isAuthenticated) {
-      dispatch({ type: 'SET_USER_ID', value: user.sub });
+      dispatch({ type: types.SET_USER_ID, value: user.sub });
     }
   }, [dispatch, isAuthenticated, user]);
 

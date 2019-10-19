@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`reducer CHANGE_HASHTAGS 1`] = `
+Object {
+  "hashtags": "#FOO",
+  "healthy": false,
+  "items": Array [
+    Object {
+      "length": 12,
+      "tweet": "bar #FOO 1/1",
+    },
+  ],
+  "source": "bar",
+  "userId": null,
+}
+`;
+
+exports[`reducer CHANGE_SOURCE 1`] = `
+Object {
+  "hashtags": "",
+  "healthy": false,
+  "items": Array [
+    Object {
+      "length": 7,
+      "tweet": "bar 1/1",
+    },
+  ],
+  "source": "bar",
+  "userId": null,
+}
+`;
+
+exports[`reducer RESET_TWEETSTORM 1`] = `
+Object {
+  "hashtags": "",
+  "healthy": true,
+  "items": Array [],
+  "source": "",
+  "userId": "twitter|1183836409850814464",
+}
+`;
+
+exports[`reducer SET_HEALTHY 1`] = `
+Object {
+  "hashtags": "",
+  "healthy": true,
+  "items": Array [],
+  "source": "",
+  "userId": null,
+}
+`;
+
+exports[`reducer SET_USER_ID 1`] = `
+Object {
+  "hashtags": "",
+  "healthy": false,
+  "items": Array [],
+  "source": "",
+  "userId": "twitter|1183836409850814464",
+}
+`;
+
+exports[`reducer default 1`] = `
+Object {
+  "hashtags": "",
+  "healthy": false,
+  "items": Array [],
+  "source": "",
+  "userId": null,
+}
+`;
