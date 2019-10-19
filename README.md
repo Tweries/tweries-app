@@ -24,15 +24,15 @@
 
 - [x] Post tweetstorm to Twitter API
 
-- [x] Textarea full width
+- [x] Textarea max width
 
 - [x] Live tweetstorm generation
 
 - [x] Sequence number at the end of the tweet
 
-- [ ] Favicon and font
+- [x] Favicon and font
 
-- [ ] Copy
+- [x] Move hint outside the textarea
 
 ## Resources
 
@@ -53,3 +53,5 @@
 - https://auth0.com/docs/quickstart/spa/react
 
 - https://auth0.com/docs/connections/social/twitter#6-access-twitter-api
+
+- https://favicon.io/favicon-generator/

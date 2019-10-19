@@ -42,9 +42,13 @@ function App() {
       <NavBar dispatch={dispatch} />
       <h1>Tweries</h1>
       <form onSubmit={e => e.preventDefault()}>
+        <small>
+          Start typing, to insert a break prior to reaching 280 characters
+          please use [..]
+        </small>
         <textarea
           data-testid="source"
-          placeholder="Start typing, to insert a break prior to reaching 280 characters please use [..]"
+          placeholder="What's happening?"
           rows={8}
           value={source}
           onChange={e =>
@@ -69,6 +73,9 @@ function App() {
           ))}
         </ul>
         <button
+          className={classnames('App__button', {
+            'App__button--disabled': disabled()
+          })}
           data-testid="tweet"
           disabled={disabled()}
           onClick={() => {

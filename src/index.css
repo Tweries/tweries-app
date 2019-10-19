@@ -12,3 +12,9 @@ textarea {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
+#root {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}

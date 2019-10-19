@@ -20,15 +20,20 @@ article {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  max-width: 768px;
   padding: 8px;
+  width: 100%;
 }
 
 body {
   background-color: rgb(29, 161, 242, 0.125);
 }
 
-button:disabled {
-  background-color: rgb(204, 214, 221);
+button {
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  width: 128px;
 }
 
 footer {
@@ -65,8 +70,24 @@ li {
   width: 100%;
 }
 
+textarea {
+  border-radius: 4px;
+}
+
 ul {
   list-style: none;
   margin: 0;
   padding: 0;
+}
+
+.App__button {
+  align-self: center;
+  background-color: rgb(29, 161, 242);
+  color: white;
+}
+
+.App__button--disabled {
+  background-color: rgb(204, 214, 221);
+  color: rgb(20, 23, 26);
+  cursor: default;
 }

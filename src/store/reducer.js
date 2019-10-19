@@ -19,8 +19,9 @@ function reducer(state = initialState, action) {
     }
     case 'RESET_TWEETSTORM': {
       return {
-        ...state,
-        items: []
+        ...initialState,
+        healthy: state.healthy,
+        userId: state.value
       };
     }
     case 'SET_HEALTHY': {
