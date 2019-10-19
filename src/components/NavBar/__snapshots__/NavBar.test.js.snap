@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavBar authenticated user 1`] = `
+<div>
+  <header
+    class="NavBar"
+  >
+    <img
+      alt="china-musk"
+      src="https://abs.twimg.com/sticky/default_profile_images/default_profile_normal.png"
+    />
+    <span>
+      <span
+        aria-label="hello"
+        role="img"
+      >
+        👋
+      </span>
+       
+      china-musk
+    </span>
+    <button
+      data-testid="logout"
+    >
+      Log out
+    </button>
+  </header>
+</div>
+`;
+
+exports[`NavBar logout 1`] = `
+Array [
+  Object {
+    "type": "SET_USER_ID",
+    "value": "twitter|1183836409850814464",
+  },
+]
+`;
+
+exports[`NavBar unauthenticated user 1`] = `
+<div>
+  <header
+    class="NavBar"
+  >
+    <button
+      data-testid="login"
+    >
+      Log in
+    </button>
+  </header>
+</div>
+`;

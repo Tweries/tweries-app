@@ -23,6 +23,7 @@ const NavBar = ({ dispatch }) => {
             {user.name}
           </span>,
           <button
+            data-testid="logout"
             key="button"
             onClick={() =>
               logout({
@@ -34,7 +35,9 @@ const NavBar = ({ dispatch }) => {
           </button>
         ]
       ) : (
-        <button onClick={() => loginWithRedirect({})}>Log in</button>
+        <button data-testid="login" onClick={() => loginWithRedirect({})}>
+          Log in
+        </button>
       )}
     </header>
   );
