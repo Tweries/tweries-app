@@ -42,7 +42,9 @@
   "jest": {
     "collectCoverageFrom": [
       "src/**/*.js",
+      "!src/hooks/useLocalStorage.js",
       "!src/index.js",
+      "!src/react-auth0-wrapper.js",
       "!src/serviceWorker.js"
     ]
   },
