@@ -11,6 +11,7 @@ function makeSequenceNumber(index, length) {
   return `${index + 1}/${length}`;
 }
 
+// TODO: source <==> hashtags
 function makeTweetstorm(source, hashtags) {
   let copy = source.slice();
   const parts = [];

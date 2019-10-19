@@ -2,7 +2,8 @@ import classnames from 'classnames';
 import React, { useEffect, useReducer } from 'react';
 import { version } from '../../../package.json';
 import NavBar from '../../components/NavBar/NavBar';
-import initialState from '../../store/initialState';
+import useLocalStorage from '../../hooks/useLocalStorage';
+import makeInitialState from '../../store/initialState';
 import reducer from '../../store/reducer';
 import { useAuth0 } from '../../react-auth0-wrapper';
 import './App.css';
@@ -26,9 +27,12 @@ function App() {
       });
   }, []);
 
+  const [hashtags_, setHashtags] = useLocalStorage('hashtags', '');
+  const [source_, setSource] = useLocalStorage('source', '');
+
   const [{ hashtags, healthy, items, source, userId }, dispatch] = useReducer(
     augment(reducer),
-    initialState
+    makeInitialState(hashtags_, source_)
   );
 
   function disabled() {
@@ -51,15 +55,17 @@ function App() {
           placeholder="What's happening?"
           rows={8}
           value={source}
-          onChange={e =>
-            dispatch({ type: 'CHANGE_SOURCE', value: e.target.value })
-          }
+          onChange={e => {
+            dispatch({ type: 'CHANGE_SOURCE', value: e.target.value });
+            setSource(e.target.value);
+          }}
         />
         <textarea
           data-testid="hashtags"
-          onChange={e =>
-            dispatch({ type: 'CHANGE_HASHTAGS', value: e.target.value })
-          }
+          onChange={e => {
+            dispatch({ type: 'CHANGE_HASHTAGS', value: e.target.value });
+            setHashtags(e.target.value);
+          }}
           placeholder="#hashtags"
           rows={1}
           type="text"
@@ -90,10 +96,14 @@ function App() {
               .then(data => {
                 console.log(data);
                 dispatch({ type: 'RESET_TWEETSTORM' });
+                setSource('');
+                setHashtags('');
               })
               .catch(error => {
                 console.log(error);
                 dispatch({ type: 'RESET_TWEETSTORM' });
+                setSource('');
+                setHashtags('');
               });
           }}
         >

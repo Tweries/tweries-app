@@ -1,7 +1,7 @@
-import initialState from './initialState';
+import makeInitialState from './initialState';
 import makeTweetstorm from './makeTweetstorm';
 
-function reducer(state = initialState, action) {
+function reducer(state = makeInitialState('', ''), action) {
   switch (action.type) {
     case 'CHANGE_HASHTAGS': {
       return {
@@ -19,7 +19,7 @@ function reducer(state = initialState, action) {
     }
     case 'RESET_TWEETSTORM': {
       return {
-        ...initialState,
+        ...makeInitialState(),
         healthy: state.healthy,
         userId: state.value
       };

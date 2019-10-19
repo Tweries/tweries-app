@@ -22,6 +22,7 @@ Goodbye everybody, I've got to go
 Gotta leave you all behind and face the truth`;
 */
 
+/*
 const initialState = {
   hashtags: '',
   healthy: false,
@@ -29,5 +30,16 @@ const initialState = {
   source: '',
   userId: null
 };
+*/
 
-export default initialState;
+function makeInitialState(hashtags = '', source = '') {
+  return {
+    hashtags,
+    healthy: false,
+    items: makeTweetstorm(source, hashtags),
+    source,
+    userId: null
+  };
+}
+
+export default makeInitialState;
