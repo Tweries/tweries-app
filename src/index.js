@@ -1,6 +1,8 @@
 import React from 'react';
 import { render } from 'react-dom';
 import App from './containers/App/App';
+import augment from './store/augment';
+import reducer from './store/reducer';
 import config from './auth_config.json';
 import './index.css';
 import { Auth0Provider } from './react-auth0-wrapper';
@@ -25,7 +27,7 @@ render(
     onRedirectCallback={onRedirectCallback}
     redirect_uri={window.location.href}
   >
-    <App />
+    <App reducer={augment(reducer)} />
   </Auth0Provider>,
   document.getElementById('root')
 );

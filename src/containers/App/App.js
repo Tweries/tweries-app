@@ -4,14 +4,13 @@ import { version } from '../../../package.json';
 import NavBar from '../../components/NavBar/NavBar';
 import useLocalStorage from '../../hooks/useLocalStorage';
 import makeInitialState from '../../store/makeInitialState';
-import reducer, { types } from '../../store/reducer';
+import { types } from '../../store/reducer';
 import { useAuth0 } from '../../react-auth0-wrapper';
 import './App.css';
-import augment from './augment';
 
 const BASE_URL = 'https://china-musk-api.herokuapp.com'; // 'https://china-musk-api.herokuapp.com' | 'http://localhost:9000'
 
-function App() {
+function App({ reducer }) {
   const { isAuthenticated, loading } = useAuth0();
 
   useEffect(() => {
@@ -31,7 +30,7 @@ function App() {
   const [source_, setSource] = useLocalStorage('source', '');
 
   const [{ hashtags, healthy, items, source, userId }, dispatch] = useReducer(
-    augment(reducer),
+    reducer,
     makeInitialState(hashtags_, source_)
   );
 

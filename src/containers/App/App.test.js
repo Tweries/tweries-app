@@ -1,39 +1,46 @@
-import React from 'react';
-import App from './App';
 import { render, fireEvent } from '@testing-library/react';
+import React from 'react';
+import { useAuth0 } from '../../react-auth0-wrapper';
+import App from './App';
+import makeInitialState from '../../store/makeInitialState';
 
-const HASHTAGS = '#foo';
-const SOURCE = 'Hello!';
+// const fetch = require('jest-fetch-mock');
 
-describe.skip('App', () => {
-  it('to match snapshot', () => {
-    const { container } = render(<App />);
+jest.mock('../../react-auth0-wrapper');
+
+describe('App', () => {
+  beforeEach(() => {
+    fetch.mockResponseOnce(
+      JSON.stringify({ data: { message: 'HELLO FROM MOCK' } })
+    );
+  });
+
+  afterEach(() => {
+    fetch.resetMocks();
+  });
+
+  it('loading', () => {
+    useAuth0.mockImplementation(() => ({
+      loading: true
+    }));
+
+    const { container } = render(
+      <App reducer={jest.fn((state = makeInitialState(), action) => state)} />
+    );
+
     expect(container).toMatchSnapshot();
   });
 
-  it('change source', () => {
-    const { getByTestId } = render(<App />);
-    fireEvent.change(getByTestId('source'), {
-      target: { value: SOURCE }
-    });
-    expect(getByTestId('source').value).toEqual(SOURCE);
-  });
+  it('unauthenticated user', () => {
+    useAuth0.mockImplementation(() => ({
+      isAuthenticated: false,
+      loading: false
+    }));
 
-  it('change hashtags', () => {
-    const { getByTestId } = render(<App />);
-    fireEvent.change(getByTestId('hashtags'), { target: { value: HASHTAGS } });
-    expect(getByTestId('hashtags').value).toEqual(HASHTAGS);
-  });
+    const { container } = render(
+      <App reducer={jest.fn((state = makeInitialState(), action) => state)} />
+    );
 
-  it('click on generate', () => {
-    const { getByTestId } = render(<App />);
-    fireEvent.click(getByTestId('generate'));
-    expect(getByTestId('list')).toMatchSnapshot();
-  });
-
-  it('tweet', () => {
-    const { getByTestId } = render(<App />);
-    fireEvent.click(getByTestId('tweet'));
-    // TODO: add assertion
+    expect(container).toMatchSnapshot();
   });
 });
