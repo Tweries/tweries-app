@@ -16,14 +16,23 @@ function makeTweetstorm(source, hashtags) {
   const parts = [];
 
   while (copy.length !== 0) {
-    let take = v.prune(
-      copy,
-      MAX_LENGTH - makeSequenceNumber().length - hashtags.length - 2, // INFO: 1 space after the prefix and one space before the suffix
-      ''
-    );
+    let take;
+    if (hashtags.length > 0) {
+      take = v.prune(
+        copy,
+        MAX_LENGTH - hashtags.length - makeSequenceNumber().length - 2, // INFO: 1 space before the hashtags and 1 space before the sequence number
+        ''
+      );
+    } else {
+      take = v.prune(
+        copy,
+        MAX_LENGTH - makeSequenceNumber().length - 1, // INFO: 1 space before the sequence number
+        ''
+      );
+    }
     if (take.indexOf(LINEFEED) > -1) {
       take = v.substr(take, 0, take.indexOf(LINEFEED));
-      copy = v.substr(copy, take.length + 4); // INFO: 4 is the lenght of the linefeed
+      copy = v.substr(copy, take.length + 4); // INFO: 4 is the length of the linefeed
     } else {
       copy = v.substr(copy, take.length + 1); // INFO: 1 is the space after the word
     }
@@ -31,10 +40,16 @@ function makeTweetstorm(source, hashtags) {
   }
 
   const tweetstorm = parts.map((part, index) => {
-    const tweet = `${v.trim(part)} ${hashtags} ${makeSequenceNumber(
-      index,
-      parts.length
-    )}`;
+    let tweet;
+    if (hashtags.length > 0) {
+      tweet = `${v.trim(part)} ${hashtags} ${makeSequenceNumber(
+        index,
+        parts.length
+      )}`;
+    } else {
+      tweet = `${v.trim(part)} ${makeSequenceNumber(index, parts.length)}`;
+    }
+
     return { length: tweet.length, tweet };
   });
 

@@ -34,6 +34,12 @@ describe('source => tweetstorm', () => {
       Body's aching all the time
       Goodbye everybody, I've got to go
       Gotta leave you all behind and face the truth`
+    },
+    {
+      description: 'No final comma in the 1st tweet',
+      hashtags: '',
+      source:
+        '123456789, 123456789, 123456789, 123456789, 123456789, 123456789, 123456789, 123456789, 123456789, 123456789, 123456789, 123456789, 123456789, 123456789, 123456789, 123456789, 123456789, 123456789, 123456789, 123456789, 123456789, 123456789, 123456789, 123456789, 123456789, WHAT?'
     }
   ];
 
