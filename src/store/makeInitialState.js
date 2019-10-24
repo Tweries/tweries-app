@@ -1,10 +1,11 @@
-import makeTweetstorm from './makeTweetstorm';
+import makeTweetstorm, { LINEFEED } from './makeTweetstorm';
 
-function makeInitialState(hashtags = '', source = '') {
+function makeInitialState({ hashtags = '', linefeed = LINEFEED, source = '' }) {
   return {
     hashtags,
     healthy: false,
-    items: makeTweetstorm(source, hashtags),
+    items: makeTweetstorm({ hashtags, linefeed, source }),
+    linefeed,
     source,
     userId: null
   };

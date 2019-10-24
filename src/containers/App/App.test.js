@@ -23,7 +23,7 @@ describe('App', () => {
     }));
 
     const { container } = render(
-      <App reducer={jest.fn((state = makeInitialState(), action) => state)} />
+      <App reducer={jest.fn((state = makeInitialState({}), action) => state)} />
     );
 
     expect(container).toMatchSnapshot();
@@ -36,7 +36,7 @@ describe('App', () => {
     }));
 
     const { container } = render(
-      <App reducer={jest.fn((state = makeInitialState(), action) => state)} />
+      <App reducer={jest.fn((state = makeInitialState({}), action) => state)} />
     );
 
     expect(container).toMatchSnapshot();

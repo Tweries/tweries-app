@@ -4,6 +4,7 @@ import { version } from '../../../package.json';
 import NavBar from '../../components/NavBar/NavBar';
 import useLocalStorage from '../../hooks/useLocalStorage';
 import makeInitialState from '../../store/makeInitialState';
+import { LINEFEED } from '../../store/makeTweetstorm.js';
 import { types } from '../../store/reducer';
 import { useAuth0 } from '../../react-auth0-wrapper';
 import './App.css';
@@ -27,11 +28,19 @@ function App({ reducer }) {
   }, []);
 
   const [hashtags_, setHashtags] = useLocalStorage('hashtags', '');
+  const [linefeed_, setLinefeed] = useLocalStorage('linefeed', LINEFEED);
   const [source_, setSource] = useLocalStorage('source', '');
 
-  const [{ hashtags, healthy, items, source, userId }, dispatch] = useReducer(
+  const [
+    { hashtags, healthy, items, linefeed, source, userId },
+    dispatch
+  ] = useReducer(
     reducer,
-    makeInitialState(hashtags_, source_)
+    makeInitialState({
+      hashtags: hashtags_,
+      linefeed: linefeed_,
+      source: source_
+    })
   );
 
   function disabled() {
@@ -47,7 +56,16 @@ function App({ reducer }) {
       <form onSubmit={e => e.preventDefault()}>
         <small>
           Start typing, to insert a break prior to reaching 280 characters
-          please use [..]
+          please use{' '}
+          <input
+            onChange={e => {
+              dispatch({ type: types.CHANGE_LINEFEED, value: e.target.value });
+              setLinefeed(e.target.value);
+            }}
+            maxLength="4"
+            size="4"
+            value={linefeed}
+          />
         </small>
         <textarea
           data-testid="source"

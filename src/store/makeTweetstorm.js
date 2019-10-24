@@ -1,6 +1,6 @@
 import v from 'voca';
 
-const LINEFEED = '[..]';
+export const LINEFEED = '[..]';
 const MAX_LENGTH = 280;
 const PREFIX_PLACEHOLDER = '_/_';
 
@@ -11,8 +11,7 @@ function makeSequenceNumber(index, length) {
   return `${index + 1}/${length}`;
 }
 
-// TODO: source <==> hashtags
-function makeTweetstorm(source, hashtags) {
+function makeTweetstorm({ hashtags, linefeed = LINEFEED, source }) {
   let copy = source.slice();
   const parts = [];
 
@@ -31,9 +30,9 @@ function makeTweetstorm(source, hashtags) {
         ''
       );
     }
-    if (take.indexOf(LINEFEED) > -1) {
-      take = v.substr(take, 0, take.indexOf(LINEFEED));
-      copy = v.substr(copy, take.length + 4); // INFO: 4 is the length of the linefeed
+    if (take.indexOf(linefeed) > -1) {
+      take = v.substr(take, 0, take.indexOf(linefeed));
+      copy = v.substr(copy, take.length + linefeed.length);
     } else {
       copy = v.substr(copy, take.length + 1); // INFO: 1 is the space after the word
     }

@@ -12,7 +12,7 @@ describe('reducer', () => {
           type: types.CHANGE_HASHTAGS,
           value: '#FOO'
         },
-        state: { ...makeInitialState(undefined, 'bar') }
+        state: { ...makeInitialState({ source: 'bar' }) }
       }
     },
     {
@@ -32,7 +32,7 @@ describe('reducer', () => {
           type: types.RESET_TWEETSTORM
         },
         state: {
-          ...makeInitialState('#FOO', 'bar'),
+          ...makeInitialState({ hashtags: '#FOO', source: 'bar' }),
           healthy: true,
           userId: USER_ID
         }
