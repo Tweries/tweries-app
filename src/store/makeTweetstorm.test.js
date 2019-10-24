@@ -22,6 +22,7 @@ describe('source => tweetstorm', () => {
       description: 'w/ linefeeds',
       props: {
         hashtags: '#QueenFTW',
+        linefeed: '[..]',
         source: `Mama, just killed a man
         Put a gun against his head
         Pulled my trigger, now he's dead
@@ -55,6 +56,15 @@ describe('source => tweetstorm', () => {
         hashtags: '',
         linefeed: ';;',
         source: 'first ;; second ;; third ;; fourth'
+      }
+    },
+    {
+      description: 'empty linefeed',
+      props: {
+        hashtags: '',
+        linefeed: '',
+        source:
+          'It put a huge amount of stress on me. Resentment built up and I delegated less and less. With so much on my plate, I was running the risk of burnout, and as my team saw this spiral, they became demotivated and the vicious spiral continued.'
       }
     }
   ];

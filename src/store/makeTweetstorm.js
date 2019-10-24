@@ -1,6 +1,6 @@
 import v from 'voca';
 
-export const LINEFEED = '[..]';
+export const LINEFEED = ';;';
 const MAX_LENGTH = 280;
 const PREFIX_PLACEHOLDER = '_/_';
 
@@ -11,7 +11,12 @@ function makeSequenceNumber(index, length) {
   return `${index + 1}/${length}`;
 }
 
-function makeTweetstorm({ hashtags, linefeed = LINEFEED, source }) {
+function makeTweetstorm({ hashtags, linefeed, source }) {
+  // INFO: hack :(
+  if (linefeed === null || linefeed === undefined || linefeed === '') {
+    linefeed = LINEFEED;
+  }
+
   let copy = source.slice();
   const parts = [];
 

@@ -1,6 +1,6 @@
 {
   "name": "china-musk",
-  "version": "0.10.1",
+  "version": "0.10.2",
   "private": true,
   "description": "an app that will send a file to Twitter, one line per tweet",
   "dependencies": {

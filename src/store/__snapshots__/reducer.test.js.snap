@@ -10,7 +10,7 @@ Object {
       "tweet": "bar #FOO 1/1",
     },
   ],
-  "linefeed": "[..]",
+  "linefeed": ";;",
   "source": "bar",
   "userId": null,
 }
@@ -26,7 +26,7 @@ Object {
       "tweet": "bar 1/1",
     },
   ],
-  "linefeed": "[..]",
+  "linefeed": ";;",
   "source": "bar",
   "userId": null,
 }
@@ -37,7 +37,7 @@ Object {
   "hashtags": "",
   "healthy": true,
   "items": Array [],
-  "linefeed": "[..]",
+  "linefeed": ";;",
   "source": "",
   "userId": "twitter|1183836409850814464",
 }
@@ -48,7 +48,7 @@ Object {
   "hashtags": "",
   "healthy": true,
   "items": Array [],
-  "linefeed": "[..]",
+  "linefeed": ";;",
   "source": "",
   "userId": null,
 }
@@ -59,7 +59,7 @@ Object {
   "hashtags": "",
   "healthy": false,
   "items": Array [],
-  "linefeed": "[..]",
+  "linefeed": ";;",
   "source": "",
   "userId": "twitter|1183836409850814464",
 }
@@ -70,7 +70,7 @@ Object {
   "hashtags": "",
   "healthy": false,
   "items": Array [],
-  "linefeed": "[..]",
+  "linefeed": ";;",
   "source": "",
   "userId": null,
 }

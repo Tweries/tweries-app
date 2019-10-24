@@ -35,8 +35,13 @@ describe('App', () => {
       loading: false
     }));
 
+    const feature = { active: jest.fn() };
+
     const { container } = render(
-      <App reducer={jest.fn((state = makeInitialState({}), action) => state)} />
+      <App
+        feature={feature}
+        reducer={jest.fn((state = makeInitialState({}), action) => state)}
+      />
     );
 
     expect(container).toMatchSnapshot();

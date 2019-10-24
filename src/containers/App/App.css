@@ -91,3 +91,7 @@ ul {
   color: rgb(20, 23, 26);
   cursor: default;
 }
+
+.App__linefeed {
+  text-align: center;
+}

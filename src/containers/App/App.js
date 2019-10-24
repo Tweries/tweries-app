@@ -11,7 +11,7 @@ import './App.css';
 
 const BASE_URL = 'https://china-musk-api.herokuapp.com'; // 'https://china-musk-api.herokuapp.com' | 'http://localhost:9000'
 
-function App({ reducer }) {
+function App({ feature, reducer }) {
   const { isAuthenticated, loading } = useAuth0();
 
   useEffect(() => {
@@ -47,6 +47,25 @@ function App({ reducer }) {
     return !isAuthenticated || !items.length > 0 || !healthy;
   }
 
+  function makeLinefeed(custom) {
+    if (custom === true) {
+      return (
+        <input
+          className="App__linefeed"
+          onChange={e => {
+            dispatch({ type: types.CHANGE_LINEFEED, value: e.target.value });
+            // setLinefeed(e.target.value);
+          }}
+          maxLength="4"
+          placeholder={LINEFEED}
+          size="4"
+          value={linefeed}
+        />
+      );
+    }
+    return <span>{linefeed}</span>;
+  }
+
   return loading ? (
     <article>...</article>
   ) : (
@@ -56,18 +75,7 @@ function App({ reducer }) {
       <form onSubmit={e => e.preventDefault()}>
         <small>
           Start typing, to insert a break prior to reaching 280 characters
-          please use {linefeed}
-          {/*
-          <input
-            onChange={e => {
-              dispatch({ type: types.CHANGE_LINEFEED, value: e.target.value });
-              setLinefeed(e.target.value);
-            }}
-            maxLength="4"
-            size="4"
-            value={linefeed}
-          />
-          */}
+          please use {makeLinefeed(feature.active('PICK_YOUR_OWN_LINEFEED_V1'))}
         </small>
         <textarea
           data-testid="source"
