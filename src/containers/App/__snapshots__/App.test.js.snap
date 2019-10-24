@@ -1,5 +1,26 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`App change hashtags 1`] = `
+<textarea
+  data-testid="hashtags"
+  placeholder="#hashtags"
+  rows="1"
+  type="text"
+>
+  #FOO
+</textarea>
+`;
+
+exports[`App change source 1`] = `
+<textarea
+  data-testid="source"
+  placeholder="What's happening?"
+  rows="8"
+>
+  bar
+</textarea>
+`;
+
 exports[`App loading 1`] = `
 <div>
   <article>
@@ -8,18 +29,69 @@ exports[`App loading 1`] = `
 </div>
 `;
 
+exports[`App tweet 1`] = `
+<div>
+  <article>
+    <div>
+      NavBar
+    </div>
+    <h1>
+      Tweries
+    </h1>
+    <form>
+      <small>
+        Start typing, to insert a break prior to reaching 280 characters please use [..]
+      </small>
+      <textarea
+        data-testid="source"
+        placeholder="What's happening?"
+        rows="8"
+      >
+        bar
+      </textarea>
+      <textarea
+        data-testid="hashtags"
+        placeholder="#hashtags"
+        rows="1"
+        type="text"
+      >
+        #FOO
+      </textarea>
+      <ul
+        data-testid="list"
+      >
+        <li>
+          <textarea
+            readonly=""
+            rows="4"
+          >
+            bar #FOO 1/1
+          </textarea>
+        </li>
+      </ul>
+      <button
+        class="App__button"
+        data-testid="tweet"
+      >
+        Tweet
+      </button>
+    </form>
+    <footer
+      class="healthy"
+    >
+      v
+      0.9.1
+    </footer>
+  </article>
+</div>
+`;
+
 exports[`App unauthenticated user 1`] = `
 <div>
   <article>
-    <header
-      class="NavBar"
-    >
-      <button
-        data-testid="login"
-      >
-        Log in
-      </button>
-    </header>
+    <div>
+      NavBar
+    </div>
     <h1>
       Tweries
     </h1>

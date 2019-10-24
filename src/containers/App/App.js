@@ -13,6 +13,14 @@ const BASE_URL = 'https://china-musk-api.herokuapp.com'; // 'https://china-musk-
 function App({ reducer }) {
   const { isAuthenticated, loading } = useAuth0();
 
+  const [hashtags_, setHashtags] = useLocalStorage('hashtags', '');
+  const [source_, setSource] = useLocalStorage('source', '');
+
+  const [{ hashtags, healthy, items, source, userId }, dispatch] = useReducer(
+    reducer,
+    makeInitialState(hashtags_, source_)
+  );
+
   useEffect(() => {
     fetch(`${BASE_URL}/api/v1/health`)
       .then(response => response.json())
@@ -24,15 +32,7 @@ function App({ reducer }) {
         console.log(error);
         dispatch({ type: types.SET_HEALTHY, value: false });
       });
-  }, []);
-
-  const [hashtags_, setHashtags] = useLocalStorage('hashtags', '');
-  const [source_, setSource] = useLocalStorage('source', '');
-
-  const [{ hashtags, healthy, items, source, userId }, dispatch] = useReducer(
-    reducer,
-    makeInitialState(hashtags_, source_)
-  );
+  }, [dispatch]);
 
   function disabled() {
     return !isAuthenticated || !items.length > 0 || !healthy;
