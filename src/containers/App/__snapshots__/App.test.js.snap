@@ -25,13 +25,8 @@ exports[`App unauthenticated user 1`] = `
     </h1>
     <form>
       <small>
-        Start typing, to insert a break prior to reaching 280 characters please use
-         
-        <input
-          maxlength="4"
-          size="4"
-          value="[..]"
-        />
+        Start typing, to insert a break prior to reaching 280 characters please use 
+        [..]
       </small>
       <textarea
         data-testid="source"
@@ -59,7 +54,7 @@ exports[`App unauthenticated user 1`] = `
       class=""
     >
       v
-      0.10.0
+      0.10.1
     </footer>
   </article>
 </div>

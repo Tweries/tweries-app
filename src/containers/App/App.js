@@ -28,7 +28,7 @@ function App({ reducer }) {
   }, []);
 
   const [hashtags_, setHashtags] = useLocalStorage('hashtags', '');
-  const [linefeed_, setLinefeed] = useLocalStorage('linefeed', LINEFEED);
+  // const [linefeed_, setLinefeed] = useLocalStorage('linefeed', LINEFEED);
   const [source_, setSource] = useLocalStorage('source', '');
 
   const [
@@ -38,7 +38,7 @@ function App({ reducer }) {
     reducer,
     makeInitialState({
       hashtags: hashtags_,
-      linefeed: linefeed_,
+      linefeed: LINEFEED,
       source: source_
     })
   );
@@ -56,7 +56,8 @@ function App({ reducer }) {
       <form onSubmit={e => e.preventDefault()}>
         <small>
           Start typing, to insert a break prior to reaching 280 characters
-          please use{' '}
+          please use {linefeed}
+          {/*
           <input
             onChange={e => {
               dispatch({ type: types.CHANGE_LINEFEED, value: e.target.value });
@@ -66,6 +67,7 @@ function App({ reducer }) {
             size="4"
             value={linefeed}
           />
+          */}
         </small>
         <textarea
           data-testid="source"
