@@ -34,6 +34,10 @@
 
 - [x] Move hint outside the textarea
 
+- [x] Pick your own linefeed
+
+- [ ] Back up to last punctuation
+
 ## Resources
 
 - https://create-react-app.dev/docs/deployment#github-pages-https-pagesgithubcom

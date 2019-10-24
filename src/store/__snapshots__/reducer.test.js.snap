@@ -16,6 +16,26 @@ Object {
 }
 `;
 
+exports[`reducer CHANGE_LINEFEED 1`] = `
+Object {
+  "hashtags": "",
+  "healthy": false,
+  "items": Array [
+    Object {
+      "length": 38,
+      "tweet": "Can you can a can [..] as a canner 1/2",
+    },
+    Object {
+      "length": 18,
+      "tweet": "can can a can? 2/2",
+    },
+  ],
+  "linefeed": "||",
+  "source": "Can you can a can [..] as a canner || can can a can?",
+  "userId": null,
+}
+`;
+
 exports[`reducer CHANGE_SOURCE 1`] = `
 Object {
   "hashtags": "",
