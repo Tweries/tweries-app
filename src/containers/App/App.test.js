@@ -1,10 +1,8 @@
-import { render, fireEvent } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import React from 'react';
 import { useAuth0 } from '../../react-auth0-wrapper';
 import App from './App';
 import makeInitialState from '../../store/makeInitialState';
-
-// const fetch = require('jest-fetch-mock');
 
 jest.mock('../../react-auth0-wrapper');
 
