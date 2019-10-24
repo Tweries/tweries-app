@@ -41,7 +41,8 @@ export const Auth0Provider = ({
       setLoading(false);
     };
     initAuth0();
-  }, [initOptions, onRedirectCallback]);
+    // eslint-disable-next-line
+  }, []);
 
   const loginWithPopup = async (params = {}) => {
     setPopupOpen(true);
