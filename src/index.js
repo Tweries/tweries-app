@@ -25,7 +25,7 @@ render(
     client_id={config.clientId}
     domain={config.domain}
     onRedirectCallback={onRedirectCallback}
-    redirect_uri={window.location.href}
+    redirect_uri={window.location.origin}
   >
     <App feature={feature} reducer={augment(reducer)} />
   </Auth0Provider>,
