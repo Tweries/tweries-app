@@ -1,6 +1,7 @@
 import classnames from 'classnames';
 import React, { useEffect, useReducer } from 'react';
 import { version } from '../../../package.json';
+import Footer from '../../components/Footer/Footer';
 import LinefeedPicker from '../../components/LinefeedPicker/LinefeedPicker';
 import NavBar from '../../components/NavBar/NavBar';
 import useLocalStorage from '../../hooks/useLocalStorage';
@@ -129,7 +130,7 @@ function App({ feature, reducer }) {
           Tweet
         </button>
       </form>
-      <footer className={classnames({ healthy: healthy })}>v{version}</footer>
+      <Footer healthy={healthy} version={version} />
     </article>
   );
 }

@@ -5,11 +5,15 @@ import {
   waitForDomChange
 } from '@testing-library/react';
 import React from 'react';
+import Footer from '../../components/Footer/Footer';
 import NavBar from '../../components/NavBar/NavBar';
 import reducer from '../../store/reducer';
 import { PICK_YOUR_OWN_LINEFEED_V1 } from '../../feature';
 import { useAuth0 } from '../../react-auth0-wrapper';
 import App from './App';
+
+jest.mock('../../components/Footer/Footer');
+Footer.mockImplementation(() => <div>Footer</div>);
 
 jest.mock('../../components/NavBar/NavBar');
 NavBar.mockImplementation(() => <div>NavBar</div>);

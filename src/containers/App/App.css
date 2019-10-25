@@ -36,16 +36,6 @@ button {
   width: 128px;
 }
 
-footer {
-  color: red;
-  font-size: 12px;
-  margin-bottom: 8px;
-}
-
-footer.healthy {
-  color: green;
-}
-
 form {
   display: flex;
   flex-direction: column;

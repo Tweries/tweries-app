@@ -58,12 +58,9 @@ exports[`App click tweet 1`] = `
         Tweet
       </button>
     </form>
-    <footer
-      class="healthy"
-    >
-      v
-      0.11.0
-    </footer>
+    <div>
+      Footer
+    </div>
   </article>
 </div>
 `;
@@ -117,12 +114,9 @@ exports[`App unauthenticated user 1`] = `
         Tweet
       </button>
     </form>
-    <footer
-      class=""
-    >
-      v
-      0.11.0
-    </footer>
+    <div>
+      Footer
+    </div>
   </article>
 </div>
 `;
