@@ -1,12 +1,13 @@
 import classnames from 'classnames';
 import React, { useEffect, useReducer } from 'react';
 import { version } from '../../../package.json';
+import LinefeedPicker from '../../components/LinefeedPicker/LinefeedPicker';
 import NavBar from '../../components/NavBar/NavBar';
 import useLocalStorage from '../../hooks/useLocalStorage';
 import makeInitialState from '../../store/makeInitialState';
 import { LINEFEED } from '../../store/makeTweetstorm.js';
 import { types } from '../../store/reducer';
-import { PICK_YOUR_OWN_LINEFEED_V1 } from '../../feature';
+import { PICK_YOUR_OWN_LINEFEED_V2 } from '../../feature';
 import { useAuth0 } from '../../react-auth0-wrapper';
 import './App.css';
 
@@ -39,33 +40,14 @@ function App({ feature, reducer }) {
     reducer,
     makeInitialState({
       hashtags: hashtags_,
-      linefeed: LINEFEED,
+      linefeed:
+        feature.active(PICK_YOUR_OWN_LINEFEED_V2) === true ? '\n' : LINEFEED,
       source: source_
     })
   );
 
   function disabled() {
     return !isAuthenticated || !items.length > 0 || !healthy;
-  }
-
-  function makeLinefeed(custom) {
-    if (custom === true) {
-      return (
-        <input
-          className="App__linefeed"
-          data-testid="linefeed"
-          onChange={e => {
-            dispatch({ type: types.CHANGE_LINEFEED, value: e.target.value });
-            // setLinefeed(e.target.value);
-          }}
-          maxLength="4"
-          placeholder={LINEFEED}
-          size="4"
-          value={linefeed}
-        />
-      );
-    }
-    return <span>{linefeed}</span>;
   }
 
   return loading ? (
@@ -75,9 +57,17 @@ function App({ feature, reducer }) {
       <NavBar dispatch={dispatch} />
       <h1>Tweries</h1>
       <form onSubmit={e => e.preventDefault()}>
-        <small>
+        <small className="App__small">
           Start typing, to insert a break prior to reaching 280 characters
-          please use {makeLinefeed(feature.active(PICK_YOUR_OWN_LINEFEED_V1))}
+          please use{' '}
+          <LinefeedPicker
+            feature={feature}
+            linefeed={linefeed}
+            onChange={e => {
+              dispatch({ type: types.CHANGE_LINEFEED, value: e.target.value });
+              // setLinefeed(e.target.value);
+            }}
+          />
         </small>
         <textarea
           data-testid="source"

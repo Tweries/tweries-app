@@ -95,3 +95,8 @@ ul {
 .App__linefeed {
   text-align: center;
 }
+
+.App__small {
+  align-items: center;
+  display: flex;
+}

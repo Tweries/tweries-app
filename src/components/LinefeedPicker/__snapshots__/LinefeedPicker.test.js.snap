@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LinefeedPicker simple 1`] = `
+<div>
+  <span>
+    [..]
+  </span>
+</div>
+`;
+
+exports[`LinefeedPicker v2 1`] = `
+<div>
+  <ul
+    class="LinefeedPicker__ul"
+  >
+    <li
+      class="LinefeedPicker__li"
+    >
+      <input
+        checked=""
+        id="newline"
+        name="linefeed"
+        type="radio"
+        value="newline"
+      />
+      <label
+        for="newline"
+      >
+        NEWLINE
+      </label>
+    </li>
+    <li
+      class="LinefeedPicker__li"
+    >
+      <input
+        id="custom"
+        name="linefeed"
+        type="radio"
+        value="custom"
+      />
+      <label
+        for="louie"
+      >
+        <input
+          class="App__linefeed"
+          data-testid="linefeed"
+          disabled=""
+          maxlength="4"
+          placeholder=";;"
+          size="4"
+          value="[..]"
+        />
+      </label>
+    </li>
+  </ul>
+</div>
+`;

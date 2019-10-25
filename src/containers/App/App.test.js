@@ -7,6 +7,7 @@ import {
 import React from 'react';
 import NavBar from '../../components/NavBar/NavBar';
 import reducer from '../../store/reducer';
+import { PICK_YOUR_OWN_LINEFEED_V1 } from '../../feature';
 import { useAuth0 } from '../../react-auth0-wrapper';
 import App from './App';
 
@@ -29,8 +30,9 @@ describe('App', () => {
     useAuth0.mockImplementation(() => ({
       loading: true
     }));
+    const feature = { active: () => false };
 
-    const { container } = render(<App reducer={reducer} />);
+    const { container } = render(<App feature={feature} reducer={reducer} />);
 
     expect(container).toMatchSnapshot();
   });
@@ -40,7 +42,6 @@ describe('App', () => {
       isAuthenticated: false,
       loading: false
     }));
-
     const feature = { active: () => false };
 
     const { container } = render(<App feature={feature} reducer={reducer} />);
@@ -53,8 +54,9 @@ describe('App', () => {
       isAuthenticated: false,
       loading: false
     }));
-
-    const feature = { active: () => true };
+    const feature = {
+      active: feature => feature === PICK_YOUR_OWN_LINEFEED_V1
+    };
 
     const { getByTestId } = render(<App feature={feature} reducer={reducer} />);
 
@@ -67,7 +69,9 @@ describe('App', () => {
       isAuthenticated: true,
       loading: false
     }));
-    const feature = { active: () => true };
+    const feature = {
+      active: feature => feature === PICK_YOUR_OWN_LINEFEED_V1
+    };
 
     const { container, getByTestId } = render(
       <App feature={feature} reducer={reducer} />

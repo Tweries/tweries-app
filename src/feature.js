@@ -1,6 +1,7 @@
 export const PICK_YOUR_OWN_LINEFEED_V1 = 'PICK_YOUR_OWN_LINEFEED_V1';
+export const PICK_YOUR_OWN_LINEFEED_V2 = 'PICK_YOUR_OWN_LINEFEED_V2';
 
-const features = [PICK_YOUR_OWN_LINEFEED_V1];
+const features = [PICK_YOUR_OWN_LINEFEED_V1, PICK_YOUR_OWN_LINEFEED_V2];
 
 function setFeatures(features) {
   return {

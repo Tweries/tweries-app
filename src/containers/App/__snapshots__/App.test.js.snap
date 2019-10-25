@@ -10,8 +10,11 @@ exports[`App click tweet 1`] = `
       Tweries
     </h1>
     <form>
-      <small>
-        Start typing, to insert a break prior to reaching 280 characters please use 
+      <small
+        class="App__small"
+      >
+        Start typing, to insert a break prior to reaching 280 characters please use
+         
         <input
           class="App__linefeed"
           data-testid="linefeed"
@@ -59,7 +62,7 @@ exports[`App click tweet 1`] = `
       class="healthy"
     >
       v
-      0.10.2
+      0.11.0
     </footer>
   </article>
 </div>
@@ -83,8 +86,11 @@ exports[`App unauthenticated user 1`] = `
       Tweries
     </h1>
     <form>
-      <small>
-        Start typing, to insert a break prior to reaching 280 characters please use 
+      <small
+        class="App__small"
+      >
+        Start typing, to insert a break prior to reaching 280 characters please use
+         
         <span>
           ;;
         </span>
@@ -115,7 +121,7 @@ exports[`App unauthenticated user 1`] = `
       class=""
     >
       v
-      0.10.2
+      0.11.0
     </footer>
   </article>
 </div>

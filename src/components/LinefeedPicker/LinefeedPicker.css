@@ -1,0 +1,10 @@
+.LinefeedPicker__li {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+}
+
+.LinefeedPicker__ul {
+  display: flex;
+}
