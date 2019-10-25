@@ -1,20 +1,28 @@
-import { render } from '@testing-library/react';
+import {
+  cleanup,
+  render,
+  fireEvent,
+  waitForDomChange
+} from '@testing-library/react';
 import React from 'react';
+import NavBar from '../../components/NavBar/NavBar';
+import reducer from '../../store/reducer';
 import { useAuth0 } from '../../react-auth0-wrapper';
 import App from './App';
-import makeInitialState from '../../store/makeInitialState';
+
+jest.mock('../../components/NavBar/NavBar');
+NavBar.mockImplementation(() => <div>NavBar</div>);
 
 jest.mock('../../react-auth0-wrapper');
 
 describe('App', () => {
   beforeEach(() => {
-    fetch.mockResponseOnce(
-      JSON.stringify({ data: { message: 'HELLO FROM MOCK' } })
-    );
+    fetch.mockResponseOnce(JSON.stringify({ data: { message: 'baz' } }));
   });
 
   afterEach(() => {
     fetch.resetMocks();
+    cleanup();
   });
 
   it('loading', () => {
@@ -22,9 +30,7 @@ describe('App', () => {
       loading: true
     }));
 
-    const { container } = render(
-      <App reducer={jest.fn((state = makeInitialState({}), action) => state)} />
-    );
+    const { container } = render(<App reducer={reducer} />);
 
     expect(container).toMatchSnapshot();
   });
@@ -35,14 +41,41 @@ describe('App', () => {
       loading: false
     }));
 
-    const feature = { active: jest.fn() };
+    const feature = { active: () => false };
 
-    const { container } = render(
-      <App
-        feature={feature}
-        reducer={jest.fn((state = makeInitialState({}), action) => state)}
-      />
+    const { container } = render(<App feature={feature} reducer={reducer} />);
+
+    expect(container).toMatchSnapshot();
+  });
+
+  it('pick your own linefeed', () => {
+    useAuth0.mockImplementation(() => ({
+      isAuthenticated: false,
+      loading: false
+    }));
+
+    const feature = { active: () => true };
+
+    const { getByTestId } = render(<App feature={feature} reducer={reducer} />);
+
+    expect(getByTestId('linefeed')).toBeDefined();
+  });
+
+  it('click tweet', async () => {
+    fetch.mockResponseOnce(JSON.stringify({ data: { message: 'qux' } })); // INFO: adding a second response
+    useAuth0.mockImplementation(() => ({
+      isAuthenticated: true,
+      loading: false
+    }));
+    const feature = { active: () => true };
+
+    const { container, getByTestId } = render(
+      <App feature={feature} reducer={reducer} />
     );
+    fireEvent.change(getByTestId('source'), { target: { value: 'foo' } });
+    fireEvent.change(getByTestId('hashtags'), { target: { value: '#bar' } });
+    await waitForDomChange();
+    fireEvent.click(getByTestId('tweet'));
 
     expect(container).toMatchSnapshot();
   });

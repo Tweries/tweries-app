@@ -6,6 +6,7 @@ import useLocalStorage from '../../hooks/useLocalStorage';
 import makeInitialState from '../../store/makeInitialState';
 import { LINEFEED } from '../../store/makeTweetstorm.js';
 import { types } from '../../store/reducer';
+import { PICK_YOUR_OWN_LINEFEED_V1 } from '../../feature';
 import { useAuth0 } from '../../react-auth0-wrapper';
 import './App.css';
 
@@ -52,6 +53,7 @@ function App({ feature, reducer }) {
       return (
         <input
           className="App__linefeed"
+          data-testid="linefeed"
           onChange={e => {
             dispatch({ type: types.CHANGE_LINEFEED, value: e.target.value });
             // setLinefeed(e.target.value);
@@ -75,7 +77,7 @@ function App({ feature, reducer }) {
       <form onSubmit={e => e.preventDefault()}>
         <small>
           Start typing, to insert a break prior to reaching 280 characters
-          please use {makeLinefeed(feature.active('PICK_YOUR_OWN_LINEFEED_V1'))}
+          please use {makeLinefeed(feature.active(PICK_YOUR_OWN_LINEFEED_V1))}
         </small>
         <textarea
           data-testid="source"
