@@ -66,6 +66,17 @@ describe('source => tweetstorm', () => {
         source:
           'It put a huge amount of stress on me. Resentment built up and I delegated less and less. With so much on my plate, I was running the risk of burnout, and as my team saw this spiral, they became demotivated and the vicious spiral continued.'
       }
+    },
+    {
+      description: 'new lines',
+      props: {
+        hashtags: '',
+        linefeed: '\n',
+        source: `In many real world uses of the javascript code it's probably better to replace the line breaks with a space instead of just removing them entirely.
+
+        If for instance we got a column of text from a pdf and we just removed the line breaks entirely we might wind up with words and sentences that run together and are hard to read like this:
+        Here is a sentence.This sentence runs into itand unfortunately we aremissing some spaces.`
+      }
     }
   ];
 

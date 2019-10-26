@@ -6,7 +6,7 @@ import LinefeedPicker from '../../components/LinefeedPicker/LinefeedPicker';
 import NavBar from '../../components/NavBar/NavBar';
 import useLocalStorage from '../../hooks/useLocalStorage';
 import makeInitialState from '../../store/makeInitialState';
-import { LINEFEED } from '../../store/makeTweetstorm.js';
+import { LINEFEED, NEWLINE } from '../../store/makeTweetstorm.js';
 import { types } from '../../store/reducer';
 import { PICK_YOUR_OWN_LINEFEED_V2 } from '../../feature';
 import { useAuth0 } from '../../react-auth0-wrapper';
@@ -42,7 +42,7 @@ function App({ feature, reducer }) {
     makeInitialState({
       hashtags: hashtags_,
       linefeed:
-        feature.active(PICK_YOUR_OWN_LINEFEED_V2) === true ? '\n' : LINEFEED,
+        feature.active(PICK_YOUR_OWN_LINEFEED_V2) === true ? NEWLINE : LINEFEED,
       source: source_
     })
   );

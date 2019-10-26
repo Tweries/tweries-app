@@ -26,7 +26,7 @@ exports[`LinefeedPicker v2 1`] = `
       <label
         for="newline"
       >
-        NEWLINE
+        Newline(s)
       </label>
     </li>
     <li

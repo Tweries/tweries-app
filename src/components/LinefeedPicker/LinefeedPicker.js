@@ -3,7 +3,7 @@ import {
   PICK_YOUR_OWN_LINEFEED_V1,
   PICK_YOUR_OWN_LINEFEED_V2
 } from '../../feature';
-import { LINEFEED } from '../../store/makeTweetstorm';
+import { LINEFEED, NEWLINE } from '../../store/makeTweetstorm';
 import './LinefeedPicker.css';
 
 function Custom({ disabled, onChange, linefeed }) {
@@ -34,12 +34,12 @@ function LinefeedPicker({ feature, linefeed, onChange }) {
             name="linefeed"
             onChange={() => {
               setType('newline');
-              onChange({ target: { value: '\n' } });
+              onChange({ target: { value: NEWLINE } });
             }}
             value="newline"
             defaultChecked
           />
-          <label htmlFor="newline">NEWLINE</label>
+          <label htmlFor="newline">Newline(s)</label>
         </li>
         <li className="LinefeedPicker__li">
           <input

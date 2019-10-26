@@ -2,6 +2,7 @@ import v from 'voca';
 
 export const LINEFEED = ';;';
 const MAX_LENGTH = 280;
+export const NEWLINE = '\n';
 const PREFIX_PLACEHOLDER = '_/_';
 
 function makeSequenceNumber(index, length) {
@@ -11,13 +12,21 @@ function makeSequenceNumber(index, length) {
   return `${index + 1}/${length}`;
 }
 
+function replaceNewlinesWithNewline(linefeed, source) {
+  let copy = source.slice();
+  if (linefeed === NEWLINE) {
+    copy = copy.replace(/\n+/g, NEWLINE);
+  }
+  return copy;
+}
+
 function makeTweetstorm({ hashtags, linefeed, source }) {
   // INFO: hack :(
   if (linefeed === null || linefeed === undefined || linefeed === '') {
     linefeed = LINEFEED;
   }
 
-  let copy = source.slice();
+  let copy = replaceNewlinesWithNewline(linefeed, source);
   const parts = [];
 
   while (copy.length !== 0) {
