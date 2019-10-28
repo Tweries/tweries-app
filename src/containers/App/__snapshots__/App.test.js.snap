@@ -31,6 +31,9 @@ exports[`App click tweet 1`] = `
       >
         foo
       </textarea>
+      <small
+        class="App__counter"
+      />
       <textarea
         data-testid="hashtags"
         placeholder="#hashtags"
@@ -39,6 +42,9 @@ exports[`App click tweet 1`] = `
       >
         #bar
       </textarea>
+      <small
+        class="App__counter"
+      />
       <ul
         data-testid="list"
       >
@@ -49,6 +55,9 @@ exports[`App click tweet 1`] = `
           >
             foo #bar 1/1
           </textarea>
+          <small
+            class="App__counter"
+          />
         </li>
       </ul>
       <button
@@ -97,11 +106,17 @@ exports[`App unauthenticated user 1`] = `
         placeholder="What's happening?"
         rows="8"
       />
+      <small
+        class="App__counter"
+      />
       <textarea
         data-testid="hashtags"
         placeholder="#hashtags"
         rows="1"
         type="text"
+      />
+      <small
+        class="App__counter"
       />
       <ul
         data-testid="list"

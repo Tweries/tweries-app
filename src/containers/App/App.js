@@ -8,9 +8,10 @@ import useLocalStorage from '../../hooks/useLocalStorage';
 import makeInitialState from '../../store/makeInitialState';
 import { LINEFEED, NEWLINE } from '../../store/makeTweetstorm.js';
 import { types } from '../../store/reducer';
-import { PICK_YOUR_OWN_LINEFEED_V2 } from '../../feature';
+import { COUNTER_V1, PICK_YOUR_OWN_LINEFEED_V2 } from '../../feature';
 import { useAuth0 } from '../../react-auth0-wrapper';
 import './App.css';
+import Counter from './Counter';
 
 const BASE_URL = 'https://china-musk-api.herokuapp.com'; // 'https://china-musk-api.herokuapp.com' | 'http://localhost:9000'
 
@@ -81,6 +82,7 @@ function App({ feature, reducer }) {
             setSource(e.target.value);
           }}
         />
+        <Counter length={source.length} show={feature.active(COUNTER_V1)} />
         <textarea
           data-testid="hashtags"
           onChange={e => {
@@ -92,10 +94,12 @@ function App({ feature, reducer }) {
           type="text"
           value={hashtags}
         />
+        <Counter length={hashtags.length} show={feature.active(COUNTER_V1)} />
         <ul data-testid="list">
           {items.map((item, index) => (
             <li key={index}>
               <textarea readOnly rows={4} value={item.tweet} />
+              <Counter length={item.length} show={feature.active(COUNTER_V1)} />
             </li>
           ))}
         </ul>
