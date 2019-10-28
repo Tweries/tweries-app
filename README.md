@@ -36,7 +36,9 @@
 
 - [x] Pick your own linefeed
 
-- [ ] Back up to last punctuation
+- [x] Back up to last punctuation
+
+- [ ] Add counter(s)
 
 ## Resources
 

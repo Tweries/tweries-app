@@ -1,9 +1,32 @@
 import v from 'voca';
+import { BACK_UP_TO_LAST_PUNCTUATION } from '../feature';
 
 export const LINEFEED = ';;';
 const MAX_LENGTH = 280;
 export const NEWLINE = '\n';
 const PREFIX_PLACEHOLDER = '_/_';
+
+function backUpToLastPunctuation(take) {
+  const punctuations = ['-', '–', '.', ',', ';', '!', '?'];
+  const data = punctuations
+    .map(punctuation => ({
+      key: punctuation,
+      value: v.lastIndexOf(take, punctuation)
+    }))
+    .sort((a, b) => {
+      if (a.value > b.value) {
+        return -1;
+      }
+      if (a.value < b.value) {
+        return 1;
+      }
+      return 0;
+    })[0];
+  if (data.value !== -1) {
+    take = v.substr(take, 0, data.value + 1);
+  }
+  return take;
+}
 
 function makeSequenceNumber(index, length) {
   if (index === undefined && length === undefined) {
@@ -20,7 +43,7 @@ function replaceNewlinesWithNewline(linefeed, source) {
   return copy;
 }
 
-function makeTweetstorm({ hashtags, linefeed, source }) {
+function makeTweetstorm({ feature, hashtags, linefeed, source }) {
   // INFO: hack :(
   if (linefeed === null || linefeed === undefined || linefeed === '') {
     linefeed = LINEFEED;
@@ -46,8 +69,12 @@ function makeTweetstorm({ hashtags, linefeed, source }) {
     }
     if (take.indexOf(linefeed) > -1) {
       take = v.substr(take, 0, take.indexOf(linefeed));
+      // take = backUpToLastPunctuation(take);
       copy = v.substr(copy, take.length + linefeed.length);
     } else {
+      if (feature.active(BACK_UP_TO_LAST_PUNCTUATION)) {
+        take = backUpToLastPunctuation(take);
+      }
       copy = v.substr(copy, take.length + 1); // INFO: 1 is the space after the word
     }
     parts.push(take);

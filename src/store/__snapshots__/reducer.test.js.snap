@@ -2,6 +2,9 @@
 
 exports[`reducer CHANGE_HASHTAGS 1`] = `
 Object {
+  "feature": Object {
+    "active": [Function],
+  },
   "hashtags": "#FOO",
   "healthy": false,
   "items": Array [
@@ -18,6 +21,9 @@ Object {
 
 exports[`reducer CHANGE_LINEFEED 1`] = `
 Object {
+  "feature": Object {
+    "active": [Function],
+  },
   "hashtags": "",
   "healthy": false,
   "items": Array [
@@ -38,6 +44,9 @@ Object {
 
 exports[`reducer CHANGE_SOURCE 1`] = `
 Object {
+  "feature": Object {
+    "active": [Function],
+  },
   "hashtags": "",
   "healthy": false,
   "items": Array [
@@ -54,6 +63,7 @@ Object {
 
 exports[`reducer RESET_TWEETSTORM 1`] = `
 Object {
+  "feature": undefined,
   "hashtags": "",
   "healthy": true,
   "items": Array [],
@@ -65,6 +75,9 @@ Object {
 
 exports[`reducer SET_HEALTHY 1`] = `
 Object {
+  "feature": Object {
+    "active": [Function],
+  },
   "hashtags": "",
   "healthy": true,
   "items": Array [],
@@ -76,6 +89,9 @@ Object {
 
 exports[`reducer SET_USER_ID 1`] = `
 Object {
+  "feature": Object {
+    "active": [Function],
+  },
   "hashtags": "",
   "healthy": false,
   "items": Array [],
@@ -87,6 +103,9 @@ Object {
 
 exports[`reducer default 1`] = `
 Object {
+  "feature": Object {
+    "active": [Function],
+  },
   "hashtags": "",
   "healthy": false,
   "items": Array [],

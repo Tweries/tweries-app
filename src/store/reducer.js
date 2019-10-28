@@ -17,6 +17,7 @@ function reducer(state = makeInitialState({}), action) {
         ...state,
         hashtags: action.value,
         items: makeTweetstorm({
+          feature: state.feature,
           hashtags: action.value,
           linefeed: state.linefeed,
           source: state.source
@@ -28,6 +29,7 @@ function reducer(state = makeInitialState({}), action) {
         ...state,
         linefeed: action.value,
         items: makeTweetstorm({
+          feature: state.feature,
           hashtags: state.hashtags,
           linefeed: action.value,
           source: state.source
@@ -38,6 +40,7 @@ function reducer(state = makeInitialState({}), action) {
       return {
         ...state,
         items: makeTweetstorm({
+          feature: state.feature,
           hashtags: state.hashtags,
           linefeed: state.linefeed,
           source: action.value

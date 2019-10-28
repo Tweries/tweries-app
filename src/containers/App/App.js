@@ -40,6 +40,7 @@ function App({ feature, reducer }) {
   ] = useReducer(
     reducer,
     makeInitialState({
+      feature,
       hashtags: hashtags_,
       linefeed:
         feature.active(PICK_YOUR_OWN_LINEFEED_V2) === true ? NEWLINE : LINEFEED,

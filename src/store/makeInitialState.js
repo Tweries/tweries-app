@@ -1,10 +1,16 @@
 import makeTweetstorm, { LINEFEED } from './makeTweetstorm';
 
-function makeInitialState({ hashtags = '', linefeed = LINEFEED, source = '' }) {
+function makeInitialState({
+  feature,
+  hashtags = '',
+  linefeed = LINEFEED,
+  source = ''
+}) {
   return {
+    feature,
     hashtags,
     healthy: false,
-    items: makeTweetstorm({ hashtags, linefeed, source }),
+    items: makeTweetstorm({ feature, hashtags, linefeed, source }),
     linefeed,
     source,
     userId: null

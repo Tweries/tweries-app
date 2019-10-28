@@ -3,16 +3,16 @@
 exports[`source => tweetstorm About the Windsor knot 1`] = `
 Array [
   Object {
-    "length": 273,
-    "tweet": "Although the Duke of Windsor never specifically used the Windsor knot, he did favor a wide triangular knot. In actuality, the Duke achieved his trendsetting look by tying a Four-in-Hand with specially made wide and extra thick ties. The Windsor knot was #howto #tieatie 1/3",
+    "length": 252,
+    "tweet": "Although the Duke of Windsor never specifically used the Windsor knot, he did favor a wide triangular knot. In actuality, the Duke achieved his trendsetting look by tying a Four-in-Hand with specially made wide and extra thick ties. #howto #tieatie 1/3",
   },
   Object {
-    "length": 277,
-    "tweet": "invented by the public as a way to imitate the Duke's knot style. There are several derivatives of the Windsor that are all referred to by the same name. The Windsor delivers a symmetrical and solid triangular knot that works best with a spread collar. This #howto #tieatie 2/3",
+    "length": 194,
+    "tweet": "The Windsor knot was invented by the public as a way to imitate the Duke's knot style. There are several derivatives of the Windsor that are all referred to by the same name. #howto #tieatie 2/3",
   },
   Object {
-    "length": 85,
-    "tweet": "knot is also mistakenly referred to as the \\"Double Windsor\\" knot. #howto #tieatie 3/3",
+    "length": 189,
+    "tweet": "The Windsor delivers a symmetrical and solid triangular knot that works best with a spread collar. This knot is also mistakenly referred to as the \\"Double Windsor\\" knot. #howto #tieatie 3/3",
   },
 ]
 `;
@@ -20,24 +20,28 @@ Array [
 exports[`source => tweetstorm Lorem ipsum 1`] = `
 Array [
   Object {
-    "length": 273,
-    "tweet": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nec tincidunt praesent semper feugiat nibh sed pulvinar. Duis at tellus at urna condimentum mattis pellentesque id nibh. Quisque #agile #prodmgmt 1/5",
-  },
-  Object {
-    "length": 280,
-    "tweet": "egestas diam in arcu cursus euismod quis viverra. Mollis nunc sed id semper risus. Aliquet eget sit amet tellus cras adipiscing enim. Pellentesque dignissim enim sit amet venenatis urna cursus eget. Tortor consequat id porta nibh venenatis cras. Sagittis nisl #agile #prodmgmt 2/5",
-  },
-  Object {
-    "length": 280,
-    "tweet": "rhoncus mattis rhoncus urna neque viverra justo nec. Egestas egestas fringilla phasellus faucibus. Nulla facilisi etiam dignissim diam quis enim. Maecenas ultricies mi eget mauris pharetra. Ac turpis egestas sed tempus urna et pharetra pharetra. Sagittis nisl #agile #prodmgmt 3/5",
-  },
-  Object {
-    "length": 275,
-    "tweet": "rhoncus mattis rhoncus. Purus in mollis nunc sed id semper risus in. Nisl tincidunt eget nullam non nisi est sit amet. Condimentum vitae sapien pellentesque habitant morbi tristique. Integer quis auctor elit sed vulputate mi sit amet mauris. Orci dapibus #agile #prodmgmt 4/5",
+    "length": 265,
+    "tweet": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nec tincidunt praesent semper feugiat nibh sed pulvinar. Duis at tellus at urna condimentum mattis pellentesque id nibh. #agile #prodmgmt 1/6",
   },
   Object {
     "length": 227,
-    "tweet": "ultrices in iaculis nunc. Rhoncus est pellentesque elit ullamcorper. Ullamcorper malesuada proin libero nunc consequat interdum varius. Sit amet nisl suscipit adipiscing bibendum est ultricies integer quis. #agile #prodmgmt 5/5",
+    "tweet": "Quisque egestas diam in arcu cursus euismod quis viverra. Mollis nunc sed id semper risus. Aliquet eget sit amet tellus cras adipiscing enim. Pellentesque dignissim enim sit amet venenatis urna cursus eget. #agile #prodmgmt 2/6",
+  },
+  Object {
+    "length": 271,
+    "tweet": "Tortor consequat id porta nibh venenatis cras. Sagittis nisl rhoncus mattis rhoncus urna neque viverra justo nec. Egestas egestas fringilla phasellus faucibus. Nulla facilisi etiam dignissim diam quis enim. Maecenas ultricies mi eget mauris pharetra. #agile #prodmgmt 3/6",
+  },
+  Object {
+    "length": 209,
+    "tweet": "Ac turpis egestas sed tempus urna et pharetra pharetra. Sagittis nisl rhoncus mattis rhoncus. Purus in mollis nunc sed id semper risus in. Nisl tincidunt eget nullam non nisi est sit amet. #agile #prodmgmt 4/6",
+  },
+  Object {
+    "length": 225,
+    "tweet": "Condimentum vitae sapien pellentesque habitant morbi tristique. Integer quis auctor elit sed vulputate mi sit amet mauris. Orci dapibus ultrices in iaculis nunc. Rhoncus est pellentesque elit ullamcorper. #agile #prodmgmt 5/6",
+  },
+  Object {
+    "length": 158,
+    "tweet": "Ullamcorper malesuada proin libero nunc consequat interdum varius. Sit amet nisl suscipit adipiscing bibendum est ultricies integer quis. #agile #prodmgmt 6/6",
   },
 ]
 `;
@@ -45,12 +49,12 @@ Array [
 exports[`source => tweetstorm No final comma in the 1st tweet 1`] = `
 Array [
   Object {
-    "length": 277,
-    "tweet": "123456789, 123456789, 123456789, 123456789, 123456789, 123456789, 123456789, 123456789, 123456789, 123456789, 123456789, 123456789, 123456789, 123456789, 123456789, 123456789, 123456789, 123456789, 123456789, 123456789, 123456789, 123456789, 123456789, 123456789, 123456789 1/2",
+    "length": 267,
+    "tweet": "123456789, 123456789, 123456789, 123456789, 123456789, 123456789, 123456789, 123456789, 123456789, 123456789, 123456789, 123456789, 123456789, 123456789, 123456789, 123456789, 123456789, 123456789, 123456789, 123456789, 123456789, 123456789, 123456789, 123456789, 1/2",
   },
   Object {
-    "length": 9,
-    "tweet": "WHAT? 2/2",
+    "length": 20,
+    "tweet": "123456789, WHAT? 2/2",
   },
 ]
 `;
@@ -102,6 +106,31 @@ Array [
 ]
 `;
 
+exports[`source => tweetstorm text without line breaks 1`] = `
+Array [
+  Object {
+    "length": 250,
+    "tweet": "Nel mezzo del cammin di nostra vita mi ritrovai per una selva oscura, ché la diritta via era smarrita. Ahi quanto a dir qual era è cosa dura esta selva selvaggia e aspra e forte che nel pensier rinova la paura! Tant’ è amara che poco è più morte; 1/5",
+  },
+  Object {
+    "length": 233,
+    "tweet": "ma per trattar del ben ch’i’ vi trovai, dirò de l’altre cose ch’i’ v’ho scorte. Io non so ben ridir com’ i’ v’intrai,10 tant’ era pien di sonno a quel punto che la verace via abbandonai. Ma poi ch’i’ fui al piè d’un colle giunto, 2/5",
+  },
+  Object {
+    "length": 214,
+    "tweet": "là dove terminava quella valle che m’avea di paura il cor compunto, guardai in alto e vidi le sue spalle vestite già de’ raggi del pianeta che mena dritto altrui per ogne calle. Allor fu la paura un poco queta, 3/5",
+  },
+  Object {
+    "length": 223,
+    "tweet": "che nel lago del cor m’era durata20 la notte ch’i’ passai con tanta pieta. E come quei che con lena affannata, uscito fuor del pelago a la riva, si volge a l’acqua perigliosa e guata, così l’animo mio, ch’ancor fuggiva, 4/5",
+  },
+  Object {
+    "length": 76,
+    "tweet": "si volse a retro a rimirar lo passo che non lasciò già mai persona viva. 5/5",
+  },
+]
+`;
+
 exports[`source => tweetstorm w/ linefeeds 1`] = `
 Array [
   Object {
@@ -110,7 +139,7 @@ Array [
         Put a gun against his head
         Pulled my trigger, now he's dead
         Mama, life had just begun
-        But now I've gone and thrown it all away #QueenFTW 1/3",
+        But now I've gone and thrown it all away #QueenFTW 1/4",
   },
   Object {
     "length": 172,
@@ -118,15 +147,19 @@ Array [
         Didn't mean to make you cry
         If I'm not back again this time tomorrow
         Carry on, carry on
-        As if nothing really matters #QueenFTW 2/3",
+        As if nothing really matters #QueenFTW 2/4",
   },
   Object {
-    "length": 207,
+    "length": 138,
     "tweet": "Too late, my time has come
         Sends shivers down my spine
         Body's aching all the time
-        Goodbye everybody, I've got to go
-        Gotta leave you all behind and face the truth #QueenFTW 3/3",
+        Goodbye everybody, #QueenFTW 3/4",
+  },
+  Object {
+    "length": 82,
+    "tweet": "I've got to go
+        Gotta leave you all behind and face the truth #QueenFTW 4/4",
   },
 ]
 `;

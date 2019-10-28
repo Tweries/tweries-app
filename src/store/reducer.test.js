@@ -3,6 +3,9 @@ import makeInitialState from './makeInitialState';
 
 const USER_ID = 'twitter|1183836409850814464';
 
+const feature = { active: () => true };
+const base = { ...makeInitialState({ feature }) };
+
 describe('reducer', () => {
   const scenarios = [
     {
@@ -12,7 +15,7 @@ describe('reducer', () => {
           type: types.CHANGE_HASHTAGS,
           value: '#FOO'
         },
-        state: { ...makeInitialState({ source: 'bar' }) }
+        state: { ...base, source: 'bar' }
       }
     },
     {
@@ -23,9 +26,8 @@ describe('reducer', () => {
           value: '||'
         },
         state: {
-          ...makeInitialState({
-            source: 'Can you can a can [..] as a canner || can can a can?'
-          })
+          ...base,
+          source: 'Can you can a can [..] as a canner || can can a can?'
         }
       }
     },
@@ -36,7 +38,7 @@ describe('reducer', () => {
           type: types.CHANGE_SOURCE,
           value: 'bar'
         },
-        state: undefined
+        state: base
       }
     },
     {
@@ -46,7 +48,9 @@ describe('reducer', () => {
           type: types.RESET_TWEETSTORM
         },
         state: {
-          ...makeInitialState({ hashtags: '#FOO', source: 'bar' }),
+          ...base,
+          hashtags: '#FOO',
+          source: 'bar',
           healthy: true,
           userId: USER_ID
         }
@@ -59,7 +63,7 @@ describe('reducer', () => {
           type: types.SET_HEALTHY,
           value: true
         },
-        state: undefined
+        state: base
       }
     },
     {
@@ -69,14 +73,14 @@ describe('reducer', () => {
           type: types.SET_USER_ID,
           value: USER_ID
         },
-        state: undefined
+        state: base
       }
     },
     {
       description: 'default',
       props: {
         action: { type: 'UNKNOWN', value: undefined },
-        state: undefined
+        state: base
       }
     }
   ];
