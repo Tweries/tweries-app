@@ -18,13 +18,13 @@
 
 - [x] I want to be able to override its choices with a manual linefeed.
 
-- [x] Login w/ Twitter
+- [x] Twitter Login w/ Auth0
 
-- [x] Add an API endpoint on heroku
+- [x] Add an API endpoint on Heroku
 
 - [x] Post tweetstorm to Twitter API
 
-- [x] Textarea max width
+- [x] Container max width
 
 - [x] Live tweetstorm generation
 

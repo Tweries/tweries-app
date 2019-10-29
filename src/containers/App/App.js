@@ -32,13 +32,9 @@ function App({ feature, reducer }) {
   }, []);
 
   const [hashtags_, setHashtags] = useLocalStorage('hashtags', '');
-  // const [linefeed_, setLinefeed] = useLocalStorage('linefeed', LINEFEED);
   const [source_, setSource] = useLocalStorage('source', '');
 
-  const [
-    { hashtags, healthy, items, linefeed, source, userId },
-    dispatch
-  ] = useReducer(
+  const [{ hashtags, healthy, items, source, userId }, dispatch] = useReducer(
     reducer,
     makeInitialState({
       feature,
@@ -65,10 +61,8 @@ function App({ feature, reducer }) {
           please use{' '}
           <LinefeedPicker
             feature={feature}
-            linefeed={linefeed}
-            onChange={e => {
-              dispatch({ type: types.CHANGE_LINEFEED, value: e.target.value });
-              // setLinefeed(e.target.value);
+            onChange={value => {
+              dispatch({ type: types.CHANGE_LINEFEED, value });
             }}
           />
         </small>

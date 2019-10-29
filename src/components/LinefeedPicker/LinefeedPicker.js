@@ -6,58 +6,69 @@ import {
 import { LINEFEED, NEWLINE } from '../../store/makeTweetstorm';
 import './LinefeedPicker.css';
 
-function Custom({ disabled, onChange, linefeed }) {
+const types = {
+  custom: 'custom',
+  newline: 'newline'
+};
+
+function Custom({ disabled, onChange, value }) {
   return (
     <input
       className="App__linefeed"
-      disabled={disabled}
       data-testid="linefeed"
-      onChange={onChange}
+      disabled={disabled}
       maxLength="4"
+      onChange={onChange}
       placeholder={LINEFEED}
       size="4"
-      value={linefeed}
+      value={value}
     />
   );
 }
 
-function LinefeedPicker({ feature, linefeed, onChange }) {
-  const [type, setType] = useState('newline');
+function LinefeedPicker({ feature, onChange }) {
+  const [type, setType] = useState(types.newline);
+  const [custom, setCustom] = useState(LINEFEED);
 
   if (feature.active(PICK_YOUR_OWN_LINEFEED_V2) === true) {
     return (
       <ul className="LinefeedPicker__ul">
         <li className="LinefeedPicker__li">
           <input
-            type="radio"
-            id="newline"
+            data-testid="newline"
+            defaultChecked
             name="linefeed"
             onChange={() => {
-              setType('newline');
-              onChange({ target: { value: NEWLINE } });
+              setType(types.newline);
+              onChange(NEWLINE);
             }}
+            type="radio"
             value="newline"
-            defaultChecked
           />
           <label htmlFor="newline">Newline(s)</label>
         </li>
         <li className="LinefeedPicker__li">
           <input
-            type="radio"
-            id="custom"
+            data-testid="custom"
             name="linefeed"
-            onChange={() => setType('custom')}
+            onChange={() => {
+              setType(types.custom);
+              onChange(custom);
+            }}
+            type="radio"
             value="custom"
           />
           <label htmlFor="louie">
             <Custom
-              disabled={type !== 'custom'}
+              disabled={type !== types.custom}
               onChange={e => {
-                if (type === 'custom') {
-                  onChange(e);
-                }
+                const {
+                  target: { value }
+                } = e;
+                setCustom(value);
+                onChange(value);
               }}
-              linefeed={linefeed}
+              value={custom}
             />
           </label>
         </li>
@@ -65,9 +76,9 @@ function LinefeedPicker({ feature, linefeed, onChange }) {
     );
   }
   if (feature.active(PICK_YOUR_OWN_LINEFEED_V1) === true) {
-    return <Custom disabled={false} onChange={onChange} linefeed={linefeed} />;
+    return <Custom disabled={false} onChange={onChange} value={custom} />;
   }
-  return <span>{linefeed}</span>;
+  return <span>{custom}</span>;
 }
 
 export default LinefeedPicker;

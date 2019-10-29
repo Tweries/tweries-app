@@ -13,10 +13,7 @@ const features = [
 function setFeatures(features) {
   return {
     active: feature => {
-      if (features) {
-        return features.indexOf(feature) > -1;
-      }
-      return false;
+      return features.indexOf(feature) > -1;
     }
   };
 }

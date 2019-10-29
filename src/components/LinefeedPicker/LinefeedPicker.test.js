@@ -1,5 +1,6 @@
 import { render, fireEvent } from '@testing-library/react';
 import React from 'react';
+import { LINEFEED } from '../../store/makeTweetstorm';
 import {
   PICK_YOUR_OWN_LINEFEED_V1,
   PICK_YOUR_OWN_LINEFEED_V2
@@ -9,7 +10,7 @@ import LinefeedPicker from './LinefeedPicker';
 describe('LinefeedPicker', () => {
   it('simple', () => {
     const { container } = render(
-      <LinefeedPicker feature={{ active: () => false }} linefeed="[..]" />
+      <LinefeedPicker feature={{ active: () => false }} />
     );
 
     expect(container).toMatchSnapshot();
@@ -22,7 +23,6 @@ describe('LinefeedPicker', () => {
         feature={{
           active: feature => feature === PICK_YOUR_OWN_LINEFEED_V1
         }}
-        linefeed="[..]"
         onChange={mockOnChange}
       />
     );
@@ -33,16 +33,20 @@ describe('LinefeedPicker', () => {
   });
 
   it('v2', () => {
-    const { container } = render(
+    const mockOnChange = jest.fn();
+    const { getByTestId } = render(
       <LinefeedPicker
         feature={{
           active: feature => feature === PICK_YOUR_OWN_LINEFEED_V2
         }}
-        linefeed="[..]"
-        onChange={jest.fn()}
+        onChange={mockOnChange}
       />
     );
 
-    expect(container).toMatchSnapshot();
+    fireEvent.click(getByTestId('custom'));
+    fireEvent.change(getByTestId('linefeed'), { target: { value: '||' } });
+    fireEvent.click(getByTestId('newline'));
+
+    expect(mockOnChange.mock.calls).toMatchSnapshot();
   });
 });
