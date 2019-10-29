@@ -1,7 +1,6 @@
 import { useState } from 'react';
 
 // credit: https://usehooks.com/useLocalStorage/
-
 function useLocalStorage(key, initialValue) {
   const [storedValue, setStoredValue] = useState(() => {
     try {

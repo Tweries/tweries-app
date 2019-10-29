@@ -8,9 +8,13 @@ import LinefeedPicker from '../../components/LinefeedPicker/LinefeedPicker';
 import NavBar from '../../components/NavBar/NavBar';
 import useLocalStorage from '../../hooks/useLocalStorage';
 import makeInitialState from '../../store/makeInitialState';
-import { LINEFEED, NEWLINE } from '../../store/makeTweetstorm.js';
 import { types } from '../../store/reducer';
-import { COUNTER_V1, PICK_YOUR_OWN_LINEFEED_V2 } from '../../feature';
+import {
+  COUNTER_V1,
+  LINEFEED,
+  NEWLINE,
+  PICK_YOUR_OWN_LINEFEED_V2
+} from '../../constants';
 import { useAuth0 } from '../../react-auth0-wrapper';
 import './App.css';
 import Counter from './Counter';

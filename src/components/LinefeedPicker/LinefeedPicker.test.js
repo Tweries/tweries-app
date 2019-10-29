@@ -1,10 +1,9 @@
 import { render, fireEvent } from '@testing-library/react';
 import React from 'react';
-import { LINEFEED } from '../../store/makeTweetstorm';
 import {
   PICK_YOUR_OWN_LINEFEED_V1,
   PICK_YOUR_OWN_LINEFEED_V2
-} from '../../feature';
+} from '../../constants';
 import LinefeedPicker from './LinefeedPicker';
 
 describe('LinefeedPicker', () => {

@@ -1,10 +1,8 @@
 import v from 'voca';
-import { BACK_UP_TO_LAST_PUNCTUATION } from '../feature';
+import { BACK_UP_TO_LAST_PUNCTUATION, LINEFEED, NEWLINE } from '../constants';
 
-export const LINEFEED = ';;';
 const MAX_LENGTH = 280;
-export const NEWLINE = '\n';
-const PREFIX_PLACEHOLDER = '_/_';
+const SEQUENCE_NUMBER_PLACEHOLDER = '_/_';
 
 function backUpToLastPunctuation(take) {
   const punctuations = ['-', '–', '.', ',', ';', '!', '?'];
@@ -30,7 +28,7 @@ function backUpToLastPunctuation(take) {
 
 function makeSequenceNumber(index, length) {
   if (index === undefined && length === undefined) {
-    return PREFIX_PLACEHOLDER;
+    return SEQUENCE_NUMBER_PLACEHOLDER;
   }
   return `${index + 1}/${length}`;
 }

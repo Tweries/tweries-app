@@ -8,7 +8,7 @@ import React from 'react';
 import Footer from '../../components/Footer/Footer';
 import NavBar from '../../components/NavBar/NavBar';
 import reducer from '../../store/reducer';
-import { PICK_YOUR_OWN_LINEFEED_V2 } from '../../feature';
+import { PICK_YOUR_OWN_LINEFEED_V2 } from '../../constants';
 import { useAuth0 } from '../../react-auth0-wrapper';
 import App from './App';
 

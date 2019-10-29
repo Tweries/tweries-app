@@ -1,4 +1,5 @@
-import makeTweetstorm, { LINEFEED } from './makeTweetstorm';
+import { LINEFEED } from '../constants';
+import makeTweetstorm from './makeTweetstorm';
 
 function makeInitialState({
   feature,

@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import {
+  LINEFEED,
+  NEWLINE,
   PICK_YOUR_OWN_LINEFEED_V1,
   PICK_YOUR_OWN_LINEFEED_V2
-} from '../../feature';
-import { LINEFEED, NEWLINE } from '../../store/makeTweetstorm';
+} from '../../constants';
 import './LinefeedPicker.css';
 
 const types = {
