@@ -8,7 +8,7 @@ import React from 'react';
 import Footer from '../../components/Footer/Footer';
 import NavBar from '../../components/NavBar/NavBar';
 import reducer from '../../store/reducer';
-import { PICK_YOUR_OWN_LINEFEED_V1 } from '../../feature';
+import { PICK_YOUR_OWN_LINEFEED_V2 } from '../../feature';
 import { useAuth0 } from '../../react-auth0-wrapper';
 import App from './App';
 
@@ -59,12 +59,16 @@ describe('App', () => {
       loading: false
     }));
     const feature = {
-      active: feature => feature === PICK_YOUR_OWN_LINEFEED_V1
+      active: feature => feature === PICK_YOUR_OWN_LINEFEED_V2
     };
+    const mockReducer = jest.fn((state, action) => reducer(state, action));
 
-    const { getByTestId } = render(<App feature={feature} reducer={reducer} />);
+    const { getByTestId } = render(
+      <App feature={feature} reducer={mockReducer} />
+    );
 
-    expect(getByTestId('linefeed')).toBeDefined();
+    fireEvent.click(getByTestId('custom'));
+    expect(mockReducer.mock.calls).toMatchSnapshot();
   });
 
   it('click tweet', async () => {
@@ -74,7 +78,7 @@ describe('App', () => {
       loading: false
     }));
     const feature = {
-      active: feature => feature === PICK_YOUR_OWN_LINEFEED_V1
+      active: feature => feature === PICK_YOUR_OWN_LINEFEED_V2
     };
 
     const { container, getByTestId } = render(

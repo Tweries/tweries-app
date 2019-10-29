@@ -1,6 +1,6 @@
 {
   "name": "china-musk",
-  "version": "0.13.2",
+  "version": "0.14.0",
   "private": true,
   "description": "an app that will send a file to Twitter, one line per tweet",
   "dependencies": {
@@ -16,6 +16,8 @@
     "deploy": "gh-pages -d build",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
+    "prettier": "prettier 'src/**/*.{css,js,json}'",
+    "prettier:fix": "npm run prettier -- --write",
     "start": "react-scripts start",
     "test": "react-scripts test"
   },

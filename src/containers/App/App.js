@@ -1,6 +1,8 @@
 import classnames from 'classnames';
 import React, { useEffect, useReducer } from 'react';
 import { version } from '../../../package.json';
+import fetchHealth from '../../api/fetchHealth.js';
+import fetchTweetstorm from '../../api/fetchTweetstorm.js';
 import Footer from '../../components/Footer/Footer';
 import LinefeedPicker from '../../components/LinefeedPicker/LinefeedPicker';
 import NavBar from '../../components/NavBar/NavBar';
@@ -13,22 +15,21 @@ import { useAuth0 } from '../../react-auth0-wrapper';
 import './App.css';
 import Counter from './Counter';
 
-const BASE_URL = 'https://china-musk-api.herokuapp.com'; // 'https://china-musk-api.herokuapp.com' | 'http://localhost:9000'
-
 function App({ feature, reducer }) {
   const { isAuthenticated, loading } = useAuth0();
 
   useEffect(() => {
-    fetch(`${BASE_URL}/api/v1/health`)
-      .then(response => response.json())
-      .then(data => {
+    async function fetchData() {
+      try {
+        const data = await fetchHealth();
         console.log(data);
         dispatch({ type: types.SET_HEALTHY, value: true });
-      })
-      .catch(error => {
+      } catch (error) {
         console.log(error);
         dispatch({ type: types.SET_HEALTHY, value: false });
-      });
+      }
+    }
+    fetchData();
   }, []);
 
   const [hashtags_, setHashtags] = useLocalStorage('hashtags', '');
@@ -103,27 +104,19 @@ function App({ feature, reducer }) {
           })}
           data-testid="tweet"
           disabled={disabled()}
-          onClick={() => {
-            fetch(`${BASE_URL}/api/v1/tweetstorm`, {
-              body: JSON.stringify({ items, userId }),
-              headers: {
-                'Content-Type': 'application/json'
-              },
-              method: 'POST'
-            })
-              .then(response => response.json())
-              .then(data => {
-                console.log(data);
-                dispatch({ type: types.RESET_TWEETSTORM });
-                setSource('');
-                setHashtags('');
-              })
-              .catch(error => {
-                console.log(error);
-                dispatch({ type: types.RESET_TWEETSTORM });
-                setSource('');
-                setHashtags('');
-              });
+          onClick={async () => {
+            try {
+              const data = await fetchTweetstorm({ items, userId });
+              console.log(data);
+              dispatch({ type: types.RESET_TWEETSTORM });
+              setSource('');
+              setHashtags('');
+            } catch (error) {
+              console.log(error);
+              dispatch({ type: types.RESET_TWEETSTORM });
+              setSource('');
+              setHashtags('');
+            }
           }}
         >
           Tweet

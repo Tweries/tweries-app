@@ -15,14 +15,49 @@ exports[`App click tweet 1`] = `
       >
         Start typing, to insert a break prior to reaching 280 characters please use
          
-        <input
-          class="App__linefeed"
-          data-testid="linefeed"
-          maxlength="4"
-          placeholder=";;"
-          size="4"
-          value=";;"
-        />
+        <ul
+          class="LinefeedPicker__ul"
+        >
+          <li
+            class="LinefeedPicker__li"
+          >
+            <input
+              checked=""
+              data-testid="newline"
+              name="linefeed"
+              type="radio"
+              value="newline"
+            />
+            <label
+              for="newline"
+            >
+              Newline(s)
+            </label>
+          </li>
+          <li
+            class="LinefeedPicker__li"
+          >
+            <input
+              data-testid="custom"
+              name="linefeed"
+              type="radio"
+              value="custom"
+            />
+            <label
+              for="louie"
+            >
+              <input
+                class="App__linefeed"
+                data-testid="linefeed"
+                disabled=""
+                maxlength="4"
+                placeholder=";;"
+                size="4"
+                value=";;"
+              />
+            </label>
+          </li>
+        </ul>
       </small>
       <textarea
         data-testid="source"
@@ -80,6 +115,29 @@ exports[`App loading 1`] = `
     ...
   </article>
 </div>
+`;
+
+exports[`App pick your own linefeed 1`] = `
+Array [
+  Array [
+    Object {
+      "feature": Object {
+        "active": [Function],
+      },
+      "hashtags": "",
+      "healthy": false,
+      "items": Array [],
+      "linefeed": "
+",
+      "source": "",
+      "userId": null,
+    },
+    Object {
+      "type": "CHANGE_LINEFEED",
+      "value": ";;",
+    },
+  ],
+]
 `;
 
 exports[`App unauthenticated user 1`] = `
