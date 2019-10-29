@@ -14,6 +14,7 @@ Object {
     },
   ],
   "linefeed": ";;",
+  "notification": null,
   "source": "bar",
   "userId": null,
 }
@@ -37,6 +38,7 @@ Object {
     },
   ],
   "linefeed": "||",
+  "notification": null,
   "source": "Can you can a can [..] as a canner || can can a can?",
   "userId": null,
 }
@@ -56,7 +58,23 @@ Object {
     },
   ],
   "linefeed": ";;",
+  "notification": null,
   "source": "bar",
+  "userId": null,
+}
+`;
+
+exports[`reducer DISMISS_TOAST 1`] = `
+Object {
+  "feature": Object {
+    "active": [Function],
+  },
+  "hashtags": "",
+  "healthy": false,
+  "items": Array [],
+  "linefeed": ";;",
+  "notification": null,
+  "source": "",
   "userId": null,
 }
 `;
@@ -68,6 +86,10 @@ Object {
   "healthy": true,
   "items": Array [],
   "linefeed": ";;",
+  "notification": Object {
+    "message": "Oh Noes!",
+    "type": "danger",
+  },
   "source": "",
   "userId": "twitter|1183836409850814464",
 }
@@ -82,6 +104,7 @@ Object {
   "healthy": true,
   "items": Array [],
   "linefeed": ";;",
+  "notification": null,
   "source": "",
   "userId": null,
 }
@@ -96,6 +119,7 @@ Object {
   "healthy": false,
   "items": Array [],
   "linefeed": ";;",
+  "notification": null,
   "source": "",
   "userId": "twitter|1183836409850814464",
 }
@@ -108,6 +132,7 @@ Object {
   "healthy": false,
   "items": Array [],
   "linefeed": ";;",
+  "notification": null,
   "source": "",
   "userId": null,
 }

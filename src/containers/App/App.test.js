@@ -68,7 +68,7 @@ describe('App', () => {
     expect(mockReducer.mock.calls).toMatchSnapshot();
   });
 
-  it('click tweet', async () => {
+  it('generate tweetstorm and dismiss notification', async () => {
     fetch.mockResponseOnce(JSON.stringify({ data: { message: 'qux' } })); // INFO: adding a second response
     useAuth0.mockImplementation(() => ({
       isAuthenticated: true,
@@ -83,6 +83,8 @@ describe('App', () => {
     fireEvent.change(getByTestId('hashtags'), { target: { value: '#bar' } });
     await waitForDomChange();
     fireEvent.click(getByTestId('tweet'));
+    await waitForDomChange();
+    fireEvent.click(getByTestId('dismiss'));
 
     expect(container).toMatchSnapshot();
   });

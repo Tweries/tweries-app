@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ToastNotification danger 1`] = `
+<div>
+  <div
+    class="ToastNotification ToastNotification--danger"
+  >
+    <span>
+      Oh Noes!
+    </span>
+    <button
+      data-testid="dismiss"
+    >
+      ×
+    </button>
+  </div>
+</div>
+`;
+
+exports[`ToastNotification empty 1`] = `<div />`;
+
+exports[`ToastNotification success 1`] = `
+<div>
+  <div
+    class="ToastNotification ToastNotification--success"
+  >
+    <span>
+      Success!
+    </span>
+    <button
+      data-testid="dismiss"
+    >
+      ×
+    </button>
+  </div>
+</div>
+`;

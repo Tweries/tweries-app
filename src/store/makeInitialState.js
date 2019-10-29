@@ -13,6 +13,7 @@ function makeInitialState({
     healthy: false,
     items: makeTweetstorm({ feature, hashtags, linefeed, source }),
     linefeed,
+    notification: null,
     source,
     userId: null
   };

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`App click tweet 1`] = `
+exports[`App generate tweetstorm and dismiss notification 1`] = `
 <div>
   <article>
     <div>
@@ -63,47 +63,26 @@ exports[`App click tweet 1`] = `
         data-testid="source"
         placeholder="What's happening?"
         rows="8"
-      >
-        foo
-      </textarea>
+      />
       <small
         class="App__counter"
-      >
-        3
-      </small>
+      />
       <textarea
         data-testid="hashtags"
         placeholder="#hashtags"
         rows="1"
         type="text"
-      >
-        #bar
-      </textarea>
+      />
       <small
         class="App__counter"
-      >
-        4
-      </small>
+      />
       <ul
         data-testid="list"
-      >
-        <li>
-          <textarea
-            readonly=""
-            rows="4"
-          >
-            foo #bar 1/1
-          </textarea>
-          <small
-            class="App__counter"
-          >
-            12
-          </small>
-        </li>
-      </ul>
+      />
       <button
-        class="App__button"
+        class="App__button App__button--disabled"
         data-testid="tweet"
+        disabled=""
       >
         Tweet
       </button>
@@ -135,6 +114,7 @@ Array [
       "items": Array [],
       "linefeed": "
 ",
+      "notification": null,
       "source": "",
       "userId": null,
     },

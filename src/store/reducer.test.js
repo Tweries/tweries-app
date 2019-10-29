@@ -5,6 +5,7 @@ const USER_ID = 'twitter|1183836409850814464';
 
 const feature = { active: () => true };
 const base = { ...makeInitialState({ feature }) };
+const notification = { message: 'Oh Noes!', type: 'danger' };
 
 describe('reducer', () => {
   const scenarios = [
@@ -42,10 +43,23 @@ describe('reducer', () => {
       }
     },
     {
+      description: types.DISMISS_TOAST,
+      props: {
+        action: {
+          type: types.DISMISS_TOAST
+        },
+        state: {
+          ...base,
+          notification
+        }
+      }
+    },
+    {
       description: types.RESET_TWEETSTORM,
       props: {
         action: {
-          type: types.RESET_TWEETSTORM
+          type: types.RESET_TWEETSTORM,
+          value: notification
         },
         state: {
           ...base,

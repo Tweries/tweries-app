@@ -5,6 +5,7 @@ export const types = {
   CHANGE_HASHTAGS: 'CHANGE_HASHTAGS',
   CHANGE_LINEFEED: 'CHANGE_LINEFEED',
   CHANGE_SOURCE: 'CHANGE_SOURCE',
+  DISMISS_TOAST: 'DISMISS_TOAST',
   RESET_TWEETSTORM: 'RESET_TWEETSTORM',
   SET_HEALTHY: 'SET_HEALTHY',
   SET_USER_ID: 'SET_USER_ID'
@@ -48,10 +49,17 @@ function reducer(state = makeInitialState({}), action) {
         source: action.value
       };
     }
+    case types.DISMISS_TOAST: {
+      return {
+        ...state,
+        notification: null
+      };
+    }
     case types.RESET_TWEETSTORM: {
       return {
         ...makeInitialState({}),
         healthy: state.healthy,
+        notification: action.value,
         userId: state.userId
       };
     }

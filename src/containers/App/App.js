@@ -6,6 +6,7 @@ import fetchTweetstorm from '../../api/fetchTweetstorm.js';
 import Footer from '../../components/Footer/Footer';
 import LinefeedPicker from '../../components/LinefeedPicker/LinefeedPicker';
 import NavBar from '../../components/NavBar/NavBar';
+import ToastNotification from '../../components/ToastNotification/ToastNotification.js';
 import useLocalStorage from '../../hooks/useLocalStorage';
 import makeInitialState from '../../store/makeInitialState';
 import { types } from '../../store/reducer';
@@ -34,7 +35,10 @@ function App({ feature, reducer }) {
   const [hashtags_, setHashtags] = useLocalStorage('hashtags', '');
   const [source_, setSource] = useLocalStorage('source', '');
 
-  const [{ hashtags, healthy, items, source, userId }, dispatch] = useReducer(
+  const [
+    { hashtags, healthy, items, notification, source, userId },
+    dispatch
+  ] = useReducer(
     reducer,
     makeInitialState({
       feature,
@@ -106,12 +110,21 @@ function App({ feature, reducer }) {
             try {
               const data = await fetchTweetstorm({ items, userId });
               console.log(data);
-              dispatch({ type: types.RESET_TWEETSTORM });
+              dispatch({
+                type: types.RESET_TWEETSTORM,
+                value: {
+                  message: 'The tweetstorm has been created successfully.',
+                  type: 'success'
+                }
+              });
               setSource('');
               setHashtags('');
             } catch (error) {
               console.log(error);
-              dispatch({ type: types.RESET_TWEETSTORM });
+              dispatch({
+                type: types.RESET_TWEETSTORM,
+                value: { message: error.message, type: 'danger' }
+              });
               setSource('');
               setHashtags('');
             }
@@ -120,6 +133,10 @@ function App({ feature, reducer }) {
           Tweet
         </button>
       </form>
+      <ToastNotification
+        notification={notification}
+        onClick={() => dispatch({ type: types.DISMISS_TOAST })}
+      />
       <Footer healthy={healthy} version={version} />
     </article>
   );
