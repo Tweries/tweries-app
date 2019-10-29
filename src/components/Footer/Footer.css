@@ -7,3 +7,8 @@ footer {
 footer.healthy {
   color: green;
 }
+
+footer a {
+  color: darkblue;
+  text-decoration: none;
+}

@@ -9,6 +9,14 @@ exports[`Footer to match snapshot 1`] = `
     1.0.0-beta.1
      © 
     2019
+     
+    <a
+      href="https://twitter.com/TweriesApp"
+      rel="noopener noreferrer"
+      target="_blank"
+    >
+      @TweriesApp
+    </a>
   </footer>
 </div>
 `;
