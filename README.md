@@ -38,7 +38,7 @@
 
 - [x] Back up to last punctuation
 
-- [ ] Add counter(s)
+- [x] Add counter(s)
 
 ## Resources
 

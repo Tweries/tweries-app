@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Counter show false 1`] = `
+<div>
+  <small
+    class="App__counter"
+  />
+</div>
+`;
+
+exports[`Counter show true, length 0 1`] = `
+<div>
+  <small
+    class="App__counter"
+  />
+</div>
+`;
+
+exports[`Counter show true, length 123 1`] = `
+<div>
+  <small
+    class="App__counter"
+  >
+    123
+  </small>
+</div>
+`;

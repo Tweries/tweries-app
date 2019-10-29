@@ -5,7 +5,7 @@ import './Footer.css';
 function Footer({ healthy, version }) {
   return (
     <footer className={classnames({ healthy: healthy })}>
-      v{version} &copy; {new Date().getFullYear()}
+      Tweries v{version} &copy; {new Date().getFullYear()}
     </footer>
   );
 }

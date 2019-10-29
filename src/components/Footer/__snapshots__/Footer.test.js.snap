@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer to match snapshot 1`] = `
+<div>
+  <footer
+    class="healthy"
+  >
+    Tweries v
+    1.0.0-beta.1
+     © 
+    2019
+  </footer>
+</div>
+`;

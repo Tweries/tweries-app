@@ -80,7 +80,7 @@ describe('reducer', () => {
       description: 'default',
       props: {
         action: { type: 'UNKNOWN', value: undefined },
-        state: base
+        state: undefined
       }
     }
   ];

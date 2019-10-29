@@ -103,9 +103,7 @@ Object {
 
 exports[`reducer default 1`] = `
 Object {
-  "feature": Object {
-    "active": [Function],
-  },
+  "feature": undefined,
   "hashtags": "",
   "healthy": false,
   "items": Array [],
