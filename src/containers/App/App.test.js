@@ -8,7 +8,6 @@ import React from 'react';
 import Footer from '../../components/Footer/Footer';
 import NavBar from '../../components/NavBar/NavBar';
 import reducer from '../../store/reducer';
-import { PICK_YOUR_OWN_LINEFEED_V2 } from '../../constants';
 import { useAuth0 } from '../../react-auth0-wrapper';
 import App from './App';
 
@@ -34,7 +33,7 @@ describe('App', () => {
     useAuth0.mockImplementation(() => ({
       loading: true
     }));
-    const feature = { active: () => false };
+    const feature = { active: jest.fn() };
 
     const { container } = render(<App feature={feature} reducer={reducer} />);
 
@@ -46,7 +45,7 @@ describe('App', () => {
       isAuthenticated: false,
       loading: false
     }));
-    const feature = { active: () => false };
+    const feature = { active: jest.fn() };
 
     const { container } = render(<App feature={feature} reducer={reducer} />);
 
@@ -58,9 +57,7 @@ describe('App', () => {
       isAuthenticated: false,
       loading: false
     }));
-    const feature = {
-      active: feature => feature === PICK_YOUR_OWN_LINEFEED_V2
-    };
+    const feature = { active: jest.fn() };
     const mockReducer = jest.fn((state, action) => reducer(state, action));
 
     const { getByTestId } = render(
@@ -77,9 +74,7 @@ describe('App', () => {
       isAuthenticated: true,
       loading: false
     }));
-    const feature = {
-      active: feature => feature === PICK_YOUR_OWN_LINEFEED_V2
-    };
+    const feature = { active: jest.fn() };
 
     const { container, getByTestId } = render(
       <App feature={feature} reducer={reducer} />

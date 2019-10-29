@@ -9,12 +9,7 @@ import NavBar from '../../components/NavBar/NavBar';
 import useLocalStorage from '../../hooks/useLocalStorage';
 import makeInitialState from '../../store/makeInitialState';
 import { types } from '../../store/reducer';
-import {
-  COUNTER_V1,
-  LINEFEED,
-  NEWLINE,
-  PICK_YOUR_OWN_LINEFEED_V2
-} from '../../constants';
+import { NEWLINE } from '../../constants';
 import { useAuth0 } from '../../react-auth0-wrapper';
 import './App.css';
 import Counter from './Counter';
@@ -44,8 +39,7 @@ function App({ feature, reducer }) {
     makeInitialState({
       feature,
       hashtags: hashtags_,
-      linefeed:
-        feature.active(PICK_YOUR_OWN_LINEFEED_V2) === true ? NEWLINE : LINEFEED,
+      linefeed: NEWLINE,
       source: source_
     })
   );
@@ -81,7 +75,7 @@ function App({ feature, reducer }) {
             setSource(e.target.value);
           }}
         />
-        <Counter length={source.length} show={feature.active(COUNTER_V1)} />
+        <Counter length={source.length} />
         <textarea
           data-testid="hashtags"
           onChange={e => {
@@ -93,12 +87,12 @@ function App({ feature, reducer }) {
           type="text"
           value={hashtags}
         />
-        <Counter length={hashtags.length} show={feature.active(COUNTER_V1)} />
+        <Counter length={hashtags.length} />
         <ul data-testid="list">
           {items.map((item, index) => (
             <li key={index}>
               <textarea readOnly rows={4} value={item.tweet} />
-              <Counter length={item.length} show={feature.active(COUNTER_V1)} />
+              <Counter length={item.length} />
             </li>
           ))}
         </ul>

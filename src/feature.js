@@ -1,16 +1,6 @@
-import {
-  BACK_UP_TO_LAST_PUNCTUATION,
-  COUNTER_V1,
-  PICK_YOUR_OWN_LINEFEED_V1,
-  PICK_YOUR_OWN_LINEFEED_V2
-} from './constants';
+import { FEATURE_V1 } from './constants';
 
-const features = [
-  BACK_UP_TO_LAST_PUNCTUATION,
-  COUNTER_V1,
-  PICK_YOUR_OWN_LINEFEED_V1,
-  PICK_YOUR_OWN_LINEFEED_V2
-];
+const features = [FEATURE_V1];
 
 function setFeatures(features) {
   return {

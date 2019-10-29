@@ -68,7 +68,9 @@ exports[`App click tweet 1`] = `
       </textarea>
       <small
         class="App__counter"
-      />
+      >
+        3
+      </small>
       <textarea
         data-testid="hashtags"
         placeholder="#hashtags"
@@ -79,7 +81,9 @@ exports[`App click tweet 1`] = `
       </textarea>
       <small
         class="App__counter"
-      />
+      >
+        4
+      </small>
       <ul
         data-testid="list"
       >
@@ -92,7 +96,9 @@ exports[`App click tweet 1`] = `
           </textarea>
           <small
             class="App__counter"
-          />
+          >
+            12
+          </small>
         </li>
       </ul>
       <button
@@ -122,7 +128,7 @@ Array [
   Array [
     Object {
       "feature": Object {
-        "active": [Function],
+        "active": [MockFunction],
       },
       "hashtags": "",
       "healthy": false,
@@ -155,9 +161,49 @@ exports[`App unauthenticated user 1`] = `
       >
         Start typing, to insert a break prior to reaching 280 characters please use
          
-        <span>
-          ;;
-        </span>
+        <ul
+          class="LinefeedPicker__ul"
+        >
+          <li
+            class="LinefeedPicker__li"
+          >
+            <input
+              checked=""
+              data-testid="newline"
+              name="linefeed"
+              type="radio"
+              value="newline"
+            />
+            <label
+              for="newline"
+            >
+              Newline(s)
+            </label>
+          </li>
+          <li
+            class="LinefeedPicker__li"
+          >
+            <input
+              data-testid="custom"
+              name="linefeed"
+              type="radio"
+              value="custom"
+            />
+            <label
+              for="louie"
+            >
+              <input
+                class="App__linefeed"
+                data-testid="linefeed"
+                disabled=""
+                maxlength="4"
+                placeholder=";;"
+                size="4"
+                value=";;"
+              />
+            </label>
+          </li>
+        </ul>
       </small>
       <textarea
         data-testid="source"

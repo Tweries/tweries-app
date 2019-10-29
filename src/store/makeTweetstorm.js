@@ -1,5 +1,5 @@
 import v from 'voca';
-import { BACK_UP_TO_LAST_PUNCTUATION, LINEFEED, NEWLINE } from '../constants';
+import { LINEFEED, NEWLINE } from '../constants';
 
 const MAX_LENGTH = 280;
 const SEQUENCE_NUMBER_PLACEHOLDER = '_/_';
@@ -70,9 +70,7 @@ function makeTweetstorm({ feature, hashtags, linefeed, source }) {
       // take = backUpToLastPunctuation(take);
       copy = v.substr(copy, take.length + linefeed.length);
     } else {
-      if (feature.active(BACK_UP_TO_LAST_PUNCTUATION)) {
-        take = backUpToLastPunctuation(take);
-      }
+      take = backUpToLastPunctuation(take);
       copy = v.substr(copy, take.length + 1); // INFO: 1 is the space after the word
     }
     parts.push(take);

@@ -1,13 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`LinefeedPicker simple 1`] = `
-<div>
-  <span>
-    ;;
-  </span>
-</div>
-`;
-
 exports[`LinefeedPicker v2 1`] = `
 Array [
   Array [

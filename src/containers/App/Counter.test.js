@@ -5,21 +5,14 @@ import Counter from './Counter';
 describe('Counter', () => {
   const scenarios = [
     {
-      description: 'show false',
-      props: {
-        length: 123,
-        show: false
-      }
-    },
-    {
-      description: 'show true, length 123',
+      description: 'length 123',
       props: {
         length: 123,
         show: true
       }
     },
     {
-      description: 'show true, length 0',
+      description: 'length 0',
       props: {
         length: 0,
         show: true
