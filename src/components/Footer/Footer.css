@@ -1,14 +1,15 @@
 footer {
-  color: red;
+  color: #721c24;
   font-size: 12px;
   margin-bottom: 8px;
 }
 
 footer.healthy {
-  color: green;
+  color: #155724;
 }
 
 footer a {
-  color: darkblue;
+  color: rgb(29, 161, 242);
+  font-weight: bold;
   text-decoration: none;
 }
