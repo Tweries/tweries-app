@@ -1,6 +1,7 @@
+import { SPACE_AFTER_PUNCTUATION_V1 } from '../constants';
 import makeTweetstorm from './makeTweetstorm';
 
-describe('source => tweetstorm', () => {
+describe('hashtags, linefeed, source => tweetstorm', () => {
   const scenarios = [
     {
       description: 'Lorem ipsum',
@@ -86,6 +87,15 @@ describe('source => tweetstorm', () => {
         source:
           'Nel mezzo del cammin di nostra vita mi ritrovai per una selva oscura, ché la diritta via era smarrita. Ahi quanto a dir qual era è cosa dura esta selva selvaggia e aspra e forte che nel pensier rinova la paura! Tant’ è amara che poco è più morte; ma per trattar del ben ch’i’ vi trovai, dirò de l’altre cose ch’i’ v’ho scorte. Io non so ben ridir com’ i’ v’intrai,10 tant’ era pien di sonno a quel punto che la verace via abbandonai. Ma poi ch’i’ fui al piè d’un colle giunto, là dove terminava quella valle che m’avea di paura il cor compunto, guardai in alto e vidi le sue spalle vestite già de’ raggi del pianeta che mena dritto altrui per ogne calle. Allor fu la paura un poco queta, che nel lago del cor m’era durata20 la notte ch’i’ passai con tanta pieta. E come quei che con lena affannata, uscito fuor del pelago a la riva, si volge a l’acqua perigliosa e guata, così l’animo mio, ch’ancor fuggiva, si volse a retro a rimirar lo passo che non lasciò già mai persona viva.'
       }
+    },
+    {
+      description: 'w/ an URL',
+      props: {
+        hashtags: '',
+        linefeed: '\n',
+        source:
+          'https://marker.medium.com/how-to-hold-your-team-accountable-9fa57bfb315d'
+      }
     }
   ];
 
@@ -93,7 +103,7 @@ describe('source => tweetstorm', () => {
     it(description, () => {
       const tweetstorm = makeTweetstorm({
         ...props,
-        feature: { active: () => true }
+        feature: { active: feature => feature === SPACE_AFTER_PUNCTUATION_V1 }
       });
       expect(tweetstorm).toMatchSnapshot();
     });

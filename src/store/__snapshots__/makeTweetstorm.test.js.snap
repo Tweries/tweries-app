@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`source => tweetstorm About the Windsor knot 1`] = `
+exports[`hashtags, linefeed, source => tweetstorm About the Windsor knot 1`] = `
 Array [
   Object {
     "length": 252,
@@ -17,7 +17,7 @@ Array [
 ]
 `;
 
-exports[`source => tweetstorm Lorem ipsum 1`] = `
+exports[`hashtags, linefeed, source => tweetstorm Lorem ipsum 1`] = `
 Array [
   Object {
     "length": 265,
@@ -46,7 +46,7 @@ Array [
 ]
 `;
 
-exports[`source => tweetstorm No final comma in the 1st tweet 1`] = `
+exports[`hashtags, linefeed, source => tweetstorm No final comma in the 1st tweet 1`] = `
 Array [
   Object {
     "length": 267,
@@ -59,7 +59,7 @@ Array [
 ]
 `;
 
-exports[`source => tweetstorm empty linefeed 1`] = `
+exports[`hashtags, linefeed, source => tweetstorm empty linefeed 1`] = `
 Array [
   Object {
     "length": 243,
@@ -68,7 +68,7 @@ Array [
 ]
 `;
 
-exports[`source => tweetstorm new lines 1`] = `
+exports[`hashtags, linefeed, source => tweetstorm new lines 1`] = `
 Array [
   Object {
     "length": 151,
@@ -85,7 +85,7 @@ Array [
 ]
 `;
 
-exports[`source => tweetstorm pick-your-own-linefeed 1`] = `
+exports[`hashtags, linefeed, source => tweetstorm pick-your-own-linefeed 1`] = `
 Array [
   Object {
     "length": 9,
@@ -106,7 +106,7 @@ Array [
 ]
 `;
 
-exports[`source => tweetstorm text without line breaks 1`] = `
+exports[`hashtags, linefeed, source => tweetstorm text without line breaks 1`] = `
 Array [
   Object {
     "length": 250,
@@ -131,7 +131,16 @@ Array [
 ]
 `;
 
-exports[`source => tweetstorm w/ linefeeds 1`] = `
+exports[`hashtags, linefeed, source => tweetstorm w/ an URL 1`] = `
+Array [
+  Object {
+    "length": 76,
+    "tweet": "https://marker.medium.com/how-to-hold-your-team-accountable-9fa57bfb315d 1/1",
+  },
+]
+`;
+
+exports[`hashtags, linefeed, source => tweetstorm w/ linefeeds 1`] = `
 Array [
   Object {
     "length": 196,

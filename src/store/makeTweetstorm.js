@@ -1,10 +1,18 @@
 import v from 'voca';
-import { LINEFEED, NEWLINE } from '../constants';
+import { LINEFEED, NEWLINE, SPACE_AFTER_PUNCTUATION_V1 } from '../constants';
 
 const MAX_LENGTH = 280;
 const SEQUENCE_NUMBER_PLACEHOLDER = '_/_';
 
-function backUpToLastPunctuation(take) {
+function hasSpaceAfterPunctuation(feature, index, take) {
+  if (feature.active(SPACE_AFTER_PUNCTUATION_V1)) {
+    // INFO: index + 1 is the character after the punctuation
+    return v.substr(take, index + 1, 1) === ' ';
+  }
+  return true;
+}
+
+function backUpToLastPunctuation(feature, take) {
   const punctuations = ['-', '–', '.', ',', ';', '!', '?'];
   const data = punctuations
     .map(punctuation => ({
@@ -20,7 +28,10 @@ function backUpToLastPunctuation(take) {
       }
       return 0;
     })[0];
-  if (data.value !== -1) {
+  if (
+    data.value !== -1 &&
+    hasSpaceAfterPunctuation(feature, data.value, take)
+  ) {
     take = v.substr(take, 0, data.value + 1);
   }
   return take;
@@ -52,25 +63,18 @@ function makeTweetstorm({ feature, hashtags, linefeed, source }) {
 
   while (copy.length !== 0) {
     let take;
+    let max;
     if (hashtags.length > 0) {
-      take = v.prune(
-        copy,
-        MAX_LENGTH - hashtags.length - makeSequenceNumber().length - 2, // INFO: 1 space before the hashtags and 1 space before the sequence number
-        ''
-      );
+      max = MAX_LENGTH - hashtags.length - makeSequenceNumber().length - 2; // INFO: 1 space before the hashtags and 1 space before the sequence number
     } else {
-      take = v.prune(
-        copy,
-        MAX_LENGTH - makeSequenceNumber().length - 1, // INFO: 1 space before the sequence number
-        ''
-      );
+      max = MAX_LENGTH - makeSequenceNumber().length - 1; // INFO: 1 space before the sequence number
     }
-    if (take.indexOf(linefeed) > -1) {
+    take = v.prune(copy, max, '');
+    if (take.indexOf(linefeed) !== -1) {
       take = v.substr(take, 0, take.indexOf(linefeed));
-      // take = backUpToLastPunctuation(take);
       copy = v.substr(copy, take.length + linefeed.length);
     } else {
-      take = backUpToLastPunctuation(take);
+      take = backUpToLastPunctuation(feature, take);
       copy = v.substr(copy, take.length + 1); // INFO: 1 is the space after the word
     }
     parts.push(take);
