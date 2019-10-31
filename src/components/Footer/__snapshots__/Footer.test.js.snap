@@ -5,18 +5,33 @@ exports[`Footer to match snapshot 1`] = `
   <footer
     class="healthy"
   >
-    Tweries v
-    1.0.0-beta.1
-     © 
-    2019
-     
-    <a
-      href="https://twitter.com/TweriesApp"
-      rel="noopener noreferrer"
-      target="_blank"
-    >
-      @TweriesApp
-    </a>
+    <p>
+      Tweries v
+      1.0.0-beta.1
+       © 
+      2019
+       
+    </p>
+    <ul>
+      <li>
+        <a
+          href="https://twitter.com/TweriesApp"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          @TweriesApp
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://github.com/Tweries"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          github.com/Tweries
+        </a>
+      </li>
+    </ul>
   </footer>
 </div>
 `;

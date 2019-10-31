@@ -5,14 +5,29 @@ import './Footer.css';
 function Footer({ healthy, version }) {
   return (
     <footer className={classnames({ healthy: healthy })}>
-      Tweries v{version} &copy; {new Date().getFullYear()}{' '}
-      <a
-        href="https://twitter.com/TweriesApp"
-        rel="noopener noreferrer"
-        target="_blank"
-      >
-        @TweriesApp
-      </a>
+      <p>
+        Tweries v{version} &copy; {new Date().getFullYear()}{' '}
+      </p>
+      <ul>
+        <li>
+          <a
+            href="https://twitter.com/TweriesApp"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            @TweriesApp
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://github.com/Tweries"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            github.com/Tweries
+          </a>
+        </li>
+      </ul>
     </footer>
   );
 }
