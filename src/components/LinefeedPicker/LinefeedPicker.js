@@ -10,7 +10,7 @@ const types = {
 function Custom({ disabled, onChange, value }) {
   return (
     <input
-      className="App__linefeed"
+      className="LinefeedPicker__linefeed"
       data-testid="linefeed"
       disabled={disabled}
       maxLength="4"

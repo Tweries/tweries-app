@@ -5,6 +5,10 @@
   margin: 0;
 }
 
+.LinefeedPicker__linefeed {
+  text-align: center;
+}
+
 .LinefeedPicker__ul {
   display: flex;
 }

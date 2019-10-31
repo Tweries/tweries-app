@@ -47,7 +47,7 @@ exports[`App generate tweetstorm and dismiss notification 1`] = `
               for="louie"
             >
               <input
-                class="App__linefeed"
+                class="LinefeedPicker__linefeed"
                 data-testid="linefeed"
                 disabled=""
                 maxlength="4"
@@ -173,7 +173,7 @@ exports[`App unauthenticated user 1`] = `
               for="louie"
             >
               <input
-                class="App__linefeed"
+                class="LinefeedPicker__linefeed"
                 data-testid="linefeed"
                 disabled=""
                 maxlength="4"

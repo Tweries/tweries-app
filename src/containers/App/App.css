@@ -1,3 +1,5 @@
+/* BEM */
+
 @import url('https://fonts.googleapis.com/css?family=Leckerli+One&display=swap');
 
 article,
@@ -86,10 +88,6 @@ ul {
 .App__counter {
   color: gray;
   text-align: right;
-}
-
-.App__linefeed {
-  text-align: center;
 }
 
 .App__small {
