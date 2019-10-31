@@ -6,7 +6,7 @@ import NavBar from './NavBar';
 jest.mock('../../react-auth0-wrapper');
 
 const user = {
-  name: 'china-musk',
+  name: 'tweries-app',
   picture:
     'https://abs.twimg.com/sticky/default_profile_images/default_profile_normal.png',
   sub: 'twitter|1183836409850814464'
