@@ -2,7 +2,7 @@
   "name": "tweries-app",
   "version": "0.19.4",
   "private": true,
-  "description": "an app that will send a file to Twitter, one line per tweet",
+  "description": "Tweries, a tweet-storm-helper app which break up a long paragraph into multiple tweets.",
   "dependencies": {
     "@auth0/auth0-spa-js": "^1.3.2",
     "classnames": "^2.2.6",

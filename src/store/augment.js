@@ -1,4 +1,5 @@
 function augment(reducer) {
+  // TODO: fix name
   function logAction(state, action) {
     // console.log('state:', state);
     // console.log('action:', action);

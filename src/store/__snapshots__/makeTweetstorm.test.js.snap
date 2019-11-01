@@ -131,7 +131,20 @@ Array [
 ]
 `;
 
-exports[`hashtags, linefeed, source => tweetstorm w/ an URL 1`] = `
+exports[`hashtags, linefeed, source => tweetstorm w/ an URL and SPACE_AFTER_PUNCTUATION_V1 disabled 1`] = `
+Array [
+  Object {
+    "length": 64,
+    "tweet": "https://marker.medium.com/how-to-hold-your-team-accountable- 1/2",
+  },
+  Object {
+    "length": 15,
+    "tweet": "fa57bfb315d 2/2",
+  },
+]
+`;
+
+exports[`hashtags, linefeed, source => tweetstorm w/ an URL and SPACE_AFTER_PUNCTUATION_V1 enabled 1`] = `
 Array [
   Object {
     "length": 76,

@@ -1,4 +1,5 @@
 import {
+  act,
   cleanup,
   render,
   fireEvent,
@@ -12,16 +13,14 @@ import { useAuth0 } from '../../react-auth0-wrapper';
 import App from './App';
 
 jest.mock('../../components/Footer/Footer');
-Footer.mockImplementation(() => <div>Footer</div>);
-
 jest.mock('../../components/NavBar/NavBar');
-NavBar.mockImplementation(() => <div>NavBar</div>);
-
 jest.mock('../../react-auth0-wrapper');
 
 describe('App', () => {
   beforeEach(() => {
     fetch.mockResponseOnce(JSON.stringify({ data: { message: 'baz' } }));
+    Footer.mockImplementation(() => <div>Footer</div>);
+    NavBar.mockImplementation(() => <div>NavBar</div>);
   });
 
   afterEach(() => {
@@ -87,5 +86,24 @@ describe('App', () => {
     fireEvent.click(getByTestId('dismiss'));
 
     expect(container).toMatchSnapshot();
+  });
+});
+
+describe('App - errors', () => {
+  it('fetchHealth error', () => {
+    fetch.mockRejectOnce(new Error('Oh Noes!'));
+    useAuth0.mockImplementation(() => ({
+      isAuthenticated: false,
+      loading: false
+    }));
+    const feature = { active: jest.fn() };
+    const mockReducer = jest.fn((state, action) => {
+      console.log(action);
+      return reducer(state, action);
+    });
+
+    render(<App feature={feature} reducer={mockReducer} />);
+
+    // TODO: add assertion
   });
 });
