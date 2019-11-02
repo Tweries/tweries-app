@@ -10,6 +10,7 @@ export const BASE_URL =
     ? 'http://localhost:9000'
     : 'https://tweries-api.herokuapp.com';
 
+export const EMPTY_FIRST_SEQUENCE_NUMBER_V1 = 'EMPTY_FIRST_SEQUENCE_NUMBER_V1';
 export const FEATURE_V1 = 'FEATURE_V1';
 export const SPACE_AFTER_PUNCTUATION_V1 = 'SPACE_AFTER_PUNCTUATION_V1';
 

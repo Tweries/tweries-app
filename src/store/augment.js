@@ -1,3 +1,5 @@
+import { types } from './reducer';
+
 function augment({ logEvent, reducer }) {
   // TODO: fix name
   function logAction(state, action) {
@@ -5,7 +7,14 @@ function augment({ logEvent, reducer }) {
     // console.log('action:', action);
     const newState = reducer(state, action);
     // console.log('newState:', newState);
-    logEvent(action.type, action.value);
+    switch (action.type) {
+      case types.CHANGE_HASHTAGS:
+      case types.CHANGE_SOURCE:
+        break;
+      default:
+        logEvent(action.type, action.value);
+        break;
+    }
     return newState;
   }
   return logAction;

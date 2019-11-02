@@ -106,6 +106,14 @@ describe('hashtags, linefeed, source => tweetstorm', () => {
         source:
           'https://marker.medium.com/how-to-hold-your-team-accountable-9fa57bfb315d'
       }
+    },
+    {
+      description: 'no 1/1',
+      props: {
+        hashtags: '',
+        linefeed: '\n',
+        source: `If your company is producing software too slowly, hiring more "programming talent" will probably not speed you up in any significant way. Instead, remove waste from your existing system. It's way more cost effective. Adding people makes sense only if there's no waste.`
+      }
     }
   ];
 

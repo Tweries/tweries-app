@@ -9,8 +9,8 @@ Object {
   "healthy": false,
   "items": Array [
     Object {
-      "length": 12,
-      "tweet": "bar #FOO 1/1",
+      "length": 9,
+      "tweet": "bar #FOO ",
     },
   ],
   "linefeed": ";;",
@@ -53,8 +53,8 @@ Object {
   "healthy": false,
   "items": Array [
     Object {
-      "length": 7,
-      "tweet": "bar 1/1",
+      "length": 4,
+      "tweet": "bar ",
     },
   ],
   "linefeed": ";;",

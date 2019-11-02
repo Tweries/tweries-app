@@ -1,7 +1,8 @@
 import augment from './augment';
+import { types } from './reducer';
 
 describe('augment', () => {
-  it('logAction', () => {
+  it('logAction UNKNOWN', () => {
     const mockLogEvent = jest.fn();
     const mockReducer = jest.fn();
     const logAction = augment({ logEvent: mockLogEvent, reducer: mockReducer });
@@ -9,5 +10,20 @@ describe('augment', () => {
     logAction(undefined, action);
     expect(mockReducer).toBeCalledWith(undefined, action);
     expect(mockLogEvent).toBeCalledWith(action.type, undefined);
+  });
+
+  [types.CHANGE_HASHTAGS, types.CHANGE_SOURCE].forEach(type => {
+    it(`logAction ${type}`, () => {
+      const mockLogEvent = jest.fn();
+      const mockReducer = jest.fn();
+      const logAction = augment({
+        logEvent: mockLogEvent,
+        reducer: mockReducer
+      });
+      const action = { type, value: 'HELLO' };
+      logAction(undefined, action);
+      expect(mockReducer).toBeCalledWith(undefined, action);
+      expect(mockLogEvent).not.toBeCalled();
+    });
   });
 });

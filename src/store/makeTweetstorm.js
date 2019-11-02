@@ -37,9 +37,16 @@ function backUpToLastPunctuation(feature, take) {
   return take;
 }
 
-function makeSequenceNumber(index, length) {
+function makeSequenceNumber({ feature, index, length }) {
   if (index === undefined && length === undefined) {
     return SEQUENCE_NUMBER_PLACEHOLDER;
+  }
+  if (
+    feature.active(SPACE_AFTER_PUNCTUATION_V1) &&
+    index === 0 &&
+    length === 1
+  ) {
+    return '';
   }
   return `${index + 1}/${length}`;
 }
@@ -65,9 +72,13 @@ function makeTweetstorm({ feature, hashtags, linefeed, source }) {
     let take;
     let max;
     if (hashtags.length > 0) {
-      max = MAX_LENGTH - hashtags.length - makeSequenceNumber().length - 2; // INFO: 1 space before the hashtags and 1 space before the sequence number
+      max =
+        MAX_LENGTH -
+        hashtags.length -
+        makeSequenceNumber({ feature }).length -
+        2; // INFO: 1 space before the hashtags and 1 space before the sequence number
     } else {
-      max = MAX_LENGTH - makeSequenceNumber().length - 1; // INFO: 1 space before the sequence number
+      max = MAX_LENGTH - makeSequenceNumber({ feature }).length - 1; // INFO: 1 space before the sequence number
     }
     take = v.prune(copy, max, '');
     if (take.indexOf(linefeed) !== -1) {
@@ -83,12 +94,17 @@ function makeTweetstorm({ feature, hashtags, linefeed, source }) {
   const tweetstorm = parts.map((part, index) => {
     let tweet;
     if (hashtags.length > 0) {
-      tweet = `${v.trim(part)} ${hashtags} ${makeSequenceNumber(
+      tweet = `${v.trim(part)} ${hashtags} ${makeSequenceNumber({
+        feature,
         index,
-        parts.length
-      )}`;
+        length: parts.length
+      })}`;
     } else {
-      tweet = `${v.trim(part)} ${makeSequenceNumber(index, parts.length)}`;
+      tweet = `${v.trim(part)} ${makeSequenceNumber({
+        feature,
+        index,
+        length: parts.length
+      })}`;
     }
 
     return { length: tweet.length, tweet };

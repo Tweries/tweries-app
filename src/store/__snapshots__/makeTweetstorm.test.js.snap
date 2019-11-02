@@ -62,8 +62,8 @@ Array [
 exports[`hashtags, linefeed, source => tweetstorm empty linefeed 1`] = `
 Array [
   Object {
-    "length": 243,
-    "tweet": "It put a huge amount of stress on me. Resentment built up and I delegated less and less. With so much on my plate, I was running the risk of burnout, and as my team saw this spiral, they became demotivated and the vicious spiral continued. 1/1",
+    "length": 240,
+    "tweet": "It put a huge amount of stress on me. Resentment built up and I delegated less and less. With so much on my plate, I was running the risk of burnout, and as my team saw this spiral, they became demotivated and the vicious spiral continued. ",
   },
 ]
 `;
@@ -81,6 +81,15 @@ Array [
   Object {
     "length": 93,
     "tweet": "Here is a sentence.This sentence runs into itand unfortunately we aremissing some spaces. 3/3",
+  },
+]
+`;
+
+exports[`hashtags, linefeed, source => tweetstorm no 1/1 1`] = `
+Array [
+  Object {
+    "length": 269,
+    "tweet": "If your company is producing software too slowly, hiring more \\"programming talent\\" will probably not speed you up in any significant way. Instead, remove waste from your existing system. It's way more cost effective. Adding people makes sense only if there's no waste. ",
   },
 ]
 `;
@@ -147,8 +156,8 @@ Array [
 exports[`hashtags, linefeed, source => tweetstorm w/ an URL and SPACE_AFTER_PUNCTUATION_V1 enabled 1`] = `
 Array [
   Object {
-    "length": 76,
-    "tweet": "https://marker.medium.com/how-to-hold-your-team-accountable-9fa57bfb315d 1/1",
+    "length": 73,
+    "tweet": "https://marker.medium.com/how-to-hold-your-team-accountable-9fa57bfb315d ",
   },
 ]
 `;
