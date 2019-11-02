@@ -1,6 +1,14 @@
-import { FEATURE_V1, SPACE_AFTER_PUNCTUATION_V1 } from './constants';
+import {
+  EMPTY_FIRST_SEQUENCE_NUMBER_V1,
+  FEATURE_V1,
+  SPACE_AFTER_PUNCTUATION_V1
+} from './constants';
 
-const features = [FEATURE_V1, SPACE_AFTER_PUNCTUATION_V1];
+const features = [
+  EMPTY_FIRST_SEQUENCE_NUMBER_V1,
+  FEATURE_V1,
+  SPACE_AFTER_PUNCTUATION_V1
+];
 
 function setFeatures(features) {
   return {

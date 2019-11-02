@@ -1,5 +1,10 @@
 import v from 'voca';
-import { LINEFEED, NEWLINE, SPACE_AFTER_PUNCTUATION_V1 } from '../constants';
+import {
+  EMPTY_FIRST_SEQUENCE_NUMBER_V1,
+  LINEFEED,
+  NEWLINE,
+  SPACE_AFTER_PUNCTUATION_V1
+} from '../constants';
 
 const MAX_LENGTH = 280;
 const SEQUENCE_NUMBER_PLACEHOLDER = '_/_';
@@ -42,7 +47,7 @@ function makeSequenceNumber({ feature, index, length }) {
     return SEQUENCE_NUMBER_PLACEHOLDER;
   }
   if (
-    feature.active(SPACE_AFTER_PUNCTUATION_V1) &&
+    feature.active(EMPTY_FIRST_SEQUENCE_NUMBER_V1) &&
     index === 0 &&
     length === 1
   ) {
