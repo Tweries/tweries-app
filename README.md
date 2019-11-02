@@ -44,6 +44,14 @@
 
 - [x] Remove the sequence number if there is only one tweet
 
+## Ideas
+
+- [ ] Use a different CSS framework
+
+- [ ] Integrate react-feature-toggles
+
+- [ ] Integrate Thread Reader https://threadreaderapp.com/
+
 ## Resources
 
 - https://create-react-app.dev/docs/deployment#github-pages-https-pagesgithubcom

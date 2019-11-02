@@ -10,7 +10,11 @@ import ToastNotification from '../../components/ToastNotification/ToastNotificat
 import useLocalStorage from '../../hooks/useLocalStorage';
 import makeInitialState from '../../store/makeInitialState';
 import { types } from '../../store/reducer';
-import { NEWLINE } from '../../constants';
+import {
+  NEWLINE,
+  READONLY_TWEETSTORM_V1,
+  READONLY_TWEETSTORM_V2
+} from '../../constants';
 import { useAuth0 } from '../../react-auth0-wrapper';
 import './App.css';
 import Counter from './Counter';
@@ -50,6 +54,17 @@ function App({ feature, reducer }) {
 
   function disabled() {
     return !isAuthenticated || !items.length > 0 || !healthy;
+  }
+
+  function renderTextarea(item) {
+    if (feature.active(READONLY_TWEETSTORM_V2)) {
+      return <p>{item.tweet}</p>;
+    }
+    if (feature.active(READONLY_TWEETSTORM_V1)) {
+      return <textarea disabled readOnly rows={4} value={item.tweet} />;
+    } else {
+      return <textarea readOnly rows={4} value={item.tweet} />;
+    }
   }
 
   return loading ? (
@@ -95,7 +110,7 @@ function App({ feature, reducer }) {
         <ul data-testid="list">
           {items.map((item, index) => (
             <li key={index}>
-              <textarea readOnly rows={4} value={item.tweet} />
+              {renderTextarea(item)}
               <Counter length={item.length} />
             </li>
           ))}
