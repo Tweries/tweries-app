@@ -40,6 +40,10 @@
 
 - [x] Add counter(s)
 
+- [x] Integrate Amplitude
+
+- [x] Remove the sequence number if there is only one tweet
+
 ## Resources
 
 - https://create-react-app.dev/docs/deployment#github-pages-https-pagesgithubcom
