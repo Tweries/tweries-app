@@ -81,7 +81,9 @@ Object {
 
 exports[`reducer RESET_TWEETSTORM 1`] = `
 Object {
-  "feature": undefined,
+  "feature": Object {
+    "active": [Function],
+  },
   "hashtags": "",
   "healthy": true,
   "items": Array [],

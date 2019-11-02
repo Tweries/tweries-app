@@ -57,7 +57,7 @@ function reducer(state = makeInitialState({}), action) {
     }
     case types.RESET_TWEETSTORM: {
       return {
-        ...makeInitialState({}),
+        ...makeInitialState({ feature: state.feature }),
         healthy: state.healthy,
         notification: action.value,
         userId: state.userId
