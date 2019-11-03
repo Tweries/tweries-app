@@ -21,15 +21,24 @@ import Counter from './Counter';
 function App({ feature, initialState, reducer }) {
   const { isAuthenticated, loading } = useAuth0();
 
+  function setHealthy(error, data) {
+    let message = data;
+    let value = true;
+    if (error) {
+      message = error;
+      value = false;
+    }
+    console.log(message);
+    dispatch({ type: types.SET_HEALTHY, value });
+  }
+
   useEffect(() => {
     async function fetchData() {
       try {
         const data = await fetchHealth();
-        console.log(data);
-        dispatch({ type: types.SET_HEALTHY, value: true });
+        setHealthy(null, data);
       } catch (error) {
-        console.log(error);
-        dispatch({ type: types.SET_HEALTHY, value: false });
+        setHealthy(error);
       }
     }
     fetchData();
@@ -43,12 +52,14 @@ function App({ feature, initialState, reducer }) {
     dispatch
   ] = useReducer(reducer, {
     ...initialState,
+    hashtags: hashtags_,
     items: makeTweetstorm({
       feature,
       hashtags: hashtags_,
       linefeed: initialState.linefeed,
       source: source_
-    })
+    }),
+    source: source_
   });
 
   function disabled() {
