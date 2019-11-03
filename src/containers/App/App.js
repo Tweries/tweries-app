@@ -19,7 +19,13 @@ import './App.css';
 import Counter from './Counter';
 
 function App({ feature, initialState, reducer }) {
-  const { isAuthenticated, loading } = useAuth0();
+  const {
+    isAuthenticated,
+    loading,
+    loginWithRedirect,
+    logout,
+    user
+  } = useAuth0();
 
   function setHealthy(error, data) {
     let message = data;
@@ -43,6 +49,13 @@ function App({ feature, initialState, reducer }) {
     }
     fetchData();
   }, []);
+
+  useEffect(() => {
+    if (isAuthenticated && user) {
+      console.log('SET_USER_ID');
+      dispatch({ type: types.SET_USER_ID, value: user.sub });
+    }
+  }, [isAuthenticated, user]);
 
   const [hashtags_, setHashtags] = useLocalStorage('hashtags', '');
   const [source_, setSource] = useLocalStorage('source', '');
@@ -81,7 +94,13 @@ function App({ feature, initialState, reducer }) {
     <article>...</article>
   ) : (
     <article>
-      <NavBar dispatch={dispatch} />
+      <NavBar
+        dispatch={dispatch}
+        isAuthenticated={isAuthenticated}
+        loginWithRedirect={loginWithRedirect}
+        logout={logout}
+        user={user}
+      />
       <h1>Tweries</h1>
       <form onSubmit={e => e.preventDefault()}>
         <small className="App__small">

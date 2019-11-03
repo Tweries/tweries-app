@@ -1,17 +1,13 @@
-import React, { useEffect } from 'react';
-import { types } from '../../store/reducer';
-import { useAuth0 } from '../../react-auth0-wrapper';
+import React from 'react';
 import './NavBar.css';
 
-const NavBar = ({ dispatch }) => {
-  const { isAuthenticated, loginWithRedirect, logout, user } = useAuth0();
-
-  useEffect(() => {
-    if (isAuthenticated) {
-      dispatch({ type: types.SET_USER_ID, value: user.sub });
-    }
-  }, [dispatch, isAuthenticated, user]);
-
+const NavBar = ({
+  dispatch,
+  isAuthenticated,
+  loginWithRedirect,
+  logout,
+  user
+}) => {
   return (
     <header className="NavBar">
       {isAuthenticated ? (

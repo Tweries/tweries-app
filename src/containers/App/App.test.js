@@ -17,6 +17,13 @@ jest.mock('../../components/Footer/Footer');
 jest.mock('../../components/NavBar/NavBar');
 jest.mock('../../react-auth0-wrapper');
 
+const user = {
+  name: 'tweries-app',
+  picture:
+    'https://abs.twimg.com/sticky/default_profile_images/default_profile_normal.png',
+  sub: 'twitter|1183836409850814464'
+};
+
 describe('App', () => {
   beforeEach(() => {
     fetch.mockResponseOnce(JSON.stringify({ data: { message: 'baz' } }));
@@ -88,7 +95,8 @@ describe('App', () => {
     fetch.mockResponseOnce(JSON.stringify({ data: { message: 'qux' } })); // INFO: adding a second response
     useAuth0.mockImplementation(() => ({
       isAuthenticated: true,
-      loading: false
+      loading: false,
+      user
     }));
     const feature = { active: jest.fn() };
 
@@ -144,7 +152,8 @@ describe('App - errors', () => {
 
     useAuth0.mockImplementation(() => ({
       isAuthenticated: true,
-      loading: false
+      loading: false,
+      user
     }));
     const feature = { active: jest.fn() };
     const mockReducer = jest.fn((state, action) => reducer(state, action));
