@@ -106,9 +106,6 @@ exports[`App pick your own linefeed 1`] = `
 Array [
   Array [
     Object {
-      "feature": Object {
-        "active": [MockFunction],
-      },
       "hashtags": "",
       "healthy": false,
       "items": Array [],

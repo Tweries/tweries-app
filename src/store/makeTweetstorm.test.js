@@ -98,9 +98,9 @@ describe('hashtags, linefeed, source => tweetstorm', () => {
       }
     },
     {
+      activeFeature: FEATURE_V1,
       description: 'w/ an URL and SPACE_AFTER_PUNCTUATION_V1 disabled',
       props: {
-        feature: FEATURE_V1,
         hashtags: '',
         linefeed: '\n',
         source:
@@ -117,17 +117,14 @@ describe('hashtags, linefeed, source => tweetstorm', () => {
     }
   ];
 
-  scenarios.forEach(({ description, props }) => {
+  scenarios.forEach(({ activeFeature, description, props }) => {
     it(description, () => {
       const tweetstorm = makeTweetstorm({
-        ...props,
-        feature: {
-          active: feature =>
-            feature ===
-            (props.feature ? props.feature : SPACE_AFTER_PUNCTUATION_V1)
-        }
+        active: feature =>
+          feature ===
+          (activeFeature ? activeFeature : SPACE_AFTER_PUNCTUATION_V1)
       });
-      expect(tweetstorm).toMatchSnapshot();
+      expect(tweetstorm({ ...props })).toMatchSnapshot();
     });
   });
 });

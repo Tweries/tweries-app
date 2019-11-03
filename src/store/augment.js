@@ -1,4 +1,4 @@
-import { types } from './reducer';
+import { types } from './makeReducer';
 
 function augment({ logEvent, reducer }) {
   // TODO: fix name

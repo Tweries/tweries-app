@@ -1,4 +1,4 @@
-import reducer, { types } from './reducer';
+import makeReducer, { types } from './makeReducer';
 import makeInitialState from './makeInitialState';
 
 const USER_ID = 'twitter|1183836409850814464';
@@ -101,7 +101,7 @@ describe('reducer', () => {
 
   scenarios.forEach(({ description, props: { action, state } }) => {
     it(description, () => {
-      expect(reducer(state, action)).toMatchSnapshot();
+      expect(makeReducer(feature)(state, action)).toMatchSnapshot();
     });
   });
 });

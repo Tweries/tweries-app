@@ -2,7 +2,6 @@
 
 exports[`to match snapshot 1`] = `
 Object {
-  "feature": [MockFunction],
   "hashtags": "",
   "healthy": false,
   "items": Array [],

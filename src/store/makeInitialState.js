@@ -8,10 +8,9 @@ function makeInitialState({
   source = ''
 }) {
   return {
-    feature,
     hashtags,
     healthy: false,
-    items: makeTweetstorm({ feature, hashtags, linefeed, source }),
+    items: makeTweetstorm(feature)({ hashtags, linefeed, source }),
     linefeed,
     notification: null,
     source,

@@ -1,5 +1,5 @@
 import augment from './augment';
-import { types } from './reducer';
+import { types } from './makeReducer';
 
 describe('augment', () => {
   it('logAction UNKNOWN', () => {

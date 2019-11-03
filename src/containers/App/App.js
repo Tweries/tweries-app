@@ -9,7 +9,7 @@ import NavBar from '../../components/NavBar/NavBar';
 import ToastNotification from '../../components/ToastNotification/ToastNotification.js';
 import useLocalStorage from '../../hooks/useLocalStorage';
 import makeTweetstorm from '../../store/makeTweetstorm';
-import { types } from '../../store/reducer';
+import { types } from '../../store/makeReducer';
 import {
   READONLY_TWEETSTORM_V1,
   READONLY_TWEETSTORM_V2
@@ -66,8 +66,7 @@ function App({ feature, initialState, reducer }) {
   ] = useReducer(reducer, {
     ...initialState,
     hashtags: hashtags_,
-    items: makeTweetstorm({
-      feature,
+    items: makeTweetstorm(feature)({
       hashtags: hashtags_,
       linefeed: initialState.linefeed,
       source: source_

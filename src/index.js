@@ -5,7 +5,7 @@ import { render } from 'react-dom';
 import App from './containers/App/App';
 import augment from './store/augment';
 import makeInitialState from './store/makeInitialState';
-import reducer from './store/reducer';
+import makeReducer from './store/makeReducer';
 import config from './auth_config.json';
 import { AMPLITUDE_KEY, NEWLINE } from './constants';
 import feature from './feature';
@@ -25,15 +25,15 @@ const onRedirectCallback = appState => {
 };
 
 render(
-  <AmplitudeProvider
-    amplitudeInstance={amplitude.getInstance()}
-    apiKey={AMPLITUDE_KEY}
+  <Auth0Provider
+    client_id={config.clientId}
+    domain={config.domain}
+    onRedirectCallback={onRedirectCallback}
+    redirect_uri={window.location.origin}
   >
-    <Auth0Provider
-      client_id={config.clientId}
-      domain={config.domain}
-      onRedirectCallback={onRedirectCallback}
-      redirect_uri={window.location.origin}
+    <AmplitudeProvider
+      amplitudeInstance={amplitude.getInstance()}
+      apiKey={AMPLITUDE_KEY}
     >
       <Amplitude>
         {({ logEvent }) => (
@@ -43,12 +43,12 @@ render(
               feature,
               linefeed: NEWLINE
             })}
-            reducer={augment({ logEvent, reducer })}
+            reducer={augment({ logEvent, reducer: makeReducer(feature) })}
           />
         )}
       </Amplitude>
-    </Auth0Provider>
-  </AmplitudeProvider>,
+    </AmplitudeProvider>
+  </Auth0Provider>,
   document.getElementById('root')
 );
 

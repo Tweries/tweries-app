@@ -7,7 +7,7 @@ import {
 import React from 'react';
 import Footer from '../../components/Footer/Footer';
 import NavBar from '../../components/NavBar/NavBar';
-import reducer from '../../store/reducer';
+import makeReducer from '../../store/makeReducer';
 import { useAuth0 } from '../../react-auth0-wrapper';
 import App from './App';
 import makeInitialState from '../../store/makeInitialState';
@@ -46,7 +46,7 @@ describe('App', () => {
       <App
         feature={feature}
         initialState={makeInitialState({ feature })}
-        reducer={reducer}
+        reducer={makeReducer(feature)}
       />
     );
 
@@ -64,7 +64,7 @@ describe('App', () => {
       <App
         feature={feature}
         initialState={makeInitialState({ feature })}
-        reducer={reducer}
+        reducer={makeReducer(feature)}
       />
     );
 
@@ -77,7 +77,9 @@ describe('App', () => {
       loading: false
     }));
     const feature = { active: jest.fn() };
-    const mockReducer = jest.fn((state, action) => reducer(state, action));
+    const mockReducer = jest.fn((state, action) =>
+      makeReducer(feature)(state, action)
+    );
 
     const { getByTestId } = render(
       <App
@@ -104,7 +106,7 @@ describe('App', () => {
       <App
         feature={feature}
         initialState={makeInitialState({ feature })}
-        reducer={reducer}
+        reducer={makeReducer(feature)}
       />
     );
     fireEvent.change(getByTestId('source'), { target: { value: 'foo' } });
@@ -130,7 +132,9 @@ describe('App - errors', () => {
       loading: false
     }));
     const feature = { active: jest.fn() };
-    const mockReducer = jest.fn((state, action) => reducer(state, action));
+    const mockReducer = jest.fn((state, action) =>
+      makeReducer(feature)(state, action)
+    );
 
     render(
       <App
@@ -156,7 +160,9 @@ describe('App - errors', () => {
       user
     }));
     const feature = { active: jest.fn() };
-    const mockReducer = jest.fn((state, action) => reducer(state, action));
+    const mockReducer = jest.fn((state, action) =>
+      makeReducer(feature)(state, action)
+    );
     const initialState = makeInitialState({ feature });
 
     const { getByTestId } = render(
