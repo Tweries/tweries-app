@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`to match snapshot 1`] = `
+Object {
+  "feature": [MockFunction],
+  "hashtags": "",
+  "healthy": false,
+  "items": Array [],
+  "linefeed": ";;",
+  "notification": null,
+  "source": "",
+  "userId": null,
+}
+`;

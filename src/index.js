@@ -4,9 +4,10 @@ import React from 'react';
 import { render } from 'react-dom';
 import App from './containers/App/App';
 import augment from './store/augment';
+import makeInitialState from './store/makeInitialState';
 import reducer from './store/reducer';
 import config from './auth_config.json';
-import { AMPLITUDE_KEY } from './constants';
+import { AMPLITUDE_KEY, NEWLINE } from './constants';
 import feature from './feature';
 import './index.css';
 import { Auth0Provider } from './react-auth0-wrapper';
@@ -36,7 +37,14 @@ render(
     >
       <Amplitude>
         {({ logEvent }) => (
-          <App feature={feature} reducer={augment({ logEvent, reducer })} />
+          <App
+            feature={feature}
+            initialState={makeInitialState({
+              feature,
+              linefeed: NEWLINE
+            })}
+            reducer={augment({ logEvent, reducer })}
+          />
         )}
       </Amplitude>
     </Auth0Provider>

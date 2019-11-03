@@ -28,13 +28,13 @@ function reducer(state = makeInitialState({}), action) {
     case types.CHANGE_LINEFEED: {
       return {
         ...state,
-        linefeed: action.value,
         items: makeTweetstorm({
           feature: state.feature,
           hashtags: state.hashtags,
           linefeed: action.value,
           source: state.source
-        })
+        }),
+        linefeed: action.value
       };
     }
     case types.CHANGE_SOURCE: {

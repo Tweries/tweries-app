@@ -1,5 +1,4 @@
 import {
-  act,
   cleanup,
   render,
   fireEvent,
@@ -11,6 +10,8 @@ import NavBar from '../../components/NavBar/NavBar';
 import reducer from '../../store/reducer';
 import { useAuth0 } from '../../react-auth0-wrapper';
 import App from './App';
+import makeInitialState from '../../store/makeInitialState';
+import { NEWLINE } from '../../constants';
 
 jest.mock('../../components/Footer/Footer');
 jest.mock('../../components/NavBar/NavBar');
@@ -34,7 +35,13 @@ describe('App', () => {
     }));
     const feature = { active: jest.fn() };
 
-    const { container } = render(<App feature={feature} reducer={reducer} />);
+    const { container } = render(
+      <App
+        feature={feature}
+        initialState={makeInitialState({ feature })}
+        reducer={reducer}
+      />
+    );
 
     expect(container).toMatchSnapshot();
   });
@@ -46,7 +53,13 @@ describe('App', () => {
     }));
     const feature = { active: jest.fn() };
 
-    const { container } = render(<App feature={feature} reducer={reducer} />);
+    const { container } = render(
+      <App
+        feature={feature}
+        initialState={makeInitialState({ feature })}
+        reducer={reducer}
+      />
+    );
 
     expect(container).toMatchSnapshot();
   });
@@ -60,10 +73,14 @@ describe('App', () => {
     const mockReducer = jest.fn((state, action) => reducer(state, action));
 
     const { getByTestId } = render(
-      <App feature={feature} reducer={mockReducer} />
+      <App
+        feature={feature}
+        initialState={makeInitialState({ feature, linefeed: NEWLINE })}
+        reducer={mockReducer}
+      />
     );
-
     fireEvent.click(getByTestId('custom'));
+
     expect(mockReducer.mock.calls).toMatchSnapshot();
   });
 
@@ -76,7 +93,11 @@ describe('App', () => {
     const feature = { active: jest.fn() };
 
     const { container, getByTestId } = render(
-      <App feature={feature} reducer={reducer} />
+      <App
+        feature={feature}
+        initialState={makeInitialState({ feature })}
+        reducer={reducer}
+      />
     );
     fireEvent.change(getByTestId('source'), { target: { value: 'foo' } });
     fireEvent.change(getByTestId('hashtags'), { target: { value: '#bar' } });
@@ -91,18 +112,55 @@ describe('App', () => {
 
 describe('App - errors', () => {
   it('fetchHealth error', () => {
+    fetch.resetMocks();
     fetch.mockRejectOnce(new Error('Oh Noes!'));
+    Footer.mockImplementation(() => <div>Footer</div>);
+    NavBar.mockImplementation(() => <div>NavBar</div>);
+
     useAuth0.mockImplementation(() => ({
       isAuthenticated: false,
       loading: false
     }));
     const feature = { active: jest.fn() };
-    const mockReducer = jest.fn((state, action) => {
-      console.log(action);
-      return reducer(state, action);
-    });
+    const mockReducer = jest.fn((state, action) => reducer(state, action));
 
-    render(<App feature={feature} reducer={mockReducer} />);
+    render(
+      <App
+        feature={feature}
+        initialState={makeInitialState({ feature })}
+        reducer={mockReducer}
+      />
+    );
+
+    // TODO: add assertion
+  });
+
+  it('fetchTweetstorm error', async () => {
+    fetch.resetMocks();
+    fetch.mockResponseOnce(JSON.stringify({ data: { message: 'baz' } }));
+    fetch.mockRejectOnce(new Error('Oh Noes!'));
+    Footer.mockImplementation(() => <div>Footer</div>);
+    NavBar.mockImplementation(() => <div>NavBar</div>);
+
+    useAuth0.mockImplementation(() => ({
+      isAuthenticated: true,
+      loading: false
+    }));
+    const feature = { active: jest.fn() };
+    const mockReducer = jest.fn((state, action) => reducer(state, action));
+    const initialState = makeInitialState({ feature });
+
+    const { getByTestId } = render(
+      <App
+        feature={feature}
+        initialState={initialState}
+        reducer={mockReducer}
+      />
+    );
+    fireEvent.change(getByTestId('source'), { target: { value: 'foo' } });
+    await waitForDomChange();
+    fireEvent.click(getByTestId('tweet'));
+    await waitForDomChange();
 
     // TODO: add assertion
   });

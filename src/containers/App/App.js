@@ -8,10 +8,9 @@ import LinefeedPicker from '../../components/LinefeedPicker/LinefeedPicker';
 import NavBar from '../../components/NavBar/NavBar';
 import ToastNotification from '../../components/ToastNotification/ToastNotification.js';
 import useLocalStorage from '../../hooks/useLocalStorage';
-import makeInitialState from '../../store/makeInitialState';
+import makeTweetstorm from '../../store/makeTweetstorm';
 import { types } from '../../store/reducer';
 import {
-  NEWLINE,
   READONLY_TWEETSTORM_V1,
   READONLY_TWEETSTORM_V2
 } from '../../constants';
@@ -19,7 +18,7 @@ import { useAuth0 } from '../../react-auth0-wrapper';
 import './App.css';
 import Counter from './Counter';
 
-function App({ feature, reducer }) {
+function App({ feature, initialState, reducer }) {
   const { isAuthenticated, loading } = useAuth0();
 
   useEffect(() => {
@@ -42,15 +41,15 @@ function App({ feature, reducer }) {
   const [
     { hashtags, healthy, items, notification, source, userId },
     dispatch
-  ] = useReducer(
-    reducer,
-    makeInitialState({
+  ] = useReducer(reducer, {
+    ...initialState,
+    items: makeTweetstorm({
       feature,
       hashtags: hashtags_,
-      linefeed: NEWLINE,
+      linefeed: initialState.linefeed,
       source: source_
     })
-  );
+  });
 
   function disabled() {
     return !isAuthenticated || !items.length > 0 || !healthy;
