@@ -1,5 +1,6 @@
 import { types } from './makeReducer';
 
+// TODO: change it into some sort of middleware(s)
 function augment({ logEvent, reducer }) {
   // TODO: fix name
   function logAction(state, action) {
