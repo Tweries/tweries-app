@@ -2,7 +2,7 @@
   "name": "tweries-app",
   "version": "0.24.1",
   "private": true,
-  "description": "Tweries, a tweet-storm-helper app which break up a long paragraph into multiple tweets.",
+  "description": "Tweries, a tweet-storm-helper app that breaks up a long paragraph into multiple tweets.",
   "dependencies": {
     "@amplitude/react-amplitude": "^1.0.0",
     "@auth0/auth0-spa-js": "^1.3.2",
