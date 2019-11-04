@@ -1,6 +1,6 @@
 {
   "name": "tweries-app",
-  "version": "0.24.1",
+  "version": "0.24.2",
   "private": true,
   "description": "Tweries, a tweet-storm-helper app that breaks up a long paragraph into multiple tweets.",
   "dependencies": {
@@ -17,15 +17,16 @@
     "voca": "^1.4.0"
   },
   "scripts": {
-    "build": "react-scripts build",
-    "build:style": "tailwind build src/styles/index.css -o src/styles/tailwind.css",
+    "build": "npm run build:css && react-scripts build",
+    "build:css": "postcss src/styles/index.css -o src/index.css",
     "deploy": "gh-pages -d build",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
     "prettier": "prettier 'src/**/*.{css,js,json}'",
     "prettier:fix": "npm run prettier -- --write",
-    "start": "react-scripts start",
-    "test": "react-scripts test"
+    "start": "npm run watch:css & react-scripts start",
+    "test": "react-scripts test",
+    "watch:css": "postcss src/styles/index.css -o src/index.css -w"
   },
   "eslintConfig": {
     "extends": "react-app"

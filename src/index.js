@@ -6,7 +6,7 @@ import App from './containers/App/App';
 import augment from './store/augment';
 import makeInitialState from './store/makeInitialState';
 import makeReducer from './store/makeReducer';
-import './styles/tailwind.css';
+import './index.css';
 import config from './auth_config.json';
 import { AMPLITUDE_KEY, NEWLINE } from './constants';
 import feature from './feature';
