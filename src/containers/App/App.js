@@ -1,4 +1,3 @@
-import classnames from 'classnames';
 import React, { useEffect, useReducer } from 'react';
 import { version } from '../../../package.json';
 import fetchHealth from '../../api/fetchHealth.js';
@@ -16,6 +15,7 @@ import {
 } from '../../constants';
 import { useAuth0 } from '../../react-auth0-wrapper';
 import Counter from './Counter';
+import TweetstormButton from './TweetstormButton';
 
 function App({ feature, initialState, reducer }) {
   const {
@@ -95,6 +95,34 @@ function App({ feature, initialState, reducer }) {
     }
   }
 
+  function resetTweetstorm(error, data) {
+    let message = 'The tweetstorm has been created successfully.';
+    let type = 'success';
+    if (error) {
+      message = error.message;
+      type = 'danger';
+    }
+    console.log(error, data);
+    dispatch({
+      type: types.RESET_TWEETSTORM,
+      value: {
+        message,
+        type
+      }
+    });
+    setSource('');
+    setHashtags('');
+  }
+
+  async function onClick() {
+    try {
+      const data = await fetchTweetstorm({ items, userId });
+      resetTweetstorm(null, data);
+    } catch (error) {
+      resetTweetstorm(error);
+    }
+  }
+
   return loading ? (
     <article className="container content-center flex flex-col items-center mx-auto m-1 p-4">
       ...
@@ -153,42 +181,7 @@ function App({ feature, initialState, reducer }) {
             </li>
           ))}
         </ul>
-        <button
-          disabled={disabled()}
-          className={classnames(
-            'bg-gray-300 border border-gray-500 font-bold px-4 mb-2 rounded self-center',
-            {
-              'bg-blue-600 text-white': !disabled(),
-              'cursor-auto': disabled()
-            }
-          )}
-          data-testid="tweet"
-          onClick={async () => {
-            try {
-              const data = await fetchTweetstorm({ items, userId });
-              console.log(data);
-              dispatch({
-                type: types.RESET_TWEETSTORM,
-                value: {
-                  message: 'The tweetstorm has been created successfully.',
-                  type: 'success'
-                }
-              });
-              setSource('');
-              setHashtags('');
-            } catch (error) {
-              console.log(error);
-              dispatch({
-                type: types.RESET_TWEETSTORM,
-                value: { message: error.message, type: 'danger' }
-              });
-              setSource('');
-              setHashtags('');
-            }
-          }}
-        >
-          Tweet
-        </button>
+        <TweetstormButton disabled={disabled()} onClick={onClick} />
       </form>
       <ToastNotification
         notification={notification}
