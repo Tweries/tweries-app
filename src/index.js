@@ -6,10 +6,10 @@ import App from './containers/App/App';
 import augment from './store/augment';
 import makeInitialState from './store/makeInitialState';
 import makeReducer from './store/makeReducer';
+import './styles/tailwind.css';
 import config from './auth_config.json';
 import { AMPLITUDE_KEY, NEWLINE } from './constants';
 import feature from './feature';
-import './index.css';
 import { Auth0Provider } from './react-auth0-wrapper';
 import * as serviceWorker from './serviceWorker';
 

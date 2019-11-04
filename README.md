@@ -73,3 +73,7 @@
 - https://auth0.com/docs/connections/social/twitter#6-access-twitter-api
 
 - https://favicon.io/favicon-generator/
+
+- https://blog.logrocket.com/create-react-app-and-tailwindcss/
+
+- https://tailwindcss.com/docs/configuration
