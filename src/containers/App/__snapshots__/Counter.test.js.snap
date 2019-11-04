@@ -3,7 +3,7 @@
 exports[`Counter length 0 1`] = `
 <div>
   <small
-    class="App__counter"
+    class="mb-2 text-gray-700 text-right"
   />
 </div>
 `;
@@ -11,7 +11,7 @@ exports[`Counter length 0 1`] = `
 exports[`Counter length 123 1`] = `
 <div>
   <small
-    class="App__counter"
+    class="mb-2 text-gray-700 text-right"
   >
     123
   </small>

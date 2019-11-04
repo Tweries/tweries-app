@@ -3,12 +3,13 @@
 exports[`ToastNotification danger 1`] = `
 <div>
   <div
-    class="ToastNotification ToastNotification--danger"
+    class="border flex justify-between mb-2 p-2 rounded bg-red-100 border-red-800 text-red-800"
   >
     <span>
       Oh Noes!
     </span>
     <button
+      class="font-bold"
       data-testid="dismiss"
     >
       ×
@@ -22,12 +23,13 @@ exports[`ToastNotification empty 1`] = `<div />`;
 exports[`ToastNotification success 1`] = `
 <div>
   <div
-    class="ToastNotification ToastNotification--success"
+    class="border flex justify-between mb-2 p-2 rounded bg-green-100 border-green-800 text-green-800"
   >
     <span>
       Success!
     </span>
     <button
+      class="font-bold"
       data-testid="dismiss"
     >
       ×

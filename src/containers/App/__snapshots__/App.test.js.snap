@@ -2,52 +2,58 @@
 
 exports[`App generate tweetstorm and dismiss notification 1`] = `
 <div>
-  <article>
+  <article
+    class="container content-center mx-auto m-1 p-4"
+  >
     <div>
       NavBar
     </div>
-    <h1>
+    <h1
+      class="font-bold logo my-4 text-5xl text-center"
+    >
       Tweries
     </h1>
-    <form>
+    <form
+      class="flex flex-col"
+    >
       <small
-        class="App__small"
+        class="flex mb-8"
       >
         Start typing, to insert a break prior to reaching 280 characters please use
          
         <ul
-          class="LinefeedPicker__ul"
+          class="flex"
         >
-          <li
-            class="LinefeedPicker__li"
-          >
+          <li>
             <input
               checked=""
+              class="ml-1"
               data-testid="newline"
               name="linefeed"
               type="radio"
               value="newline"
             />
             <label
+              class="ml-1"
               for="newline"
             >
               Newline(s)
             </label>
           </li>
-          <li
-            class="LinefeedPicker__li"
-          >
+          <li>
             <input
+              class="ml-1"
               data-testid="custom"
               name="linefeed"
               type="radio"
               value="custom"
             />
             <label
+              class="ml-1"
               for="louie"
             >
               <input
-                class="LinefeedPicker__linefeed"
+                class="bg-gray-200 border border-gray-500 rounded text-center"
                 data-testid="linefeed"
                 disabled=""
                 maxlength="4"
@@ -60,27 +66,30 @@ exports[`App generate tweetstorm and dismiss notification 1`] = `
         </ul>
       </small>
       <textarea
+        class="bg-gray-200 border border-gray-500 p-2 rounded"
         data-testid="source"
         placeholder="What's happening?"
         rows="8"
       />
       <small
-        class="App__counter"
+        class="mb-2 text-gray-700 text-right"
       />
       <textarea
+        class="bg-gray-200 border border-gray-500 p-2 rounded"
         data-testid="hashtags"
         placeholder="#hashtags"
         rows="1"
         type="text"
       />
       <small
-        class="App__counter"
+        class="mb-2 text-gray-700 text-right"
       />
       <ul
+        class="flex flex-col"
         data-testid="list"
       />
       <button
-        class="App__button App__button--disabled"
+        class="bg-gray-300 border border-gray-500 font-bold px-4 mb-2 rounded self-center cursor-auto"
         data-testid="tweet"
         disabled=""
       >
@@ -96,7 +105,9 @@ exports[`App generate tweetstorm and dismiss notification 1`] = `
 
 exports[`App loading 1`] = `
 <div>
-  <article>
+  <article
+    class="container content-center flex flex-col items-center mx-auto m-1 p-4"
+  >
     ...
   </article>
 </div>
@@ -125,52 +136,58 @@ Array [
 
 exports[`App unauthenticated user 1`] = `
 <div>
-  <article>
+  <article
+    class="container content-center mx-auto m-1 p-4"
+  >
     <div>
       NavBar
     </div>
-    <h1>
+    <h1
+      class="font-bold logo my-4 text-5xl text-center"
+    >
       Tweries
     </h1>
-    <form>
+    <form
+      class="flex flex-col"
+    >
       <small
-        class="App__small"
+        class="flex mb-8"
       >
         Start typing, to insert a break prior to reaching 280 characters please use
          
         <ul
-          class="LinefeedPicker__ul"
+          class="flex"
         >
-          <li
-            class="LinefeedPicker__li"
-          >
+          <li>
             <input
               checked=""
+              class="ml-1"
               data-testid="newline"
               name="linefeed"
               type="radio"
               value="newline"
             />
             <label
+              class="ml-1"
               for="newline"
             >
               Newline(s)
             </label>
           </li>
-          <li
-            class="LinefeedPicker__li"
-          >
+          <li>
             <input
+              class="ml-1"
               data-testid="custom"
               name="linefeed"
               type="radio"
               value="custom"
             />
             <label
+              class="ml-1"
               for="louie"
             >
               <input
-                class="LinefeedPicker__linefeed"
+                class="bg-gray-200 border border-gray-500 rounded text-center"
                 data-testid="linefeed"
                 disabled=""
                 maxlength="4"
@@ -183,27 +200,30 @@ exports[`App unauthenticated user 1`] = `
         </ul>
       </small>
       <textarea
+        class="bg-gray-200 border border-gray-500 p-2 rounded"
         data-testid="source"
         placeholder="What's happening?"
         rows="8"
       />
       <small
-        class="App__counter"
+        class="mb-2 text-gray-700 text-right"
       />
       <textarea
+        class="bg-gray-200 border border-gray-500 p-2 rounded"
         data-testid="hashtags"
         placeholder="#hashtags"
         rows="1"
         type="text"
       />
       <small
-        class="App__counter"
+        class="mb-2 text-gray-700 text-right"
       />
       <ul
+        class="flex flex-col"
         data-testid="list"
       />
       <button
-        class="App__button App__button--disabled"
+        class="bg-gray-300 border border-gray-500 font-bold px-4 mb-2 rounded self-center cursor-auto"
         data-testid="tweet"
         disabled=""
       >
