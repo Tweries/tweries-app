@@ -1,5 +1,4 @@
 import React from 'react';
-import './NavBar.css';
 
 const NavBar = ({
   dispatch,
@@ -9,10 +8,15 @@ const NavBar = ({
   user
 }) => {
   return (
-    <header className="NavBar">
+    <header className="flex flex-col items-center">
       {isAuthenticated ? (
         [
-          <img alt={user.name} key="img" src={user.picture} />,
+          <img
+            alt={user.name}
+            className="border border-gray-500 rounded"
+            key="img"
+            src={user.picture}
+          />,
           <span key="span">
             <span aria-label="hello" role="img">
               👋
@@ -20,6 +24,7 @@ const NavBar = ({
             {user.name}
           </span>,
           <button
+            className="bg-gray-300 border border-gray-500 font-bold px-4 rounded"
             data-testid="logout"
             key="button"
             onClick={() =>
@@ -32,7 +37,11 @@ const NavBar = ({
           </button>
         ]
       ) : (
-        <button data-testid="login" onClick={() => loginWithRedirect({})}>
+        <button
+          className="bg-gray-300 border border-gray-500 font-bold px-4 rounded"
+          data-testid="login"
+          onClick={() => loginWithRedirect({})}
+        >
           Log in
         </button>
       )}

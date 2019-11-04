@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { LINEFEED, NEWLINE } from '../../constants';
-import './LinefeedPicker.css';
 
 const types = {
   custom: 'custom',
@@ -10,7 +9,7 @@ const types = {
 function Custom({ disabled, onChange, value }) {
   return (
     <input
-      className="LinefeedPicker__linefeed"
+      className="bg-gray-200 border border-gray-500 rounded text-center"
       data-testid="linefeed"
       disabled={disabled}
       maxLength="4"
@@ -27,9 +26,10 @@ function LinefeedPicker({ feature, onChange }) {
   const [custom, setCustom] = useState(LINEFEED);
 
   return (
-    <ul className="LinefeedPicker__ul">
-      <li className="LinefeedPicker__li">
+    <ul className="flex">
+      <li>
         <input
+          className="ml-1"
           data-testid="newline"
           defaultChecked
           name="linefeed"
@@ -40,10 +40,13 @@ function LinefeedPicker({ feature, onChange }) {
           type="radio"
           value="newline"
         />
-        <label htmlFor="newline">Newline(s)</label>
+        <label className="ml-1" htmlFor="newline">
+          Newline(s)
+        </label>
       </li>
-      <li className="LinefeedPicker__li">
+      <li>
         <input
+          className="ml-1"
           data-testid="custom"
           name="linefeed"
           onChange={() => {
@@ -53,7 +56,7 @@ function LinefeedPicker({ feature, onChange }) {
           type="radio"
           value="custom"
         />
-        <label htmlFor="louie">
+        <label className="ml-1" htmlFor="louie">
           <Custom
             disabled={type !== types.custom}
             onChange={e => {

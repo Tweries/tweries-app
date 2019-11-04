@@ -15,7 +15,6 @@ import {
   READONLY_TWEETSTORM_V2
 } from '../../constants';
 import { useAuth0 } from '../../react-auth0-wrapper';
-import './App.css';
 import Counter from './Counter';
 
 function App({ feature, initialState, reducer }) {
@@ -52,7 +51,6 @@ function App({ feature, initialState, reducer }) {
 
   useEffect(() => {
     if (isAuthenticated && user) {
-      console.log('SET_USER_ID');
       dispatch({ type: types.SET_USER_ID, value: user.sub });
     }
   }, [isAuthenticated, user]);
@@ -83,16 +81,26 @@ function App({ feature, initialState, reducer }) {
       return <p>{item.tweet}</p>;
     }
     if (feature.active(READONLY_TWEETSTORM_V1)) {
-      return <textarea disabled readOnly rows={4} value={item.tweet} />;
+      return (
+        <textarea
+          disabled
+          className="bg-blue-200 p-2 rounded text-gray-700"
+          readOnly
+          rows={3}
+          value={item.tweet}
+        />
+      );
     } else {
       return <textarea readOnly rows={4} value={item.tweet} />;
     }
   }
 
   return loading ? (
-    <article>...</article>
+    <article className="container content-center flex flex-col items-center mx-auto m-1 p-4">
+      ...
+    </article>
   ) : (
-    <article>
+    <article className="container content-center mx-auto m-1 p-4">
       <NavBar
         dispatch={dispatch}
         isAuthenticated={isAuthenticated}
@@ -100,9 +108,9 @@ function App({ feature, initialState, reducer }) {
         logout={logout}
         user={user}
       />
-      <h1>Tweries</h1>
-      <form onSubmit={e => e.preventDefault()}>
-        <small className="App__small">
+      <h1 className="font-bold logo my-4 text-5xl text-center">Tweries</h1>
+      <form className="flex flex-col" onSubmit={e => e.preventDefault()}>
+        <small className="flex mb-8">
           Start typing, to insert a break prior to reaching 280 characters
           please use{' '}
           <LinefeedPicker
@@ -113,6 +121,7 @@ function App({ feature, initialState, reducer }) {
           />
         </small>
         <textarea
+          className="bg-gray-200 border border-gray-500 p-2 rounded"
           data-testid="source"
           placeholder="What's happening?"
           rows={8}
@@ -124,6 +133,7 @@ function App({ feature, initialState, reducer }) {
         />
         <Counter length={source.length} />
         <textarea
+          className="bg-gray-200 border border-gray-500 p-2 rounded"
           data-testid="hashtags"
           onChange={e => {
             dispatch({ type: types.CHANGE_HASHTAGS, value: e.target.value });
@@ -135,20 +145,24 @@ function App({ feature, initialState, reducer }) {
           value={hashtags}
         />
         <Counter length={hashtags.length} />
-        <ul data-testid="list">
+        <ul className="flex flex-col" data-testid="list">
           {items.map((item, index) => (
-            <li key={index}>
+            <li className="flex flex-col" key={index}>
               {renderTextarea(item)}
               <Counter length={item.length} />
             </li>
           ))}
         </ul>
         <button
-          className={classnames('App__button', {
-            'App__button--disabled': disabled()
-          })}
-          data-testid="tweet"
           disabled={disabled()}
+          className={classnames(
+            'bg-gray-300 border border-gray-500 font-bold px-4 mb-2 rounded self-center',
+            {
+              'bg-blue-600 text-white': !disabled(),
+              'cursor-auto': disabled()
+            }
+          )}
+          data-testid="tweet"
           onClick={async () => {
             try {
               const data = await fetchTweetstorm({ items, userId });
