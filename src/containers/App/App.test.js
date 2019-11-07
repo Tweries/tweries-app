@@ -76,7 +76,7 @@ describe('App', () => {
       isAuthenticated: false,
       loading: false
     }));
-    const feature = { active: jest.fn() };
+    const feature = { active: jest.fn(() => true) };
     const mockReducer = jest.fn((state, action) =>
       makeReducer(feature)(state, action)
     );

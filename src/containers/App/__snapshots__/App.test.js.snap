@@ -17,53 +17,14 @@ exports[`App generate tweetstorm and dismiss notification 1`] = `
       class="flex flex-col"
     >
       <small
-        class="flex mb-8"
+        class="flex mb-4"
       >
         Start typing, to insert a break prior to reaching 280 characters please use
-         
-        <ul
-          class="flex"
+        <span
+          class="font-bold ml-1"
         >
-          <li>
-            <input
-              checked=""
-              class="ml-1"
-              data-testid="newline"
-              name="linefeed"
-              type="radio"
-              value="newline"
-            />
-            <label
-              class="ml-1"
-              for="newline"
-            >
-              Newline(s)
-            </label>
-          </li>
-          <li>
-            <input
-              class="ml-1"
-              data-testid="custom"
-              name="linefeed"
-              type="radio"
-              value="custom"
-            />
-            <label
-              class="ml-1"
-              for="louie"
-            >
-              <input
-                class="bg-gray-200 border border-gray-500 rounded text-center"
-                data-testid="linefeed"
-                disabled=""
-                maxlength="4"
-                placeholder=";;"
-                size="4"
-                value=";;"
-              />
-            </label>
-          </li>
-        </ul>
+          Newline(s)
+        </span>
       </small>
       <textarea
         class="bg-gray-200 border border-gray-500 p-2 rounded"
@@ -151,53 +112,14 @@ exports[`App unauthenticated user 1`] = `
       class="flex flex-col"
     >
       <small
-        class="flex mb-8"
+        class="flex mb-4"
       >
         Start typing, to insert a break prior to reaching 280 characters please use
-         
-        <ul
-          class="flex"
+        <span
+          class="font-bold ml-1"
         >
-          <li>
-            <input
-              checked=""
-              class="ml-1"
-              data-testid="newline"
-              name="linefeed"
-              type="radio"
-              value="newline"
-            />
-            <label
-              class="ml-1"
-              for="newline"
-            >
-              Newline(s)
-            </label>
-          </li>
-          <li>
-            <input
-              class="ml-1"
-              data-testid="custom"
-              name="linefeed"
-              type="radio"
-              value="custom"
-            />
-            <label
-              class="ml-1"
-              for="louie"
-            >
-              <input
-                class="bg-gray-200 border border-gray-500 rounded text-center"
-                data-testid="linefeed"
-                disabled=""
-                maxlength="4"
-                placeholder=";;"
-                size="4"
-                value=";;"
-              />
-            </label>
-          </li>
-        </ul>
+          Newline(s)
+        </span>
       </small>
       <textarea
         class="bg-gray-200 border border-gray-500 p-2 rounded"
