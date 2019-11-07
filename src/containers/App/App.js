@@ -10,6 +10,7 @@ import useLocalStorage from '../../hooks/useLocalStorage';
 import makeTweetstorm from '../../store/makeTweetstorm';
 import { types } from '../../store/makeReducer';
 import {
+  LINEFEED_PICKER_V1,
   READONLY_TWEETSTORM_V1,
   READONLY_TWEETSTORM_V2
 } from '../../constants';
@@ -138,15 +139,19 @@ function App({ feature, initialState, reducer }) {
       />
       <h1 className="font-bold logo my-4 text-5xl text-center">Tweries</h1>
       <form className="flex flex-col" onSubmit={e => e.preventDefault()}>
-        <small className="flex mb-8">
+        <small className="flex mb-4">
           Start typing, to insert a break prior to reaching 280 characters
-          please use{' '}
-          <LinefeedPicker
-            feature={feature}
-            onChange={value => {
-              dispatch({ type: types.CHANGE_LINEFEED, value });
-            }}
-          />
+          please use
+          {feature.active(LINEFEED_PICKER_V1) ? (
+            <LinefeedPicker
+              feature={feature}
+              onChange={value => {
+                dispatch({ type: types.CHANGE_LINEFEED, value });
+              }}
+            />
+          ) : (
+            <span className="font-bold ml-1">Newline(s)</span>
+          )}
         </small>
         <textarea
           className="bg-gray-200 border border-gray-500 p-2 rounded"

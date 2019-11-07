@@ -2,13 +2,14 @@ import { Amplitude, AmplitudeProvider } from '@amplitude/react-amplitude';
 import amplitude from 'amplitude-js';
 import React from 'react';
 import { render } from 'react-dom';
+import Layout from './components/Layout/Layout';
 import App from './containers/App/App';
 import augment from './store/augment';
 import makeInitialState from './store/makeInitialState';
 import makeReducer from './store/makeReducer';
 import './index.css';
 import config from './auth_config.json';
-import { AMPLITUDE_KEY, NEWLINE } from './constants';
+import { AMPLITUDE_KEY, LAYOUT_V1, NEWLINE } from './constants';
 import feature from './feature';
 import { Auth0Provider } from './react-auth0-wrapper';
 import * as serviceWorker from './serviceWorker';
@@ -24,6 +25,22 @@ const onRedirectCallback = appState => {
   );
 };
 
+function renderApp(logEvent) {
+  if (feature.active(LAYOUT_V1)) {
+    return <Layout />;
+  }
+  return (
+    <App
+      feature={feature}
+      initialState={makeInitialState({
+        feature,
+        linefeed: NEWLINE
+      })}
+      reducer={augment({ logEvent, reducer: makeReducer(feature) })}
+    />
+  );
+}
+
 render(
   <Auth0Provider
     client_id={config.clientId}
@@ -35,18 +52,7 @@ render(
       amplitudeInstance={amplitude.getInstance()}
       apiKey={AMPLITUDE_KEY}
     >
-      <Amplitude>
-        {({ logEvent }) => (
-          <App
-            feature={feature}
-            initialState={makeInitialState({
-              feature,
-              linefeed: NEWLINE
-            })}
-            reducer={augment({ logEvent, reducer: makeReducer(feature) })}
-          />
-        )}
-      </Amplitude>
+      <Amplitude>{({ logEvent }) => renderApp(logEvent)}</Amplitude>
     </AmplitudeProvider>
   </Auth0Provider>,
   document.getElementById('root')
