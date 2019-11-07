@@ -79,7 +79,7 @@ function App({ feature, initialState, reducer }) {
 
   function renderTextarea(item) {
     if (feature.active(READONLY_TWEETSTORM_V2)) {
-      return <p>{item.tweet}</p>;
+      return <p className="p-2 text-gray-700">{item.tweet}</p>;
     }
     if (feature.active(READONLY_TWEETSTORM_V1)) {
       return (
@@ -139,7 +139,7 @@ function App({ feature, initialState, reducer }) {
       />
       <h1 className="font-bold logo my-4 text-5xl text-center">Tweries</h1>
       <form className="flex flex-col" onSubmit={e => e.preventDefault()}>
-        <small className="flex mb-4">
+        <small className="mb-4">
           Start typing, to insert a break prior to reaching 280 characters
           please use
           {feature.active(LINEFEED_PICKER_V1) ? (

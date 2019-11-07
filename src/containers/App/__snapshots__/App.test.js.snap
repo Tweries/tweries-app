@@ -17,7 +17,7 @@ exports[`App generate tweetstorm and dismiss notification 1`] = `
       class="flex flex-col"
     >
       <small
-        class="flex mb-4"
+        class="mb-4"
       >
         Start typing, to insert a break prior to reaching 280 characters please use
         <span
@@ -112,7 +112,7 @@ exports[`App unauthenticated user 1`] = `
       class="flex flex-col"
     >
       <small
-        class="flex mb-4"
+        class="mb-4"
       >
         Start typing, to insert a break prior to reaching 280 characters please use
         <span
