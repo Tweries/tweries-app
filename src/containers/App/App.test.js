@@ -12,7 +12,6 @@ import feature from '../../feature';
 import { useAuth0 } from '../../react-auth0-wrapper';
 import App from './App';
 import makeInitialState from '../../store/makeInitialState';
-import { NEWLINE } from '../../constants';
 
 jest.mock('../../components/Footer/Footer');
 jest.mock('../../components/NavBar/NavBar');
@@ -68,28 +67,6 @@ describe('App', () => {
     );
 
     expect(container).toMatchSnapshot();
-  });
-
-  it('pick your own linefeed', () => {
-    useAuth0.mockImplementation(() => ({
-      isAuthenticated: false,
-      loading: false
-    }));
-    const feature = { active: jest.fn(() => true) };
-    const mockReducer = jest.fn((state, action) =>
-      makeReducer(feature)(state, action)
-    );
-
-    const { getByTestId } = render(
-      <App
-        feature={feature}
-        initialState={makeInitialState({ feature, linefeed: NEWLINE })}
-        reducer={mockReducer}
-      />
-    );
-    fireEvent.click(getByTestId('custom'));
-
-    expect(mockReducer.mock.calls).toMatchSnapshot();
   });
 
   it('generate tweetstorm and dismiss notification', async () => {
@@ -156,6 +133,7 @@ describe('App - errors', () => {
       loading: false,
       user
     }));
+    const feature = { active: () => false };
     const mockReducer = jest.fn((state, action) =>
       makeReducer(feature)(state, action)
     );

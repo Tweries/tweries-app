@@ -19,9 +19,9 @@ exports[`App generate tweetstorm and dismiss notification 1`] = `
       <small
         class="mb-4"
       >
-        Start typing, to insert a break prior to reaching 280 characters please use
+        Start typing, to insert a break prior to reaching 280 characters please use 
         <span
-          class="font-bold ml-1"
+          class="font-bold"
         >
           Newline(s)
         </span>
@@ -67,32 +67,11 @@ exports[`App generate tweetstorm and dismiss notification 1`] = `
 exports[`App loading 1`] = `
 <div>
   <article
-    class="container content-center flex flex-col items-center mx-auto m-1 p-4"
+    class="container content-center mx-auto m-1 p-4 text-center"
   >
     ...
   </article>
 </div>
-`;
-
-exports[`App pick your own linefeed 1`] = `
-Array [
-  Array [
-    Object {
-      "hashtags": "",
-      "healthy": false,
-      "items": Array [],
-      "linefeed": "
-",
-      "notification": null,
-      "source": "",
-      "userId": null,
-    },
-    Object {
-      "type": "CHANGE_LINEFEED",
-      "value": ";;",
-    },
-  ],
-]
 `;
 
 exports[`App unauthenticated user 1`] = `
@@ -114,9 +93,9 @@ exports[`App unauthenticated user 1`] = `
       <small
         class="mb-4"
       >
-        Start typing, to insert a break prior to reaching 280 characters please use
+        Start typing, to insert a break prior to reaching 280 characters please use 
         <span
-          class="font-bold ml-1"
+          class="font-bold"
         >
           Newline(s)
         </span>

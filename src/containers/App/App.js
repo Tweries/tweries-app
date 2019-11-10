@@ -3,17 +3,12 @@ import { version } from '../../../package.json';
 import fetchHealth from '../../api/fetchHealth.js';
 import fetchTweetstorm from '../../api/fetchTweetstorm.js';
 import Footer from '../../components/Footer/Footer';
-import LinefeedPicker from '../../components/LinefeedPicker/LinefeedPicker';
 import NavBar from '../../components/NavBar/NavBar';
 import ToastNotification from '../../components/ToastNotification/ToastNotification.js';
 import useLocalStorage from '../../hooks/useLocalStorage';
 import makeTweetstorm from '../../store/makeTweetstorm';
 import { types } from '../../store/makeReducer';
-import {
-  LINEFEED_PICKER_V1,
-  READONLY_TWEETSTORM_V1,
-  READONLY_TWEETSTORM_V2
-} from '../../constants';
+import { READONLY_TWEETSTORM_V2 } from '../../constants';
 import { useAuth0 } from '../../react-auth0-wrapper';
 import Counter from './Counter';
 import TweetstormButton from './TweetstormButton';
@@ -80,19 +75,16 @@ function App({ feature, initialState, reducer }) {
   function renderTextarea(item) {
     if (feature.active(READONLY_TWEETSTORM_V2)) {
       return <p className="p-2 text-gray-700">{item.tweet}</p>;
-    }
-    if (feature.active(READONLY_TWEETSTORM_V1)) {
+    } else {
       return (
         <textarea
+          className="bg-gray-200 border border-gray-500 p-2 rounded"
           disabled
-          className="bg-blue-200 p-2 rounded text-gray-700"
           readOnly
-          rows={3}
+          rows={4}
           value={item.tweet}
         />
       );
-    } else {
-      return <textarea readOnly rows={4} value={item.tweet} />;
     }
   }
 
@@ -125,7 +117,7 @@ function App({ feature, initialState, reducer }) {
   }
 
   return loading ? (
-    <article className="container content-center flex flex-col items-center mx-auto m-1 p-4">
+    <article className="container content-center mx-auto m-1 p-4 text-center">
       ...
     </article>
   ) : (
@@ -141,17 +133,7 @@ function App({ feature, initialState, reducer }) {
       <form className="flex flex-col" onSubmit={e => e.preventDefault()}>
         <small className="mb-4">
           Start typing, to insert a break prior to reaching 280 characters
-          please use
-          {feature.active(LINEFEED_PICKER_V1) ? (
-            <LinefeedPicker
-              feature={feature}
-              onChange={value => {
-                dispatch({ type: types.CHANGE_LINEFEED, value });
-              }}
-            />
-          ) : (
-            <span className="font-bold ml-1">Newline(s)</span>
-          )}
+          please use <span className="font-bold">Newline(s)</span>
         </small>
         <textarea
           className="bg-gray-200 border border-gray-500 p-2 rounded"

@@ -12,8 +12,6 @@ export const BASE_URL =
 
 export const FEATURE_V1 = 'FEATURE_V1';
 export const LAYOUT_V1 = 'LAYOUT_V1';
-export const LINEFEED_PICKER_V1 = 'LINEFEED_PICKER_V1';
-export const READONLY_TWEETSTORM_V1 = 'READONLY_TWEETSTORM_V1';
 export const READONLY_TWEETSTORM_V2 = 'READONLY_TWEETSTORM_V2';
 
 export const LINEFEED = ';;';
