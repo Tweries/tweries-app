@@ -8,6 +8,7 @@ import React from 'react';
 import Footer from '../../components/Footer/Footer';
 import NavBar from '../../components/NavBar/NavBar';
 import makeReducer from '../../store/makeReducer';
+import feature from '../../feature';
 import { useAuth0 } from '../../react-auth0-wrapper';
 import App from './App';
 import makeInitialState from '../../store/makeInitialState';
@@ -40,7 +41,6 @@ describe('App', () => {
     useAuth0.mockImplementation(() => ({
       loading: true
     }));
-    const feature = { active: jest.fn() };
 
     const { container } = render(
       <App
@@ -58,7 +58,6 @@ describe('App', () => {
       isAuthenticated: false,
       loading: false
     }));
-    const feature = { active: jest.fn() };
 
     const { container } = render(
       <App
@@ -100,7 +99,6 @@ describe('App', () => {
       loading: false,
       user
     }));
-    const feature = { active: jest.fn() };
 
     const { container, getByTestId } = render(
       <App
@@ -131,7 +129,6 @@ describe('App - errors', () => {
       isAuthenticated: false,
       loading: false
     }));
-    const feature = { active: jest.fn() };
     const mockReducer = jest.fn((state, action) =>
       makeReducer(feature)(state, action)
     );
@@ -159,7 +156,6 @@ describe('App - errors', () => {
       loading: false,
       user
     }));
-    const feature = { active: jest.fn() };
     const mockReducer = jest.fn((state, action) =>
       makeReducer(feature)(state, action)
     );
