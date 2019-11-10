@@ -1,21 +1,13 @@
 import v from 'voca';
-import {
-  EMPTY_FIRST_SEQUENCE_NUMBER_V1,
-  LINEFEED,
-  NEWLINE,
-  SPACE_AFTER_PUNCTUATION_V1
-} from '../constants';
+import { LINEFEED, NEWLINE } from '../constants';
 
 const MAX_LENGTH = 280;
 const SEQUENCE_NUMBER_PLACEHOLDER = '_/_';
 
 function makeTweetstorm(feature) {
   function hasSpaceAfterPunctuation(index, take) {
-    if (feature.active(SPACE_AFTER_PUNCTUATION_V1)) {
-      // INFO: index + 1 is the character after the punctuation
-      return v.substr(take, index + 1, 1) === ' ';
-    }
-    return true;
+    // INFO: index + 1 is the character after the punctuation
+    return v.substr(take, index + 1, 1) === ' ';
   }
 
   function backUpToLastPunctuation(take) {
@@ -42,16 +34,12 @@ function makeTweetstorm(feature) {
 
   function makeSequenceNumber(index, length) {
     if (index === undefined && length === undefined) {
-      return SEQUENCE_NUMBER_PLACEHOLDER;
+      return ` ${SEQUENCE_NUMBER_PLACEHOLDER}`;
     }
-    if (
-      feature.active(EMPTY_FIRST_SEQUENCE_NUMBER_V1) &&
-      index === 0 &&
-      length === 1
-    ) {
+    if (index === 0 && length === 1) {
       return '';
     }
-    return `${index + 1}/${length}`;
+    return ` ${index + 1}/${length}`;
   }
 
   function replaceNewlinesWithNewline(linefeed, source) {
@@ -62,6 +50,7 @@ function makeTweetstorm(feature) {
     return copy;
   }
 
+  // TODO: change name
   function tweetstorm({ hashtags, linefeed, source }) {
     // INFO: hack :(
     if (linefeed === null || linefeed === undefined || linefeed === '') {
@@ -75,9 +64,9 @@ function makeTweetstorm(feature) {
       let take;
       let max;
       if (hashtags.length > 0) {
-        max = MAX_LENGTH - hashtags.length - makeSequenceNumber().length - 2; // INFO: 1 space before the hashtags and 1 space before the sequence number
+        max = MAX_LENGTH - hashtags.length - 1 - makeSequenceNumber().length; // INFO: 1 space before the hashtags
       } else {
-        max = MAX_LENGTH - makeSequenceNumber().length - 1; // INFO: 1 space before the sequence number
+        max = MAX_LENGTH - makeSequenceNumber().length; // INFO: 1 space before the sequence number
       }
       take = v.prune(copy, max, '');
       if (take.indexOf(linefeed) !== -1) {
@@ -92,13 +81,11 @@ function makeTweetstorm(feature) {
 
     const tweetstorm = parts.map((part, index) => {
       let tweet;
+      const sequenceNumber = makeSequenceNumber(index, parts.length);
       if (hashtags.length > 0) {
-        tweet = `${v.trim(part)} ${hashtags} ${makeSequenceNumber(
-          index,
-          parts.length
-        )}`;
+        tweet = `${v.trim(part)} ${hashtags}${sequenceNumber}`;
       } else {
-        tweet = `${v.trim(part)} ${makeSequenceNumber(index, parts.length)}`;
+        tweet = `${v.trim(part)}${sequenceNumber}`;
       }
 
       return { length: tweet.length, tweet };

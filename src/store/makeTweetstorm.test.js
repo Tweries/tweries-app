@@ -1,4 +1,3 @@
-import { FEATURE_V1, SPACE_AFTER_PUNCTUATION_V1 } from '../constants';
 import makeTweetstorm from './makeTweetstorm';
 
 describe('hashtags, linefeed, source => tweetstorm', () => {
@@ -89,17 +88,7 @@ describe('hashtags, linefeed, source => tweetstorm', () => {
       }
     },
     {
-      description: 'w/ an URL and SPACE_AFTER_PUNCTUATION_V1 enabled',
-      props: {
-        hashtags: '',
-        linefeed: '\n',
-        source:
-          'https://marker.medium.com/how-to-hold-your-team-accountable-9fa57bfb315d'
-      }
-    },
-    {
-      activeFeature: FEATURE_V1,
-      description: 'w/ an URL and SPACE_AFTER_PUNCTUATION_V1 disabled',
+      description: 'w/ an URL',
       props: {
         hashtags: '',
         linefeed: '\n',
@@ -119,11 +108,7 @@ describe('hashtags, linefeed, source => tweetstorm', () => {
 
   scenarios.forEach(({ activeFeature, description, props }) => {
     it(description, () => {
-      const tweetstorm = makeTweetstorm({
-        active: feature =>
-          feature ===
-          (activeFeature ? activeFeature : SPACE_AFTER_PUNCTUATION_V1)
-      });
+      const tweetstorm = makeTweetstorm({ active: () => true });
       expect(tweetstorm({ ...props })).toMatchSnapshot();
     });
   });
