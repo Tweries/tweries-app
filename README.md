@@ -44,9 +44,9 @@
 
 - [x] Remove the sequence number if there is only one tweet
 
-## Ideas
+- [x] Use Tailwindcss
 
-- [ ] Use a different CSS framework
+## Ideas
 
 - [ ] Integrate react-feature-toggles
 
