@@ -33,7 +33,7 @@ exports[`App generate tweetstorm and dismiss notification 1`] = `
         rows="8"
       />
       <small
-        class="mb-2 text-gray-700 text-right"
+        class="mb-2 text-right text-gray-700"
       />
       <textarea
         class="bg-gray-200 border border-gray-500 p-2 rounded"
@@ -43,7 +43,7 @@ exports[`App generate tweetstorm and dismiss notification 1`] = `
         type="text"
       />
       <small
-        class="mb-2 text-gray-700 text-right"
+        class="mb-2 text-right text-gray-700"
       />
       <ul
         class="flex flex-col"
@@ -107,7 +107,7 @@ exports[`App unauthenticated user 1`] = `
         rows="8"
       />
       <small
-        class="mb-2 text-gray-700 text-right"
+        class="mb-2 text-right text-gray-700"
       />
       <textarea
         class="bg-gray-200 border border-gray-500 p-2 rounded"
@@ -117,7 +117,7 @@ exports[`App unauthenticated user 1`] = `
         type="text"
       />
       <small
-        class="mb-2 text-gray-700 text-right"
+        class="mb-2 text-right text-gray-700"
       />
       <ul
         class="flex flex-col"

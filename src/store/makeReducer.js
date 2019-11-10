@@ -5,6 +5,7 @@ export const types = {
   CHANGE_HASHTAGS: 'CHANGE_HASHTAGS',
   CHANGE_LINEFEED: 'CHANGE_LINEFEED',
   CHANGE_SOURCE: 'CHANGE_SOURCE',
+  CHANGE_TWEET: 'CHANGE_TWEET',
   DISMISS_TOAST: 'DISMISS_TOAST',
   RESET_TWEETSTORM: 'RESET_TWEETSTORM',
   SET_HEALTHY: 'SET_HEALTHY',
@@ -45,6 +46,17 @@ function makeReducer(feature) {
             source: action.value
           }),
           source: action.value
+        };
+      }
+      case types.CHANGE_TWEET: {
+        return {
+          ...state,
+          items: [...state.items].map(item => {
+            if (item.id === action.value.id) {
+              item.tweet = action.value.tweet;
+            }
+            return item;
+          })
         };
       }
       case types.DISMISS_TOAST: {

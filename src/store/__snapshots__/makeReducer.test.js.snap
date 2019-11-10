@@ -4,16 +4,17 @@ exports[`reducer CHANGE_HASHTAGS 1`] = `
 Object {
   "hashtags": "#FOO",
   "healthy": false,
-  "items": Array [
-    Object {
-      "length": 8,
-      "tweet": "bar #FOO",
-    },
-  ],
   "linefeed": ";;",
   "notification": null,
   "source": "bar",
   "userId": null,
+}
+`;
+
+exports[`reducer CHANGE_HASHTAGS 2`] = `
+Object {
+  "id": Any<String>,
+  "tweet": "bar #FOO",
 }
 `;
 
@@ -21,16 +22,6 @@ exports[`reducer CHANGE_LINEFEED 1`] = `
 Object {
   "hashtags": "",
   "healthy": false,
-  "items": Array [
-    Object {
-      "length": 38,
-      "tweet": "Can you can a can [..] as a canner 1/2",
-    },
-    Object {
-      "length": 18,
-      "tweet": "can can a can? 2/2",
-    },
-  ],
   "linefeed": "||",
   "notification": null,
   "source": "Can you can a can [..] as a canner || can can a can?",
@@ -38,16 +29,24 @@ Object {
 }
 `;
 
+exports[`reducer CHANGE_LINEFEED 2`] = `
+Object {
+  "id": Any<String>,
+  "tweet": "Can you can a can [..] as a canner 1/2",
+}
+`;
+
+exports[`reducer CHANGE_LINEFEED 3`] = `
+Object {
+  "id": Any<String>,
+  "tweet": "can can a can? 2/2",
+}
+`;
+
 exports[`reducer CHANGE_SOURCE 1`] = `
 Object {
   "hashtags": "",
   "healthy": false,
-  "items": Array [
-    Object {
-      "length": 3,
-      "tweet": "bar",
-    },
-  ],
   "linefeed": ";;",
   "notification": null,
   "source": "bar",
@@ -55,11 +54,42 @@ Object {
 }
 `;
 
+exports[`reducer CHANGE_SOURCE 2`] = `
+Object {
+  "id": Any<String>,
+  "tweet": "bar",
+}
+`;
+
+exports[`reducer CHANGE_TWEET 1`] = `
+Object {
+  "hashtags": "",
+  "healthy": false,
+  "linefeed": ";;",
+  "notification": null,
+  "source": "qux",
+  "userId": null,
+}
+`;
+
+exports[`reducer CHANGE_TWEET 2`] = `
+Object {
+  "id": Any<String>,
+  "tweet": "quux",
+}
+`;
+
+exports[`reducer CHANGE_TWEET 3`] = `
+Object {
+  "id": Any<String>,
+  "tweet": "corge",
+}
+`;
+
 exports[`reducer DISMISS_TOAST 1`] = `
 Object {
   "hashtags": "",
   "healthy": false,
-  "items": Array [],
   "linefeed": ";;",
   "notification": null,
   "source": "",
@@ -71,7 +101,6 @@ exports[`reducer RESET_TWEETSTORM 1`] = `
 Object {
   "hashtags": "",
   "healthy": true,
-  "items": Array [],
   "linefeed": ";;",
   "notification": Object {
     "message": "Oh Noes!",
@@ -86,7 +115,6 @@ exports[`reducer SET_HEALTHY 1`] = `
 Object {
   "hashtags": "",
   "healthy": true,
-  "items": Array [],
   "linefeed": ";;",
   "notification": null,
   "source": "",
@@ -98,7 +126,6 @@ exports[`reducer SET_USER_ID 1`] = `
 Object {
   "hashtags": "",
   "healthy": false,
-  "items": Array [],
   "linefeed": ";;",
   "notification": null,
   "source": "",
@@ -110,7 +137,6 @@ exports[`reducer default 1`] = `
 Object {
   "hashtags": "",
   "healthy": false,
-  "items": Array [],
   "linefeed": ";;",
   "notification": null,
   "source": "",

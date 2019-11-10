@@ -7,15 +7,26 @@ describe('Counter', () => {
     {
       description: 'length 123',
       props: {
-        length: 123,
-        show: true
+        length: 123
       }
     },
     {
       description: 'length 0',
       props: {
-        length: 0,
-        show: true
+        length: 0
+      }
+    },
+    {
+      description: 'length 300, tweet',
+      props: {
+        length: 300,
+        type: 'tweet'
+      }
+    },
+    {
+      description: 'length 300, source',
+      props: {
+        length: 300
       }
     }
   ];

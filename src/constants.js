@@ -10,9 +10,11 @@ export const BASE_URL =
     ? 'http://localhost:9000'
     : 'https://tweries-api.herokuapp.com';
 
+export const EDITABLE_TWEETSTORM_V1 = 'EDITABLE_TWEETSTORM_V1';
 export const FEATURE_V1 = 'FEATURE_V1';
 export const LAYOUT_V1 = 'LAYOUT_V1';
 export const READONLY_TWEETSTORM_V2 = 'READONLY_TWEETSTORM_V2';
 
-export const LINEFEED = ';;';
+export const LINEFEED = ';;'; // TODO: deprecate
+export const MAX_LENGTH = 280;
 export const NEWLINE = '\n';

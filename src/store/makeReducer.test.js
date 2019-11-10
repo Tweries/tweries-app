@@ -43,6 +43,23 @@ describe('reducer', () => {
       }
     },
     {
+      description: types.CHANGE_TWEET,
+      props: {
+        action: {
+          type: types.CHANGE_TWEET,
+          value: {
+            id: 'baz',
+            tweet: 'quux'
+          }
+        },
+        state: {
+          ...base,
+          items: [{ id: 'baz', tweet: 'qux' }, { id: 'quuz', tweet: 'corge' }],
+          source: 'qux'
+        }
+      }
+    },
+    {
       description: types.DISMISS_TOAST,
       props: {
         action: {
@@ -101,7 +118,13 @@ describe('reducer', () => {
 
   scenarios.forEach(({ description, props: { action, state } }) => {
     it(description, () => {
-      expect(makeReducer(feature)(state, action)).toMatchSnapshot();
+      const { items, ...rest } = makeReducer(feature)(state, action);
+      expect(rest).toMatchSnapshot();
+      items.forEach(item => {
+        expect(item).toMatchSnapshot({
+          id: expect.any(String)
+        });
+      });
     });
   });
 });

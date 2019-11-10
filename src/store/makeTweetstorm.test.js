@@ -109,7 +109,12 @@ describe('hashtags, linefeed, source => tweetstorm', () => {
   scenarios.forEach(({ activeFeature, description, props }) => {
     it(description, () => {
       const tweetstorm = makeTweetstorm({ active: () => true });
-      expect(tweetstorm({ ...props })).toMatchSnapshot();
+      const items = tweetstorm({ ...props });
+      items.forEach(item => {
+        expect(item).toMatchSnapshot({
+          id: expect.any(String)
+        });
+      });
     });
   });
 });

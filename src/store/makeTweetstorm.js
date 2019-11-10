@@ -1,8 +1,17 @@
 import v from 'voca';
-import { LINEFEED, NEWLINE } from '../constants';
+import { LINEFEED, MAX_LENGTH, NEWLINE } from '../constants';
 
-const MAX_LENGTH = 280;
 const SEQUENCE_NUMBER_PLACEHOLDER = '_/_';
+
+// CREDIT: https://gist.github.com/gordonbrander/2230317
+function generateUniqueId() {
+  return (
+    '_' +
+    Math.random()
+      .toString(36)
+      .substr(2, 9)
+  );
+}
 
 function makeTweetstorm(feature) {
   function hasSpaceAfterPunctuation(index, take) {
@@ -88,7 +97,7 @@ function makeTweetstorm(feature) {
         tweet = `${v.trim(part)}${sequenceNumber}`;
       }
 
-      return { length: tweet.length, tweet };
+      return { id: generateUniqueId(), tweet };
     });
 
     return tweetstorm;

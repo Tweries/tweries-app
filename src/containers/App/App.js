@@ -1,3 +1,4 @@
+import classnames from 'classnames';
 import React, { useEffect, useReducer } from 'react';
 import { version } from '../../../package.json';
 import fetchHealth from '../../api/fetchHealth.js';
@@ -8,7 +9,11 @@ import ToastNotification from '../../components/ToastNotification/ToastNotificat
 import useLocalStorage from '../../hooks/useLocalStorage';
 import makeTweetstorm from '../../store/makeTweetstorm';
 import { types } from '../../store/makeReducer';
-import { READONLY_TWEETSTORM_V2 } from '../../constants';
+import {
+  EDITABLE_TWEETSTORM_V1,
+  MAX_LENGTH,
+  READONLY_TWEETSTORM_V2
+} from '../../constants';
 import { useAuth0 } from '../../react-auth0-wrapper';
 import Counter from './Counter';
 import TweetstormButton from './TweetstormButton';
@@ -73,6 +78,27 @@ function App({ feature, initialState, reducer }) {
   }
 
   function renderTextarea(item) {
+    if (feature.active(EDITABLE_TWEETSTORM_V1)) {
+      return (
+        <textarea
+          className={classnames('bg-gray-200 p-2 rounded', {
+            'border border-gray-500': item.tweet.length <= MAX_LENGTH,
+            'border-2 border-red-500': item.tweet.length > MAX_LENGTH
+          })}
+          onChange={e => {
+            dispatch({
+              type: types.CHANGE_TWEET,
+              value: {
+                id: item.id,
+                tweet: e.target.value
+              }
+            });
+          }}
+          rows={4}
+          value={item.tweet}
+        />
+      );
+    }
     if (feature.active(READONLY_TWEETSTORM_V2)) {
       return <p className="p-2 text-gray-700">{item.tweet}</p>;
     } else {
@@ -164,7 +190,7 @@ function App({ feature, initialState, reducer }) {
           {items.map((item, index) => (
             <li className="flex flex-col" key={index}>
               {renderTextarea(item)}
-              <Counter length={item.length} />
+              <Counter length={item.tweet.length} type="tweet" />
             </li>
           ))}
         </ul>

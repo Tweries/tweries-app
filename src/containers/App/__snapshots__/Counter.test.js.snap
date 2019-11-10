@@ -3,7 +3,7 @@
 exports[`Counter length 0 1`] = `
 <div>
   <small
-    class="mb-2 text-gray-700 text-right"
+    class="mb-2 text-right text-gray-700"
   />
 </div>
 `;
@@ -11,9 +11,29 @@ exports[`Counter length 0 1`] = `
 exports[`Counter length 123 1`] = `
 <div>
   <small
-    class="mb-2 text-gray-700 text-right"
+    class="mb-2 text-right text-gray-700"
   >
     123
+  </small>
+</div>
+`;
+
+exports[`Counter length 300, source 1`] = `
+<div>
+  <small
+    class="mb-2 text-right text-gray-700"
+  >
+    300
+  </small>
+</div>
+`;
+
+exports[`Counter length 300, tweet 1`] = `
+<div>
+  <small
+    class="mb-2 text-right text-red-500 "
+  >
+    300
   </small>
 </div>
 `;
