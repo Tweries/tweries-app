@@ -21,8 +21,8 @@ import TweetstormButton from './TweetstormButton';
 
 const copy = {
   '...': '...',
-  'Make additional changes in the boxes below before publishing the tweetstorm':
-    'Make additional changes in the boxes below before publishing the tweetstorm',
+  'Edits can be made in the boxes below before publishing':
+    'Edits can be made in the boxes below before publishing',
   'Newline(s)': 'Newline(s)',
   'Start typing, to insert a break prior to reaching 280 characters please use':
     'Start typing, to insert a break prior to reaching 280 characters please use',
@@ -215,11 +215,7 @@ function App({ feature, initialState, reducer }) {
         {items.length > 0 && [
           feature.active(EDITABLE_TWEETSTORM_COPY_V1) ? (
             <small className="mb-2 p-2" key="copy">
-              {
-                copy[
-                  'Make additional changes in the boxes below before publishing the tweetstorm'
-                ]
-              }
+              {copy['Edits can be made in the boxes below before publishing']}
             </small>
           ) : null,
           <ul className="flex flex-col" data-testid="list" key="list">
