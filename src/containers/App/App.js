@@ -157,7 +157,7 @@ function App({ feature, initialState, reducer }) {
       />
       <h1 className="font-bold logo my-4 text-5xl text-center">Tweries</h1>
       <form className="flex flex-col" onSubmit={e => e.preventDefault()}>
-        <small className="mb-4">
+        <small className="mb-2 p-2">
           Start typing, to insert a break prior to reaching 280 characters
           please use <span className="font-bold">Newline(s)</span>
         </small>

@@ -1,6 +1,6 @@
 {
   "name": "tweries-app",
-  "version": "0.27.1",
+  "version": "0.27.2",
   "private": true,
   "description": "Tweries, a tweet-storm-helper app that breaks up a long paragraph into multiple tweets.",
   "dependencies": {
@@ -56,6 +56,7 @@
       "!src/hooks/useLocalStorage.js",
       "!src/constants.js",
       "!src/index.js",
+      "!src/initializeReactGA.js",
       "!src/react-auth0-wrapper.js",
       "!src/serviceWorker.js"
     ]
