@@ -11,6 +11,7 @@ import makeTweetstorm from '../../store/makeTweetstorm';
 import { types } from '../../store/makeReducer';
 import {
   EDITABLE_TWEETSTORM_V1,
+  EDITABLE_TWEETSTORM_COPY_V1,
   MAX_LENGTH,
   READONLY_TWEETSTORM_V2
 } from '../../constants';
@@ -212,13 +213,15 @@ function App({ feature, initialState, reducer }) {
         />
         <Counter length={hashtags.length} />
         {items.length > 0 && [
-          <small className="mb-2 p-2" key="copy">
-            {
-              copy[
-                'Make additional changes in the boxes below before publishing the tweetstorm'
-              ]
-            }
-          </small>,
+          feature.active(EDITABLE_TWEETSTORM_COPY_V1) ? (
+            <small className="mb-2 p-2" key="copy">
+              {
+                copy[
+                  'Make additional changes in the boxes below before publishing the tweetstorm'
+                ]
+              }
+            </small>
+          ) : null,
           <ul className="flex flex-col" data-testid="list" key="list">
             {items.map((item, index) => (
               <li className="flex flex-col" key={index}>
