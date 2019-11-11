@@ -11,6 +11,7 @@ import './index.css';
 import config from './auth_config.json';
 import { AMPLITUDE_KEY, LAYOUT_V1, NEWLINE } from './constants';
 import feature from './feature';
+import initializeReactGA from './initializeReactGA';
 import { Auth0Provider } from './react-auth0-wrapper';
 import * as serviceWorker from './serviceWorker';
 
@@ -29,6 +30,7 @@ function renderApp(logEvent) {
   if (feature.active(LAYOUT_V1)) {
     return <Layout />;
   }
+  initializeReactGA();
   return (
     <App
       feature={feature}

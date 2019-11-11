@@ -11,6 +11,7 @@ function augment({ logEvent, reducer }) {
     switch (action.type) {
       case types.CHANGE_HASHTAGS:
       case types.CHANGE_SOURCE:
+      case types.CHANGE_TWEET:
         break;
       default:
         logEvent(action.type, action.value);
