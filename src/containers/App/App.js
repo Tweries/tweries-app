@@ -74,7 +74,12 @@ function App({ feature, initialState, reducer }) {
   });
 
   function disabled() {
-    return !isAuthenticated || !items.length > 0 || !healthy;
+    return (
+      !isAuthenticated ||
+      !items.length > 0 ||
+      !healthy ||
+      items.find(item => item.tweet.length > 280)
+    );
   }
 
   function renderTextarea(item) {
