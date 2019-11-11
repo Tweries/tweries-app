@@ -1,7 +1,6 @@
 import {
   EDITABLE_TWEETSTORM_V1,
   FEATURE_V1,
-  LAYOUT_V1,
   READONLY_TWEETSTORM_V2
 } from './constants';
 

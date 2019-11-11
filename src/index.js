@@ -9,7 +9,7 @@ import makeInitialState from './store/makeInitialState';
 import makeReducer from './store/makeReducer';
 import './index.css';
 import config from './auth_config.json';
-import { AMPLITUDE_KEY, LAYOUT_V1, NEWLINE } from './constants';
+import { AMPLITUDE_KEY, NEWLINE } from './constants';
 import feature from './feature';
 import initializeReactGA from './initializeReactGA';
 import { Auth0Provider } from './react-auth0-wrapper';
@@ -27,7 +27,8 @@ const onRedirectCallback = appState => {
 };
 
 function renderApp(logEvent) {
-  if (feature.active(LAYOUT_V1)) {
+  const { REACT_APP_LAYOUT_V1 } = process.env;
+  if (REACT_APP_LAYOUT_V1 === 'true') {
     return <Layout />;
   }
   initializeReactGA();

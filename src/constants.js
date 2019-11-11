@@ -12,7 +12,6 @@ export const BASE_URL =
 
 export const EDITABLE_TWEETSTORM_V1 = 'EDITABLE_TWEETSTORM_V1';
 export const FEATURE_V1 = 'FEATURE_V1';
-export const LAYOUT_V1 = 'LAYOUT_V1';
 export const READONLY_TWEETSTORM_V2 = 'READONLY_TWEETSTORM_V2';
 
 export const LINEFEED = ';;'; // TODO: deprecate
