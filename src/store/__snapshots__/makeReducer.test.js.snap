@@ -4,7 +4,8 @@ exports[`reducer CHANGE_HASHTAGS 1`] = `
 Object {
   "hashtags": "#FOO",
   "healthy": false,
-  "linefeed": ";;",
+  "linefeed": "
+",
   "notification": null,
   "source": "bar",
   "userId": null,
@@ -47,7 +48,8 @@ exports[`reducer CHANGE_SOURCE 1`] = `
 Object {
   "hashtags": "",
   "healthy": false,
-  "linefeed": ";;",
+  "linefeed": "
+",
   "notification": null,
   "source": "bar",
   "userId": null,
@@ -65,7 +67,8 @@ exports[`reducer CHANGE_TWEET 1`] = `
 Object {
   "hashtags": "",
   "healthy": false,
-  "linefeed": ";;",
+  "linefeed": "
+",
   "notification": null,
   "source": "qux",
   "userId": null,
@@ -90,7 +93,8 @@ exports[`reducer DISMISS_TOAST 1`] = `
 Object {
   "hashtags": "",
   "healthy": false,
-  "linefeed": ";;",
+  "linefeed": "
+",
   "notification": null,
   "source": "",
   "userId": null,
@@ -101,7 +105,8 @@ exports[`reducer RESET_TWEETSTORM 1`] = `
 Object {
   "hashtags": "",
   "healthy": true,
-  "linefeed": ";;",
+  "linefeed": "
+",
   "notification": Object {
     "message": "Oh Noes!",
     "type": "danger",
@@ -115,7 +120,8 @@ exports[`reducer SET_HEALTHY 1`] = `
 Object {
   "hashtags": "",
   "healthy": true,
-  "linefeed": ";;",
+  "linefeed": "
+",
   "notification": null,
   "source": "",
   "userId": null,
@@ -126,7 +132,8 @@ exports[`reducer SET_USER_ID 1`] = `
 Object {
   "hashtags": "",
   "healthy": false,
-  "linefeed": ";;",
+  "linefeed": "
+",
   "notification": null,
   "source": "",
   "userId": "twitter|1183836409850814464",
@@ -137,7 +144,8 @@ exports[`reducer default 1`] = `
 Object {
   "hashtags": "",
   "healthy": false,
-  "linefeed": ";;",
+  "linefeed": "
+",
   "notification": null,
   "source": "",
   "userId": null,

@@ -5,7 +5,8 @@ Object {
   "hashtags": "",
   "healthy": false,
   "items": Array [],
-  "linefeed": ";;",
+  "linefeed": "
+",
   "notification": null,
   "source": "",
   "userId": null,

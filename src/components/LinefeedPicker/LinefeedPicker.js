@@ -1,6 +1,10 @@
 import React, { useState } from 'react';
 import { LINEFEED, NEWLINE } from '../../constants';
 
+const copy = {
+  'Newline(s)': 'Newline(s)'
+};
+
 const types = {
   custom: 'custom',
   newline: 'newline'
@@ -41,7 +45,7 @@ function LinefeedPicker({ feature, onChange }) {
           value="newline"
         />
         <label className="ml-1" htmlFor="newline">
-          Newline(s)
+          {copy['Newline(s)']}
         </label>
       </li>
       <li>

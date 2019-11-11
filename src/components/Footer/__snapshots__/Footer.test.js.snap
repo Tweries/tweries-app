@@ -8,7 +8,8 @@ exports[`Footer to match snapshot 1`] = `
     <p
       class="text-green-800"
     >
-      Tweries v
+      Tweries
+       v
       1.0.0-beta.1
        © 
       2019

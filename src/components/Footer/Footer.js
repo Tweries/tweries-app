@@ -1,6 +1,12 @@
 import classnames from 'classnames';
 import React from 'react';
 
+const copy = {
+  'github.com/Tweries': 'github.com/Tweries',
+  Tweries: 'Tweries',
+  '@TweriesApp': '@TweriesApp'
+};
+
 function Footer({ healthy, version }) {
   return (
     <footer className="flex flex-col items-center text-xs">
@@ -10,7 +16,7 @@ function Footer({ healthy, version }) {
           'text-red-800': !healthy
         })}
       >
-        Tweries v{version} &copy; {new Date().getFullYear()}{' '}
+        {copy.Tweries} v{version} &copy; {new Date().getFullYear()}{' '}
       </p>
       <ul className="flex">
         <li className="font-bold m-1 text-blue-800">
@@ -19,7 +25,7 @@ function Footer({ healthy, version }) {
             rel="noopener noreferrer"
             target="_blank"
           >
-            @TweriesApp
+            {copy['@TweriesApp']}
           </a>
         </li>
         <li className="font-bold m-1 text-blue-800">
@@ -28,7 +34,7 @@ function Footer({ healthy, version }) {
             rel="noopener noreferrer"
             target="_blank"
           >
-            github.com/Tweries
+            {copy['github.com/Tweries']}
           </a>
         </li>
       </ul>

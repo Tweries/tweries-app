@@ -1,5 +1,5 @@
 import v from 'voca';
-import { LINEFEED, MAX_LENGTH, NEWLINE } from '../constants';
+import { MAX_LENGTH, NEWLINE } from '../constants';
 
 const SEQUENCE_NUMBER_PLACEHOLDER = '_/_';
 
@@ -63,7 +63,8 @@ function makeTweetstorm(feature) {
   function tweetstorm({ hashtags, linefeed, source }) {
     // INFO: hack :(
     if (linefeed === null || linefeed === undefined || linefeed === '') {
-      linefeed = LINEFEED;
+      console.log('empty linefeed');
+      linefeed = NEWLINE;
     }
 
     let copy = replaceNewlinesWithNewline(linefeed, source);

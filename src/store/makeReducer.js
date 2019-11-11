@@ -3,7 +3,7 @@ import makeTweetstorm from './makeTweetstorm';
 
 export const types = {
   CHANGE_HASHTAGS: 'CHANGE_HASHTAGS',
-  CHANGE_LINEFEED: 'CHANGE_LINEFEED',
+  CHANGE_LINEFEED: 'CHANGE_LINEFEED', // INFO: not used at the moment
   CHANGE_SOURCE: 'CHANGE_SOURCE',
   CHANGE_TWEET: 'CHANGE_TWEET',
   DISMISS_TOAST: 'DISMISS_TOAST',

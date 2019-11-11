@@ -1,5 +1,10 @@
 import React from 'react';
 
+const copy = {
+  'Log in': 'Log in',
+  'Log out': 'Log out'
+};
+
 const NavBar = ({
   dispatch,
   isAuthenticated,
@@ -33,7 +38,7 @@ const NavBar = ({
               })
             }
           >
-            Log out
+            {copy['Log out']}
           </button>
         ]
       ) : (
@@ -42,7 +47,7 @@ const NavBar = ({
           data-testid="login"
           onClick={() => loginWithRedirect({})}
         >
-          Log in
+          {copy['Log in']}
         </button>
       )}
     </header>

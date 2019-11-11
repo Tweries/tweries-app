@@ -19,7 +19,8 @@ exports[`App generate tweetstorm and dismiss notification 1`] = `
       <small
         class="mb-2 p-2"
       >
-        Start typing, to insert a break prior to reaching 280 characters please use 
+        Start typing, to insert a break prior to reaching 280 characters please use
+         
         <span
           class="font-bold"
         >
@@ -44,10 +45,6 @@ exports[`App generate tweetstorm and dismiss notification 1`] = `
       />
       <small
         class="mb-2 text-right text-gray-700"
-      />
-      <ul
-        class="flex flex-col"
-        data-testid="list"
       />
       <button
         class="bg-gray-300 border border-gray-500 font-bold px-4 mb-2 rounded self-center cursor-auto"
@@ -93,7 +90,8 @@ exports[`App unauthenticated user 1`] = `
       <small
         class="mb-2 p-2"
       >
-        Start typing, to insert a break prior to reaching 280 characters please use 
+        Start typing, to insert a break prior to reaching 280 characters please use
+         
         <span
           class="font-bold"
         >
@@ -118,10 +116,6 @@ exports[`App unauthenticated user 1`] = `
       />
       <small
         class="mb-2 text-right text-gray-700"
-      />
-      <ul
-        class="flex flex-col"
-        data-testid="list"
       />
       <button
         class="bg-gray-300 border border-gray-500 font-bold px-4 mb-2 rounded self-center cursor-auto"

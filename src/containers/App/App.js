@@ -18,6 +18,20 @@ import { useAuth0 } from '../../react-auth0-wrapper';
 import Counter from './Counter';
 import TweetstormButton from './TweetstormButton';
 
+const copy = {
+  '...': '...',
+  'Make additional changes in the boxes below before publishing the tweetstorm':
+    'Make additional changes in the boxes below before publishing the tweetstorm',
+  'Newline(s)': 'Newline(s)',
+  'Start typing, to insert a break prior to reaching 280 characters please use':
+    'Start typing, to insert a break prior to reaching 280 characters please use',
+  'The tweetstorm has been created successfully.':
+    'The tweetstorm has been created successfully.',
+  Tweries: 'Tweries',
+  "What's happening?": "What's happening?",
+  '#hashtags': '#hashtags'
+};
+
 function App({ feature, initialState, reducer }) {
   const {
     isAuthenticated,
@@ -120,7 +134,7 @@ function App({ feature, initialState, reducer }) {
   }
 
   function resetTweetstorm(error, data) {
-    let message = 'The tweetstorm has been created successfully.';
+    let message = copy['The tweetstorm has been created successfully.'];
     let type = 'success';
     if (error) {
       message = error.message;
@@ -149,7 +163,7 @@ function App({ feature, initialState, reducer }) {
 
   return loading ? (
     <article className="container content-center mx-auto m-1 p-4 text-center">
-      ...
+      {copy['...']}
     </article>
   ) : (
     <article className="container content-center mx-auto m-1 p-4">
@@ -160,16 +174,22 @@ function App({ feature, initialState, reducer }) {
         logout={logout}
         user={user}
       />
-      <h1 className="font-bold logo my-4 text-5xl text-center">Tweries</h1>
+      <h1 className="font-bold logo my-4 text-5xl text-center">
+        {copy.Tweries}
+      </h1>
       <form className="flex flex-col" onSubmit={e => e.preventDefault()}>
         <small className="mb-2 p-2">
-          Start typing, to insert a break prior to reaching 280 characters
-          please use <span className="font-bold">Newline(s)</span>
+          {
+            copy[
+              'Start typing, to insert a break prior to reaching 280 characters please use'
+            ]
+          }{' '}
+          <span className="font-bold">{copy['Newline(s)']}</span>
         </small>
         <textarea
           className="bg-gray-200 border border-gray-500 p-2 rounded"
           data-testid="source"
-          placeholder="What's happening?"
+          placeholder={copy["What's happening?"]}
           rows={8}
           value={source}
           onChange={e => {
@@ -185,20 +205,29 @@ function App({ feature, initialState, reducer }) {
             dispatch({ type: types.CHANGE_HASHTAGS, value: e.target.value });
             setHashtags(e.target.value);
           }}
-          placeholder="#hashtags"
+          placeholder={copy['#hashtags']}
           rows={1}
           type="text"
           value={hashtags}
         />
         <Counter length={hashtags.length} />
-        <ul className="flex flex-col" data-testid="list">
-          {items.map((item, index) => (
-            <li className="flex flex-col" key={index}>
-              {renderTextarea(item)}
-              <Counter length={item.tweet.length} type="tweet" />
-            </li>
-          ))}
-        </ul>
+        {items.length > 0 && [
+          <small className="mb-2 p-2" key="copy">
+            {
+              copy[
+                'Make additional changes in the boxes below before publishing the tweetstorm'
+              ]
+            }
+          </small>,
+          <ul className="flex flex-col" data-testid="list" key="list">
+            {items.map((item, index) => (
+              <li className="flex flex-col" key={index}>
+                {renderTextarea(item)}
+                <Counter length={item.tweet.length} type="tweet" />
+              </li>
+            ))}
+          </ul>
+        ]}
         <TweetstormButton disabled={disabled()} onClick={onClick} />
       </form>
       <ToastNotification
