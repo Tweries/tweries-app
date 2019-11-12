@@ -25,7 +25,7 @@ function Custom({ disabled, onChange, value }) {
   );
 }
 
-function LinefeedPicker({ feature, onChange }) {
+function LinefeedPicker({ onChange }) {
   const [type, setType] = useState(types.newline);
   const [custom, setCustom] = useState(LINEFEED);
 

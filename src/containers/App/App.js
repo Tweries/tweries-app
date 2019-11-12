@@ -6,6 +6,7 @@ import fetchTweetstorm from '../../api/fetchTweetstorm.js';
 import Footer from '../../components/Footer/Footer';
 import NavBar from '../../components/NavBar/NavBar';
 import ToastNotification from '../../components/ToastNotification/ToastNotification.js';
+import { useFeature } from '../../FeatureContext/FeatureContext';
 import useLocalStorage from '../../hooks/useLocalStorage';
 import makeTweetstorm from '../../store/makeTweetstorm';
 import { types } from '../../store/makeReducer';
@@ -33,7 +34,7 @@ const copy = {
   '#hashtags': '#hashtags'
 };
 
-function App({ feature, initialState, reducer }) {
+function App({ initialState, reducer }) {
   const {
     isAuthenticated,
     loading,
@@ -41,6 +42,8 @@ function App({ feature, initialState, reducer }) {
     logout,
     user
   } = useAuth0();
+
+  const feature = useFeature();
 
   function setHealthy(error, data) {
     let message = data;

@@ -4,6 +4,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import Layout from './components/Layout/Layout';
 import App from './containers/App/App';
+import FeatureContext from './FeatureContext/FeatureContext';
 import augment from './store/augment';
 import makeInitialState from './store/makeInitialState';
 import makeReducer from './store/makeReducer';
@@ -33,11 +34,12 @@ function renderApp(logEvent) {
   }
   initializeReactGA();
   return (
-    <App
-      feature={feature}
-      initialState={makeInitialState({ feature })}
-      reducer={augment({ logEvent, reducer: makeReducer(feature) })}
-    />
+    <FeatureContext.Provider value={feature}>
+      <App
+        initialState={makeInitialState({ feature })}
+        reducer={augment({ logEvent, reducer: makeReducer(feature) })}
+      />
+    </FeatureContext.Provider>
   );
 }
 

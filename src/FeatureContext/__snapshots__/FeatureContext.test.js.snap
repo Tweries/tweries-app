@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FEATURE_V1 is active 1`] = `
+<div>
+  <p>
+    YATTA
+  </p>
+</div>
+`;

@@ -7,6 +7,7 @@ import {
 import React from 'react';
 import Footer from '../../components/Footer/Footer';
 import NavBar from '../../components/NavBar/NavBar';
+import FeatureContext from '../../FeatureContext/FeatureContext';
 import makeReducer from '../../store/makeReducer';
 import feature from '../../feature';
 import { useAuth0 } from '../../react-auth0-wrapper';
@@ -42,11 +43,12 @@ describe('App', () => {
     }));
 
     const { container } = render(
-      <App
-        feature={feature}
-        initialState={makeInitialState({ feature })}
-        reducer={makeReducer(feature)}
-      />
+      <FeatureContext.Provider value={feature}>
+        <App
+          initialState={makeInitialState({ feature })}
+          reducer={makeReducer(feature)}
+        />
+      </FeatureContext.Provider>
     );
 
     expect(container).toMatchSnapshot();
@@ -59,11 +61,12 @@ describe('App', () => {
     }));
 
     const { container } = render(
-      <App
-        feature={feature}
-        initialState={makeInitialState({ feature })}
-        reducer={makeReducer(feature)}
-      />
+      <FeatureContext.Provider value={feature}>
+        <App
+          initialState={makeInitialState({ feature })}
+          reducer={makeReducer(feature)}
+        />
+      </FeatureContext.Provider>
     );
 
     expect(container).toMatchSnapshot();
@@ -78,11 +81,12 @@ describe('App', () => {
     }));
 
     const { container, getByTestId } = render(
-      <App
-        feature={feature}
-        initialState={makeInitialState({ feature })}
-        reducer={makeReducer(feature)}
-      />
+      <FeatureContext.Provider value={feature}>
+        <App
+          initialState={makeInitialState({ feature })}
+          reducer={makeReducer(feature)}
+        />
+      </FeatureContext.Provider>
     );
     fireEvent.change(getByTestId('source'), { target: { value: 'foo' } });
     fireEvent.change(getByTestId('hashtags'), { target: { value: '#bar' } });
@@ -111,11 +115,12 @@ describe('App - errors', () => {
     );
 
     render(
-      <App
-        feature={feature}
-        initialState={makeInitialState({ feature })}
-        reducer={mockReducer}
-      />
+      <FeatureContext.Provider value={feature}>
+        <App
+          initialState={makeInitialState({ feature })}
+          reducer={mockReducer}
+        />
+      </FeatureContext.Provider>
     );
 
     // TODO: add assertion
@@ -137,14 +142,14 @@ describe('App - errors', () => {
     const mockReducer = jest.fn((state, action) =>
       makeReducer(feature)(state, action)
     );
-    const initialState = makeInitialState({ feature });
 
     const { getByTestId } = render(
-      <App
-        feature={feature}
-        initialState={initialState}
-        reducer={mockReducer}
-      />
+      <FeatureContext.Provider value={feature}>
+        <App
+          initialState={makeInitialState({ feature })}
+          reducer={mockReducer}
+        />
+      </FeatureContext.Provider>
     );
     fireEvent.change(getByTestId('source'), { target: { value: 'foo' } });
     await waitForDomChange();
