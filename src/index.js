@@ -1,17 +1,17 @@
 import { Amplitude, AmplitudeProvider } from '@amplitude/react-amplitude';
+import FeatureProvider, { setFeatures } from 'feature-provider';
 import amplitude from 'amplitude-js';
 import React from 'react';
 import { render } from 'react-dom';
 import Layout from './components/Layout/Layout';
 import App from './containers/App/App';
-import FeatureContext from './FeatureContext/FeatureContext';
 import augment from './store/augment';
 import makeInitialState from './store/makeInitialState';
 import makeReducer from './store/makeReducer';
 import './index.css';
 import config from './auth_config.json';
 import { AMPLITUDE_KEY } from './constants';
-import feature from './feature';
+import features from './features';
 import initializeReactGA from './initializeReactGA';
 import { Auth0Provider } from './react-auth0-wrapper';
 import * as serviceWorker from './serviceWorker';
@@ -33,13 +33,14 @@ function renderApp(logEvent) {
     return <Layout />;
   }
   initializeReactGA();
+  const feature = setFeatures(features);
   return (
-    <FeatureContext.Provider value={feature}>
+    <FeatureProvider features={features}>
       <App
         initialState={makeInitialState({ feature })}
         reducer={augment({ logEvent, reducer: makeReducer(feature) })}
       />
-    </FeatureContext.Provider>
+    </FeatureProvider>
   );
 }
 

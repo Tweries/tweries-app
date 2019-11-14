@@ -1,4 +1,5 @@
 import classnames from 'classnames';
+import { useFeature } from 'feature-provider';
 import React, { useEffect, useReducer } from 'react';
 import { version } from '../../../package.json';
 import fetchHealth from '../../api/fetchHealth.js';
@@ -6,7 +7,6 @@ import fetchTweetstorm from '../../api/fetchTweetstorm.js';
 import Footer from '../../components/Footer/Footer';
 import NavBar from '../../components/NavBar/NavBar';
 import ToastNotification from '../../components/ToastNotification/ToastNotification.js';
-import { useFeature } from '../../FeatureContext/FeatureContext';
 import useLocalStorage from '../../hooks/useLocalStorage';
 import makeTweetstorm from '../../store/makeTweetstorm';
 import { types } from '../../store/makeReducer';
