@@ -112,6 +112,27 @@ Object {
 }
 `;
 
+exports[`hashtags, linefeed, source => tweetstorm odd bug in the splitting algorithm 1`] = `
+Object {
+  "id": Any<String>,
+  "tweet": "A massive shared database is nothing but a massive global variable, and it's no better architecturally than any other global variable (worse, in fact, because of its size). Shared databases are something to be avoided, just like any other global. 1/3",
+}
+`;
+
+exports[`hashtags, linefeed, source => tweetstorm odd bug in the splitting algorithm 2`] = `
+Object {
+  "id": Any<String>,
+  "tweet": "Instead, think of microservices, 2/3",
+}
+`;
+
+exports[`hashtags, linefeed, source => tweetstorm odd bug in the splitting algorithm 3`] = `
+Object {
+  "id": Any<String>,
+  "tweet": "where each service literally has its own database 3/3",
+}
+`;
+
 exports[`hashtags, linefeed, source => tweetstorm pick-your-own-linefeed 1`] = `
 Object {
   "id": Any<String>,
