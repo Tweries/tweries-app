@@ -71,7 +71,6 @@ describe('hashtags, linefeed, source => tweetstorm', () => {
       description: 'new lines',
       props: {
         hashtags: '',
-        linefeed: '\n',
         source: `In many real world uses of the javascript code it's probably better to replace the line breaks with a space instead of just removing them entirely.
 
         If for instance we got a column of text from a pdf and we just removed the line breaks entirely we might wind up with words and sentences that run together and are hard to read like this:
@@ -82,7 +81,6 @@ describe('hashtags, linefeed, source => tweetstorm', () => {
       description: 'text without line breaks',
       props: {
         hashtags: '',
-        linefeed: '\n',
         source:
           'Nel mezzo del cammin di nostra vita mi ritrovai per una selva oscura, ché la diritta via era smarrita. Ahi quanto a dir qual era è cosa dura esta selva selvaggia e aspra e forte che nel pensier rinova la paura! Tant’ è amara che poco è più morte; ma per trattar del ben ch’i’ vi trovai, dirò de l’altre cose ch’i’ v’ho scorte. Io non so ben ridir com’ i’ v’intrai,10 tant’ era pien di sonno a quel punto che la verace via abbandonai. Ma poi ch’i’ fui al piè d’un colle giunto, là dove terminava quella valle che m’avea di paura il cor compunto, guardai in alto e vidi le sue spalle vestite già de’ raggi del pianeta che mena dritto altrui per ogne calle. Allor fu la paura un poco queta, che nel lago del cor m’era durata20 la notte ch’i’ passai con tanta pieta. E come quei che con lena affannata, uscito fuor del pelago a la riva, si volge a l’acqua perigliosa e guata, così l’animo mio, ch’ancor fuggiva, si volse a retro a rimirar lo passo che non lasciò già mai persona viva.'
       }
@@ -91,7 +89,6 @@ describe('hashtags, linefeed, source => tweetstorm', () => {
       description: 'w/ an URL',
       props: {
         hashtags: '',
-        linefeed: '\n',
         source:
           'https://marker.medium.com/how-to-hold-your-team-accountable-9fa57bfb315d'
       }
@@ -100,8 +97,23 @@ describe('hashtags, linefeed, source => tweetstorm', () => {
       description: 'no 1/1',
       props: {
         hashtags: '',
-        linefeed: '\n',
         source: `If your company is producing software too slowly, hiring more "programming talent" will probably not speed you up in any significant way. Instead, remove waste from your existing system. It's way more cost effective. Adding people makes sense only if there's no waste.`
+      }
+    },
+    {
+      description: 'odd bug in the splitting algorithm w/o full stop',
+      props: {
+        hashtags: '',
+        source: `A massive shared database is nothing but a massive global variable, and it's no better architecturally than any other global variable (worse, in fact, because of its size). Shared databases are something to be avoided, just like any other global.
+        Instead, think of microservices, where each service literally has its own database`
+      }
+    },
+    {
+      description: 'odd bug in the splitting algorithm w/ full stop',
+      props: {
+        hashtags: '',
+        source: `A massive shared database is nothing but a massive global variable, and it's no better architecturally than any other global variable (worse, in fact, because of its size). Shared databases are something to be avoided, just like any other global.
+        Instead, think of microservices, where each service literally has its own database.`
       }
     }
   ];
