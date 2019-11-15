@@ -19,7 +19,11 @@ function makeTweetstorm(feature) {
     return v.substr(take, index + 1, 1) === ' ';
   }
 
-  function backUpToLastPunctuation(take) {
+  function endOfSource(copy, take) {
+    return copy === take;
+  }
+
+  function backUpToLastPunctuation(copy, take) {
     const punctuations = ['-', '–', '.', ',', ';', '!', '?'];
     const data = punctuations
       .map(punctuation => ({
@@ -35,7 +39,11 @@ function makeTweetstorm(feature) {
         }
         return 0;
       })[0];
-    if (data.value !== -1 && hasSpaceAfterPunctuation(data.value, take)) {
+    if (
+      data.value !== -1 &&
+      hasSpaceAfterPunctuation(data.value, take) &&
+      !endOfSource(copy, take)
+    ) {
       take = v.substr(take, 0, data.value + 1);
     }
     return take;
@@ -83,7 +91,7 @@ function makeTweetstorm(feature) {
         take = v.substr(take, 0, take.indexOf(linefeed));
         copy = v.substr(copy, take.length + linefeed.length);
       } else {
-        take = backUpToLastPunctuation(take);
+        take = backUpToLastPunctuation(copy, take);
         copy = v.substr(copy, take.length + 1); // INFO: 1 is the space after the word
       }
       parts.push(take);

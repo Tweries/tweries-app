@@ -101,11 +101,19 @@ describe('hashtags, linefeed, source => tweetstorm', () => {
       }
     },
     {
-      description: 'odd bug in the splitting algorithm',
+      description: 'odd bug in the splitting algorithm w/o full stop',
       props: {
         hashtags: '',
         source: `A massive shared database is nothing but a massive global variable, and it's no better architecturally than any other global variable (worse, in fact, because of its size). Shared databases are something to be avoided, just like any other global.
         Instead, think of microservices, where each service literally has its own database`
+      }
+    },
+    {
+      description: 'odd bug in the splitting algorithm w/ full stop',
+      props: {
+        hashtags: '',
+        source: `A massive shared database is nothing but a massive global variable, and it's no better architecturally than any other global variable (worse, in fact, because of its size). Shared databases are something to be avoided, just like any other global.
+        Instead, think of microservices, where each service literally has its own database.`
       }
     }
   ];
