@@ -1,7 +1,9 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import classnames from 'classnames';
 import React from 'react';
 
-function TweetstormButton({ disabled, onClick }) {
+function TweetstormButton({ disabled, onClick, waiting }) {
   return (
     <button
       disabled={disabled}
@@ -15,7 +17,7 @@ function TweetstormButton({ disabled, onClick }) {
       data-testid="tweet"
       onClick={onClick}
     >
-      Tweet
+      {waiting ? <FontAwesomeIcon icon={faSpinner} spin={true} /> : 'Tweet'}
     </button>
   );
 }

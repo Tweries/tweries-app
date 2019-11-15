@@ -1,6 +1,6 @@
 import classnames from 'classnames';
 import { useFeature } from 'feature-provider';
-import React, { useEffect, useReducer } from 'react';
+import React, { useEffect, useReducer, useState } from 'react';
 import { version } from '../../../package.json';
 import fetchHealth from '../../api/fetchHealth.js';
 import fetchTweetstorm from '../../api/fetchTweetstorm.js';
@@ -91,6 +91,8 @@ function App({ initialState, reducer }) {
     source: source_
   });
 
+  const [waiting, setWaiting] = useState(false);
+
   function disabled() {
     return (
       !isAuthenticated ||
@@ -154,9 +156,11 @@ function App({ initialState, reducer }) {
     });
     setSource('');
     setHashtags('');
+    setWaiting(false);
   }
 
   async function onClick() {
+    setWaiting(true);
     try {
       const data = await fetchTweetstorm({ items, userId });
       resetTweetstorm(null, data);
@@ -230,7 +234,11 @@ function App({ initialState, reducer }) {
             ))}
           </ul>
         ]}
-        <TweetstormButton disabled={disabled()} onClick={onClick} />
+        <TweetstormButton
+          disabled={disabled()}
+          onClick={onClick}
+          waiting={waiting}
+        />
       </form>
       <ToastNotification
         notification={notification}
