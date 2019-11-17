@@ -91,6 +91,16 @@ function App({ initialState, reducer }) {
     source: source_
   });
 
+  useEffect(() => {
+    if (notification) {
+      const timer = setTimeout(() => {
+        console.log('notification:', notification);
+        dispatch({ type: types.DISMISS_TOAST });
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [notification]);
+
   const [waiting, setWaiting] = useState(false);
 
   function disabled() {
