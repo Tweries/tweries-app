@@ -1,6 +1,6 @@
 import { Amplitude, AmplitudeProvider } from '@amplitude/react-amplitude';
-import FeatureProvider, { setFeatures } from 'feature-provider';
 import amplitude from 'amplitude-js';
+import FeatureProvider, { setFeatures } from 'feature-provider';
 import React from 'react';
 import { render } from 'react-dom';
 import Layout from './components/Layout/Layout';
