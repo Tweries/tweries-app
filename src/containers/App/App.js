@@ -6,6 +6,7 @@ import fetchHealth from '../../api/fetchHealth.js';
 import fetchTweetstorm from '../../api/fetchTweetstorm.js';
 import Footer from '../../components/Footer/Footer';
 import NavBar from '../../components/NavBar/NavBar';
+import ReplyToTweet from '../../components/ReplyToTweet/ReplyToTweet';
 import ToastNotification from '../../components/ToastNotification/ToastNotification.js';
 import useLocalStorage from '../../hooks/useLocalStorage';
 import makeTweetstorm from '../../store/makeTweetstorm';
@@ -14,7 +15,7 @@ import {
   EDITABLE_TWEETSTORM_V1,
   EDITABLE_TWEETSTORM_COPY_V1,
   MAX_LENGTH,
-  READONLY_TWEETSTORM_V2
+  REPLY_TO_TWEET_V1
 } from '../../constants';
 import { useAuth0 } from '../../react-auth0-wrapper';
 import Counter from './Counter';
@@ -101,6 +102,8 @@ function App({ initialState, reducer }) {
     }
   }, [notification]);
 
+  const [replyToTweetId, setReplyToTweetId] = useState(null);
+  const [replyToTweetUrl, setReplyToTweetUrl] = useState('');
   const [waiting, setWaiting] = useState(false);
 
   function disabled() {
@@ -133,9 +136,6 @@ function App({ initialState, reducer }) {
           value={item.tweet}
         />
       );
-    }
-    if (feature.active(READONLY_TWEETSTORM_V2)) {
-      return <p className="p-2 text-gray-700">{item.tweet}</p>;
     } else {
       return (
         <textarea
@@ -166,13 +166,19 @@ function App({ initialState, reducer }) {
     });
     setSource('');
     setHashtags('');
+    setReplyToTweetId(null);
+    setReplyToTweetUrl('');
     setWaiting(false);
   }
 
   async function onClick() {
     setWaiting(true);
     try {
-      const data = await fetchTweetstorm({ items, userId });
+      const data = await fetchTweetstorm({
+        items,
+        replyToStatusId: replyToTweetId,
+        userId
+      });
       resetTweetstorm(null, data);
     } catch (error) {
       resetTweetstorm(error);
@@ -196,6 +202,14 @@ function App({ initialState, reducer }) {
         {copy.Tweries}
       </h1>
       <form className="flex flex-col" onSubmit={e => e.preventDefault()}>
+        {feature.active(REPLY_TO_TWEET_V1) && (
+          <ReplyToTweet
+            onChangeId={setReplyToTweetId}
+            onChangeUrl={setReplyToTweetUrl}
+            userId={userId}
+            value={replyToTweetUrl}
+          />
+        )}
         <small className="mb-2 p-2">
           {
             copy[
