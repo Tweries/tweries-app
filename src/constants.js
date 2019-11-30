@@ -13,7 +13,7 @@ export const BASE_URL =
 export const EDITABLE_TWEETSTORM_V1 = 'EDITABLE_TWEETSTORM_V1';
 export const EDITABLE_TWEETSTORM_COPY_V1 = 'EDITABLE_TWEETSTORM_COPY_V1';
 export const FEATURE_V1 = 'FEATURE_V1';
-export const READONLY_TWEETSTORM_V2 = 'READONLY_TWEETSTORM_V2';
+export const REPLY_TO_TWEET_V1 = 'REPLY_TO_TWEET_V1';
 
 export const LINEFEED = ';;'; // TODO: deprecate
 export const MAX_LENGTH = 280;
