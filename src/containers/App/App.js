@@ -185,7 +185,7 @@ function App({ initialState, reducer }) {
         {copy.Tweries}
       </h1>
       <form className="flex flex-col" onSubmit={e => e.preventDefault()}>
-        {feature.active(REPLY_TO_TWEET_V1) && (
+        {isAuthenticated && feature.active(REPLY_TO_TWEET_V1) && (
           <ReplyToTweet
             onChangeId={setReplyToTweetId}
             onChangeUrl={setReplyToTweetUrl}
