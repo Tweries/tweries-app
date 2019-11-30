@@ -1,15 +1,5 @@
-import {
-  EDITABLE_TWEETSTORM_V1,
-  EDITABLE_TWEETSTORM_COPY_V1,
-  FEATURE_V1,
-  REPLY_TO_TWEET_V1
-} from './constants';
+import { FEATURE_V1, REPLY_TO_TWEET_V1 } from './constants';
 
-const features = [
-  EDITABLE_TWEETSTORM_V1,
-  EDITABLE_TWEETSTORM_COPY_V1,
-  FEATURE_V1,
-  REPLY_TO_TWEET_V1
-];
+const features = [FEATURE_V1, REPLY_TO_TWEET_V1];
 
 export default features;

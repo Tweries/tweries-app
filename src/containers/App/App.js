@@ -11,12 +11,7 @@ import ToastNotification from '../../components/ToastNotification/ToastNotificat
 import useLocalStorage from '../../hooks/useLocalStorage';
 import makeTweetstorm from '../../store/makeTweetstorm';
 import { types } from '../../store/makeReducer';
-import {
-  EDITABLE_TWEETSTORM_V1,
-  EDITABLE_TWEETSTORM_COPY_V1,
-  MAX_LENGTH,
-  REPLY_TO_TWEET_V1
-} from '../../constants';
+import { MAX_LENGTH, REPLY_TO_TWEET_V1 } from '../../constants';
 import { useAuth0 } from '../../react-auth0-wrapper';
 import Counter from './Counter';
 import TweetstormButton from './TweetstormButton';
@@ -116,37 +111,25 @@ function App({ initialState, reducer }) {
   }
 
   function renderTextarea(item) {
-    if (feature.active(EDITABLE_TWEETSTORM_V1)) {
-      return (
-        <textarea
-          className={classnames('bg-gray-200 p-2 rounded', {
-            'border border-gray-500': item.tweet.length <= MAX_LENGTH,
-            'border-2 border-red-500': item.tweet.length > MAX_LENGTH
-          })}
-          onChange={e => {
-            dispatch({
-              type: types.CHANGE_TWEET,
-              value: {
-                id: item.id,
-                tweet: e.target.value
-              }
-            });
-          }}
-          rows={4}
-          value={item.tweet}
-        />
-      );
-    } else {
-      return (
-        <textarea
-          className="bg-gray-200 border border-gray-500 p-2 rounded"
-          disabled
-          readOnly
-          rows={4}
-          value={item.tweet}
-        />
-      );
-    }
+    return (
+      <textarea
+        className={classnames('bg-gray-200 p-2 rounded', {
+          'border border-gray-500': item.tweet.length <= MAX_LENGTH,
+          'border-2 border-red-500': item.tweet.length > MAX_LENGTH
+        })}
+        onChange={e => {
+          dispatch({
+            type: types.CHANGE_TWEET,
+            value: {
+              id: item.id,
+              tweet: e.target.value
+            }
+          });
+        }}
+        rows={4}
+        value={item.tweet}
+      />
+    );
   }
 
   function resetTweetstorm(error, data) {
@@ -164,10 +147,10 @@ function App({ initialState, reducer }) {
         type
       }
     });
-    setSource('');
     setHashtags('');
     setReplyToTweetId(null);
     setReplyToTweetUrl('');
+    setSource('');
     setWaiting(false);
   }
 
@@ -244,11 +227,9 @@ function App({ initialState, reducer }) {
         />
         <Counter length={hashtags.length} />
         {items.length > 0 && [
-          feature.active(EDITABLE_TWEETSTORM_COPY_V1) ? (
-            <small className="mb-2 p-2" key="copy">
-              {copy['Edits can be made in the boxes below before publishing']}
-            </small>
-          ) : null,
+          <small className="mb-2 p-2" key="copy">
+            {copy['Edits can be made in the boxes below before publishing']}
+          </small>,
           <ul className="flex flex-col" data-testid="list" key="list">
             {items.map((item, index) => (
               <li className="flex flex-col" key={index}>
