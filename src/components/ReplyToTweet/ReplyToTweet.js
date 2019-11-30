@@ -13,10 +13,12 @@ function ReplyToTweet({ onChangeId, onChangeUrl, userId, value }) {
   useEffect(() => {
     async function fetchData() {
       try {
-        const { statusId } = await fetchTweet({
+        const tweet = await fetchTweet({
           replyToTweetUrl: value,
           userId
         });
+        console.log(tweet);
+        const { statusId } = tweet;
         if (statusId) {
           setWaiting(false);
           setId(statusId);

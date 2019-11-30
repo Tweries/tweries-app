@@ -10,8 +10,6 @@ export const BASE_URL =
     ? 'http://localhost:9000'
     : 'https://tweries-api.herokuapp.com';
 
-export const EDITABLE_TWEETSTORM_V1 = 'EDITABLE_TWEETSTORM_V1';
-export const EDITABLE_TWEETSTORM_COPY_V1 = 'EDITABLE_TWEETSTORM_COPY_V1';
 export const FEATURE_V1 = 'FEATURE_V1';
 export const REPLY_TO_TWEET_V1 = 'REPLY_TO_TWEET_V1';
 
