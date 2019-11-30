@@ -8,7 +8,7 @@ import App from './containers/App/App';
 import augment from './store/augment';
 import makeInitialState from './store/makeInitialState';
 import makeReducer from './store/makeReducer';
-import './index.css';
+import './styles.css';
 import config from './auth_config.json';
 import { AMPLITUDE_KEY } from './constants';
 import features from './features';
