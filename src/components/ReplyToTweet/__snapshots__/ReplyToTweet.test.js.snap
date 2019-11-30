@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ReplyToTweet to match snapshot 1`] = `
+<div>
+  <textarea
+    class="border border-gray-500 p-2 rounded bg-gray-200"
+    data-testid="reply-to"
+    placeholder="Optional: reply to Tweet URL"
+    rows="1"
+  />
+</div>
+`;

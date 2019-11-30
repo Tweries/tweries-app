@@ -71,7 +71,6 @@ function makeTweetstorm(feature) {
   function tweetstorm({ hashtags, linefeed, source }) {
     // INFO: hack :(
     if (linefeed === null || linefeed === undefined || linefeed === '') {
-      console.log('empty linefeed');
       linefeed = NEWLINE;
     }
 

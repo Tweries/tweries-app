@@ -16,6 +16,12 @@ exports[`App generate tweetstorm and dismiss notification 1`] = `
     <form
       class="flex flex-col"
     >
+      <textarea
+        class="border border-gray-500 p-2 rounded bg-gray-200"
+        data-testid="reply-to"
+        placeholder="Optional: reply to Tweet URL"
+        rows="1"
+      />
       <small
         class="mb-2 p-2"
       >
@@ -87,6 +93,12 @@ exports[`App unauthenticated user 1`] = `
     <form
       class="flex flex-col"
     >
+      <textarea
+        class="border border-gray-500 p-2 rounded bg-gray-200"
+        data-testid="reply-to"
+        placeholder="Optional: reply to Tweet URL"
+        rows="1"
+      />
       <small
         class="mb-2 p-2"
       >
