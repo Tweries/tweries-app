@@ -41,22 +41,25 @@ function App({ initialState, reducer }) {
 
   const feature = useFeature();
 
-  function setHealthy(error, data) {
-    let message = data;
-    let value = true;
+  function setHealthy(error, response) {
     if (error) {
-      message = error;
-      value = false;
+      console.log(error);
+      dispatch({ type: types.SET_HEALTHY, value: false });
     }
-    console.log(message);
-    dispatch({ type: types.SET_HEALTHY, value });
+    if (response) {
+      console.log(response);
+      dispatch({
+        type: types.SET_HEALTHY,
+        value: response.error ? false : true
+      });
+    }
   }
 
   useEffect(() => {
     async function fetchData() {
       try {
-        const data = await fetchHealth();
-        setHealthy(null, data);
+        const response = await fetchHealth();
+        setHealthy(null, response);
       } catch (error) {
         setHealthy(error);
       }
