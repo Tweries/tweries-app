@@ -10,18 +10,18 @@ function ReplyToTweet({ onChangeId, onChangeUrl, userId, value }) {
   const [id, setId] = useState(null);
   const [waiting, setWaiting] = useState(false);
 
+  // TODO: refactor
   useEffect(() => {
     async function fetchData() {
       try {
-        const tweet = await fetchTweet({
+        const response = await fetchTweet({
           replyToTweetUrl: value,
           userId
         });
-        console.log(tweet);
-        const { statusId } = tweet;
-        if (statusId) {
+        console.log(response);
+        if (response.data) {
           setWaiting(false);
-          setId(statusId);
+          setId(response.data.id);
         } else {
           setWaiting(false);
           setId(null);
