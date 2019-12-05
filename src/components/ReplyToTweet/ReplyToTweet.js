@@ -6,56 +6,53 @@ const copy = {
   'Optional: reply to Tweet URL': 'Optional: reply to Tweet URL'
 };
 
-function ReplyToTweet({ onChangeId, onChangeUrl, userId, value }) {
-  const [id, setId] = useState(null);
+function ReplyToTweet({ callback, onChange, tweetUrl, userId }) {
+  const [isValidTweet, setIsValidTweet] = useState(false);
   const [waiting, setWaiting] = useState(false);
 
-  // TODO: refactor
   useEffect(() => {
     async function fetchData() {
       try {
         const response = await fetchTweet({
-          replyToTweetUrl: value,
+          inReplyToTweetUrl: tweetUrl,
           userId
         });
         console.log(response);
         if (response.data) {
+          callback(null, response.data);
+          setIsValidTweet(true);
           setWaiting(false);
-          setId(response.data.id);
         } else {
+          callback(response.error);
+          setIsValidTweet(false);
           setWaiting(false);
-          setId(null);
         }
       } catch (error) {
+        callback(error);
+        setIsValidTweet(false);
         setWaiting(false);
-        setId(null);
       }
     }
-    if (userId && value) {
+    if (tweetUrl && userId) {
       setWaiting(true);
       fetchData();
     }
-  }, [userId, value]);
-
-  useEffect(() => {
-    onChangeId(id);
-  }, [id, onChangeId]);
+  }, [callback, tweetUrl, userId]);
 
   return (
     <textarea
       className={classnames('border border-gray-500 p-2 rounded', {
-        'bg-gray-200': waiting === true || value === '',
-        'bg-green-200': waiting === false && value !== '' && id !== null,
-        'bg-red-200': waiting === false && value !== '' && id === null
+        'bg-gray-200': waiting === true || tweetUrl === '',
+        'bg-green-200': waiting === false && tweetUrl !== '' && isValidTweet,
+        'bg-red-200': waiting === false && tweetUrl !== '' && !isValidTweet
       })}
       data-testid="reply-to"
       onChange={({ target: { value } }) => {
-        // TODO: add a debounce
-        onChangeUrl(value);
+        onChange(value);
       }}
       placeholder={copy['Optional: reply to Tweet URL']}
       rows={1}
-      value={value}
+      value={tweetUrl}
     />
   );
 }

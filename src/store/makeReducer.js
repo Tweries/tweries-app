@@ -2,6 +2,7 @@ import makeInitialState from './makeInitialState';
 import makeTweetstorm from './makeTweetstorm';
 
 export const types = {
+  APPEND_SCREEN_NAME: 'APPEND_SCREEN_NAME',
   CHANGE_HASHTAGS: 'CHANGE_HASHTAGS',
   CHANGE_LINEFEED: 'CHANGE_LINEFEED', // INFO: not used at the moment
   CHANGE_SOURCE: 'CHANGE_SOURCE',
@@ -15,6 +16,18 @@ export const types = {
 function makeReducer(feature) {
   function reducer(state = makeInitialState({ feature }), action) {
     switch (action.type) {
+      case types.APPEND_SCREEN_NAME: {
+        const source = `@${action.value} ${state.source}`;
+        return {
+          ...state,
+          items: makeTweetstorm(feature)({
+            hashtags: state.hashtags,
+            linefeed: state.linefeed,
+            source
+          }),
+          source
+        };
+      }
       case types.CHANGE_HASHTAGS: {
         return {
           ...state,

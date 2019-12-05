@@ -1,6 +1,6 @@
 import classnames from 'classnames';
 import { useFeature } from 'feature-provider';
-import React, { useEffect, useReducer, useState } from 'react';
+import React, { useCallback, useEffect, useReducer, useState } from 'react';
 import { version } from '../../../package.json';
 import fetchHealth from '../../api/fetchHealth.js';
 import fetchTweetstorm from '../../api/fetchTweetstorm.js';
@@ -93,15 +93,14 @@ function App({ initialState, reducer }) {
   useEffect(() => {
     if (notification) {
       const timer = setTimeout(() => {
-        console.log('notification:', notification);
         dispatch({ type: types.DISMISS_TOAST });
       }, 3000);
       return () => clearTimeout(timer);
     }
   }, [notification]);
 
-  const [replyToTweetId, setReplyToTweetId] = useState(null);
-  const [replyToTweetUrl, setReplyToTweetUrl] = useState('');
+  // TODO: add to global state?
+  const [inReplyToTweetUrl, setInReplyToTweetUrl] = useState('');
   const [waiting, setWaiting] = useState(false);
 
   function disabled() {
@@ -135,14 +134,14 @@ function App({ initialState, reducer }) {
     );
   }
 
-  function resetTweetstorm(error, data) {
+  function resetTweetstorm(error, response) {
     let message = copy['The tweetstorm has been created successfully.'];
     let type = 'success';
-    if (error) {
-      message = error.message;
+    if (error || response.error) {
+      message = error ? error.message : response.error.message;
       type = 'danger';
     }
-    console.log(error, data);
+    console.log(error, response);
     dispatch({
       type: types.RESET_TWEETSTORM,
       value: {
@@ -151,8 +150,7 @@ function App({ initialState, reducer }) {
       }
     });
     setHashtags('');
-    setReplyToTweetId(null);
-    setReplyToTweetUrl('');
+    setInReplyToTweetUrl('');
     setSource('');
     setWaiting(false);
   }
@@ -160,16 +158,25 @@ function App({ initialState, reducer }) {
   async function onClick() {
     setWaiting(true);
     try {
-      const data = await fetchTweetstorm({
+      const response = await fetchTweetstorm({
+        inReplyToTweetUrl,
         items,
-        replyToStatusId: replyToTweetId,
         userId
       });
-      resetTweetstorm(null, data);
+      resetTweetstorm(null, response);
     } catch (error) {
       resetTweetstorm(error);
     }
   }
+
+  const memoizedCallback = useCallback((error, data) => {
+    if (data) {
+      dispatch({
+        type: types.APPEND_SCREEN_NAME,
+        value: data.user.screen_name
+      });
+    }
+  }, []);
 
   return loading ? (
     <article className="container content-center mx-auto m-1 p-4 text-center">
@@ -190,10 +197,10 @@ function App({ initialState, reducer }) {
       <form className="flex flex-col" onSubmit={e => e.preventDefault()}>
         {isAuthenticated && feature.active(REPLY_TO_TWEET_V1) && (
           <ReplyToTweet
-            onChangeId={setReplyToTweetId}
-            onChangeUrl={setReplyToTweetUrl}
+            callback={memoizedCallback}
+            onChange={setInReplyToTweetUrl}
+            tweetUrl={inReplyToTweetUrl}
             userId={userId}
-            value={replyToTweetUrl}
           />
         )}
         <small className="mb-2 p-2">
