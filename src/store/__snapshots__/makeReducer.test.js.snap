@@ -1,5 +1,24 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`reducer APPEND_SCREEN_NAME 1`] = `
+Object {
+  "hashtags": "",
+  "healthy": false,
+  "linefeed": "
+",
+  "notification": null,
+  "source": "@TweriesApp is awesome",
+  "userId": null,
+}
+`;
+
+exports[`reducer APPEND_SCREEN_NAME 2`] = `
+Object {
+  "id": Any<String>,
+  "tweet": "@TweriesApp is awesome",
+}
+`;
+
 exports[`reducer CHANGE_HASHTAGS 1`] = `
 Object {
   "hashtags": "#FOO",

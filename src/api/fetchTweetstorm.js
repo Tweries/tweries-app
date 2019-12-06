@@ -1,8 +1,8 @@
 import { BASE_URL } from '../constants';
 
-async function fetchTweetstorm({ items, replyToStatusId, userId }) {
-  const response = await fetch(`${BASE_URL}/api/v1/tweetstorm`, {
-    body: JSON.stringify({ items, replyToStatusId, userId }),
+async function fetchTweetstorm({ inReplyToTweetUrl, items, userId }) {
+  const response = await fetch(`${BASE_URL}/api/v2/tweetstorm`, {
+    body: JSON.stringify({ inReplyToTweetUrl, items, userId }),
     headers: {
       'Content-Type': 'application/json'
     },

@@ -10,6 +10,16 @@ const notification = { message: 'Oh Noes!', type: 'danger' };
 describe('reducer', () => {
   const scenarios = [
     {
+      description: types.APPEND_SCREEN_NAME,
+      props: {
+        action: {
+          type: types.APPEND_SCREEN_NAME,
+          value: 'TweriesApp'
+        },
+        state: { ...base, source: 'is awesome' }
+      }
+    },
+    {
       description: types.CHANGE_HASHTAGS,
       props: {
         action: {
@@ -54,7 +64,10 @@ describe('reducer', () => {
         },
         state: {
           ...base,
-          items: [{ id: 'baz', tweet: 'qux' }, { id: 'quuz', tweet: 'corge' }],
+          items: [
+            { id: 'baz', tweet: 'qux' },
+            { id: 'quuz', tweet: 'corge' }
+          ],
           source: 'qux'
         }
       }
