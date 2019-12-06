@@ -1,4 +1,4 @@
-import { render, fireEvent } from '@testing-library/react';
+import { render, fireEvent, waitForDomChange } from '@testing-library/react';
 import React from 'react';
 import ReplyToTweet from './ReplyToTweet';
 
@@ -23,48 +23,45 @@ describe('ReplyToTweet', () => {
 
   it('to match snapshot', () => {
     const props = { ...baseProps };
+
     const { container } = render(<ReplyToTweet {...props} />);
 
     expect(container).toMatchSnapshot();
   });
 
-  it('good URL', () => {
-    fetch.mockResponseOnce(JSON.stringify({ statusId: '1199474666412236800' }));
+  it('good URL', async () => {
+    fetch.mockResponseOnce(
+      JSON.stringify({ data: { statusId: '1199474666412236800' } })
+    );
+    const props = { ...baseProps, tweetUrl: TWEET_URL };
 
-    const props = {
-      ...baseProps,
-      value: TWEET_URL
-    };
     render(<ReplyToTweet {...props} />);
+    await waitForDomChange();
 
-    // TODO: add assertion
+    expect(mockCallback).toBeCalled();
   });
 
-  it('bad URL', () => {
-    fetch.mockResponseOnce(JSON.stringify({}));
+  it('bad URL', async () => {
+    fetch.mockResponseOnce(JSON.stringify({ error: { message: 'Oh Noes!' } }));
+    const props = { ...baseProps, tweetUrl: 'something' };
 
-    const props = {
-      ...baseProps,
-      value: 'something'
-    };
-    render(<ReplyToTweet {...props} />);
-
-    // TODO: add assertion
-  });
-
-  it('change URL', () => {
-    fetch.mockResponseOnce(JSON.stringify({}));
-
-    const props = {
-      ...baseProps,
-      value: ''
-    };
     const { getByTestId } = render(<ReplyToTweet {...props} />);
+    await waitForDomChange();
 
-    fireEvent.change(getByTestId('reply-to'), {
-      target: { value: TWEET_URL }
-    });
+    expect(mockCallback).toBeCalled();
 
-    // TODO: add assertion
+    fireEvent.change(getByTestId('reply-to'), { target: { value: TWEET_URL } });
+
+    expect(mockOnChange).toBeCalled();
+  });
+
+  it('error', async () => {
+    fetch.mockRejectOnce(new Error('Oh Noes!'));
+    const props = { ...baseProps, tweetUrl: TWEET_URL };
+
+    render(<ReplyToTweet {...props} />);
+    await waitForDomChange();
+
+    expect(mockCallback).toBeCalled();
   });
 });
