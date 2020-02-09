@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import classnames from 'classnames';
-import React from 'react';
+import React from 'react'; // TODO: move to components
 
 function TweetstormButton({ disabled, onClick, waiting }) {
   return (
