@@ -5,13 +5,7 @@ const copy = {
   'Log out': 'Log out'
 };
 
-const NavBar = ({
-  dispatch,
-  isAuthenticated,
-  loginWithRedirect,
-  logout,
-  user
-}) => {
+const NavBar = ({ isAuthenticated, loginWithRedirect, logout, user }) => {
   return (
     <header className="flex flex-col items-center">
       {isAuthenticated ? (

@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react'; // TODO: move to containers
 import fetchTweet from '../../api/fetchTweet';
 
 const copy = {

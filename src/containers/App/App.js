@@ -11,7 +11,7 @@ import ToastNotification from '../../components/ToastNotification/ToastNotificat
 import useLocalStorage from '../../hooks/useLocalStorage';
 import makeTweetstorm from '../../store/makeTweetstorm';
 import { types } from '../../store/makeReducer';
-import { MAX_LENGTH, REPLY_TO_TWEET_V1 } from '../../constants';
+import { MAX_LENGTH } from '../../constants';
 import { useAuth0 } from '../../react-auth0-wrapper';
 import Counter from './Counter';
 import TweetstormButton from './TweetstormButton';
@@ -195,7 +195,7 @@ function App({ initialState, reducer }) {
         {copy.Tweries}
       </h1>
       <form className="flex flex-col" onSubmit={e => e.preventDefault()}>
-        {isAuthenticated && feature.active(REPLY_TO_TWEET_V1) && (
+        {isAuthenticated && (
           <ReplyToTweet
             callback={memoizedCallback}
             onChange={setInReplyToTweetUrl}

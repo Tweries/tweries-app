@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import React from 'react';
+import React from 'react'; // TODO: move to components
 import { MAX_LENGTH } from '../../constants';
 
 function Counter({ length, type }) {
