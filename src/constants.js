@@ -12,6 +12,5 @@ export const BASE_URL =
 
 export const FEATURE_V1 = 'FEATURE_V1';
 
-export const LINEFEED = ';;'; // TODO: deprecate
 export const MAX_LENGTH = 280;
 export const NEWLINE = '\n';

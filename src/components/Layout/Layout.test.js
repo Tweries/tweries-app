@@ -5,7 +5,7 @@ import Layout from './Layout';
 
 jest.mock('../../react-auth0-wrapper');
 
-describe('LinefeedPicker', () => {
+describe('Layout', () => {
   it('to match snapshot', () => {
     useAuth0.mockImplementation(() => ({}));
 

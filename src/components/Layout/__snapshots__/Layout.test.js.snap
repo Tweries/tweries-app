@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`LinefeedPicker loading 1`] = `
+exports[`Layout loading 1`] = `
 <div>
   <div
     class="container mx-auto px-4"
@@ -35,7 +35,7 @@ exports[`LinefeedPicker loading 1`] = `
 </div>
 `;
 
-exports[`LinefeedPicker to match snapshot 1`] = `
+exports[`Layout to match snapshot 1`] = `
 <div>
   <div
     class="container mx-auto px-4"
