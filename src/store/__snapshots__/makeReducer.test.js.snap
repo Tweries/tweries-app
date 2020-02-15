@@ -38,31 +38,6 @@ Object {
 }
 `;
 
-exports[`reducer CHANGE_LINEFEED 1`] = `
-Object {
-  "hashtags": "",
-  "healthy": false,
-  "linefeed": "||",
-  "notification": null,
-  "source": "Can you can a can [..] as a canner || can can a can?",
-  "userId": null,
-}
-`;
-
-exports[`reducer CHANGE_LINEFEED 2`] = `
-Object {
-  "id": Any<String>,
-  "tweet": "Can you can a can [..] as a canner 1/2",
-}
-`;
-
-exports[`reducer CHANGE_LINEFEED 3`] = `
-Object {
-  "id": Any<String>,
-  "tweet": "can can a can? 2/2",
-}
-`;
-
 exports[`reducer CHANGE_SOURCE 1`] = `
 Object {
   "hashtags": "",

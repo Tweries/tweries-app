@@ -3,6 +3,10 @@ import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import classnames from 'classnames';
 import React from 'react';
 
+const copy = {
+  Tweet: 'Tweet'
+};
+
 function TweetstormButton({ disabled, onClick, waiting }) {
   return (
     <button
@@ -17,7 +21,7 @@ function TweetstormButton({ disabled, onClick, waiting }) {
       data-testid="tweet"
       onClick={onClick}
     >
-      {waiting ? <FontAwesomeIcon icon={faSpinner} spin={true} /> : 'Tweet'}
+      {waiting ? <FontAwesomeIcon icon={faSpinner} spin={true} /> : copy.Tweet}
     </button>
   );
 }

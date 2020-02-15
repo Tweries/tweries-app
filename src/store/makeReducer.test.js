@@ -30,19 +30,6 @@ describe('reducer', () => {
       }
     },
     {
-      description: types.CHANGE_LINEFEED,
-      props: {
-        action: {
-          type: types.CHANGE_LINEFEED,
-          value: '||'
-        },
-        state: {
-          ...base,
-          source: 'Can you can a can [..] as a canner || can can a can?'
-        }
-      }
-    },
-    {
       description: types.CHANGE_SOURCE,
       props: {
         action: {

@@ -11,8 +11,6 @@ export const BASE_URL =
     : 'https://tweries-api.herokuapp.com';
 
 export const FEATURE_V1 = 'FEATURE_V1';
-export const REPLY_TO_TWEET_V1 = 'REPLY_TO_TWEET_V1';
 
-export const LINEFEED = ';;'; // TODO: deprecate
 export const MAX_LENGTH = 280;
 export const NEWLINE = '\n';
