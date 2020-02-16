@@ -1,11 +1,12 @@
 import classnames from 'classnames';
-import React, { useEffect, useState } from 'react'; // TODO: move to containers
+import React, { useEffect, useState } from 'react';
 import fetchTweet from '../../api/fetchTweet';
 
 const copy = {
   'Optional: reply to Tweet URL': 'Optional: reply to Tweet URL'
 };
 
+// TODO: move to containers
 function ReplyToTweet({ callback, onChange, tweetUrl, userId }) {
   const [isValidTweet, setIsValidTweet] = useState(false);
   const [waiting, setWaiting] = useState(false);

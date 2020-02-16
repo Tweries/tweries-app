@@ -1,12 +1,13 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import classnames from 'classnames';
-import React from 'react'; // TODO: move to components
+import React from 'react';
 
 const copy = {
   Tweet: 'Tweet'
 };
 
+// TODO: move to components
 function TweetstormButton({ disabled, onClick, waiting }) {
   return (
     <button
