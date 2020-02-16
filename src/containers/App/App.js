@@ -11,7 +11,7 @@ import ToastNotification from '../../components/ToastNotification/ToastNotificat
 import useLocalStorage from '../../hooks/useLocalStorage';
 import makeTweetstorm from '../../store/makeTweetstorm';
 import { types } from '../../store/makeReducer';
-import { MAX_LENGTH } from '../../constants';
+import { MAX_LENGTH, SHOW_FORM_V1 } from '../../constants';
 import { useAuth0 } from '../../react-auth0-wrapper';
 import Counter from './Counter';
 import TweetstormButton from './TweetstormButton';
@@ -21,6 +21,8 @@ const copy = {
   'Edits can be made in the boxes below before publishing':
     'Edits can be made in the boxes below before publishing',
   'Newline(s)': 'Newline(s)',
+  "See what's happening in the world right now.":
+    "See what's happening in the world right now.",
   'Start typing, to insert a break prior to reaching 280 characters please use':
     'Start typing, to insert a break prior to reaching 280 characters please use',
   'The tweetstorm has been created successfully.':
@@ -108,7 +110,7 @@ function App({ initialState, reducer }) {
       !isAuthenticated ||
       !items.length > 0 ||
       !healthy ||
-      items.find(item => item.tweet.length > 280)
+      items.find(item => item.tweet.length > MAX_LENGTH)
     );
   }
 
@@ -194,6 +196,11 @@ function App({ initialState, reducer }) {
       <h1 className="font-bold logo my-4 text-5xl text-center">
         {copy.Tweries}
       </h1>
+      {feature.active(SHOW_FORM_V1) && !isAuthenticated && (
+        <h2 className="my-4 text-center">
+          {copy["See what's happening in the world right now."]}
+        </h2>
+      )}
       <form className="flex flex-col" onSubmit={e => e.preventDefault()}>
         {isAuthenticated && (
           <ReplyToTweet
@@ -203,57 +210,68 @@ function App({ initialState, reducer }) {
             userId={userId}
           />
         )}
-        <small className="mb-2 p-2">
-          {
-            copy[
-              'Start typing, to insert a break prior to reaching 280 characters please use'
-            ]
-          }{' '}
-          <span className="font-bold">{copy['Newline(s)']}</span>
-        </small>
-        <textarea
-          className="bg-gray-200 border border-gray-500 p-2 rounded"
-          data-testid="source"
-          placeholder={copy["What's happening?"]}
-          rows={8}
-          value={source}
-          onChange={e => {
-            dispatch({ type: types.CHANGE_SOURCE, value: e.target.value });
-            setSource(e.target.value);
-          }}
-        />
-        <Counter length={source.length} />
-        <textarea
-          className="bg-gray-200 border border-gray-500 p-2 rounded"
-          data-testid="hashtags"
-          onChange={e => {
-            dispatch({ type: types.CHANGE_HASHTAGS, value: e.target.value });
-            setHashtags(e.target.value);
-          }}
-          placeholder={copy['#hashtags']}
-          rows={1}
-          type="text"
-          value={hashtags}
-        />
-        <Counter length={hashtags.length} />
-        {items.length > 0 && [
-          <small className="mb-2 p-2" key="copy">
-            {copy['Edits can be made in the boxes below before publishing']}
-          </small>,
-          <ul className="flex flex-col" data-testid="list" key="list">
-            {items.map((item, index) => (
-              <li className="flex flex-col" key={index}>
-                {renderTextarea(item)}
-                <Counter length={item.tweet.length} type="tweet" />
-              </li>
-            ))}
-          </ul>
-        ]}
-        <TweetstormButton
-          disabled={disabled()}
-          onClick={onClick}
-          waiting={waiting}
-        />
+        {((feature.active(SHOW_FORM_V1) && isAuthenticated) ||
+          !feature.active(SHOW_FORM_V1)) && (
+          <>
+            <small className="mb-2 p-2">
+              {
+                copy[
+                  'Start typing, to insert a break prior to reaching 280 characters please use'
+                ]
+              }{' '}
+              <span className="font-bold">{copy['Newline(s)']}</span>
+            </small>
+            <textarea
+              className="bg-gray-200 border border-gray-500 p-2 rounded"
+              data-testid="source"
+              placeholder={copy["What's happening?"]}
+              rows={8}
+              value={source}
+              onChange={e => {
+                dispatch({
+                  type: types.CHANGE_SOURCE,
+                  value: e.target.value
+                });
+                setSource(e.target.value);
+              }}
+            />
+            <Counter length={source.length} />
+            <textarea
+              className="bg-gray-200 border border-gray-500 p-2 rounded"
+              data-testid="hashtags"
+              onChange={e => {
+                dispatch({
+                  type: types.CHANGE_HASHTAGS,
+                  value: e.target.value
+                });
+                setHashtags(e.target.value);
+              }}
+              placeholder={copy['#hashtags']}
+              rows={1}
+              type="text"
+              value={hashtags}
+            />
+            <Counter length={hashtags.length} />
+            {items.length > 0 && [
+              <small className="mb-2 p-2" key="copy">
+                {copy['Edits can be made in the boxes below before publishing']}
+              </small>,
+              <ul className="flex flex-col" data-testid="list" key="list">
+                {items.map((item, index) => (
+                  <li className="flex flex-col" key={index}>
+                    {renderTextarea(item)}
+                    <Counter length={item.tweet.length} type="tweet" />
+                  </li>
+                ))}
+              </ul>
+            ]}
+            <TweetstormButton
+              disabled={disabled()}
+              onClick={onClick}
+              waiting={waiting}
+            />
+          </>
+        )}
       </form>
       <ToastNotification
         notification={notification}

@@ -90,47 +90,14 @@ exports[`App unauthenticated user 1`] = `
     >
       Tweries
     </h1>
+    <h2
+      class="my-4 text-center"
+    >
+      See what's happening in the world right now.
+    </h2>
     <form
       class="flex flex-col"
-    >
-      <small
-        class="mb-2 p-2"
-      >
-        Start typing, to insert a break prior to reaching 280 characters please use
-         
-        <span
-          class="font-bold"
-        >
-          Newline(s)
-        </span>
-      </small>
-      <textarea
-        class="bg-gray-200 border border-gray-500 p-2 rounded"
-        data-testid="source"
-        placeholder="What's happening?"
-        rows="8"
-      />
-      <small
-        class="mb-2 text-right text-gray-700"
-      />
-      <textarea
-        class="bg-gray-200 border border-gray-500 p-2 rounded"
-        data-testid="hashtags"
-        placeholder="#hashtags"
-        rows="1"
-        type="text"
-      />
-      <small
-        class="mb-2 text-right text-gray-700"
-      />
-      <button
-        class="bg-gray-300 border border-gray-500 font-bold px-4 mb-2 rounded self-center cursor-auto"
-        data-testid="tweet"
-        disabled=""
-      >
-        Tweet
-      </button>
-    </form>
+    />
     <div>
       Footer
     </div>
