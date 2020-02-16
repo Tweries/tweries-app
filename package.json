@@ -27,10 +27,10 @@
     "deploy": "gh-pages -d build",
     "eject": "react-scripts eject",
     "prebuild": "NODE_ENV=production yarn build:styles",
-    "predeploy": "npm run build",
+    "predeploy": "yarn build",
     "prestart": "yarn build:styles",
     "prettier": "prettier 'src/**/*.{css,js,json}'",
-    "prettier:fix": "npm run prettier -- --write",
+    "prettier:fix": "yarn prettier --write",
     "start": "react-scripts start",
     "test": "react-scripts test"
   },
