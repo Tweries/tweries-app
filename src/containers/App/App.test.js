@@ -140,7 +140,6 @@ describe('App - errors', () => {
       loading: false,
       user
     }));
-    const feature = setFeatures([]);
     const mockReducer = jest.fn((state, action) =>
       makeReducer(feature)(state, action)
     );

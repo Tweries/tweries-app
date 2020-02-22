@@ -1,7 +1,8 @@
 import classnames from 'classnames';
-import React from 'react'; // TODO: move to components
+import React from 'react';
 import { MAX_LENGTH } from '../../constants';
 
+// TODO: move to components
 function Counter({ length, type }) {
   const value = length === 0 ? '' : length;
   const danger = type === 'tweet' ? true : false;
