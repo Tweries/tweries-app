@@ -2,6 +2,10 @@ import React from 'react';
 import { useAuth0 } from '../../react-auth0-wrapper';
 import NavBar from '../NavBar/NavBar';
 
+const copy = {
+  Tweries: 'Tweries'
+};
+
 function Layout() {
   const {
     isAuthenticated,
@@ -30,7 +34,9 @@ function Layout() {
       </div>
       <div className="flex mb-4">
         <div className="w-full">
-          <h1 className="font-bold logo my-4 text-5xl text-center">Tweries</h1>
+          <h1 className="font-bold logo my-4 text-5xl text-center">
+            {copy.Tweries}
+          </h1>
         </div>
       </div>
     </div>
