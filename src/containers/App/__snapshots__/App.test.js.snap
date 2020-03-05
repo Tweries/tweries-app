@@ -95,9 +95,6 @@ exports[`App unauthenticated user 1`] = `
     >
       See what's happening in the world right now.
     </h2>
-    <form
-      class="flex flex-col"
-    />
     <div>
       Footer
     </div>
