@@ -47,7 +47,7 @@ exports[`Layout to match snapshot 1`] = `
         class="w-full"
       >
         <header
-          class="flex flex-col items-center"
+          class="flex flex-row justify-between"
         >
           <span>
              

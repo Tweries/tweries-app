@@ -7,22 +7,19 @@ const copy = {
 
 function NavBar({ isAuthenticated, loginWithRedirect, logout, user }) {
   return (
-    <header className="flex flex-col items-center">
+    <header className="flex flex-row justify-between">
       {isAuthenticated ? (
         <>
-          <img
-            alt={user.name}
-            className="border border-gray-500 rounded"
-            src={user.picture}
-          />
-          <span>
-            <span aria-label="hello" role="img">
-              👋
-            </span>{' '}
-            {user.name}
-          </span>
+          <div className="flex items-center">
+            <img
+              alt={user.name}
+              className="border border-gray-500 rounded-full"
+              src={user.picture}
+            />
+            <span className="px-2">{user.name}</span>
+          </div>
           <button
-            className="bg-gray-300 border border-gray-500 font-bold px-4 rounded"
+            className="font-bold px-4 underline"
             data-testid="logout"
             onClick={() =>
               logout({

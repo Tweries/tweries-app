@@ -91,11 +91,11 @@ exports[`App unauthenticated user 1`] = `
       Tweries
     </h1>
     <h2
-      class="my-4 text-center"
+      class=" flex flex-col text-center"
     >
       See what's happening in the world right now.
       <button
-        class="bg-gray-300 border border-gray-500 font-bold my-4 px-4 rounded"
+        class="bg-gray-300 border border-gray-500 font-bold my-4 px-4 rounded self-center"
         data-testid="login"
       >
         Log in

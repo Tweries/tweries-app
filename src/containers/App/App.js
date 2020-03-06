@@ -264,10 +264,10 @@ function App({ initialState, reducer }) {
           />
         </form>
       ) : (
-        <h2 className="my-4 text-center">
+        <h2 className=" flex flex-col text-center">
           {copy["See what's happening in the world right now."]}
           <button
-            className="bg-gray-300 border border-gray-500 font-bold my-4 px-4 rounded"
+            className="bg-gray-300 border border-gray-500 font-bold my-4 px-4 rounded self-center"
             data-testid="login"
             onClick={() => loginWithRedirect({})}
           >
