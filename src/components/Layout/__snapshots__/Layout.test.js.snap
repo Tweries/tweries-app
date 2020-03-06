@@ -49,12 +49,9 @@ exports[`Layout to match snapshot 1`] = `
         <header
           class="flex flex-col items-center"
         >
-          <button
-            class="bg-gray-300 border border-gray-500 font-bold px-4 rounded"
-            data-testid="login"
-          >
-            Log in
-          </button>
+          <span>
+             
+          </span>
         </header>
       </div>
     </div>

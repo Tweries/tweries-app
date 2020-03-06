@@ -32,19 +32,6 @@ describe('NavBar', () => {
         logout: mockLogout,
         user
       }
-    },
-    {
-      act: getByTestId => {
-        fireEvent.click(getByTestId('login'));
-      },
-      assert: () => {
-        expect(mockLoginWithRedirect).toBeCalled();
-      },
-      description: 'unauthenticated user',
-      props: {
-        isAuthenticated: false,
-        loginWithRedirect: mockLoginWithRedirect
-      }
     }
   ];
 

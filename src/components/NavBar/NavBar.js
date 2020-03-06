@@ -5,18 +5,6 @@ const copy = {
   'Log out': 'Log out'
 };
 
-function Button({ dataTestId, onClick, copy }) {
-  return (
-    <button
-      className="bg-gray-300 border border-gray-500 font-bold px-4 rounded"
-      data-testid={dataTestId}
-      onClick={onClick}
-    >
-      {copy}
-    </button>
-  );
-}
-
 function NavBar({ isAuthenticated, loginWithRedirect, logout, user }) {
   return (
     <header className="flex flex-col items-center">
@@ -33,22 +21,20 @@ function NavBar({ isAuthenticated, loginWithRedirect, logout, user }) {
             </span>{' '}
             {user.name}
           </span>
-          <Button
-            dataTestId="logout"
+          <button
+            className="bg-gray-300 border border-gray-500 font-bold px-4 rounded"
+            data-testid="logout"
             onClick={() =>
               logout({
                 returnTo: window.location.href
               })
             }
-            copy={copy['Log out']}
-          />
+          >
+            {copy['Log out']}
+          </button>
         </>
       ) : (
-        <Button
-          dataTestId="login"
-          onClick={() => loginWithRedirect({})}
-          copy={copy['Log in']}
-        />
+        <span>&nbsp;</span>
       )}
     </header>
   );

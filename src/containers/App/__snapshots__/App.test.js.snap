@@ -94,6 +94,12 @@ exports[`App unauthenticated user 1`] = `
       class="my-4 text-center"
     >
       See what's happening in the world right now.
+      <button
+        class="bg-gray-300 border border-gray-500 font-bold my-4 px-4 rounded"
+        data-testid="login"
+      >
+        Log in
+      </button>
     </h2>
     <div>
       Footer

@@ -20,6 +20,7 @@ const copy = {
   '...': '...',
   'Edits can be made in the boxes below before publishing':
     'Edits can be made in the boxes below before publishing',
+  'Log in': 'Log in',
   'Newline(s)': 'Newline(s)',
   "See what's happening in the world right now.":
     "See what's happening in the world right now.",
@@ -265,6 +266,13 @@ function App({ initialState, reducer }) {
       ) : (
         <h2 className="my-4 text-center">
           {copy["See what's happening in the world right now."]}
+          <button
+            className="bg-gray-300 border border-gray-500 font-bold my-4 px-4 rounded"
+            data-testid="login"
+            onClick={() => loginWithRedirect({})}
+          >
+            {copy['Log in']}
+          </button>
         </h2>
       )}
       <ToastNotification
