@@ -41,20 +41,27 @@ function ReplyToTweet({ callback, onChange, tweetUrl, userId }) {
   }, [callback, tweetUrl, userId]);
 
   return (
-    <textarea
-      className={classnames('border border-gray-500 p-2 rounded', {
-        'bg-gray-200': waiting === true || tweetUrl === '',
-        'bg-green-200': waiting === false && tweetUrl !== '' && isValidTweet,
-        'bg-red-200': waiting === false && tweetUrl !== '' && !isValidTweet
-      })}
-      data-testid="reply-to"
-      onChange={({ target: { value } }) => {
-        onChange(value);
-      }}
-      placeholder={copy['Optional: reply to Tweet URL']}
-      rows={1}
-      value={tweetUrl}
-    />
+    <>
+      <label className="text-sm" htmlFor="reply-to">
+        {copy['Optional: reply to Tweet URL']}
+      </label>
+      <textarea
+        className={classnames('p-2 tweries-border', {
+          'tweries-background-color-blue-white':
+            waiting === true || tweetUrl === '',
+          'bg-green-200': waiting === false && tweetUrl !== '' && isValidTweet,
+          'bg-red-200': waiting === false && tweetUrl !== '' && !isValidTweet
+        })}
+        data-testid="reply-to"
+        name="reply-to"
+        onChange={({ target: { value } }) => {
+          onChange(value);
+        }}
+        placeholder={copy['Optional: reply to Tweet URL']}
+        rows={1}
+        value={tweetUrl}
+      />
+    </>
   );
 }
 

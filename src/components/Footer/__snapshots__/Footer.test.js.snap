@@ -3,13 +3,13 @@
 exports[`Footer to match snapshot 1`] = `
 <div>
   <footer
-    class="flex flex-col items-center text-xs"
+    class="flex flex-col items-center text-sm"
   >
     <ul
       class="flex"
     >
       <li
-        class="font-bold m-1 text-blue-800"
+        class="m-1"
       >
         <a
           href="https://github.com/Tweries"
@@ -20,7 +20,7 @@ exports[`Footer to match snapshot 1`] = `
         </a>
       </li>
       <li
-        class="font-bold m-1 text-blue-800"
+        class="m-1"
       >
         <a
           href="https://twitter.com/TweriesApp"

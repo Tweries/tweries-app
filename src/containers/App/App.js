@@ -1,5 +1,7 @@
 import classnames from 'classnames';
 import { useFeature } from 'feature-provider';
+import { faTwitter } from '@fortawesome/free-brands-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React, { useCallback, useEffect, useReducer, useState } from 'react';
 import { version } from '../../../package.json';
 import fetchHealth from '../../api/fetchHealth.js';
@@ -20,16 +22,16 @@ const copy = {
   '...': '...',
   'Edits can be made in the boxes below before publishing':
     'Edits can be made in the boxes below before publishing',
+  'Helping you thread your tweets': 'Helping you thread your tweets',
   'Log in': 'Log in',
-  'Newline(s)': 'Newline(s)',
-  "See what's happening in the world right now.":
-    "See what's happening in the world right now.",
-  'Start typing, to insert a break prior to reaching 280 characters please use':
-    'Start typing, to insert a break prior to reaching 280 characters please use',
-  'The tweetstorm has been created successfully.':
-    'The tweetstorm has been created successfully.',
+  'Start typing, to insert a break prior to reaching 280 characters please use Newline(s)':
+    'Start typing, to insert a break prior to reaching 280 characters please use Newline(s)',
+  Tweet: 'Tweet',
   Tweries: 'Tweries',
   "What's happening?": "What's happening?",
+  "When 280 characters just isn't enough":
+    "When 280 characters just isn't enough",
+  'Your tweetstorm has been created!': 'Your tweetstorm has been created!',
   '#hashtags': '#hashtags'
 };
 
@@ -118,8 +120,8 @@ function App({ initialState, reducer }) {
   function renderTextarea(item) {
     return (
       <textarea
-        className={classnames('bg-gray-200 p-2 rounded', {
-          'border border-gray-500': item.tweet.length <= MAX_LENGTH,
+        className={classnames('p-2 tweries-background-color-blue-white', {
+          'tweries-border': item.tweet.length <= MAX_LENGTH,
           'border-2 border-red-500': item.tweet.length > MAX_LENGTH
         })}
         onChange={e => {
@@ -138,7 +140,7 @@ function App({ initialState, reducer }) {
   }
 
   function resetTweetstorm(error, response) {
-    let message = copy['The tweetstorm has been created successfully.'];
+    let message = copy['Your tweetstorm has been created!'];
     let type = 'success';
     if (error || response.error) {
       message = error ? error.message : response.error.message;
@@ -194,9 +196,19 @@ function App({ initialState, reducer }) {
         logout={logout}
         user={user}
       />
-      <h1 className="font-bold logo my-4 text-5xl text-center">
+      <h1 className="font-bold my-4 text-5xl text-center tweries-font-family">
         {copy.Tweries}
       </h1>
+      <h2 className="my-4 text-center">
+        {copy["When 280 characters just isn't enough"]}
+      </h2>
+      <p className="my-4 text-center">
+        <FontAwesomeIcon
+          className="tweries-color-blue"
+          icon={faTwitter}
+          size="3x"
+        />
+      </p>
       {isAuthenticated ? (
         <form className="flex flex-col" onSubmit={e => e.preventDefault()}>
           <ReplyToTweet
@@ -205,20 +217,20 @@ function App({ initialState, reducer }) {
             tweetUrl={inReplyToTweetUrl}
             userId={userId}
           />
-          <small className="mb-2 p-2">
+          <p className="italic py-4 text-sm">
             {
               copy[
-                'Start typing, to insert a break prior to reaching 280 characters please use'
+                'Start typing, to insert a break prior to reaching 280 characters please use Newline(s)'
               ]
-            }{' '}
-            <span className="font-bold">{copy['Newline(s)']}</span>
-          </small>
+            }
+          </p>
+          <label className="text-sm" htmlFor="source">
+            {copy["What's happening?"]}
+          </label>
           <textarea
-            className="bg-gray-200 border border-gray-500 p-2 rounded"
+            className="p-2 tweries-background-color-blue-white tweries-border"
             data-testid="source"
-            placeholder={copy["What's happening?"]}
-            rows={8}
-            value={source}
+            name="source"
             onChange={e => {
               dispatch({
                 type: types.CHANGE_SOURCE,
@@ -226,11 +238,18 @@ function App({ initialState, reducer }) {
               });
               setSource(e.target.value);
             }}
+            placeholder={copy["What's happening?"]}
+            rows={8}
+            value={source}
           />
           <Counter length={source.length} />
+          <label className="text-sm" htmlFor="hashtags">
+            {copy['#hashtags']}
+          </label>
           <textarea
-            className="bg-gray-200 border border-gray-500 p-2 rounded"
+            className="p-2 tweries-background-color-blue-white tweries-border"
             data-testid="hashtags"
+            name="hashtags"
             onChange={e => {
               dispatch({
                 type: types.CHANGE_HASHTAGS,
@@ -245,12 +264,15 @@ function App({ initialState, reducer }) {
           />
           <Counter length={hashtags.length} />
           {items.length > 0 && [
-            <small className="mb-2 p-2" key="copy">
+            <p className="italic py-4 text-sm" key="copy">
               {copy['Edits can be made in the boxes below before publishing']}
-            </small>,
+            </p>,
             <ul className="flex flex-col" data-testid="list" key="list">
               {items.map((item, index) => (
                 <li className="flex flex-col" key={index}>
+                  <label className="text-sm">
+                    {`${copy.Tweet} #${index + 1}`}
+                  </label>
                   {renderTextarea(item)}
                   <Counter length={item.tweet.length} type="tweet" />
                 </li>
@@ -264,16 +286,15 @@ function App({ initialState, reducer }) {
           />
         </form>
       ) : (
-        <h2 className=" flex flex-col text-center">
-          {copy["See what's happening in the world right now."]}
+        <p className="flex justify-center">
           <button
-            className="bg-gray-300 border border-gray-500 font-bold my-4 px-4 rounded self-center"
+            className="font-bold my-4 px-6 py-2 rounded tweries-background-color-blue-button"
             data-testid="login"
             onClick={() => loginWithRedirect({})}
           >
             {copy['Log in']}
           </button>
-        </h2>
+        </p>
       )}
       <ToastNotification
         notification={notification}

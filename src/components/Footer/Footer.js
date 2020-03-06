@@ -9,9 +9,9 @@ const copy = {
 
 function Footer({ healthy, version }) {
   return (
-    <footer className="flex flex-col items-center text-xs">
+    <footer className="flex flex-col items-center text-sm">
       <ul className="flex">
-        <li className="font-bold m-1 text-blue-800">
+        <li className="m-1">
           <a
             href="https://github.com/Tweries"
             rel="noopener noreferrer"
@@ -20,7 +20,7 @@ function Footer({ healthy, version }) {
             {copy['github.com/Tweries']}
           </a>
         </li>
-        <li className="font-bold m-1 text-blue-800">
+        <li className="m-1">
           <a
             href="https://twitter.com/TweriesApp"
             rel="noopener noreferrer"

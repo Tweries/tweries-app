@@ -1,7 +1,6 @@
 import React from 'react';
 
 const copy = {
-  'Log in': 'Log in',
   'Log out': 'Log out'
 };
 
@@ -10,16 +9,16 @@ function NavBar({ isAuthenticated, loginWithRedirect, logout, user }) {
     <header className="flex flex-row justify-between">
       {isAuthenticated ? (
         <>
-          <div className="flex items-center">
+          <p className="flex items-center">
             <img
               alt={user.name}
-              className="border border-gray-500 rounded-full"
+              className="border tweries-border-color rounded-full"
               src={user.picture}
             />
             <span className="px-2">{user.name}</span>
-          </div>
+          </p>
           <button
-            className="font-bold px-4 underline"
+            className="px-4 underline"
             data-testid="logout"
             onClick={() =>
               logout({
@@ -31,7 +30,7 @@ function NavBar({ isAuthenticated, loginWithRedirect, logout, user }) {
           </button>
         </>
       ) : (
-        <span>&nbsp;</span>
+        <span className="my-4" />
       )}
     </header>
   );

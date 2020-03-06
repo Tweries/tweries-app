@@ -13,9 +13,9 @@ function TweetstormButton({ disabled, onClick, waiting }) {
     <button
       disabled={disabled}
       className={classnames(
-        'bg-gray-300 border border-gray-500 font-bold px-4 mb-2 rounded self-center',
+        'bg-gray-300 border border-gray-500 font-bold my-4 px-6 py-2 rounded self-center',
         {
-          'bg-blue-600 text-white': !disabled,
+          'tweries-background-color-blue-button': !disabled,
           'cursor-auto': disabled
         }
       )}

@@ -49,9 +49,9 @@ exports[`Layout to match snapshot 1`] = `
         <header
           class="flex flex-row justify-between"
         >
-          <span>
-             
-          </span>
+          <span
+            class="my-4"
+          />
         </header>
       </div>
     </div>

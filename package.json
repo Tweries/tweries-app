@@ -7,6 +7,7 @@
     "@amplitude/react-amplitude": "^1.0.0",
     "@auth0/auth0-spa-js": "^1.5.0",
     "@fortawesome/fontawesome-svg-core": "^1.2.25",
+    "@fortawesome/free-brands-svg-icons": "^5.12.1",
     "@fortawesome/free-solid-svg-icons": "^5.11.2",
     "@fortawesome/react-fontawesome": "^0.1.7",
     "amplitude-js": "^5.6.0",
