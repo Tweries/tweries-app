@@ -28,10 +28,6 @@ const onRedirectCallback = appState => {
 };
 
 function renderApp(logEvent) {
-  const { REACT_APP_LAYOUT_V1 } = process.env;
-  if (REACT_APP_LAYOUT_V1 === 'true') {
-    return <Layout />;
-  }
   initializeReactGA();
   const feature = setFeatures(features);
   return (
