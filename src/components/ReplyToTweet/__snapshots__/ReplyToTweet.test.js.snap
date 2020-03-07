@@ -2,9 +2,16 @@
 
 exports[`ReplyToTweet to match snapshot 1`] = `
 <div>
+  <label
+    class="text-sm"
+    for="reply-to"
+  >
+    Optional: reply to Tweet URL
+  </label>
   <textarea
-    class="border border-gray-500 p-2 rounded bg-gray-200"
+    class="p-2 tweries-border tweries-background-color-blue-white"
     data-testid="reply-to"
+    name="reply-to"
     placeholder="Optional: reply to Tweet URL"
     rows="1"
   />

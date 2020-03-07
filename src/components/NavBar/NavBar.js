@@ -1,54 +1,36 @@
 import React from 'react';
 
 const copy = {
-  'Log in': 'Log in',
   'Log out': 'Log out'
 };
 
-function Button({ dataTestId, onClick, copy }) {
-  return (
-    <button
-      className="bg-gray-300 border border-gray-500 font-bold px-4 rounded"
-      data-testid={dataTestId}
-      onClick={onClick}
-    >
-      {copy}
-    </button>
-  );
-}
-
 function NavBar({ isAuthenticated, loginWithRedirect, logout, user }) {
   return (
-    <header className="flex flex-col items-center">
+    <header className="flex flex-row justify-between">
       {isAuthenticated ? (
         <>
-          <img
-            alt={user.name}
-            className="border border-gray-500 rounded"
-            src={user.picture}
-          />
-          <span>
-            <span aria-label="hello" role="img">
-              👋
-            </span>{' '}
-            {user.name}
-          </span>
-          <Button
-            dataTestId="logout"
+          <p className="flex items-center">
+            <img
+              alt={user.name}
+              className="border tweries-border-color rounded-full"
+              src={user.picture}
+            />
+            <span className="px-2">{user.name}</span>
+          </p>
+          <button
+            className="px-4 underline"
+            data-testid="logout"
             onClick={() =>
               logout({
                 returnTo: window.location.href
               })
             }
-            copy={copy['Log out']}
-          />
+          >
+            {copy['Log out']}
+          </button>
         </>
       ) : (
-        <Button
-          dataTestId="login"
-          onClick={() => loginWithRedirect({})}
-          copy={copy['Log in']}
-        />
+        <span className="my-4" />
       )}
     </header>
   );

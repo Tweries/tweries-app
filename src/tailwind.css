@@ -4,6 +4,44 @@
 
 @import url('https://fonts.googleapis.com/css?family=Leckerli+One&display=swap');
 
-.logo {
-  font-family: 'Leckerli One', cursive;
+:root {
+  --tweries-black-text: #050505;
+  --tweries-blue: #1da1f2;
+  --tweries-blue-button: #8ccef7;
+  --tweries-blue-white: #f8f8ff;
+  --tweries-dark-blue: #0073bf;
+  --tweries-leckerli-one: 'Leckerli One', cursive;
+  --tweries-off-white: #fbfbfb;
+}
+
+body {
+  color: var(--tweries-black-text);
+}
+
+.tweries-background-color-blue-button {
+  background-color: var(--tweries-blue-button);
+}
+
+.tweries-background-color-blue-white {
+  background-color: var(--tweries-blue-white);
+}
+
+.tweries-background-color-off-white {
+  background-color: var(--tweries-off-white);
+}
+
+.tweries-border {
+  border: 1px solid #bdbdbd;
+}
+
+.tweries-border-color {
+  border-color: var(--tweries-dark-blue);
+}
+
+.tweries-color-blue {
+  color: var(--tweries-blue);
+}
+
+.tweries-font-family {
+  font-family: var(--tweries-leckerli-one);
 }

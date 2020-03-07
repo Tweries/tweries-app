@@ -8,14 +8,14 @@ function Counter({ length, type }) {
   const danger = type === 'tweet' ? true : false;
 
   return (
-    <small
-      className={classnames('mb-2 text-right', {
+    <p
+      className={classnames('text-right text-xs', {
         'text-gray-700': !danger || (danger && length <= MAX_LENGTH),
         'text-red-500 ': danger && length > MAX_LENGTH
       })}
     >
       {value}
-    </small>
+    </p>
   );
 }
 

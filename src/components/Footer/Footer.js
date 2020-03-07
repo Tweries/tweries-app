@@ -9,26 +9,9 @@ const copy = {
 
 function Footer({ healthy, version }) {
   return (
-    <footer className="flex flex-col items-center text-xs">
-      <p
-        className={classnames({
-          'text-green-800': healthy,
-          'text-red-800': !healthy
-        })}
-      >
-        {copy.Tweries} v{version} &copy; {new Date().getFullYear()}{' '}
-      </p>
+    <footer className="flex flex-col items-center text-sm">
       <ul className="flex">
-        <li className="font-bold m-1 text-blue-800">
-          <a
-            href="https://twitter.com/TweriesApp"
-            rel="noopener noreferrer"
-            target="_blank"
-          >
-            {copy['@TweriesApp']}
-          </a>
-        </li>
-        <li className="font-bold m-1 text-blue-800">
+        <li className="m-1">
           <a
             href="https://github.com/Tweries"
             rel="noopener noreferrer"
@@ -37,7 +20,24 @@ function Footer({ healthy, version }) {
             {copy['github.com/Tweries']}
           </a>
         </li>
+        <li className="m-1">
+          <a
+            href="https://twitter.com/TweriesApp"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            {copy['@TweriesApp']}
+          </a>
+        </li>
       </ul>
+      <p
+        className={classnames({
+          'text-green-800': healthy,
+          'text-red-800': !healthy
+        })}
+      >
+        {copy.Tweries} v{version} &copy; {new Date().getFullYear()}{' '}
+      </p>
     </footer>
   );
 }

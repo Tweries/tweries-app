@@ -47,14 +47,11 @@ exports[`Layout to match snapshot 1`] = `
         class="w-full"
       >
         <header
-          class="flex flex-col items-center"
+          class="flex flex-row justify-between"
         >
-          <button
-            class="bg-gray-300 border border-gray-500 font-bold px-4 rounded"
-            data-testid="login"
-          >
-            Log in
-          </button>
+          <span
+            class="my-4"
+          />
         </header>
       </div>
     </div>
