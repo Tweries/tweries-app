@@ -5,9 +5,13 @@ exports[`App generate tweetstorm and dismiss notification 1`] = `
   <article
     class="container content-center mx-auto m-1 p-4"
   >
-    <div>
-      NavBar
-    </div>
+    <header
+      class="flex flex-row justify-between"
+    >
+      <div>
+        NavBar
+      </div>
+    </header>
     <h1
       class="font-bold my-4 text-5xl text-center tweries-font-family"
     >
@@ -121,9 +125,13 @@ exports[`App unauthenticated user 1`] = `
   <article
     class="container content-center mx-auto m-1 p-4"
   >
-    <div>
-      NavBar
-    </div>
+    <header
+      class="flex flex-row justify-between"
+    >
+      <span
+        class="my-4"
+      />
+    </header>
     <h1
       class="font-bold my-4 text-5xl text-center tweries-font-family"
     >

@@ -22,7 +22,6 @@ const copy = {
   '...': '...',
   'Edits can be made in the boxes below before publishing':
     'Edits can be made in the boxes below before publishing',
-  'Helping you thread your tweets': 'Helping you thread your tweets',
   'Log in': 'Log in',
   'Start typing, to insert a break prior to reaching 280 characters please use Newline(s)':
     'Start typing, to insert a break prior to reaching 280 characters please use Newline(s)',
@@ -189,13 +188,13 @@ function App({ initialState, reducer }) {
     </article>
   ) : (
     <article className="container content-center mx-auto m-1 p-4">
-      <NavBar
-        dispatch={dispatch}
-        isAuthenticated={isAuthenticated}
-        loginWithRedirect={loginWithRedirect}
-        logout={logout}
-        user={user}
-      />
+      <header className="flex flex-row justify-between">
+        {isAuthenticated ? (
+          <NavBar logout={logout} user={user} />
+        ) : (
+          <span className="my-4" />
+        )}
+      </header>
       <h1 className="font-bold my-4 text-5xl text-center tweries-font-family">
         {copy.Tweries}
       </h1>
