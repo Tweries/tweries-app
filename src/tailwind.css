@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css?family=Leckerli+One&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Oleo+Script&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
 
 :root {
@@ -51,5 +51,5 @@ body {
 }
 
 .tweries-font-family {
-  font-family: var(--tweries-leckerli-one);
+  font-family: 'Oleo Script', cursive;
 }
