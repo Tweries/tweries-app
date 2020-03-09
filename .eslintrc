@@ -11,6 +11,7 @@
     "object-curly-newline": "off",
     "operator-linebreak": "off",
     "quotes": "off",
+    "react/forbid-prop-types": "warn",
     "react/jsx-curly-newline": "off",
     "react/jsx-filename-extension": "off",
     "react/jsx-one-expression-per-line": "off"

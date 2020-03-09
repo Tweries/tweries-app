@@ -28,8 +28,12 @@ function ToastNotification({ notification, onClick }) {
 }
 
 ToastNotification.propTypes = {
-  notification: PropTypes.shape.isRequired,
+  notification: PropTypes.object,
   onClick: PropTypes.func.isRequired
+};
+
+ToastNotification.defaultProps = {
+  notification: null
 };
 
 export default ToastNotification;

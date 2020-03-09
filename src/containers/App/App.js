@@ -310,7 +310,7 @@ function App({ initialState, reducer }) {
 }
 
 App.propTypes = {
-  initialState: PropTypes.shape.isRequired,
+  initialState: PropTypes.object.isRequired,
   reducer: PropTypes.func.isRequired
 };
 

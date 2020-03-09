@@ -34,7 +34,7 @@ function NavBar({ logout, user }) {
 
 NavBar.propTypes = {
   logout: PropTypes.func.isRequired,
-  user: PropTypes.shape.isRequired
+  user: PropTypes.object.isRequired
 };
 
 export default NavBar;
