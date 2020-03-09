@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 @import url('https://fonts.googleapis.com/css?family=Leckerli+One&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
 
 :root {
   --tweries-black-text: #050505;
@@ -16,6 +17,7 @@
 
 body {
   color: var(--tweries-black-text);
+  font-family: 'Open Sans', sans-serif;
 }
 
 .tweries-background-color-blue-button {
