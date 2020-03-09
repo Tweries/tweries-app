@@ -16,6 +16,7 @@
     "feature-provider": "^0.2.3",
     "jest-fetch-mock": "^2.1.2",
     "postcss-cli": "^6.1.3",
+    "prop-types": "^15.7.2",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-ga": "^2.7.0",
@@ -27,6 +28,7 @@
     "build:styles": "postcss src/tailwind.css -o src/styles.css",
     "deploy": "gh-pages -d build",
     "eject": "react-scripts eject",
+    "lint": "eslint src/",
     "prebuild": "NODE_ENV=production yarn build:styles",
     "predeploy": "yarn build",
     "prestart": "yarn build:styles",
@@ -53,6 +55,11 @@
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^1.3.0",
     "@testing-library/react": "^9.3.2",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.19.0",
+    "eslint-plugin-react-hooks": "^2.5.0",
     "gh-pages": "^2.1.1",
     "prettier": "^1.19.1",
     "react-scripts": "^3.2.0"

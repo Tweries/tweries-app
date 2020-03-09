@@ -45,16 +45,16 @@ exports[`App generate tweetstorm and dismiss notification 1`] = `
       class="flex flex-col"
     >
       <label
-        class="text-sm"
+        class="pb-1 text-sm"
         for="reply-to"
       >
-        Optional: reply to Tweet URL
+        If you want to reply to a specific Tweet:
       </label>
       <textarea
         class="p-2 tweries-border tweries-background-color-blue-white"
         data-testid="reply-to"
         name="reply-to"
-        placeholder="Optional: reply to Tweet URL"
+        placeholder="URL goes here"
         rows="1"
       />
       <p
@@ -62,43 +62,42 @@ exports[`App generate tweetstorm and dismiss notification 1`] = `
       >
         Start typing, to insert a break prior to reaching 280 characters please use Newline(s)
       </p>
-      <label
-        class="text-sm"
-        for="source"
-      >
-        What's happening?
-      </label>
       <textarea
         class="p-2 tweries-background-color-blue-white tweries-border"
         data-testid="source"
         name="source"
-        placeholder="What's happening?"
+        placeholder="Type your thoughts here"
         rows="8"
       />
       <p
         class="text-right text-xs text-gray-700"
-      />
+      >
+         
+      </p>
       <label
-        class="text-sm"
+        class="pb-1 text-sm"
         for="hashtags"
       >
-        #hashtags
+        Tags
       </label>
       <textarea
         class="p-2 tweries-background-color-blue-white tweries-border"
         data-testid="hashtags"
         name="hashtags"
-        placeholder="#hashtags"
+        placeholder="#"
         rows="1"
         type="text"
       />
       <p
         class="text-right text-xs text-gray-700"
-      />
+      >
+         
+      </p>
       <button
         class="bg-gray-300 border border-gray-500 font-bold my-4 px-6 py-2 rounded self-center cursor-auto"
         data-testid="tweet"
         disabled=""
+        type="button"
       >
         Tweet
       </button>
@@ -167,6 +166,7 @@ exports[`App unauthenticated user 1`] = `
       <button
         class="font-bold my-4 px-6 py-2 rounded tweries-background-color-blue-button"
         data-testid="login"
+        type="button"
       >
         Log in
       </button>

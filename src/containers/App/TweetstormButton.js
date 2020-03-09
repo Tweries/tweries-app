@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import classnames from 'classnames';
+import PropTypes from 'prop-types';
 import React from 'react';
 
 const copy = {
@@ -21,10 +22,17 @@ function TweetstormButton({ disabled, onClick, waiting }) {
       )}
       data-testid="tweet"
       onClick={onClick}
+      type="button"
     >
-      {waiting ? <FontAwesomeIcon icon={faSpinner} spin={true} /> : copy.Tweet}
+      {waiting ? <FontAwesomeIcon icon={faSpinner} spin /> : copy.Tweet}
     </button>
   );
 }
+
+TweetstormButton.propTypes = {
+  disabled: PropTypes.bool.isRequired,
+  onClick: PropTypes.func.isRequired,
+  waiting: PropTypes.bool.isRequired
+};
 
 export default TweetstormButton;

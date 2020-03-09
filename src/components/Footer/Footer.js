@@ -1,4 +1,5 @@
 import classnames from 'classnames';
+import PropTypes from 'prop-types';
 import React from 'react';
 
 const copy = {
@@ -41,5 +42,10 @@ function Footer({ healthy, version }) {
     </footer>
   );
 }
+
+Footer.propTypes = {
+  healthy: PropTypes.bool.isRequired,
+  version: PropTypes.string.isRequired
+};
 
 export default Footer;

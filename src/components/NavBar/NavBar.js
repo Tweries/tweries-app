@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 
 const copy = {
@@ -23,11 +24,17 @@ function NavBar({ logout, user }) {
             returnTo: window.location.href
           })
         }
+        type="button"
       >
         {copy['Log out']}
       </button>
     </>
   );
 }
+
+NavBar.propTypes = {
+  logout: PropTypes.func.isRequired,
+  user: PropTypes.shape.isRequired
+};
 
 export default NavBar;

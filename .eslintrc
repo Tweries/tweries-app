@@ -1,0 +1,18 @@
+{
+  "extends": ["airbnb", "react-app"],
+  "rules": {
+    "arrow-parens": "off",
+    "comma-dangle": "off",
+    "function-paren-newline": "off",
+    "implicit-arrow-linebreak": "off",
+    "max-len": "off",
+    "no-param-reassign": "warn",
+    "no-shadow": "warn",
+    "object-curly-newline": "off",
+    "operator-linebreak": "off",
+    "quotes": "off",
+    "react/jsx-curly-newline": "off",
+    "react/jsx-filename-extension": "off",
+    "react/jsx-one-expression-per-line": "off"
+  }
+}

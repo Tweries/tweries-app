@@ -1,9 +1,13 @@
 import classnames from 'classnames';
+import PropTypes from 'prop-types';
 import React, { useEffect, useState } from 'react';
 import fetchTweet from '../../api/fetchTweet';
 
 const copy = {
-  'Optional: reply to Tweet URL': 'Optional: reply to Tweet URL'
+  'If you want to reply to a specific Tweet:':
+    'If you want to reply to a specific Tweet:',
+  'Optional: reply to Tweet URL': 'Optional: reply to Tweet URL',
+  'URL goes here': 'URL goes here'
 };
 
 // TODO: move to containers
@@ -42,8 +46,8 @@ function ReplyToTweet({ callback, onChange, tweetUrl, userId }) {
 
   return (
     <>
-      <label className="text-sm" htmlFor="reply-to">
-        {copy['Optional: reply to Tweet URL']}
+      <label className="pb-1 text-sm" htmlFor="reply-to">
+        {copy['If you want to reply to a specific Tweet:']}
       </label>
       <textarea
         className={classnames('p-2 tweries-border', {
@@ -57,12 +61,19 @@ function ReplyToTweet({ callback, onChange, tweetUrl, userId }) {
         onChange={({ target: { value } }) => {
           onChange(value);
         }}
-        placeholder={copy['Optional: reply to Tweet URL']}
+        placeholder={copy['URL goes here']}
         rows={1}
         value={tweetUrl}
       />
     </>
   );
 }
+
+ReplyToTweet.propTypes = {
+  callback: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
+  tweetUrl: PropTypes.string.isRequired,
+  userId: PropTypes.string.isRequired
+};
 
 export default ReplyToTweet;

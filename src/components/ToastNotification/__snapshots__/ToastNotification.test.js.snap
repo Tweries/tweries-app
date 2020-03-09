@@ -11,6 +11,7 @@ exports[`ToastNotification danger 1`] = `
     <button
       class="font-bold"
       data-testid="dismiss"
+      type="button"
     >
       ×
     </button>
@@ -31,6 +32,7 @@ exports[`ToastNotification success 1`] = `
     <button
       class="font-bold"
       data-testid="dismiss"
+      type="button"
     >
       ×
     </button>
