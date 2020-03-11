@@ -2,7 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css?family=Leckerli+One&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Oleo+Script&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
 
 :root {
   --tweries-black-text: #050505;
@@ -10,16 +11,23 @@
   --tweries-blue-button: #8ccef7;
   --tweries-blue-white: #f8f8ff;
   --tweries-dark-blue: #0073bf;
+  --tweries-dark-blue-button: rgba(0, 115, 191, 0.7);
   --tweries-leckerli-one: 'Leckerli One', cursive;
   --tweries-off-white: #fbfbfb;
 }
 
 body {
   color: var(--tweries-black-text);
+  font-family: 'Open Sans', sans-serif;
 }
 
 .tweries-background-color-blue-button {
   background-color: var(--tweries-blue-button);
+}
+
+.tweries-background-color-blue-button:hover {
+  background-color: var(--tweries-dark-blue-button);
+  color: var(--tweries-off-white);
 }
 
 .tweries-background-color-blue-white {
@@ -43,5 +51,5 @@ body {
 }
 
 .tweries-font-family {
-  font-family: var(--tweries-leckerli-one);
+  font-family: 'Oleo Script', cursive;
 }

@@ -37,6 +37,7 @@ describe('NavBar', () => {
 
   scenarios.forEach(({ act, assert, description, props }) => {
     it(description, () => {
+      // eslint-disable-next-line react/jsx-props-no-spreading
       const { getByTestId } = render(<NavBar {...props} />);
       act(getByTestId);
       assert();

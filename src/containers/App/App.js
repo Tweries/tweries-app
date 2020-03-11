@@ -2,14 +2,15 @@ import classnames from 'classnames';
 import { useFeature } from 'feature-provider';
 import { faTwitter } from '@fortawesome/free-brands-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import PropTypes from 'prop-types';
 import React, { useCallback, useEffect, useReducer, useState } from 'react';
 import { version } from '../../../package.json';
-import fetchHealth from '../../api/fetchHealth.js';
-import fetchTweetstorm from '../../api/fetchTweetstorm.js';
+import fetchHealth from '../../api/fetchHealth';
+import fetchTweetstorm from '../../api/fetchTweetstorm';
 import Footer from '../../components/Footer/Footer';
 import NavBar from '../../components/NavBar/NavBar';
 import ReplyToTweet from '../../components/ReplyToTweet/ReplyToTweet';
-import ToastNotification from '../../components/ToastNotification/ToastNotification.js';
+import ToastNotification from '../../components/ToastNotification/ToastNotification';
 import useLocalStorage from '../../hooks/useLocalStorage';
 import makeTweetstorm from '../../store/makeTweetstorm';
 import { types } from '../../store/makeReducer';
@@ -22,16 +23,18 @@ const copy = {
   '...': '...',
   'Edits can be made in the boxes below before publishing':
     'Edits can be made in the boxes below before publishing',
-  'Helping you thread your tweets': 'Helping you thread your tweets',
   'Log in': 'Log in',
   'Start typing, to insert a break prior to reaching 280 characters please use Newline(s)':
     'Start typing, to insert a break prior to reaching 280 characters please use Newline(s)',
+  Tags: 'Tags',
   Tweet: 'Tweet',
   Tweries: 'Tweries',
+  'Type your thoughts here': 'Type your thoughts here',
   "What's happening?": "What's happening?",
   "When 280 characters just isn't enough":
     "When 280 characters just isn't enough",
   'Your tweetstorm has been created!': 'Your tweetstorm has been created!',
+  '#': '#',
   '#hashtags': '#hashtags'
 };
 
@@ -55,7 +58,7 @@ function App({ initialState, reducer }) {
       console.log(response);
       dispatch({
         type: types.SET_HEALTHY,
-        value: response.error ? false : true
+        value: !response.error
       });
     }
   }
@@ -95,6 +98,7 @@ function App({ initialState, reducer }) {
     source: source_
   });
 
+  // eslint-disable-next-line consistent-return
   useEffect(() => {
     if (notification) {
       const timer = setTimeout(() => {
@@ -124,6 +128,7 @@ function App({ initialState, reducer }) {
           'tweries-border': item.tweet.length <= MAX_LENGTH,
           'border-2 border-red-500': item.tweet.length > MAX_LENGTH
         })}
+        name={item.id}
         onChange={e => {
           dispatch({
             type: types.CHANGE_TWEET,
@@ -189,13 +194,13 @@ function App({ initialState, reducer }) {
     </article>
   ) : (
     <article className="container content-center mx-auto m-1 p-4">
-      <NavBar
-        dispatch={dispatch}
-        isAuthenticated={isAuthenticated}
-        loginWithRedirect={loginWithRedirect}
-        logout={logout}
-        user={user}
-      />
+      <header className="flex flex-row justify-between">
+        {isAuthenticated ? (
+          <NavBar logout={logout} user={user} />
+        ) : (
+          <span className="my-4" />
+        )}
+      </header>
       <h1 className="font-bold my-4 text-5xl text-center tweries-font-family">
         {copy.Tweries}
       </h1>
@@ -224,9 +229,6 @@ function App({ initialState, reducer }) {
               ]
             }
           </p>
-          <label className="text-sm" htmlFor="source">
-            {copy["What's happening?"]}
-          </label>
           <textarea
             className="p-2 tweries-background-color-blue-white tweries-border"
             data-testid="source"
@@ -238,13 +240,13 @@ function App({ initialState, reducer }) {
               });
               setSource(e.target.value);
             }}
-            placeholder={copy["What's happening?"]}
+            placeholder={copy['Type your thoughts here']}
             rows={8}
             value={source}
           />
           <Counter length={source.length} />
-          <label className="text-sm" htmlFor="hashtags">
-            {copy['#hashtags']}
+          <label className="pb-1 text-sm" htmlFor="hashtags">
+            {copy.Tags}
           </label>
           <textarea
             className="p-2 tweries-background-color-blue-white tweries-border"
@@ -257,7 +259,7 @@ function App({ initialState, reducer }) {
               });
               setHashtags(e.target.value);
             }}
-            placeholder={copy['#hashtags']}
+            placeholder={copy['#']}
             rows={1}
             type="text"
             value={hashtags}
@@ -269,8 +271,9 @@ function App({ initialState, reducer }) {
             </p>,
             <ul className="flex flex-col" data-testid="list" key="list">
               {items.map((item, index) => (
+                // eslint-disable-next-line react/no-array-index-key
                 <li className="flex flex-col" key={index}>
-                  <label className="text-sm">
+                  <label className="pb-1 text-sm" htmlFor={item.id}>
                     {`${copy.Tweet} #${index + 1}`}
                   </label>
                   {renderTextarea(item)}
@@ -291,6 +294,7 @@ function App({ initialState, reducer }) {
             className="font-bold my-4 px-6 py-2 rounded tweries-background-color-blue-button"
             data-testid="login"
             onClick={() => loginWithRedirect({})}
+            type="button"
           >
             {copy['Log in']}
           </button>
@@ -304,5 +308,10 @@ function App({ initialState, reducer }) {
     </article>
   );
 }
+
+App.propTypes = {
+  initialState: PropTypes.object.isRequired,
+  reducer: PropTypes.func.isRequired
+};
 
 export default App;

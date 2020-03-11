@@ -3,7 +3,6 @@ import amplitude from 'amplitude-js';
 import FeatureProvider, { setFeatures } from 'feature-provider';
 import React from 'react';
 import { render } from 'react-dom';
-import Layout from './components/Layout/Layout';
 import App from './containers/App/App';
 import augment from './store/augment';
 import makeInitialState from './store/makeInitialState';
@@ -28,10 +27,6 @@ const onRedirectCallback = appState => {
 };
 
 function renderApp(logEvent) {
-  const { REACT_APP_LAYOUT_V1 } = process.env;
-  if (REACT_APP_LAYOUT_V1 === 'true') {
-    return <Layout />;
-  }
   initializeReactGA();
   const feature = setFeatures(features);
   return (

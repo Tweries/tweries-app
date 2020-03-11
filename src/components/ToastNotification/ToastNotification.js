@@ -1,4 +1,5 @@
 import classnames from 'classnames';
+import PropTypes from 'prop-types';
 import React from 'react';
 
 function ToastNotification({ notification, onClick }) {
@@ -12,14 +13,27 @@ function ToastNotification({ notification, onClick }) {
         })}
       >
         <span>{message}</span>
-        <button className="font-bold" data-testid="dismiss" onClick={onClick}>
+        <button
+          className="font-bold"
+          data-testid="dismiss"
+          onClick={onClick}
+          type="button"
+        >
           &times;
         </button>
       </p>
     );
-  } else {
-    return null;
   }
+  return null;
 }
+
+ToastNotification.propTypes = {
+  notification: PropTypes.object,
+  onClick: PropTypes.func.isRequired
+};
+
+ToastNotification.defaultProps = {
+  notification: null
+};
 
 export default ToastNotification;
