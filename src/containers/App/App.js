@@ -14,7 +14,7 @@ import ToastNotification from '../../components/ToastNotification/ToastNotificat
 import useLocalStorage from '../../hooks/useLocalStorage';
 import makeTweetstorm from '../../store/makeTweetstorm';
 import { types } from '../../store/makeReducer';
-import { MAX_LENGTH } from '../../constants';
+import { HIDE_TAGS_V1, MAX_LENGTH } from '../../constants';
 import { useAuth0 } from '../../react-auth0-wrapper';
 import Counter from './Counter';
 import TweetstormButton from './TweetstormButton';
@@ -245,26 +245,30 @@ function App({ initialState, reducer }) {
             value={source}
           />
           <Counter length={source.length} />
-          <label className="pb-1 text-sm" htmlFor="hashtags">
-            {copy.Tags}
-          </label>
-          <textarea
-            className="p-2 tweries-background-color-blue-white tweries-border"
-            data-testid="hashtags"
-            name="hashtags"
-            onChange={e => {
-              dispatch({
-                type: types.CHANGE_HASHTAGS,
-                value: e.target.value
-              });
-              setHashtags(e.target.value);
-            }}
-            placeholder={copy['#']}
-            rows={1}
-            type="text"
-            value={hashtags}
-          />
-          <Counter length={hashtags.length} />
+          {!feature.active(HIDE_TAGS_V1) && (
+            <>
+              <label className="pb-1 text-sm" htmlFor="hashtags">
+                {copy.Tags}
+              </label>
+              <textarea
+                className="p-2 tweries-background-color-blue-white tweries-border"
+                data-testid="hashtags"
+                name="hashtags"
+                onChange={e => {
+                  dispatch({
+                    type: types.CHANGE_HASHTAGS,
+                    value: e.target.value
+                  });
+                  setHashtags(e.target.value);
+                }}
+                placeholder={copy['#']}
+                rows={1}
+                type="text"
+                value={hashtags}
+              />
+              <Counter length={hashtags.length} />
+            </>
+          )}
           {items.length > 0 && [
             <p className="italic py-4 text-sm" key="copy">
               {copy['Edits can be made in the boxes below before publishing']}
