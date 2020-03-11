@@ -1,18 +1,21 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useState } from 'react';
 
 const copy = {
   'Log out': 'Log out'
 };
 
 function NavBar({ logout, user }) {
+  const [src, setSrc] = useState(user.picture);
+
   return (
     <>
       <p className="flex items-center">
         <img
           alt={user.name}
           className="border tweries-border-color rounded-full"
-          src={user.picture}
+          onError={() => setSrc('./square.svg')}
+          src={src}
         />
         <span className="px-2">{user.name}</span>
       </p>
