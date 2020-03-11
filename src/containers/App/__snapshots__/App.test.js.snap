@@ -74,25 +74,6 @@ exports[`App generate tweetstorm and dismiss notification 1`] = `
       >
          
       </p>
-      <label
-        class="pb-1 text-sm"
-        for="hashtags"
-      >
-        Tags
-      </label>
-      <textarea
-        class="p-2 tweries-background-color-blue-white tweries-border"
-        data-testid="hashtags"
-        name="hashtags"
-        placeholder="#"
-        rows="1"
-        type="text"
-      />
-      <p
-        class="text-right text-xs text-gray-700"
-      >
-         
-      </p>
       <button
         class="bg-gray-300 border border-gray-500 font-bold my-4 px-6 py-2 rounded self-center cursor-auto"
         data-testid="tweet"
@@ -161,10 +142,10 @@ exports[`App unauthenticated user 1`] = `
       </svg>
     </p>
     <p
-      class="flex justify-center"
+      class="flex justify-center my-4"
     >
       <button
-        class="font-bold my-4 px-6 py-2 rounded tweries-background-color-blue-button"
+        class="font-bold px-6 py-2 rounded tweries-background-color-blue-button"
         data-testid="login"
         type="button"
       >

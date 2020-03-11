@@ -91,7 +91,7 @@ describe('App', () => {
       </FeatureProvider>
     );
     fireEvent.change(getByTestId('source'), { target: { value: 'foo' } });
-    fireEvent.change(getByTestId('hashtags'), { target: { value: '#bar' } });
+    // fireEvent.change(getByTestId('hashtags'), { target: { value: '#bar' } });
     await waitForDomChange();
     fireEvent.click(getByTestId('tweet'));
     await waitForDomChange();
