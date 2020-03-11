@@ -1,6 +1,7 @@
 import classnames from 'classnames';
 import { useFeature } from 'feature-provider';
 import { faTwitter } from '@fortawesome/free-brands-svg-icons';
+import { faInfo } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
 import React, { useCallback, useEffect, useReducer, useState } from 'react';
@@ -14,7 +15,7 @@ import ToastNotification from '../../components/ToastNotification/ToastNotificat
 import useLocalStorage from '../../hooks/useLocalStorage';
 import makeTweetstorm from '../../store/makeTweetstorm';
 import { types } from '../../store/makeReducer';
-import { HIDE_TAGS_V1, MAX_LENGTH } from '../../constants';
+import { HIDE_TAGS_V1, MAX_LENGTH, SHOW_INFO } from '../../constants';
 import { useAuth0 } from '../../react-auth0-wrapper';
 import Counter from './Counter';
 import TweetstormButton from './TweetstormButton';
@@ -293,16 +294,27 @@ function App({ initialState, reducer }) {
           />
         </form>
       ) : (
-        <p className="flex justify-center">
-          <button
-            className="font-bold my-4 px-6 py-2 rounded tweries-background-color-blue-button"
-            data-testid="login"
-            onClick={() => loginWithRedirect({})}
-            type="button"
-          >
-            {copy['Log in']}
-          </button>
-        </p>
+        <>
+          <p className="flex justify-center my-4">
+            <button
+              className="font-bold px-6 py-2 rounded tweries-background-color-blue-button"
+              data-testid="login"
+              onClick={() => loginWithRedirect({})}
+              type="button"
+            >
+              {copy['Log in']}
+            </button>
+          </p>
+          {feature.active(SHOW_INFO) && (
+            <p className="flex justify-center my-4">
+              <FontAwesomeIcon
+                className="tweries-color-black"
+                icon={faInfo}
+                size="1x"
+              />
+            </p>
+          )}
+        </>
       )}
       <ToastNotification
         notification={notification}

@@ -46,6 +46,10 @@ body {
   border-color: var(--tweries-dark-blue);
 }
 
+.tweries-color-black {
+  color: var(--tweries-black-text);
+}
+
 .tweries-color-blue {
   color: var(--tweries-blue);
 }
