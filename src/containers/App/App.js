@@ -25,13 +25,14 @@ const copy = {
   'Edits can be made in the boxes below before publishing':
     'Edits can be made in the boxes below before publishing',
   'Log in': 'Log in',
+  'Login is necessary in order for your series of Tweets to be sent through your Twitter account':
+    'Login is necessary in order for your series of Tweets to be sent through your Twitter account',
   'Start typing, to insert a break prior to reaching 280 characters please use Newline(s)':
     'Start typing, to insert a break prior to reaching 280 characters please use Newline(s)',
   Tags: 'Tags',
   Tweet: 'Tweet',
   Tweries: 'Tweries',
   'Type your thoughts here': 'Type your thoughts here',
-  "What's happening?": "What's happening?",
   "When 280 characters just isn't enough":
     "When 280 characters just isn't enough",
   'Your tweetstorm has been created!': 'Your tweetstorm has been created!',
@@ -308,10 +309,17 @@ function App({ initialState, reducer }) {
           {feature.active(SHOW_INFO) && (
             <p className="flex justify-center my-4">
               <FontAwesomeIcon
-                className="tweries-color-black"
+                className="tooltip tweries-color-dark-blue"
                 icon={faInfo}
                 size="1x"
               />
+              <span className="p-3 mt-6 -ml-1 tooltip-text tweries-border">
+                {
+                  copy[
+                    'Login is necessary in order for your series of Tweets to be sent through your Twitter account'
+                  ]
+                }
+              </span>
             </p>
           )}
         </>
