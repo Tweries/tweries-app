@@ -14,12 +14,12 @@ function NavBar({ logout, user }) {
         {show && (
           <img
             alt={user.name}
-            className="border rounded-full tweries-border-color"
+            className="border mr-2 rounded-full tweries-border-color"
             onError={() => setShow(false)}
             src={user.picture}
           />
         )}
-        <span className="px-2">{user.name}</span>
+        {user.name}
       </p>
       <button
         className="px-4 underline"
