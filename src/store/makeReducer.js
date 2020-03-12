@@ -53,10 +53,11 @@ function makeReducer(feature) {
         return {
           ...state,
           items: [...state.items].map(item => {
-            if (item.id === action.value.id) {
-              item.tweet = action.value.tweet;
+            const copy = { ...item };
+            if (copy.id === action.value.id) {
+              copy.tweet = action.value.tweet;
             }
-            return item;
+            return copy;
           })
         };
       }

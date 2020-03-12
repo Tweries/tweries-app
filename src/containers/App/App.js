@@ -15,7 +15,7 @@ import ToastNotification from '../../components/ToastNotification/ToastNotificat
 import useLocalStorage from '../../hooks/useLocalStorage';
 import makeTweetstorm from '../../store/makeTweetstorm';
 import { types } from '../../store/makeReducer';
-import { HIDE_TAGS_V1, MAX_LENGTH, SHOW_INFO } from '../../constants';
+import { HIDE_TAGS_V1, MAX_LENGTH, SHOW_INFO_V1 } from '../../constants';
 import { useAuth0 } from '../../react-auth0-wrapper';
 import Counter from './Counter';
 import TweetstormButton from './TweetstormButton';
@@ -277,8 +277,7 @@ function App({ initialState, reducer }) {
             </p>,
             <ul className="flex flex-col" data-testid="list" key="list">
               {items.map((item, index) => (
-                // eslint-disable-next-line react/no-array-index-key
-                <li className="flex flex-col" key={index}>
+                <li className="flex flex-col" key={item.id}>
                   <label className="pb-1 text-sm" htmlFor={item.id}>
                     {`${copy.Tweet} #${index + 1}`}
                   </label>
@@ -306,7 +305,7 @@ function App({ initialState, reducer }) {
               {copy['Log in']}
             </button>
           </p>
-          {feature.active(SHOW_INFO) && (
+          {feature.active(SHOW_INFO_V1) && (
             <p className="flex justify-center my-4">
               <FontAwesomeIcon
                 className="tooltip tweries-color-dark-blue"

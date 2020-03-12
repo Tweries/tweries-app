@@ -6,17 +6,19 @@ const copy = {
 };
 
 function NavBar({ logout, user }) {
-  const [src, setSrc] = useState(user.picture);
+  const [show, setShow] = useState(true);
 
   return (
     <>
       <p className="flex items-center">
-        <img
-          alt={user.name}
-          className="border tweries-border-color rounded-full"
-          onError={() => setSrc('./square.svg')}
-          src={src}
-        />
+        {show && (
+          <img
+            alt={user.name}
+            className="border rounded-full tweries-border-color"
+            onError={() => setShow(false)}
+            src={user.picture}
+          />
+        )}
         <span className="px-2">{user.name}</span>
       </p>
       <button

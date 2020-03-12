@@ -12,7 +12,7 @@ export const BASE_URL =
 
 export const FEATURE_V1 = 'FEATURE_V1';
 export const HIDE_TAGS_V1 = 'HIDE_TAGS_V1';
-export const SHOW_INFO = 'SHOW_INFO';
+export const SHOW_INFO_V1 = 'SHOW_INFO_V1';
 
 export const MAX_LENGTH = 280;
 export const NEWLINE = '\n';

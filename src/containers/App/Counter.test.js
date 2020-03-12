@@ -33,7 +33,6 @@ describe('Counter', () => {
 
   scenarios.forEach(({ description, props }) => {
     it(description, () => {
-      // eslint-disable-next-line react/jsx-props-no-spreading
       const { container } = render(<Counter {...props} />);
       expect(container).toMatchSnapshot();
     });
