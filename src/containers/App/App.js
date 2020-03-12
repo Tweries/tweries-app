@@ -27,14 +27,14 @@ const copy = {
   'Log in': 'Log in',
   'Login is necessary in order for your series of Tweets to be sent through your Twitter account':
     'Login is necessary in order for your series of Tweets to be sent through your Twitter account',
-  'Start typing, to insert a break prior to reaching 280 characters please use Newline(s)':
-    'Start typing, to insert a break prior to reaching 280 characters please use Newline(s)',
+  'Start typing. To insert a break prior to reaching 280 characters, please use Newline(s)':
+    'Start typing. To insert a break prior to reaching 280 characters, please use Newline(s)',
   Tags: 'Tags',
   Tweet: 'Tweet',
   Tweries: 'Tweries',
   'Type your thoughts here': 'Type your thoughts here',
-  "When 280 characters just isn't enough":
-    "When 280 characters just isn't enough",
+  "When 280 characters just aren't enough":
+    "When 280 characters just aren't enough",
   'Your tweetstorm has been created!': 'Your tweetstorm has been created!',
   '#': '#',
   '#hashtags': '#hashtags'
@@ -207,7 +207,7 @@ function App({ initialState, reducer }) {
         {copy.Tweries}
       </h1>
       <h2 className="my-4 text-center">
-        {copy["When 280 characters just isn't enough"]}
+        {copy["When 280 characters just aren't enough"]}
       </h2>
       <p className="my-4 text-center">
         <FontAwesomeIcon
@@ -227,7 +227,7 @@ function App({ initialState, reducer }) {
           <p className="italic py-4 text-sm">
             {
               copy[
-                'Start typing, to insert a break prior to reaching 280 characters please use Newline(s)'
+                'Start typing. To insert a break prior to reaching 280 characters, please use Newline(s)'
               ]
             }
           </p>

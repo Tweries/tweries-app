@@ -20,7 +20,7 @@ exports[`App generate tweetstorm and dismiss notification 1`] = `
     <h2
       class="my-4 text-center"
     >
-      When 280 characters just isn't enough
+      When 280 characters just aren't enough
     </h2>
     <p
       class="my-4 text-center"
@@ -60,7 +60,7 @@ exports[`App generate tweetstorm and dismiss notification 1`] = `
       <p
         class="italic py-4 text-sm"
       >
-        Start typing, to insert a break prior to reaching 280 characters please use Newline(s)
+        Start typing. To insert a break prior to reaching 280 characters, please use Newline(s)
       </p>
       <textarea
         class="p-2 tweries-background-color-blue-white tweries-border"
@@ -139,7 +139,7 @@ exports[`App unauthenticated user 1`] = `
     <h2
       class="my-4 text-center"
     >
-      When 280 characters just isn't enough
+      When 280 characters just aren't enough
     </h2>
     <p
       class="my-4 text-center"
