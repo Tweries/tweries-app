@@ -41,7 +41,7 @@ function makeTweetstorm(feature) {
       hasSpaceAfterPunctuation(data.value, take) &&
       !endOfSource(copy, take)
     ) {
-      take = v.substr(take, 0, data.value + 1);
+      return v.substr(take, 0, data.value + 1);
     }
     return take;
   }
@@ -64,14 +64,18 @@ function makeTweetstorm(feature) {
     return copy;
   }
 
-  // TODO: change name
-  function tweetstorm({ hashtags, linefeed, source }) {
+  function getGoodLineFeed(linefeed) {
     // INFO: hack :(
     if (linefeed === null || linefeed === undefined || linefeed === '') {
-      linefeed = NEWLINE;
+      return NEWLINE;
     }
+    return linefeed;
+  }
 
-    let copy = replaceNewlinesWithNewline(linefeed, source);
+  function tweetstorm({ hashtags, linefeed, source }) {
+    const goodLinefeed = getGoodLineFeed(linefeed);
+
+    let copy = replaceNewlinesWithNewline(goodLinefeed, source);
     const parts = [];
 
     while (copy.length !== 0) {
@@ -83,9 +87,9 @@ function makeTweetstorm(feature) {
         max = MAX_LENGTH - makeSequenceNumber().length; // INFO: 1 space before the sequence number
       }
       take = v.prune(copy, max, '');
-      if (take.indexOf(linefeed) !== -1) {
-        take = v.substr(take, 0, take.indexOf(linefeed));
-        copy = v.substr(copy, take.length + linefeed.length);
+      if (take.indexOf(goodLinefeed) !== -1) {
+        take = v.substr(take, 0, take.indexOf(goodLinefeed));
+        copy = v.substr(copy, take.length + goodLinefeed.length);
       } else {
         take = backUpToLastPunctuation(copy, take);
         copy = v.substr(copy, take.length + 1); // INFO: 1 is the space after the word
@@ -93,7 +97,7 @@ function makeTweetstorm(feature) {
       parts.push(take);
     }
 
-    const tweetstorm = parts.map((part, index) => {
+    const tweets = parts.map((part, index) => {
       let tweet;
       const sequenceNumber = makeSequenceNumber(index, parts.length);
       if (hashtags.length > 0) {
@@ -105,7 +109,7 @@ function makeTweetstorm(feature) {
       return { id: generateUniqueId(), tweet };
     });
 
-    return tweetstorm;
+    return tweets;
   }
 
   return tweetstorm;

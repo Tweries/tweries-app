@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavBar img onError 1`] = `
+<div>
+  <p
+    class="flex items-center"
+  >
+    <img
+      alt="mattiaerre.js"
+      class="border rounded-full tweries-border-color"
+    />
+    <span
+      class="px-2"
+    >
+      mattiaerre.js
+    </span>
+  </p>
+  <button
+    class="px-4 underline"
+    data-testid="logout"
+    type="button"
+  >
+    Log out
+  </button>
+</div>
+`;

@@ -46,10 +46,32 @@ body {
   border-color: var(--tweries-dark-blue);
 }
 
+.tweries-color-black {
+  color: var(--tweries-black-text);
+}
+
 .tweries-color-blue {
   color: var(--tweries-blue);
 }
 
+.tweries-color-dark-blue {
+  color: var(--tweries-dark-blue);
+}
+
 .tweries-font-family {
   font-family: 'Oleo Script', cursive;
+}
+
+/* tooltip */
+
+.tooltip + .tooltip-text {
+  position: absolute;
+  text-align: center;
+  visibility: hidden;
+  z-index: 100;
+}
+
+.tooltip:hover + .tooltip-text {
+  background-color: var(--tweries-blue-white);
+  visibility: visible;
 }

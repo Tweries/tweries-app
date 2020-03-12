@@ -20,7 +20,7 @@ exports[`App generate tweetstorm and dismiss notification 1`] = `
     <h2
       class="my-4 text-center"
     >
-      When 280 characters just isn't enough
+      When 280 characters just aren't enough
     </h2>
     <p
       class="my-4 text-center"
@@ -60,7 +60,7 @@ exports[`App generate tweetstorm and dismiss notification 1`] = `
       <p
         class="italic py-4 text-sm"
       >
-        Start typing, to insert a break prior to reaching 280 characters please use Newline(s)
+        Start typing. To insert a break prior to reaching 280 characters, please use Newline(s)
       </p>
       <textarea
         class="p-2 tweries-background-color-blue-white tweries-border"
@@ -139,7 +139,7 @@ exports[`App unauthenticated user 1`] = `
     <h2
       class="my-4 text-center"
     >
-      When 280 characters just isn't enough
+      When 280 characters just aren't enough
     </h2>
     <p
       class="my-4 text-center"
@@ -161,15 +161,39 @@ exports[`App unauthenticated user 1`] = `
       </svg>
     </p>
     <p
-      class="flex justify-center"
+      class="flex justify-center my-4"
     >
       <button
-        class="font-bold my-4 px-6 py-2 rounded tweries-background-color-blue-button"
+        class="font-bold px-6 py-2 rounded tweries-background-color-blue-button"
         data-testid="login"
         type="button"
       >
         Log in
       </button>
+    </p>
+    <p
+      class="flex justify-center my-4"
+    >
+      <svg
+        aria-hidden="true"
+        class="svg-inline--fa fa-info fa-w-6 fa-1x tooltip tweries-color-dark-blue"
+        data-icon="info"
+        data-prefix="fas"
+        focusable="false"
+        role="img"
+        viewBox="0 0 192 512"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M20 424.229h20V279.771H20c-11.046 0-20-8.954-20-20V212c0-11.046 8.954-20 20-20h112c11.046 0 20 8.954 20 20v212.229h20c11.046 0 20 8.954 20 20V492c0 11.046-8.954 20-20 20H20c-11.046 0-20-8.954-20-20v-47.771c0-11.046 8.954-20 20-20zM96 0C56.235 0 24 32.235 24 72s32.235 72 72 72 72-32.235 72-72S135.764 0 96 0z"
+          fill="currentColor"
+        />
+      </svg>
+      <span
+        class="p-3 mt-6 -ml-1 tooltip-text tweries-border"
+      >
+        Login is necessary in order for your series of Tweets to be sent through your Twitter account
+      </span>
     </p>
     <div>
       Footer

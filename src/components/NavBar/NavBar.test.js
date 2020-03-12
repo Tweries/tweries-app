@@ -5,16 +5,13 @@ import NavBar from './NavBar';
 const user = {
   name: 'tweries-app',
   picture:
-    'https://abs.twimg.com/sticky/default_profile_images/default_profile_normal.png',
-  sub: 'twitter|1183836409850814464'
+    'https://abs.twimg.com/sticky/default_profile_images/default_profile_normal.png'
 };
 
-const mockLoginWithRedirect = jest.fn();
 const mockLogout = jest.fn();
 
 describe('NavBar', () => {
   afterEach(() => {
-    mockLoginWithRedirect.mockReset();
     mockLogout.mockReset();
   });
 
@@ -28,7 +25,6 @@ describe('NavBar', () => {
       },
       description: 'authenticated user',
       props: {
-        isAuthenticated: true,
         logout: mockLogout,
         user
       }
@@ -37,10 +33,21 @@ describe('NavBar', () => {
 
   scenarios.forEach(({ act, assert, description, props }) => {
     it(description, () => {
-      // eslint-disable-next-line react/jsx-props-no-spreading
       const { getByTestId } = render(<NavBar {...props} />);
       act(getByTestId);
       assert();
     });
+  });
+
+  it('img onError', () => {
+    const { container } = render(
+      <NavBar
+        user={{
+          name: 'mattiaerre.js'
+        }}
+      />
+    );
+    // INFO: how do I trigger onError?
+    expect(container).toMatchSnapshot();
   });
 });

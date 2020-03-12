@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-props-no-spreading */
 import { render, fireEvent, waitForDomChange } from '@testing-library/react';
 import React from 'react';
 import ReplyToTweet from './ReplyToTweet';

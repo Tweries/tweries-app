@@ -1,19 +1,24 @@
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useState } from 'react';
 
 const copy = {
   'Log out': 'Log out'
 };
 
 function NavBar({ logout, user }) {
+  const [show, setShow] = useState(true);
+
   return (
     <>
       <p className="flex items-center">
-        <img
-          alt={user.name}
-          className="border tweries-border-color rounded-full"
-          src={user.picture}
-        />
+        {show && (
+          <img
+            alt={user.name}
+            className="border rounded-full tweries-border-color"
+            onError={() => setShow(false)}
+            src={user.picture}
+          />
+        )}
         <span className="px-2">{user.name}</span>
       </p>
       <button

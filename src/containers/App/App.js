@@ -1,6 +1,7 @@
 import classnames from 'classnames';
 import { useFeature } from 'feature-provider';
 import { faTwitter } from '@fortawesome/free-brands-svg-icons';
+import { faInfo } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
 import React, { useCallback, useEffect, useReducer, useState } from 'react';
@@ -14,7 +15,7 @@ import ToastNotification from '../../components/ToastNotification/ToastNotificat
 import useLocalStorage from '../../hooks/useLocalStorage';
 import makeTweetstorm from '../../store/makeTweetstorm';
 import { types } from '../../store/makeReducer';
-import { MAX_LENGTH } from '../../constants';
+import { HIDE_TAGS_V1, MAX_LENGTH, SHOW_INFO_V1 } from '../../constants';
 import { useAuth0 } from '../../react-auth0-wrapper';
 import Counter from './Counter';
 import TweetstormButton from './TweetstormButton';
@@ -24,15 +25,16 @@ const copy = {
   'Edits can be made in the boxes below before publishing':
     'Edits can be made in the boxes below before publishing',
   'Log in': 'Log in',
-  'Start typing, to insert a break prior to reaching 280 characters please use Newline(s)':
-    'Start typing, to insert a break prior to reaching 280 characters please use Newline(s)',
+  'Login is necessary in order for your series of Tweets to be sent through your Twitter account':
+    'Login is necessary in order for your series of Tweets to be sent through your Twitter account',
+  'Start typing. To insert a break prior to reaching 280 characters, please use Newline(s)':
+    'Start typing. To insert a break prior to reaching 280 characters, please use Newline(s)',
   Tags: 'Tags',
   Tweet: 'Tweet',
   Tweries: 'Tweries',
   'Type your thoughts here': 'Type your thoughts here',
-  "What's happening?": "What's happening?",
-  "When 280 characters just isn't enough":
-    "When 280 characters just isn't enough",
+  "When 280 characters just aren't enough":
+    "When 280 characters just aren't enough",
   'Your tweetstorm has been created!': 'Your tweetstorm has been created!',
   '#': '#',
   '#hashtags': '#hashtags'
@@ -205,7 +207,7 @@ function App({ initialState, reducer }) {
         {copy.Tweries}
       </h1>
       <h2 className="my-4 text-center">
-        {copy["When 280 characters just isn't enough"]}
+        {copy["When 280 characters just aren't enough"]}
       </h2>
       <p className="my-4 text-center">
         <FontAwesomeIcon
@@ -225,7 +227,7 @@ function App({ initialState, reducer }) {
           <p className="italic py-4 text-sm">
             {
               copy[
-                'Start typing, to insert a break prior to reaching 280 characters please use Newline(s)'
+                'Start typing. To insert a break prior to reaching 280 characters, please use Newline(s)'
               ]
             }
           </p>
@@ -245,34 +247,37 @@ function App({ initialState, reducer }) {
             value={source}
           />
           <Counter length={source.length} />
-          <label className="pb-1 text-sm" htmlFor="hashtags">
-            {copy.Tags}
-          </label>
-          <textarea
-            className="p-2 tweries-background-color-blue-white tweries-border"
-            data-testid="hashtags"
-            name="hashtags"
-            onChange={e => {
-              dispatch({
-                type: types.CHANGE_HASHTAGS,
-                value: e.target.value
-              });
-              setHashtags(e.target.value);
-            }}
-            placeholder={copy['#']}
-            rows={1}
-            type="text"
-            value={hashtags}
-          />
-          <Counter length={hashtags.length} />
+          {!feature.active(HIDE_TAGS_V1) && (
+            <>
+              <label className="pb-1 text-sm" htmlFor="hashtags">
+                {copy.Tags}
+              </label>
+              <textarea
+                className="p-2 tweries-background-color-blue-white tweries-border"
+                data-testid="hashtags"
+                name="hashtags"
+                onChange={e => {
+                  dispatch({
+                    type: types.CHANGE_HASHTAGS,
+                    value: e.target.value
+                  });
+                  setHashtags(e.target.value);
+                }}
+                placeholder={copy['#']}
+                rows={1}
+                type="text"
+                value={hashtags}
+              />
+              <Counter length={hashtags.length} />
+            </>
+          )}
           {items.length > 0 && [
             <p className="italic py-4 text-sm" key="copy">
               {copy['Edits can be made in the boxes below before publishing']}
             </p>,
             <ul className="flex flex-col" data-testid="list" key="list">
               {items.map((item, index) => (
-                // eslint-disable-next-line react/no-array-index-key
-                <li className="flex flex-col" key={index}>
+                <li className="flex flex-col" key={item.id}>
                   <label className="pb-1 text-sm" htmlFor={item.id}>
                     {`${copy.Tweet} #${index + 1}`}
                   </label>
@@ -289,16 +294,34 @@ function App({ initialState, reducer }) {
           />
         </form>
       ) : (
-        <p className="flex justify-center">
-          <button
-            className="font-bold my-4 px-6 py-2 rounded tweries-background-color-blue-button"
-            data-testid="login"
-            onClick={() => loginWithRedirect({})}
-            type="button"
-          >
-            {copy['Log in']}
-          </button>
-        </p>
+        <>
+          <p className="flex justify-center my-4">
+            <button
+              className="font-bold px-6 py-2 rounded tweries-background-color-blue-button"
+              data-testid="login"
+              onClick={() => loginWithRedirect({})}
+              type="button"
+            >
+              {copy['Log in']}
+            </button>
+          </p>
+          {feature.active(SHOW_INFO_V1) && (
+            <p className="flex justify-center my-4">
+              <FontAwesomeIcon
+                className="tooltip tweries-color-dark-blue"
+                icon={faInfo}
+                size="1x"
+              />
+              <span className="p-3 mt-6 -ml-1 tooltip-text tweries-border">
+                {
+                  copy[
+                    'Login is necessary in order for your series of Tweets to be sent through your Twitter account'
+                  ]
+                }
+              </span>
+            </p>
+          )}
+        </>
       )}
       <ToastNotification
         notification={notification}

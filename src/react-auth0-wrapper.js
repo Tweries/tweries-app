@@ -43,7 +43,7 @@ export const Auth0Provider = ({
       setLoading(false);
     };
     initAuth0();
-    // eslint-disable-next-line
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const loginWithPopup = async (params = {}) => {

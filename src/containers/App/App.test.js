@@ -13,6 +13,7 @@ import features from '../../features';
 import { useAuth0 } from '../../react-auth0-wrapper';
 import App from './App';
 import makeInitialState from '../../store/makeInitialState';
+import { HIDE_TAGS_V1 } from '../../constants';
 
 jest.mock('../../components/Footer/Footer');
 jest.mock('../../components/NavBar/NavBar');
@@ -58,8 +59,7 @@ describe('App', () => {
 
   it('unauthenticated user', () => {
     useAuth0.mockImplementation(() => ({
-      isAuthenticated: false,
-      loading: false
+      isAuthenticated: false
     }));
 
     const { container } = render(
@@ -74,16 +74,37 @@ describe('App', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('log in', () => {
+    const mockLoginWithRedirect = jest.fn();
+    useAuth0.mockImplementation(() => ({
+      loginWithRedirect: mockLoginWithRedirect
+    }));
+
+    const { getByTestId } = render(
+      <FeatureProvider features={features}>
+        <App
+          initialState={makeInitialState({ feature })}
+          reducer={makeReducer(feature)}
+        />
+      </FeatureProvider>
+    );
+
+    fireEvent.click(getByTestId('login'));
+
+    expect(mockLoginWithRedirect).toBeCalled();
+  });
+
   it('generate tweetstorm and dismiss notification', async () => {
     fetch.mockResponseOnce(JSON.stringify({ data: { message: 'qux' } })); // INFO: adding a second response
     useAuth0.mockImplementation(() => ({
       isAuthenticated: true,
-      loading: false,
       user
     }));
 
     const { container, getByTestId } = render(
-      <FeatureProvider features={features}>
+      <FeatureProvider
+        features={features.filter(value => value !== HIDE_TAGS_V1)}
+      >
         <App
           initialState={makeInitialState({ feature })}
           reducer={makeReducer(feature)}
@@ -109,8 +130,7 @@ describe('App - errors', () => {
     NavBar.mockImplementation(() => <div>NavBar</div>);
 
     useAuth0.mockImplementation(() => ({
-      isAuthenticated: false,
-      loading: false
+      isAuthenticated: false
     }));
     const mockReducer = jest.fn((state, action) =>
       makeReducer(feature)(state, action)
@@ -137,7 +157,6 @@ describe('App - errors', () => {
 
     useAuth0.mockImplementation(() => ({
       isAuthenticated: true,
-      loading: false,
       user
     }));
     const mockReducer = jest.fn((state, action) =>
