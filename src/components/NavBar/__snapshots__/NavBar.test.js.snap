@@ -7,13 +7,9 @@ exports[`NavBar img onError 1`] = `
   >
     <img
       alt="mattiaerre.js"
-      class="border rounded-full tweries-border-color"
+      class="border mr-2 rounded-full tweries-border-color"
     />
-    <span
-      class="px-2"
-    >
-      mattiaerre.js
-    </span>
+    mattiaerre.js
   </p>
   <button
     class="px-4 underline"
