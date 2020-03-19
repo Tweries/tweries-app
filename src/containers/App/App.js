@@ -15,9 +15,16 @@ import ToastNotification from '../../components/ToastNotification/ToastNotificat
 import useLocalStorage from '../../hooks/useLocalStorage';
 import makeTweetstorm from '../../store/makeTweetstorm';
 import { types } from '../../store/makeReducer';
-import { HIDE_TAGS_V1, MAX_LENGTH, SHOW_INFO_V1 } from '../../constants';
+import {
+  DANGER,
+  HIDE_TAGS_V1,
+  MAX_LENGTH,
+  SHOW_INFO_V1,
+  SUCCESS
+} from '../../constants';
 import { useAuth0 } from '../../react-auth0-wrapper';
 import Counter from './Counter';
+import makeLink from './makeLink';
 import TweetstormButton from './TweetstormButton';
 
 const copy = {
@@ -147,16 +154,20 @@ function App({ initialState, reducer }) {
   }
 
   function resetTweetstorm(error, response) {
-    let message = copy['Your tweetstorm has been created!'];
-    let type = 'success';
+    let link = null;
+    let message = null;
+    let type = SUCCESS;
     if (error || response.error) {
       message = error ? error.message : response.error.message;
-      type = 'danger';
+      type = DANGER;
+    } else {
+      link = makeLink(response.data);
     }
     console.log(error, response);
     dispatch({
       type: types.RESET_TWEETSTORM,
       value: {
+        link,
         message,
         type
       }
@@ -288,7 +299,7 @@ function App({ initialState, reducer }) {
             </ul>
           ]}
           <TweetstormButton
-            disabled={disabled()}
+            disabled={disabled() || false}
             onClick={onClick}
             waiting={waiting}
           />

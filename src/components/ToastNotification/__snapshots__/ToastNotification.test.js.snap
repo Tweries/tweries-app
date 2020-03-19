@@ -27,7 +27,14 @@ exports[`ToastNotification success 1`] = `
     class="border flex justify-between mb-2 p-2 rounded bg-green-100 border-green-800 text-green-800"
   >
     <span>
-      Success!
+      <a
+        class="underline"
+        href="https://twitter.com/1183836409850814464/status/1230233654959407104"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        Your tweetstorm has been created!
+      </a>
     </span>
     <button
       class="font-bold"
