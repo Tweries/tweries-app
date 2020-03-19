@@ -1,18 +1,18 @@
-import { render, fireEvent, waitForDomChange } from '@testing-library/react';
+import { render, fireEvent, waitFor } from '@testing-library/react';
 import React from 'react';
 import ReplyToTweet from './ReplyToTweet';
 
 const mockCallback = jest.fn();
 const mockOnChange = jest.fn();
 
+const REPLY_TO = 'reply-to';
 const TWEET_URL = 'https://twitter.com/musk_china/status/1199474666412236800';
-const USER_ID = 'twitter|1183836409850814464';
 
 const baseProps = {
   callback: mockCallback,
   onChange: mockOnChange,
   tweetUrl: '',
-  userId: USER_ID
+  userId: 'twitter|1183836409850814464'
 };
 
 describe('ReplyToTweet', () => {
@@ -35,8 +35,8 @@ describe('ReplyToTweet', () => {
     );
     const props = { ...baseProps, tweetUrl: TWEET_URL };
 
-    render(<ReplyToTweet {...props} />);
-    await waitForDomChange();
+    const { getByTestId } = render(<ReplyToTweet {...props} />);
+    await waitFor(() => getByTestId(REPLY_TO));
 
     expect(mockCallback).toBeCalled();
   });
@@ -46,11 +46,11 @@ describe('ReplyToTweet', () => {
     const props = { ...baseProps, tweetUrl: 'something' };
 
     const { getByTestId } = render(<ReplyToTweet {...props} />);
-    await waitForDomChange();
+    await waitFor(() => getByTestId(REPLY_TO));
 
     expect(mockCallback).toBeCalled();
 
-    fireEvent.change(getByTestId('reply-to'), { target: { value: TWEET_URL } });
+    fireEvent.change(getByTestId(REPLY_TO), { target: { value: TWEET_URL } });
 
     expect(mockOnChange).toBeCalled();
   });
@@ -59,8 +59,8 @@ describe('ReplyToTweet', () => {
     fetch.mockRejectOnce(new Error('Oh Noes!'));
     const props = { ...baseProps, tweetUrl: TWEET_URL };
 
-    render(<ReplyToTweet {...props} />);
-    await waitForDomChange();
+    const { getByTestId } = render(<ReplyToTweet {...props} />);
+    await waitFor(() => getByTestId(REPLY_TO));
 
     expect(mockCallback).toBeCalled();
   });
