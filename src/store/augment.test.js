@@ -12,7 +12,7 @@ describe('augment', () => {
     expect(mockLogEvent).toBeCalledWith(action.type, undefined);
   });
 
-  [types.CHANGE_HASHTAGS, types.CHANGE_SOURCE].forEach(type => {
+  [types.CHANGE_HASHTAGS, types.CHANGE_SOURCE].forEach((type) => {
     it(`logAction ${type}`, () => {
       const mockLogEvent = jest.fn();
       const mockReducer = jest.fn();

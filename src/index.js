@@ -16,7 +16,7 @@ import { Auth0Provider } from './react-auth0-wrapper';
 import * as serviceWorker from './serviceWorker';
 
 // TUTORIAL: https://manage.auth0.com/dashboard/us/dev-17-x3zfb/applications/iqgFXkcTFo9l80i7llzcurmrfgVsn3TZ/quickstart
-const onRedirectCallback = appState => {
+const onRedirectCallback = (appState) => {
   window.history.replaceState(
     {},
     document.title,

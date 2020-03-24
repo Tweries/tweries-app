@@ -1,9 +1,4 @@
-import {
-  cleanup,
-  render,
-  fireEvent,
-  waitForDomChange
-} from '@testing-library/react';
+import { cleanup, render, fireEvent, waitFor } from '@testing-library/react';
 import FeatureProvider, { setFeatures } from 'feature-provider';
 import React from 'react';
 import Footer from '../../components/Footer/Footer';
@@ -103,7 +98,7 @@ describe('App', () => {
 
     const { container, getByTestId } = render(
       <FeatureProvider
-        features={features.filter(value => value !== HIDE_TAGS_V1)}
+        features={features.filter((value) => value !== HIDE_TAGS_V1)}
       >
         <App
           initialState={makeInitialState({ feature })}
@@ -113,10 +108,12 @@ describe('App', () => {
     );
     fireEvent.change(getByTestId('source'), { target: { value: 'foo' } });
     fireEvent.change(getByTestId('hashtags'), { target: { value: '#bar' } });
-    await waitForDomChange();
-    fireEvent.click(getByTestId('tweet'));
-    await waitForDomChange();
-    fireEvent.click(getByTestId('dismiss'));
+    await waitFor(() => {
+      fireEvent.click(getByTestId('tweet'));
+    });
+    await waitFor(() => {
+      fireEvent.click(getByTestId('dismiss'));
+    });
 
     expect(container).toMatchSnapshot();
   });
@@ -172,9 +169,9 @@ describe('App - errors', () => {
       </FeatureProvider>
     );
     fireEvent.change(getByTestId('source'), { target: { value: 'foo' } });
-    await waitForDomChange();
-    fireEvent.click(getByTestId('tweet'));
-    await waitForDomChange();
+    await waitFor(() => {
+      fireEvent.click(getByTestId('tweet'));
+    });
 
     // TODO: add assertion
   });

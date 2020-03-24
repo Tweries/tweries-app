@@ -122,7 +122,7 @@ describe('hashtags, linefeed, source => tweetstorm', () => {
     it(description, () => {
       const tweetstorm = makeTweetstorm({ active: () => true });
       const items = tweetstorm({ ...props });
-      items.forEach(item => {
+      items.forEach((item) => {
         expect(item).toMatchSnapshot({
           id: expect.any(String)
         });

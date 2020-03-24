@@ -52,7 +52,7 @@ function makeReducer(feature) {
       case types.CHANGE_TWEET: {
         return {
           ...state,
-          items: [...state.items].map(item => {
+          items: [...state.items].map((item) => {
             const copy = { ...item };
             if (copy.id === action.value.id) {
               copy.tweet = action.value.tweet;

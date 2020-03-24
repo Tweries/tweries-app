@@ -15,9 +15,16 @@ import ToastNotification from '../../components/ToastNotification/ToastNotificat
 import useLocalStorage from '../../hooks/useLocalStorage';
 import makeTweetstorm from '../../store/makeTweetstorm';
 import { types } from '../../store/makeReducer';
-import { HIDE_TAGS_V1, MAX_LENGTH, SHOW_INFO_V1 } from '../../constants';
+import {
+  DANGER,
+  HIDE_TAGS_V1,
+  MAX_LENGTH,
+  SHOW_INFO_V1,
+  SUCCESS
+} from '../../constants';
 import { useAuth0 } from '../../react-auth0-wrapper';
 import Counter from './Counter';
+import makeLink from './makeLink';
 import TweetstormButton from './TweetstormButton';
 
 const copy = {
@@ -119,7 +126,7 @@ function App({ initialState, reducer }) {
       !isAuthenticated ||
       !items.length > 0 ||
       !healthy ||
-      items.find(item => item.tweet.length > MAX_LENGTH)
+      items.find((item) => item.tweet.length > MAX_LENGTH)
     );
   }
 
@@ -131,7 +138,7 @@ function App({ initialState, reducer }) {
           'border-2 border-red-500': item.tweet.length > MAX_LENGTH
         })}
         name={item.id}
-        onChange={e => {
+        onChange={(e) => {
           dispatch({
             type: types.CHANGE_TWEET,
             value: {
@@ -147,16 +154,20 @@ function App({ initialState, reducer }) {
   }
 
   function resetTweetstorm(error, response) {
-    let message = copy['Your tweetstorm has been created!'];
-    let type = 'success';
+    let link = null;
+    let message = null;
+    let type = SUCCESS;
     if (error || response.error) {
       message = error ? error.message : response.error.message;
-      type = 'danger';
+      type = DANGER;
+    } else {
+      link = makeLink(response.data);
     }
     console.log(error, response);
     dispatch({
       type: types.RESET_TWEETSTORM,
       value: {
+        link,
         message,
         type
       }
@@ -217,7 +228,7 @@ function App({ initialState, reducer }) {
         />
       </p>
       {isAuthenticated ? (
-        <form className="flex flex-col" onSubmit={e => e.preventDefault()}>
+        <form className="flex flex-col" onSubmit={(e) => e.preventDefault()}>
           <ReplyToTweet
             callback={memoizedCallback}
             onChange={setInReplyToTweetUrl}
@@ -235,7 +246,7 @@ function App({ initialState, reducer }) {
             className="p-2 tweries-background-color-blue-white tweries-border"
             data-testid="source"
             name="source"
-            onChange={e => {
+            onChange={(e) => {
               dispatch({
                 type: types.CHANGE_SOURCE,
                 value: e.target.value
@@ -256,7 +267,7 @@ function App({ initialState, reducer }) {
                 className="p-2 tweries-background-color-blue-white tweries-border"
                 data-testid="hashtags"
                 name="hashtags"
-                onChange={e => {
+                onChange={(e) => {
                   dispatch({
                     type: types.CHANGE_HASHTAGS,
                     value: e.target.value
@@ -288,7 +299,7 @@ function App({ initialState, reducer }) {
             </ul>
           ]}
           <TweetstormButton
-            disabled={disabled()}
+            disabled={disabled() || false}
             onClick={onClick}
             waiting={waiting}
           />
