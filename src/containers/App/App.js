@@ -126,7 +126,7 @@ function App({ initialState, reducer }) {
       !isAuthenticated ||
       !items.length > 0 ||
       !healthy ||
-      items.find(item => item.tweet.length > MAX_LENGTH)
+      items.find((item) => item.tweet.length > MAX_LENGTH)
     );
   }
 
@@ -138,7 +138,7 @@ function App({ initialState, reducer }) {
           'border-2 border-red-500': item.tweet.length > MAX_LENGTH
         })}
         name={item.id}
-        onChange={e => {
+        onChange={(e) => {
           dispatch({
             type: types.CHANGE_TWEET,
             value: {
@@ -228,7 +228,7 @@ function App({ initialState, reducer }) {
         />
       </p>
       {isAuthenticated ? (
-        <form className="flex flex-col" onSubmit={e => e.preventDefault()}>
+        <form className="flex flex-col" onSubmit={(e) => e.preventDefault()}>
           <ReplyToTweet
             callback={memoizedCallback}
             onChange={setInReplyToTweetUrl}
@@ -246,7 +246,7 @@ function App({ initialState, reducer }) {
             className="p-2 tweries-background-color-blue-white tweries-border"
             data-testid="source"
             name="source"
-            onChange={e => {
+            onChange={(e) => {
               dispatch({
                 type: types.CHANGE_SOURCE,
                 value: e.target.value
@@ -267,7 +267,7 @@ function App({ initialState, reducer }) {
                 className="p-2 tweries-background-color-blue-white tweries-border"
                 data-testid="hashtags"
                 name="hashtags"
-                onChange={e => {
+                onChange={(e) => {
                   dispatch({
                     type: types.CHANGE_HASHTAGS,
                     value: e.target.value

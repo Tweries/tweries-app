@@ -5,9 +5,7 @@ const SEQUENCE_NUMBER_PLACEHOLDER = '_/_';
 
 // CREDIT: https://gist.github.com/gordonbrander/2230317
 function generateUniqueId() {
-  return `_${Math.random()
-    .toString(36)
-    .substr(2, 9)}`;
+  return `_${Math.random().toString(36).substr(2, 9)}`;
 }
 
 function makeTweetstorm(feature) {
@@ -23,7 +21,7 @@ function makeTweetstorm(feature) {
   function backUpToLastPunctuation(copy, take) {
     const punctuations = ['-', '–', '.', ',', ';', '!', '?'];
     const data = punctuations
-      .map(punctuation => ({
+      .map((punctuation) => ({
         key: punctuation,
         value: v.lastIndexOf(take, punctuation)
       }))

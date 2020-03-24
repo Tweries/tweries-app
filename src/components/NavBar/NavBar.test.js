@@ -17,7 +17,7 @@ describe('NavBar', () => {
 
   const scenarios = [
     {
-      act: getByTestId => {
+      act: (getByTestId) => {
         fireEvent.click(getByTestId('logout'));
       },
       assert: () => {

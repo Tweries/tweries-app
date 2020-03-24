@@ -120,7 +120,7 @@ describe('reducer', () => {
     it(description, () => {
       const { items, ...rest } = makeReducer(feature)(state, action);
       expect(rest).toMatchSnapshot();
-      items.forEach(item => {
+      items.forEach((item) => {
         expect(item).toMatchSnapshot({
           id: expect.any(String)
         });

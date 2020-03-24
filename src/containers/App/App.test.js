@@ -98,7 +98,7 @@ describe('App', () => {
 
     const { container, getByTestId } = render(
       <FeatureProvider
-        features={features.filter(value => value !== HIDE_TAGS_V1)}
+        features={features.filter((value) => value !== HIDE_TAGS_V1)}
       >
         <App
           initialState={makeInitialState({ feature })}

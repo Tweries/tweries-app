@@ -12,7 +12,7 @@ describe('makeLink', () => {
     }
   ];
 
-  scenarios.forEach(data => {
+  scenarios.forEach((data) => {
     it('to match snapshot', () => {
       expect(makeLink(data)).toMatchSnapshot();
     });
