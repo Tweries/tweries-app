@@ -4,7 +4,13 @@ import { faTwitter } from '@fortawesome/free-brands-svg-icons';
 import { faInfo } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PropTypes from 'prop-types';
-import React, { useCallback, useEffect, useReducer, useState } from 'react';
+import React, {
+  useCallback,
+  useEffect,
+  useReducer,
+  useRef,
+  useState
+} from 'react';
 import { version } from '../../../package.json';
 import fetchHealth from '../../api/fetchHealth';
 import fetchTweetstorm from '../../api/fetchTweetstorm';
@@ -16,6 +22,7 @@ import useLocalStorage from '../../hooks/useLocalStorage';
 import makeTweetstorm from '../../store/makeTweetstorm';
 import { types } from '../../store/makeReducer';
 import {
+  ADD_IMAGE_V1,
   DANGER,
   HIDE_TAGS_V1,
   MAX_LENGTH,
@@ -29,6 +36,7 @@ import TweetstormButton from './TweetstormButton';
 
 const copy = {
   '...': '...',
+  'Add an image': 'Add an image',
   'Edits can be made in the boxes below before publishing':
     'Edits can be made in the boxes below before publishing',
   'Log in': 'Log in',
@@ -36,6 +44,7 @@ const copy = {
     'Login is necessary in order for your series of Tweets to be sent through your Twitter account',
   'Start typing. To insert a break prior to reaching 280 characters, please use Newline(s)':
     'Start typing. To insert a break prior to reaching 280 characters, please use Newline(s)',
+  TODO: 'TODO',
   Tags: 'Tags',
   Tweet: 'Tweet',
   Tweries: 'Tweries',
@@ -112,7 +121,7 @@ function App({ initialState, reducer }) {
     if (notification) {
       const timer = setTimeout(() => {
         dispatch({ type: types.DISMISS_TOAST });
-      }, 3000);
+      }, 5000);
       return () => clearTimeout(timer);
     }
   }, [notification]);
@@ -120,6 +129,9 @@ function App({ initialState, reducer }) {
   // TODO: add to global state?
   const [inReplyToTweetUrl, setInReplyToTweetUrl] = useState('');
   const [waiting, setWaiting] = useState(false);
+
+  const [cover, setCover] = useState(null);
+  const inputEl = useRef(null);
 
   function disabled() {
     return (
@@ -172,6 +184,10 @@ function App({ initialState, reducer }) {
         type
       }
     });
+    if (feature.active(ADD_IMAGE_V1)) {
+      setCover(null);
+      inputEl.current.value = null; // to reset the input
+    }
     setHashtags('');
     setInReplyToTweetUrl('');
     setSource('');
@@ -182,6 +198,7 @@ function App({ initialState, reducer }) {
     setWaiting(true);
     try {
       const response = await fetchTweetstorm({
+        cover,
         inReplyToTweetUrl,
         items,
         userId
@@ -258,6 +275,24 @@ function App({ initialState, reducer }) {
             value={source}
           />
           <Counter length={source.length} />
+          {feature.active(ADD_IMAGE_V1) && (
+            <>
+              <label className="pb-1 pt-3 text-sm" htmlFor="cover">
+                {copy['Add an image']}
+              </label>
+              <input
+                className={classnames(
+                  'p-2 tweries-border tweries-background-color-blue-white'
+                )}
+                data-testid="cover"
+                name="cover"
+                onChange={({ target: { files } }) => setCover(files[0])}
+                ref={inputEl}
+                rows={1}
+                type="file"
+              />
+            </>
+          )}
           {!feature.active(HIDE_TAGS_V1) && (
             <>
               <label className="pb-1 text-sm" htmlFor="hashtags">

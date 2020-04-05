@@ -75,6 +75,19 @@ exports[`App generate tweetstorm and dismiss notification 1`] = `
          
       </p>
       <label
+        class="pb-1 pt-3 text-sm"
+        for="cover"
+      >
+        Add an image
+      </label>
+      <input
+        class="p-2 tweries-border tweries-background-color-blue-white"
+        data-testid="cover"
+        name="cover"
+        rows="1"
+        type="file"
+      />
+      <label
         class="pb-1 text-sm"
         for="hashtags"
       >

@@ -12,6 +12,7 @@ export const BASE_URL =
 
 export const DANGER = 'danger';
 
+export const ADD_IMAGE_V1 = 'ADD_IMAGE_V1';
 export const FEATURE_V1 = 'FEATURE_V1';
 export const HIDE_TAGS_V1 = 'HIDE_TAGS_V1';
 export const SHOW_INFO_V1 = 'SHOW_INFO_V1';
