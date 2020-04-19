@@ -15,7 +15,7 @@ function NavBar({ logout, user }) {
           <img
             alt={user.name}
             className="border mr-2 rounded-full tweries-border-color"
-            onError={() => setShow(false)}
+            onError={/* istanbul ignore next */ () => setShow(false)}
             src={user.picture}
           />
         )}

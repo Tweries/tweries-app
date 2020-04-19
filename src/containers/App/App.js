@@ -15,13 +15,7 @@ import ToastNotification from '../../components/ToastNotification/ToastNotificat
 import useLocalStorage from '../../hooks/useLocalStorage';
 import makeTweetstorm from '../../store/makeTweetstorm';
 import { types } from '../../store/makeReducer';
-import {
-  DANGER,
-  HIDE_TAGS_V1,
-  MAX_LENGTH,
-  SHOW_INFO_V1,
-  SUCCESS
-} from '../../constants';
+import { DANGER, MAX_LENGTH, SUCCESS } from '../../constants';
 import { useAuth0 } from '../../react-auth0-wrapper';
 import Counter from './Counter';
 import makeLink from './makeLink';
@@ -42,9 +36,7 @@ const copy = {
   'Type your thoughts here': 'Type your thoughts here',
   "When 280 characters just aren't enough":
     "When 280 characters just aren't enough",
-  'Your tweetstorm has been created!': 'Your tweetstorm has been created!',
-  '#': '#',
-  '#hashtags': '#hashtags'
+  'Your tweetstorm has been created!': 'Your tweetstorm has been created!'
 };
 
 function App({ initialState, reducer }) {
@@ -90,17 +82,14 @@ function App({ initialState, reducer }) {
     }
   }, [isAuthenticated, user]);
 
-  const [hashtags_, setHashtags] = useLocalStorage('hashtags', '');
   const [source_, setSource] = useLocalStorage('source', '');
 
   const [
-    { hashtags, healthy, items, notification, source, userId },
+    { healthy, items, notification, source, userId },
     dispatch
   ] = useReducer(reducer, {
     ...initialState,
-    hashtags: hashtags_,
     items: makeTweetstorm(feature)({
-      hashtags: hashtags_,
       linefeed: initialState.linefeed,
       source: source_
     }),
@@ -109,7 +98,7 @@ function App({ initialState, reducer }) {
 
   // eslint-disable-next-line consistent-return
   useEffect(() => {
-    if (notification) {
+    if (notification && notification.type !== DANGER) {
       const timer = setTimeout(() => {
         dispatch({ type: types.DISMISS_TOAST });
       }, 3000);
@@ -172,9 +161,10 @@ function App({ initialState, reducer }) {
         type
       }
     });
-    setHashtags('');
-    setInReplyToTweetUrl('');
-    setSource('');
+    if (type === SUCCESS) {
+      setInReplyToTweetUrl('');
+      setSource('');
+    }
     setWaiting(false);
   }
 
@@ -258,30 +248,6 @@ function App({ initialState, reducer }) {
             value={source}
           />
           <Counter length={source.length} />
-          {!feature.active(HIDE_TAGS_V1) && (
-            <>
-              <label className="pb-1 text-sm" htmlFor="hashtags">
-                {copy.Tags}
-              </label>
-              <textarea
-                className="p-2 tweries-background-color-blue-white tweries-border"
-                data-testid="hashtags"
-                name="hashtags"
-                onChange={(e) => {
-                  dispatch({
-                    type: types.CHANGE_HASHTAGS,
-                    value: e.target.value
-                  });
-                  setHashtags(e.target.value);
-                }}
-                placeholder={copy['#']}
-                rows={1}
-                type="text"
-                value={hashtags}
-              />
-              <Counter length={hashtags.length} />
-            </>
-          )}
           {items.length > 0 && [
             <p className="italic py-4 text-sm" key="copy">
               {copy['Edits can be made in the boxes below before publishing']}
@@ -316,22 +282,20 @@ function App({ initialState, reducer }) {
               {copy['Log in']}
             </button>
           </p>
-          {feature.active(SHOW_INFO_V1) && (
-            <p className="flex justify-center my-4">
-              <FontAwesomeIcon
-                className="tooltip tweries-color-dark-blue"
-                icon={faInfo}
-                size="1x"
-              />
-              <span className="p-3 mt-6 -ml-1 tooltip-text tweries-border">
-                {
-                  copy[
-                    'Login is necessary in order for your series of Tweets to be sent through your Twitter account'
-                  ]
-                }
-              </span>
-            </p>
-          )}
+          <p className="flex justify-center my-4">
+            <FontAwesomeIcon
+              className="tooltip tweries-color-dark-blue"
+              icon={faInfo}
+              size="1x"
+            />
+            <span className="p-3 mt-6 -ml-1 tooltip-text tweries-border">
+              {
+                copy[
+                  'Login is necessary in order for your series of Tweets to be sent through your Twitter account'
+                ]
+              }
+            </span>
+          </p>
         </>
       )}
       <ToastNotification

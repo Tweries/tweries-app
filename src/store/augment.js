@@ -9,7 +9,6 @@ function augment({ logEvent, reducer }) {
     const newState = reducer(state, action);
     // console.log('newState:', newState);
     switch (action.type) {
-      case types.CHANGE_HASHTAGS:
       case types.CHANGE_SOURCE:
       case types.CHANGE_TWEET:
         break;

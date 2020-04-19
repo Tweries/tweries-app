@@ -20,16 +20,6 @@ describe('reducer', () => {
       }
     },
     {
-      description: types.CHANGE_HASHTAGS,
-      props: {
-        action: {
-          type: types.CHANGE_HASHTAGS,
-          value: '#FOO'
-        },
-        state: { ...base, source: 'bar' }
-      }
-    },
-    {
       description: types.CHANGE_SOURCE,
       props: {
         action: {
@@ -80,7 +70,6 @@ describe('reducer', () => {
         },
         state: {
           ...base,
-          hashtags: '#FOO',
           source: 'bar',
           healthy: true,
           userId: USER_ID

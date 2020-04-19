@@ -70,7 +70,7 @@ function makeTweetstorm(feature) {
     return linefeed;
   }
 
-  function tweetstorm({ hashtags, linefeed, source }) {
+  function tweetstorm({ linefeed, source }) {
     const goodLinefeed = getGoodLineFeed(linefeed);
 
     let copy = replaceNewlinesWithNewline(goodLinefeed, source);
@@ -78,12 +78,7 @@ function makeTweetstorm(feature) {
 
     while (copy.length !== 0) {
       let take;
-      let max;
-      if (hashtags.length > 0) {
-        max = MAX_LENGTH - hashtags.length - 1 - makeSequenceNumber().length; // INFO: 1 space before the hashtags
-      } else {
-        max = MAX_LENGTH - makeSequenceNumber().length; // INFO: 1 space before the sequence number
-      }
+      const max = MAX_LENGTH - makeSequenceNumber().length; // INFO: 1 space before the sequence number
       take = v.prune(copy, max, '');
       if (take.indexOf(goodLinefeed) !== -1) {
         take = v.substr(take, 0, take.indexOf(goodLinefeed));
@@ -96,14 +91,8 @@ function makeTweetstorm(feature) {
     }
 
     const tweets = parts.map((part, index) => {
-      let tweet;
       const sequenceNumber = makeSequenceNumber(index, parts.length);
-      if (hashtags.length > 0) {
-        tweet = `${v.trim(part)} ${hashtags}${sequenceNumber}`;
-      } else {
-        tweet = `${v.trim(part)}${sequenceNumber}`;
-      }
-
+      const tweet = `${v.trim(part)}${sequenceNumber}`;
       return { id: generateUniqueId(), tweet };
     });
 

@@ -44,13 +44,13 @@ function ToastNotification({ notification, onClick }) {
   return null;
 }
 
+ToastNotification.defaultProps = {
+  notification: null
+};
+
 ToastNotification.propTypes = {
   notification: PropTypes.object,
   onClick: PropTypes.func.isRequired
-};
-
-ToastNotification.defaultProps = {
-  notification: null
 };
 
 export default ToastNotification;

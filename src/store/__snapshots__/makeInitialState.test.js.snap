@@ -2,13 +2,12 @@
 
 exports[`to match snapshot 1`] = `
 Object {
-  "hashtags": "",
   "healthy": false,
   "items": Array [],
   "linefeed": "
 ",
   "notification": null,
   "source": "",
-  "userId": null,
+  "userId": "",
 }
 `;
