@@ -1,3 +1,4 @@
+import { SUCCESS } from '../constants';
 import makeInitialState from './makeInitialState';
 import makeTweetstorm from './makeTweetstorm';
 
@@ -54,11 +55,17 @@ function makeReducer(feature) {
         };
       }
       case types.RESET_TWEETSTORM: {
+        if (action.value.type === SUCCESS) {
+          return {
+            ...makeInitialState({ feature }),
+            healthy: state.healthy,
+            notification: action.value,
+            userId: state.userId
+          };
+        }
         return {
-          ...makeInitialState({ feature }),
-          healthy: state.healthy,
-          notification: action.value,
-          userId: state.userId
+          ...state,
+          notification: action.value
         };
       }
       case types.SET_HEALTHY: {

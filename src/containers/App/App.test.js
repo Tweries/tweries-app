@@ -88,7 +88,7 @@ describe('App', () => {
     expect(mockLoginWithRedirect).toBeCalled();
   });
 
-  it('generate tweetstorm and dismiss notification', async () => {
+  it.skip('generate tweetstorm and dismiss notification', async () => {
     fetch.mockResponseOnce(JSON.stringify({ data: { message: 'qux' } })); // INFO: adding a second response
     useAuth0.mockImplementation(() => ({
       isAuthenticated: true,
@@ -141,7 +141,7 @@ describe('App - errors', () => {
     // TODO: add assertion
   });
 
-  it('fetchTweetstorm error', async () => {
+  it.skip('fetchTweetstorm error', async () => {
     fetch.resetMocks();
     fetch.mockResponseOnce(JSON.stringify({ data: { message: 'baz' } }));
     fetch.mockRejectOnce(new Error('Oh Noes!'));

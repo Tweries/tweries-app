@@ -81,7 +81,7 @@ Object {
     "message": "Oh Noes!",
     "type": "danger",
   },
-  "source": "",
+  "source": "bar",
   "userId": "twitter|1183836409850814464",
 }
 `;

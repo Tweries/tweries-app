@@ -161,8 +161,10 @@ function App({ initialState, reducer }) {
         type
       }
     });
-    setInReplyToTweetUrl('');
-    setSource('');
+    if (type === SUCCESS) {
+      setInReplyToTweetUrl('');
+      setSource('');
+    }
     setWaiting(false);
   }
 
