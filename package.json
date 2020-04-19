@@ -1,6 +1,6 @@
 {
   "name": "tweries-app",
-  "version": "1.6.1",
+  "version": "1.6.2",
   "private": true,
   "description": "Tweries, a tweet-storm-helper app that breaks up a long paragraph into multiple tweets.",
   "dependencies": {
