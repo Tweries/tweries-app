@@ -109,7 +109,7 @@ function App({ initialState, reducer }) {
 
   // eslint-disable-next-line consistent-return
   useEffect(() => {
-    if (notification) {
+    if (notification && notification.type !== DANGER) {
       const timer = setTimeout(() => {
         dispatch({ type: types.DISMISS_TOAST });
       }, 3000);
