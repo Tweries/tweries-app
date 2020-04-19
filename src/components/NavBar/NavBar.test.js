@@ -38,16 +38,4 @@ describe('NavBar', () => {
       assert();
     });
   });
-
-  it('img onError', () => {
-    const { container } = render(
-      <NavBar
-        user={{
-          name: 'mattiaerre.js'
-        }}
-      />
-    );
-    // INFO: how do I trigger onError?
-    expect(container).toMatchSnapshot();
-  });
 });

@@ -36,8 +36,7 @@ const copy = {
   'Type your thoughts here': 'Type your thoughts here',
   "When 280 characters just aren't enough":
     "When 280 characters just aren't enough",
-  'Your tweetstorm has been created!': 'Your tweetstorm has been created!',
-  '#': '#'
+  'Your tweetstorm has been created!': 'Your tweetstorm has been created!'
 };
 
 function App({ initialState, reducer }) {

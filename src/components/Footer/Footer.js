@@ -37,7 +37,7 @@ function Footer({ healthy, version }) {
           'text-red-800': !healthy
         })}
       >
-        {copy.Tweries} v{version} &copy; {new Date().getFullYear()}{' '}
+        {copy.Tweries} v{version} &copy; {new Date().getFullYear()}
       </p>
     </footer>
   );
