@@ -15,7 +15,7 @@ import ToastNotification from '../../components/ToastNotification/ToastNotificat
 import useLocalStorage from '../../hooks/useLocalStorage';
 import makeTweetstorm from '../../store/makeTweetstorm';
 import { types } from '../../store/makeReducer';
-import { DANGER, HIDE_TAGS_V1, MAX_LENGTH, SUCCESS } from '../../constants';
+import { DANGER, MAX_LENGTH, SUCCESS } from '../../constants';
 import { useAuth0 } from '../../react-auth0-wrapper';
 import Counter from './Counter';
 import makeLink from './makeLink';
@@ -37,8 +37,7 @@ const copy = {
   "When 280 characters just aren't enough":
     "When 280 characters just aren't enough",
   'Your tweetstorm has been created!': 'Your tweetstorm has been created!',
-  '#': '#',
-  '#hashtags': '#hashtags'
+  '#': '#'
 };
 
 function App({ initialState, reducer }) {
@@ -84,17 +83,14 @@ function App({ initialState, reducer }) {
     }
   }, [isAuthenticated, user]);
 
-  const [hashtags_, setHashtags] = useLocalStorage('hashtags', '');
   const [source_, setSource] = useLocalStorage('source', '');
 
   const [
-    { hashtags, healthy, items, notification, source, userId },
+    { healthy, items, notification, source, userId },
     dispatch
   ] = useReducer(reducer, {
     ...initialState,
-    hashtags: hashtags_,
     items: makeTweetstorm(feature)({
-      hashtags: hashtags_,
       linefeed: initialState.linefeed,
       source: source_
     }),
@@ -166,7 +162,6 @@ function App({ initialState, reducer }) {
         type
       }
     });
-    setHashtags('');
     setInReplyToTweetUrl('');
     setSource('');
     setWaiting(false);
@@ -252,30 +247,6 @@ function App({ initialState, reducer }) {
             value={source}
           />
           <Counter length={source.length} />
-          {!feature.active(HIDE_TAGS_V1) && (
-            <>
-              <label className="pb-1 text-sm" htmlFor="hashtags">
-                {copy.Tags}
-              </label>
-              <textarea
-                className="p-2 tweries-background-color-blue-white tweries-border"
-                data-testid="hashtags"
-                name="hashtags"
-                onChange={(e) => {
-                  dispatch({
-                    type: types.CHANGE_HASHTAGS,
-                    value: e.target.value
-                  });
-                  setHashtags(e.target.value);
-                }}
-                placeholder={copy['#']}
-                rows={1}
-                type="text"
-                value={hashtags}
-              />
-              <Counter length={hashtags.length} />
-            </>
-          )}
           {items.length > 0 && [
             <p className="italic py-4 text-sm" key="copy">
               {copy['Edits can be made in the boxes below before publishing']}

@@ -8,7 +8,6 @@ import features from '../../features';
 import { useAuth0 } from '../../react-auth0-wrapper';
 import App from './App';
 import makeInitialState from '../../store/makeInitialState';
-import { HIDE_TAGS_V1 } from '../../constants';
 
 jest.mock('../../components/Footer/Footer');
 jest.mock('../../components/NavBar/NavBar');
@@ -97,9 +96,7 @@ describe('App', () => {
     }));
 
     const { container, getByTestId } = render(
-      <FeatureProvider
-        features={features.filter((value) => value !== HIDE_TAGS_V1)}
-      >
+      <FeatureProvider features={features}>
         <App
           initialState={makeInitialState({ feature })}
           reducer={makeReducer(feature)}
@@ -107,7 +104,6 @@ describe('App', () => {
       </FeatureProvider>
     );
     fireEvent.change(getByTestId('source'), { target: { value: 'foo' } });
-    fireEvent.change(getByTestId('hashtags'), { target: { value: '#bar' } });
     await waitFor(() => {
       fireEvent.click(getByTestId('tweet'));
     });

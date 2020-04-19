@@ -2,7 +2,6 @@
 
 exports[`reducer APPEND_SCREEN_NAME 1`] = `
 Object {
-  "hashtags": "",
   "healthy": false,
   "linefeed": "
 ",
@@ -19,28 +18,8 @@ Object {
 }
 `;
 
-exports[`reducer CHANGE_HASHTAGS 1`] = `
-Object {
-  "hashtags": "#FOO",
-  "healthy": false,
-  "linefeed": "
-",
-  "notification": null,
-  "source": "bar",
-  "userId": "",
-}
-`;
-
-exports[`reducer CHANGE_HASHTAGS 2`] = `
-Object {
-  "id": Any<String>,
-  "tweet": "bar #FOO",
-}
-`;
-
 exports[`reducer CHANGE_SOURCE 1`] = `
 Object {
-  "hashtags": "",
   "healthy": false,
   "linefeed": "
 ",
@@ -59,7 +38,6 @@ Object {
 
 exports[`reducer CHANGE_TWEET 1`] = `
 Object {
-  "hashtags": "",
   "healthy": false,
   "linefeed": "
 ",
@@ -85,7 +63,6 @@ Object {
 
 exports[`reducer DISMISS_TOAST 1`] = `
 Object {
-  "hashtags": "",
   "healthy": false,
   "linefeed": "
 ",
@@ -97,7 +74,6 @@ Object {
 
 exports[`reducer RESET_TWEETSTORM 1`] = `
 Object {
-  "hashtags": "",
   "healthy": true,
   "linefeed": "
 ",
@@ -112,7 +88,6 @@ Object {
 
 exports[`reducer SET_HEALTHY 1`] = `
 Object {
-  "hashtags": "",
   "healthy": true,
   "linefeed": "
 ",
@@ -124,7 +99,6 @@ Object {
 
 exports[`reducer SET_USER_ID 1`] = `
 Object {
-  "hashtags": "",
   "healthy": false,
   "linefeed": "
 ",
@@ -136,7 +110,6 @@ Object {
 
 exports[`reducer default 1`] = `
 Object {
-  "hashtags": "",
   "healthy": false,
   "linefeed": "
 ",

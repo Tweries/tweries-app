@@ -3,7 +3,6 @@ import makeTweetstorm from './makeTweetstorm';
 
 export const types = {
   APPEND_SCREEN_NAME: 'APPEND_SCREEN_NAME',
-  CHANGE_HASHTAGS: 'CHANGE_HASHTAGS',
   CHANGE_SOURCE: 'CHANGE_SOURCE',
   CHANGE_TWEET: 'CHANGE_TWEET',
   DISMISS_TOAST: 'DISMISS_TOAST',
@@ -20,29 +19,16 @@ function makeReducer(feature) {
         return {
           ...state,
           items: makeTweetstorm(feature)({
-            hashtags: state.hashtags,
             linefeed: state.linefeed,
             source
           }),
           source
         };
       }
-      case types.CHANGE_HASHTAGS: {
-        return {
-          ...state,
-          hashtags: action.value,
-          items: makeTweetstorm(feature)({
-            hashtags: action.value,
-            linefeed: state.linefeed,
-            source: state.source
-          })
-        };
-      }
       case types.CHANGE_SOURCE: {
         return {
           ...state,
           items: makeTweetstorm(feature)({
-            hashtags: state.hashtags,
             linefeed: state.linefeed,
             source: action.value
           }),

@@ -3,10 +3,8 @@ import makeTweetstorm from './makeTweetstorm';
 
 function makeInitialState({ feature }) {
   return {
-    hashtags: '',
     healthy: false,
     items: makeTweetstorm(feature)({
-      hashtags: '',
       linefeed: NEWLINE,
       source: ''
     }),
