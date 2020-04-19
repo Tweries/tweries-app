@@ -15,13 +15,7 @@ import ToastNotification from '../../components/ToastNotification/ToastNotificat
 import useLocalStorage from '../../hooks/useLocalStorage';
 import makeTweetstorm from '../../store/makeTweetstorm';
 import { types } from '../../store/makeReducer';
-import {
-  DANGER,
-  HIDE_TAGS_V1,
-  MAX_LENGTH,
-  SHOW_INFO_V1,
-  SUCCESS
-} from '../../constants';
+import { DANGER, HIDE_TAGS_V1, MAX_LENGTH, SUCCESS } from '../../constants';
 import { useAuth0 } from '../../react-auth0-wrapper';
 import Counter from './Counter';
 import makeLink from './makeLink';
@@ -316,22 +310,20 @@ function App({ initialState, reducer }) {
               {copy['Log in']}
             </button>
           </p>
-          {feature.active(SHOW_INFO_V1) && (
-            <p className="flex justify-center my-4">
-              <FontAwesomeIcon
-                className="tooltip tweries-color-dark-blue"
-                icon={faInfo}
-                size="1x"
-              />
-              <span className="p-3 mt-6 -ml-1 tooltip-text tweries-border">
-                {
-                  copy[
-                    'Login is necessary in order for your series of Tweets to be sent through your Twitter account'
-                  ]
-                }
-              </span>
-            </p>
-          )}
+          <p className="flex justify-center my-4">
+            <FontAwesomeIcon
+              className="tooltip tweries-color-dark-blue"
+              icon={faInfo}
+              size="1x"
+            />
+            <span className="p-3 mt-6 -ml-1 tooltip-text tweries-border">
+              {
+                copy[
+                  'Login is necessary in order for your series of Tweets to be sent through your Twitter account'
+                ]
+              }
+            </span>
+          </p>
         </>
       )}
       <ToastNotification
