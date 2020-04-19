@@ -9,6 +9,6 @@ Object {
 ",
   "notification": null,
   "source": "",
-  "userId": null,
+  "userId": "",
 }
 `;

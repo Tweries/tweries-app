@@ -8,7 +8,7 @@ Object {
 ",
   "notification": null,
   "source": "@TweriesApp is awesome",
-  "userId": null,
+  "userId": "",
 }
 `;
 
@@ -27,7 +27,7 @@ Object {
 ",
   "notification": null,
   "source": "bar",
-  "userId": null,
+  "userId": "",
 }
 `;
 
@@ -46,7 +46,7 @@ Object {
 ",
   "notification": null,
   "source": "bar",
-  "userId": null,
+  "userId": "",
 }
 `;
 
@@ -65,7 +65,7 @@ Object {
 ",
   "notification": null,
   "source": "qux",
-  "userId": null,
+  "userId": "",
 }
 `;
 
@@ -91,7 +91,7 @@ Object {
 ",
   "notification": null,
   "source": "",
-  "userId": null,
+  "userId": "",
 }
 `;
 
@@ -118,7 +118,7 @@ Object {
 ",
   "notification": null,
   "source": "",
-  "userId": null,
+  "userId": "",
 }
 `;
 
@@ -142,6 +142,6 @@ Object {
 ",
   "notification": null,
   "source": "",
-  "userId": null,
+  "userId": "",
 }
 `;

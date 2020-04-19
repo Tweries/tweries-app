@@ -13,7 +13,7 @@ function makeInitialState({ feature }) {
     linefeed: NEWLINE,
     notification: null,
     source: '',
-    userId: null
+    userId: ''
   };
 }
 

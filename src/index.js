@@ -16,7 +16,7 @@ import { Auth0Provider } from './react-auth0-wrapper';
 import * as serviceWorker from './serviceWorker';
 
 // TUTORIAL: https://manage.auth0.com/dashboard/us/dev-17-x3zfb/applications/iqgFXkcTFo9l80i7llzcurmrfgVsn3TZ/quickstart
-const onRedirectCallback = (appState) => {
+function onRedirectCallback(appState) {
   window.history.replaceState(
     {},
     document.title,
@@ -24,10 +24,9 @@ const onRedirectCallback = (appState) => {
       ? appState.targetUrl
       : window.location.pathname
   );
-};
+}
 
 function renderApp(logEvent) {
-  initializeReactGA();
   const feature = setFeatures(features);
   return (
     <FeatureProvider features={features}>
@@ -53,7 +52,8 @@ render(
       <Amplitude>{({ logEvent }) => renderApp(logEvent)}</Amplitude>
     </AmplitudeProvider>
   </Auth0Provider>,
-  document.getElementById('root')
+  document.getElementById('root'),
+  initializeReactGA()
 );
 
 serviceWorker.unregister();
