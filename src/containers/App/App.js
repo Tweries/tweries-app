@@ -2,21 +2,20 @@ import { useFeature } from 'feature-provider';
 import PropTypes from 'prop-types';
 import React, { useCallback, useEffect, useReducer, useState } from 'react';
 import { version } from '../../../package.json';
-import fetchTweetstorm from '../../api/fetchTweetstorm';
 import Footer from '../../components/Footer/Footer';
 import Form from '../../components/Form/Form';
 import Loading from '../../components/Loading/Loading';
 import LogIn from '../../components/LogIn/LogIn';
 import NavBar from '../../components/NavBar/NavBar';
+import SubHeader from '../../components/SubHeader/SubHeader';
 import ToastNotification from '../../components/ToastNotification/ToastNotification';
 import useLocalStorage from '../../hooks/useLocalStorage';
 import makeTweetstorm from '../../store/makeTweetstorm';
 import { types } from '../../store/makeReducer';
-import { DANGER, SUCCESS } from '../../constants';
+import { DANGER } from '../../constants';
 import { useAuth0 } from '../../react-auth0-wrapper';
 import fetchHealthAndSetHealthy from './fetchHealthAndSetHealthy';
-import makeLink from './makeLink';
-import SubHeader from '../../components/SubHeader/SubHeader';
+import makeOnClick from './makeOnClick';
 
 function App({ initialState, reducer }) {
   const {
@@ -63,49 +62,19 @@ function App({ initialState, reducer }) {
     }
   }, [notification]);
 
-  // TODO: add to global state?
+  // TODO: add to global state? YES!
   const [inReplyToTweetUrl, setInReplyToTweetUrl] = useState('');
   const [waiting, setWaiting] = useState(false);
 
-  function resetTweetstorm(error, response) {
-    let link = null;
-    let message = null;
-    let type = SUCCESS;
-    if (error || response.error) {
-      message = error ? error.message : response.error.message;
-      type = DANGER;
-    } else {
-      link = makeLink(response.data);
-    }
-    console.log(error, response);
-    dispatch({
-      type: types.RESET_TWEETSTORM,
-      value: {
-        link,
-        message,
-        type
-      }
-    });
-    if (type === SUCCESS) {
-      setInReplyToTweetUrl('');
-      setSource('');
-    }
-    setWaiting(false);
-  }
-
-  async function onClick() {
-    setWaiting(true);
-    try {
-      const response = await fetchTweetstorm({
-        inReplyToTweetUrl,
-        items,
-        userId
-      });
-      resetTweetstorm(null, response);
-    } catch (error) {
-      resetTweetstorm(error);
-    }
-  }
+  const onClick = makeOnClick({
+    dispatch,
+    inReplyToTweetUrl,
+    items,
+    setInReplyToTweetUrl,
+    setSource,
+    setWaiting,
+    userId
+  });
 
   const memoizedCallback = useCallback((error, data) => {
     if (data) {

@@ -1,5 +1,5 @@
 import '@testing-library/jest-dom/extend-expect';
-import { render } from '@testing-library/react';
+import { render, fireEvent } from '@testing-library/react';
 import FeatureProvider, { setFeatures } from 'feature-provider';
 import React from 'react';
 import Footer from '../../components/Footer/Footer';
@@ -85,13 +85,20 @@ describe('<App />', () => {
       notification: { message: 'Oh Noes!', type: DANGER }
     };
 
-    const { getByText } = render(
+    const mockReducer = jest.fn((state, action) =>
+      makeReducer(feature)(state, action)
+    );
+
+    const { getByTestId } = render(
       <FeatureProvider features={features}>
-        <App initialState={initialState} reducer={makeReducer(feature)} />
+        <App initialState={initialState} reducer={mockReducer} />
       </FeatureProvider>
     );
 
-    expect(getByText(initialState.notification.message)).toBeInTheDocument();
+    fireEvent.click(getByTestId('dismiss'));
+
+    expect(mockReducer).toBeCalledTimes(2);
+    expect(mockReducer.mock.calls[1][1]).toEqual({ type: types.DISMISS_TOAST }); // [1][1] === [the send time][the action parameter]
   });
 
   it('notification success', () => {
@@ -110,8 +117,9 @@ describe('<App />', () => {
       }
     };
 
-    const reducer = makeReducer(feature);
-    const mockReducer = jest.fn((state, action) => reducer(state, action));
+    const mockReducer = jest.fn((state, action) =>
+      makeReducer(feature)(state, action)
+    );
 
     render(
       <FeatureProvider features={features}>
