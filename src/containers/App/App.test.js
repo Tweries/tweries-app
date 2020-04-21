@@ -22,7 +22,7 @@ const user = {
   sub: 'twitter|1183836409850814464'
 };
 
-describe('App', () => {
+describe.skip('App', () => {
   beforeEach(() => {
     fetch.mockResponseOnce(JSON.stringify({ data: { message: 'baz' } }));
     Footer.mockImplementation(() => <div>Footer</div>);
@@ -88,7 +88,7 @@ describe('App', () => {
     expect(mockLoginWithRedirect).toBeCalled();
   });
 
-  it.skip('generate tweetstorm and dismiss notification', async () => {
+  it('generate tweetstorm and dismiss notification', async () => {
     fetch.mockResponseOnce(JSON.stringify({ data: { message: 'qux' } })); // INFO: adding a second response
     useAuth0.mockImplementation(() => ({
       isAuthenticated: true,
@@ -115,7 +115,7 @@ describe('App', () => {
   });
 });
 
-describe('App - errors', () => {
+describe.skip('App - errors', () => {
   it('fetchHealth error', () => {
     fetch.resetMocks();
     fetch.mockRejectOnce(new Error('Oh Noes!'));
@@ -141,7 +141,7 @@ describe('App - errors', () => {
     // TODO: add assertion
   });
 
-  it.skip('fetchTweetstorm error', async () => {
+  it('fetchTweetstorm error', async () => {
     fetch.resetMocks();
     fetch.mockResponseOnce(JSON.stringify({ data: { message: 'baz' } }));
     fetch.mockRejectOnce(new Error('Oh Noes!'));

@@ -10,6 +10,9 @@
     "@fortawesome/free-brands-svg-icons": "^5.13.0",
     "@fortawesome/free-solid-svg-icons": "^5.13.0",
     "@fortawesome/react-fontawesome": "^0.1.9",
+    "@fullhuman/postcss-purgecss": "^2.1.2",
+    "@testing-library/jest-dom": "^5.5.0",
+    "@testing-library/react": "^10.0.2",
     "amplitude-js": "^6.0.1",
     "autoprefixer": "^9.7.6",
     "classnames": "^2.2.6",
@@ -53,8 +56,6 @@
     ]
   },
   "devDependencies": {
-    "@fullhuman/postcss-purgecss": "^2.1.2",
-    "@testing-library/react": "^10.0.2",
     "eslint-config-airbnb": "^18.1.0",
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
@@ -68,6 +69,7 @@
   "jest": {
     "collectCoverageFrom": [
       "src/**/*.js",
+      "!src/containers/Rewrite/**/*.*",
       "!src/hooks/useLocalStorage.js",
       "!src/constants.js",
       "!src/index.js",
