@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Loading /> to match snapshot 1`] = `
+<div>
+  <article
+    class="container content-center mx-auto m-1 p-4 text-center"
+  >
+    ...
+  </article>
+</div>
+`;

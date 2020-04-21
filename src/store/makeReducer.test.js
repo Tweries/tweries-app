@@ -1,11 +1,12 @@
 import makeReducer, { types } from './makeReducer';
 import makeInitialState from './makeInitialState';
+import { DANGER, SUCCESS } from '../constants';
 
 const USER_ID = 'twitter|1183836409850814464';
 
 const feature = { active: () => true };
 const base = { ...makeInitialState({ feature }) };
-const notification = { message: 'Oh Noes!', type: 'danger' };
+const notification = { message: 'Oh Noes!', type: DANGER };
 
 describe('reducer', () => {
   const scenarios = [
@@ -62,11 +63,26 @@ describe('reducer', () => {
       }
     },
     {
-      description: types.RESET_TWEETSTORM,
+      description: `${types.RESET_TWEETSTORM} ${DANGER}`,
       props: {
         action: {
           type: types.RESET_TWEETSTORM,
           value: notification
+        },
+        state: {
+          ...base,
+          source: 'bar',
+          healthy: true,
+          userId: USER_ID
+        }
+      }
+    },
+    {
+      description: `${types.RESET_TWEETSTORM} ${SUCCESS}`,
+      props: {
+        action: {
+          type: types.RESET_TWEETSTORM,
+          value: { message: 'YATTA!', type: SUCCESS }
         },
         state: {
           ...base,

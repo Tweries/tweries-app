@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Form /> to match snapshot 1`] = `
+<div>
+  <form
+    class="flex flex-col"
+  >
+    <div>
+      ReplyToTweet
+    </div>
+    <p
+      class="italic py-4 text-sm"
+    >
+      Start typing. To insert a break prior to reaching 280 characters, please use Newline(s)
+    </p>
+    <textarea
+      class="p-2 tweries-background-color-blue-white tweries-border"
+      data-testid="source"
+      name="source"
+      placeholder="Type your thoughts here"
+      rows="8"
+    />
+    <p
+      class="text-right text-xs text-gray-700"
+    >
+       
+    </p>
+    <div>
+      TweetstormButton
+    </div>
+  </form>
+</div>
+`;
