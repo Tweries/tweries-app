@@ -1,12 +1,12 @@
 import '@testing-library/jest-dom/extend-expect';
-import { render, fireEvent } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react';
 import FeatureProvider, { setFeatures } from 'feature-provider';
 import React from 'react';
 import Footer from '../../components/Footer/Footer';
-import makeReducer, { types } from '../../store/makeReducer';
 import { DANGER, SUCCESS } from '../../constants';
 import features from '../../features';
 import { useAuth0 } from '../../react-auth0-wrapper';
+import makeReducer, { types } from '../../store/makeReducer';
 import App from './App';
 
 jest.mock('../../components/Footer/Footer');

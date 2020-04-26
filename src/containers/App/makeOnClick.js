@@ -1,6 +1,6 @@
 import fetchTweetstorm from '../../api/fetchTweetstorm';
-import { types } from '../../store/makeReducer';
 import { DANGER, SUCCESS } from '../../constants';
+import { types } from '../../store/makeReducer';
 import makeLink from './makeLink';
 
 function makeOnClick({

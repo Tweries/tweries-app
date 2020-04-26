@@ -1,13 +1,13 @@
-import { cleanup, render, fireEvent, waitFor } from '@testing-library/react';
+import { cleanup, fireEvent, render, waitFor } from '@testing-library/react';
 import FeatureProvider, { setFeatures } from 'feature-provider';
 import React from 'react';
 import Footer from '../../components/Footer/Footer';
 import NavBar from '../../components/NavBar/NavBar';
-import makeReducer from '../../store/makeReducer';
 import features from '../../features';
 import { useAuth0 } from '../../react-auth0-wrapper';
-import App from './App';
 import makeInitialState from '../../store/makeInitialState';
+import makeReducer from '../../store/makeReducer';
+import App from './App';
 
 jest.mock('../../components/Footer/Footer');
 jest.mock('../../components/NavBar/NavBar');

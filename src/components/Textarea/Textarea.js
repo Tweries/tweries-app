@@ -7,8 +7,8 @@ function Textarea({ item, onChange }) {
   return (
     <textarea
       className={classnames('p-2 tweries-background-color-blue-white', {
-        'tweries-border': item.tweet.length <= MAX_LENGTH,
-        'border-2 border-red-500': item.tweet.length > MAX_LENGTH
+        'border-2 border-red-500': item.tweet.length > MAX_LENGTH,
+        'tweries-border': item.tweet.length <= MAX_LENGTH
       })}
       data-testid="textarea"
       name={item.id}

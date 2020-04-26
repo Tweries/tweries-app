@@ -23,3 +23,5 @@
 - https://vocajs.com/
 
 - https://www.shoutmeloud.com/5-tools-to-tweet-lengthy-messages-on-twitter.html
+
+- https://medium.com/@mattiaerre/make-it-run-try-to-make-it-right-of-react-and-refactoring-105547bfc89d

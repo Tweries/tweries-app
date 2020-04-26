@@ -51,10 +51,10 @@ function ReplyToTweet({ callback, onChange, tweetUrl, userId }) {
       </label>
       <textarea
         className={classnames('p-2 tweries-border', {
-          'tweries-background-color-blue-white':
-            waiting === true || tweetUrl === '',
           'bg-green-200': waiting === false && tweetUrl !== '' && isValidTweet,
-          'bg-red-200': waiting === false && tweetUrl !== '' && !isValidTweet
+          'bg-red-200': waiting === false && tweetUrl !== '' && !isValidTweet,
+          'tweries-background-color-blue-white':
+            waiting === true || tweetUrl === ''
         })}
         data-testid="reply-to"
         name="reply-to"

@@ -1,6 +1,6 @@
-import makeReducer, { types } from './makeReducer';
-import makeInitialState from './makeInitialState';
 import { DANGER, SUCCESS } from '../constants';
+import makeInitialState from './makeInitialState';
+import makeReducer, { types } from './makeReducer';
 
 const USER_ID = 'twitter|1183836409850814464';
 
@@ -71,8 +71,8 @@ describe('reducer', () => {
         },
         state: {
           ...base,
-          source: 'bar',
           healthy: true,
+          source: 'bar',
           userId: USER_ID
         }
       }
@@ -86,8 +86,8 @@ describe('reducer', () => {
         },
         state: {
           ...base,
-          source: 'bar',
           healthy: true,
+          source: 'bar',
           userId: USER_ID
         }
       }

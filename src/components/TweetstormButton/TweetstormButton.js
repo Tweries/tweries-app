@@ -14,8 +14,8 @@ function TweetstormButton({ disabled, onClick, waiting }) {
       className={classnames(
         'bg-gray-300 border border-gray-500 font-bold my-4 px-6 py-2 rounded self-center',
         {
-          'tweries-background-color-blue-button': !(disabled || waiting),
-          'cursor-auto': disabled || waiting
+          'cursor-auto': disabled || waiting,
+          'tweries-background-color-blue-button': !(disabled || waiting)
         }
       )}
       data-testid="tweet"

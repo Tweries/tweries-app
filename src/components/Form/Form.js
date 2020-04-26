@@ -1,10 +1,10 @@
 import PropTypes from 'prop-types';
 import React from 'react';
+import { MAX_LENGTH } from '../../constants';
+import Counter from '../../containers/App/Counter';
 import ReplyToTweet from '../ReplyToTweet/ReplyToTweet';
 import Textarea from '../Textarea/Textarea';
 import TweetstormButton from '../TweetstormButton/TweetstormButton';
-import Counter from '../../containers/App/Counter';
-import { MAX_LENGTH } from '../../constants';
 
 const copy = {
   'Edits can be made in the boxes below before publishing':
