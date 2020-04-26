@@ -18,6 +18,7 @@ import fetchHealthAndSetHealthy from './fetchHealthAndSetHealthy';
 import makeOnChangeSource from './makeOnChangeSource';
 import makeOnChangeTweet from './makeOnChangeTweet';
 import makeOnClick from './makeOnClick';
+import makeReplyToTweetCallback from './makeReplyToTweetCallback';
 
 function App({ initialState, reducer }) {
   const {
@@ -82,14 +83,9 @@ function App({ initialState, reducer }) {
     userId
   });
 
-  const memoizedCallback = useCallback((error, data) => {
-    if (data) {
-      dispatch({
-        type: types.APPEND_SCREEN_NAME,
-        value: data.user.screen_name
-      });
-    }
-  }, []);
+  const replyToTweetCallback = makeReplyToTweetCallback({ dispatch });
+
+  const memoizedReplyToTweetCallback = useCallback(replyToTweetCallback, []);
 
   return loading ? (
     <Loading />
@@ -108,10 +104,10 @@ function App({ initialState, reducer }) {
           healthy={healthy}
           inReplyToTweetUrl={inReplyToTweetUrl}
           items={items}
-          memoizedCallback={memoizedCallback}
           onChangeSource={onChangeSource}
           onChangeTweet={onChangeTweet}
           onClick={onClick}
+          replyToTweetCallback={memoizedReplyToTweetCallback}
           setInReplyToTweetUrl={setInReplyToTweetUrl}
           source={source}
           userId={userId}

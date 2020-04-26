@@ -19,10 +19,10 @@ function Form({
   healthy,
   inReplyToTweetUrl,
   items,
-  memoizedCallback,
   onChangeSource,
   onChangeTweet,
   onClick,
+  replyToTweetCallback,
   setInReplyToTweetUrl,
   source,
   userId,
@@ -42,7 +42,7 @@ function Form({
       onSubmit={/* istanbul ignore next */ (e) => e.preventDefault()}
     >
       <ReplyToTweet
-        callback={memoizedCallback}
+        callback={replyToTweetCallback}
         onChange={setInReplyToTweetUrl}
         tweetUrl={inReplyToTweetUrl}
         userId={userId}
@@ -93,10 +93,10 @@ Form.propTypes = {
   healthy: PropTypes.bool.isRequired,
   inReplyToTweetUrl: PropTypes.string.isRequired,
   items: PropTypes.array.isRequired,
-  memoizedCallback: PropTypes.func.isRequired,
   onChangeSource: PropTypes.func.isRequired,
   onChangeTweet: PropTypes.func.isRequired,
   onClick: PropTypes.func.isRequired,
+  replyToTweetCallback: PropTypes.func.isRequired,
   setInReplyToTweetUrl: PropTypes.func.isRequired,
   source: PropTypes.string.isRequired,
   userId: PropTypes.string.isRequired,
