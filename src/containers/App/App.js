@@ -15,6 +15,7 @@ import { useAuth0 } from '../../react-auth0-wrapper';
 import { types } from '../../store/makeReducer';
 import makeTweetstorm from '../../store/makeTweetstorm';
 import fetchHealthAndSetHealthy from './fetchHealthAndSetHealthy';
+import makeOnChangeSource from './makeOnChangeSource';
 import makeOnClick from './makeOnClick';
 
 function App({ initialState, reducer }) {
@@ -76,6 +77,8 @@ function App({ initialState, reducer }) {
     userId
   });
 
+  const onChangeSource = makeOnChangeSource({ dispatch, setSource });
+
   const memoizedCallback = useCallback((error, data) => {
     if (data) {
       dispatch({
@@ -103,13 +106,7 @@ function App({ initialState, reducer }) {
           inReplyToTweetUrl={inReplyToTweetUrl}
           items={items}
           memoizedCallback={memoizedCallback}
-          onChangeSource={(e) => {
-            dispatch({
-              type: types.CHANGE_SOURCE,
-              value: e.target.value
-            });
-            setSource(e.target.value);
-          }}
+          onChangeSource={onChangeSource}
           onChangeTweet={(e, item) => {
             dispatch({
               type: types.CHANGE_TWEET,
