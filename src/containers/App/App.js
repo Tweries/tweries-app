@@ -16,6 +16,7 @@ import { types } from '../../store/makeReducer';
 import makeTweetstorm from '../../store/makeTweetstorm';
 import fetchHealthAndSetHealthy from './fetchHealthAndSetHealthy';
 import makeOnChangeSource from './makeOnChangeSource';
+import makeOnChangeTweet from './makeOnChangeTweet';
 import makeOnClick from './makeOnClick';
 
 function App({ initialState, reducer }) {
@@ -67,6 +68,10 @@ function App({ initialState, reducer }) {
   const [inReplyToTweetUrl, setInReplyToTweetUrl] = useState('');
   const [waiting, setWaiting] = useState(false);
 
+  const onChangeSource = makeOnChangeSource({ dispatch, setSource });
+
+  const onChangeTweet = makeOnChangeTweet({ dispatch });
+
   const onClick = makeOnClick({
     dispatch,
     inReplyToTweetUrl,
@@ -76,8 +81,6 @@ function App({ initialState, reducer }) {
     setWaiting,
     userId
   });
-
-  const onChangeSource = makeOnChangeSource({ dispatch, setSource });
 
   const memoizedCallback = useCallback((error, data) => {
     if (data) {
@@ -107,15 +110,7 @@ function App({ initialState, reducer }) {
           items={items}
           memoizedCallback={memoizedCallback}
           onChangeSource={onChangeSource}
-          onChangeTweet={(e, item) => {
-            dispatch({
-              type: types.CHANGE_TWEET,
-              value: {
-                id: item.id,
-                tweet: e.target.value
-              }
-            });
-          }}
+          onChangeTweet={onChangeTweet}
           onClick={onClick}
           setInReplyToTweetUrl={setInReplyToTweetUrl}
           source={source}
