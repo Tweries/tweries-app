@@ -15,6 +15,8 @@ import augment from './store/augment';
 import makeInitialState from './store/makeInitialState';
 import makeReducer from './store/makeReducer';
 
+const feature = setFeatures(features);
+
 // TUTORIAL: https://manage.auth0.com/dashboard/us/dev-17-x3zfb/applications/iqgFXkcTFo9l80i7llzcurmrfgVsn3TZ/quickstart
 function onRedirectCallback(appState) {
   window.history.replaceState(
@@ -23,18 +25,6 @@ function onRedirectCallback(appState) {
     appState && appState.targetUrl
       ? appState.targetUrl
       : window.location.pathname
-  );
-}
-
-function renderApp(logEvent) {
-  const feature = setFeatures(features);
-  return (
-    <FeatureProvider features={features}>
-      <App
-        initialState={makeInitialState({ feature })}
-        reducer={augment({ logEvent, reducer: makeReducer(feature) })}
-      />
-    </FeatureProvider>
   );
 }
 
@@ -49,7 +39,16 @@ render(
       amplitudeInstance={amplitude.getInstance()}
       apiKey={AMPLITUDE_KEY}
     >
-      <Amplitude>{({ logEvent }) => renderApp(logEvent)}</Amplitude>
+      <Amplitude>
+        {({ logEvent }) => (
+          <FeatureProvider features={features}>
+            <App
+              initialState={makeInitialState({ feature })}
+              reducer={augment({ logEvent, reducer: makeReducer(feature) })}
+            />
+          </FeatureProvider>
+        )}
+      </Amplitude>
     </AmplitudeProvider>
   </Auth0Provider>,
   document.getElementById('root'),
