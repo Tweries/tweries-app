@@ -4,7 +4,7 @@ import Loading from './Loading';
 
 describe('<Loading />', () => {
   it('to match snapshot', () => {
-    const { container } = render(<Loading />);
-    expect(container).toMatchSnapshot();
+    const { getByText } = render(<Loading />);
+    expect(getByText('...')).toBeInTheDocument();
   });
 });

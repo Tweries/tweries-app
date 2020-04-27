@@ -1,4 +1,3 @@
-import '@testing-library/jest-dom/extend-expect';
 import { fireEvent, render } from '@testing-library/react';
 import FeatureProvider, { setFeatures } from 'feature-provider';
 import React from 'react';

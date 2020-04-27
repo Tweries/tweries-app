@@ -17,7 +17,7 @@ describe('fetchTweetstorm', () => {
 
     const args = {
       inReplyToTweetUrl:
-        'https://twitter.com/_ericelliott/status/1250046734249664512?s=20',
+        'https://twitter.com/_ericelliott/status/1250046734249664512',
       items: [
         {
           id: '_hnoyohthb',
