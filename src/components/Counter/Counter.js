@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import { MAX_LENGTH } from '../../constants';
 
-// TODO: move to components
 function Counter({ length, type }) {
   const value = length === 0 ? null : length;
   const danger = type === 'tweet';

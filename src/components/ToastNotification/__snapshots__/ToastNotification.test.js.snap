@@ -4,6 +4,7 @@ exports[`<ToastNotification /> danger 1`] = `
 <div>
   <p
     class="border flex justify-between mb-2 p-2 rounded bg-red-100 border-red-800 text-red-800"
+    data-testid="notification"
   >
     <span>
       Oh Noes!
@@ -25,6 +26,7 @@ exports[`<ToastNotification /> success 1`] = `
 <div>
   <p
     class="border flex justify-between mb-2 p-2 rounded bg-green-100 border-green-800 text-green-800"
+    data-testid="notification"
   >
     <span>
       <a

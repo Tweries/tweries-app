@@ -72,7 +72,7 @@ Object {
 }
 `;
 
-exports[`reducer RESET_TWEETSTORM 1`] = `
+exports[`reducer RESET_TWEETSTORM danger 1`] = `
 Object {
   "healthy": true,
   "linefeed": "
@@ -82,6 +82,20 @@ Object {
     "type": "danger",
   },
   "source": "bar",
+  "userId": "twitter|1183836409850814464",
+}
+`;
+
+exports[`reducer RESET_TWEETSTORM success 1`] = `
+Object {
+  "healthy": true,
+  "linefeed": "
+",
+  "notification": Object {
+    "message": "YATTA!",
+    "type": "success",
+  },
+  "source": "",
   "userId": "twitter|1183836409850814464",
 }
 `;

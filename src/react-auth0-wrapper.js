@@ -1,7 +1,7 @@
 /* eslint-disable no-shadow */
 /* eslint-disable react/prop-types */
-import React, { useState, useEffect, useContext } from 'react';
 import createAuth0Client from '@auth0/auth0-spa-js';
+import React, { useContext, useEffect, useState } from 'react';
 
 const DEFAULT_REDIRECT_CALLBACK = () =>
   window.history.replaceState({}, document.title, window.location.pathname);
@@ -71,17 +71,17 @@ export const Auth0Provider = ({
   return (
     <Auth0Context.Provider
       value={{
-        isAuthenticated,
-        user,
-        loading,
-        popupOpen,
-        loginWithPopup,
-        handleRedirectCallback,
         getIdTokenClaims: (...p) => auth0Client.getIdTokenClaims(...p),
-        loginWithRedirect: (...p) => auth0Client.loginWithRedirect(...p),
         getTokenSilently: (...p) => auth0Client.getTokenSilently(...p),
         getTokenWithPopup: (...p) => auth0Client.getTokenWithPopup(...p),
-        logout: (...p) => auth0Client.logout(...p)
+        handleRedirectCallback,
+        isAuthenticated,
+        loading,
+        loginWithPopup,
+        loginWithRedirect: (...p) => auth0Client.loginWithRedirect(...p),
+        logout: (...p) => auth0Client.logout(...p),
+        popupOpen,
+        user
       }}
     >
       {children}

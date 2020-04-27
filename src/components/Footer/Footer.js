@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 const copy = {
+  '@TweriesApp': '@TweriesApp',
   'github.com/Tweries': 'github.com/Tweries',
-  Tweries: 'Tweries',
-  '@TweriesApp': '@TweriesApp'
+  Tweries: 'Tweries'
 };
 
 function Footer({ healthy, version }) {
