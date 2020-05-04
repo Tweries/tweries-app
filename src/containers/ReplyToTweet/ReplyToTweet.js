@@ -6,11 +6,9 @@ import fetchTweet from '../../api/fetchTweet';
 const copy = {
   'If you want to reply to a specific Tweet:':
     'If you want to reply to a specific Tweet:',
-  'Optional: reply to Tweet URL': 'Optional: reply to Tweet URL',
   'URL goes here': 'URL goes here'
 };
 
-// TODO: move to containers
 function ReplyToTweet({ callback, onChange, tweetUrl, userId }) {
   const [isValidTweet, setIsValidTweet] = useState(false);
   const [waiting, setWaiting] = useState(false);
