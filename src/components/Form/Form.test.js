@@ -1,11 +1,11 @@
 import { fireEvent, render } from '@testing-library/react';
 import React from 'react';
-import ReplyToTweet from '../ReplyToTweet/ReplyToTweet';
+import ReplyToTweet from '../../containers/ReplyToTweet/ReplyToTweet';
 import TweetstormButton from '../TweetstormButton/TweetstormButton';
 import Form from './Form';
 
-jest.mock('../../components/ReplyToTweet/ReplyToTweet');
-jest.mock('../../components/TweetstormButton/TweetstormButton');
+jest.mock('../../containers/ReplyToTweet/ReplyToTweet');
+jest.mock('../TweetstormButton/TweetstormButton');
 
 describe('<Form />', () => {
   beforeEach(() => {
