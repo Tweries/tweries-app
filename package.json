@@ -79,6 +79,6 @@
       "!src/serviceWorker.js"
     ]
   },
-  "homepage": "https://tweries.com",
+  "homepage": "https://tweries.github.io/tweries-app/",
   "proxy": "http://localhost:9000"
 }
