@@ -7,6 +7,7 @@ import './styles.css';
 import config from './auth_config.json';
 import { AMPLITUDE_KEY } from './constants';
 import App from './containers/App/App';
+import Playground from './containers/Playground/Playground';
 import features from './features';
 import initializeReactGA from './initializeReactGA';
 import { Auth0Provider } from './react-auth0-wrapper';
@@ -28,6 +29,8 @@ function onRedirectCallback(appState) {
   );
 }
 
+const { REACT_APP_PLAYGROUND } = process.env;
+
 render(
   <Auth0Provider
     client_id={config.clientId}
@@ -42,10 +45,14 @@ render(
       <Amplitude>
         {({ logEvent }) => (
           <FeatureProvider features={features}>
-            <App
-              initialState={makeInitialState({ feature })}
-              reducer={augment({ logEvent, reducer: makeReducer(feature) })}
-            />
+            {REACT_APP_PLAYGROUND === 'on' ? (
+              <Playground />
+            ) : (
+              <App
+                initialState={makeInitialState({ feature })}
+                reducer={augment({ logEvent, reducer: makeReducer(feature) })}
+              />
+            )}
           </FeatureProvider>
         )}
       </Amplitude>

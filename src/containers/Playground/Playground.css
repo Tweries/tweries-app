@@ -1,0 +1,10 @@
+.Playground {
+  display: flex;
+  flex-direction: column;
+  margin: 32px;
+  width: 512px;
+}
+
+.Playground pre {
+  margin-top: 32px;
+}
