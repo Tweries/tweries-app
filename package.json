@@ -1,6 +1,6 @@
 {
   "name": "tweries-app",
-  "version": "1.8.2",
+  "version": "1.9.0",
   "private": true,
   "description": "Tweries, a tweet-storm-helper app that breaks up a long paragraph into multiple tweets.",
   "dependencies": {
@@ -79,6 +79,6 @@
       "!src/serviceWorker.js"
     ]
   },
-  "homepage": "https://tweries.github.io/tweries-app/",
+  "homepage": "https://tweries.com",
   "proxy": "http://localhost:9000"
 }
