@@ -30,7 +30,7 @@ exports[`<TweetstormButton /> waiting 1`] = `
 >
   <svg
     aria-hidden="true"
-    class="svg-inline--fa fa-spinner fa-w-16 fa-spin "
+    class="svg-inline--fa fa-spinner fa-spin "
     data-icon="spinner"
     data-prefix="fas"
     focusable="false"

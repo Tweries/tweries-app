@@ -17,7 +17,7 @@ exports[`<SubHeader /> to match snapshot 1`] = `
   >
     <svg
       aria-hidden="true"
-      class="svg-inline--fa fa-twitter fa-w-16 fa-3x tweries-color-blue"
+      class="svg-inline--fa fa-twitter fa-3x tweries-color-blue"
       data-icon="twitter"
       data-prefix="fab"
       focusable="false"
