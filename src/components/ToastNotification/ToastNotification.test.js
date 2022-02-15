@@ -14,8 +14,7 @@ describe('<ToastNotification />', () => {
     const { container } = render(
       <ToastNotification
         notification={{
-          link:
-            'https://twitter.com/1183836409850814464/status/1230233654959407104',
+          link: 'https://twitter.com/1183836409850814464/status/1230233654959407104',
           type: SUCCESS
         }}
         onClick={jest.fn()}

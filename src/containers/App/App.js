@@ -21,13 +21,8 @@ import makeOnClick from './makeOnClick';
 import makeReplyToTweetCallback from './makeReplyToTweetCallback';
 
 function App({ initialState, reducer }) {
-  const {
-    isAuthenticated,
-    loading,
-    loginWithRedirect,
-    logout,
-    user
-  } = useAuth0();
+  const { isAuthenticated, loading, loginWithRedirect, logout, user } =
+    useAuth0();
 
   const feature = useFeature();
 
@@ -43,17 +38,15 @@ function App({ initialState, reducer }) {
 
   const [source_, setSource] = useLocalStorage('source', '');
 
-  const [
-    { healthy, items, notification, source, userId },
-    dispatch
-  ] = useReducer(reducer, {
-    ...initialState,
-    items: makeTweetstorm(feature)({
-      linefeed: initialState.linefeed,
+  const [{ healthy, items, notification, source, userId }, dispatch] =
+    useReducer(reducer, {
+      ...initialState,
+      items: makeTweetstorm(feature)({
+        linefeed: initialState.linefeed,
+        source: source_
+      }),
       source: source_
-    }),
-    source: source_
-  });
+    });
 
   // eslint-disable-next-line consistent-return
   useEffect(() => {
