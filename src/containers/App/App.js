@@ -77,7 +77,9 @@ function App({ initialState, reducer }) {
 
   const replyToTweetCallback = makeReplyToTweetCallback({ dispatch });
 
-  const memoizedReplyToTweetCallback = useCallback(replyToTweetCallback, []);
+  const memoizedReplyToTweetCallback = useCallback(replyToTweetCallback, [
+    replyToTweetCallback
+  ]);
 
   return loading ? (
     <Loading />
@@ -112,7 +114,7 @@ function App({ initialState, reducer }) {
         notification={notification}
         onClick={() => dispatch({ type: types.DISMISS_TOAST })}
       />
-      <Footer healthy={healthy} version="1.10.5" />
+      <Footer healthy={healthy} version="1.10.6" />
     </article>
   );
 }
