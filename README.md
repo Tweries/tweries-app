@@ -19,3 +19,7 @@ Nice thread 🧵, thanks for sharing. For your next tweetstorm you may want to t
 ```
 {redesign}.{pull request}.{deploy}
 ```
+
+## Notes
+
+- We'll be using Tailwind v1 for the time being
