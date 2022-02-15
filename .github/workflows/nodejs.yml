@@ -1,24 +1,31 @@
-name: Node CI
+name: CI
 
-on: [push]
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - '*'
 
 jobs:
   build:
+    name: Test
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [12.x]
-
     steps:
-      - uses: actions/checkout@v1
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+      - uses: actions/checkout@v2
+      - uses: borales/actions-yarn@v2.3.0
         with:
-          node-version: ${{ matrix.node-version }}
-      - name: npm install, and test
-        run: |
-          npm install
-          npm test -- --watchAll=false --coverage
-        env:
-          CI: true
+          cmd: install # will run `yarn install` command
+      - uses: borales/actions-yarn@v2.3.0
+        with:
+          cmd: build # will run `yarn build` command
+      - uses: borales/actions-yarn@v2.3.0
+        with:
+          cmd: lint # will run `yarn lint` command
+      - uses: borales/actions-yarn@v2.3.0
+        with:
+          cmd: prettier:fix # will run `yarn prettier:fix` command
+      - uses: borales/actions-yarn@v2.3.0
+        with:
+          cmd: test:all # will run `yarn test:all` command

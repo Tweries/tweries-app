@@ -1,7 +1,8 @@
 module.exports = {
+  plugins: [],
+  purge: false,
   theme: {
     extend: {}
   },
-  variants: {},
-  plugins: []
-}
+  variants: {}
+};
