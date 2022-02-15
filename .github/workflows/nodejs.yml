@@ -22,4 +22,7 @@ jobs:
           cmd: prettier:fix # will run `yarn prettier:fix` command
       - uses: borales/actions-yarn@v2.3.0
         with:
+          cmd: eslint # will run `yarn eslint` command
+      - uses: borales/actions-yarn@v2.3.0
+        with:
           cmd: test:all # will run `yarn test:all` command
