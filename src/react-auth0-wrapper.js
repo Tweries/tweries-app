@@ -71,6 +71,7 @@ export const Auth0Provider = ({
   };
   return (
     <Auth0Context.Provider
+      // eslint-disable-next-line react/jsx-no-constructed-context-values
       value={{
         getIdTokenClaims: (...p) => auth0Client.getIdTokenClaims(...p),
         getTokenSilently: (...p) => auth0Client.getTokenSilently(...p),

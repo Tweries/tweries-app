@@ -1,7 +1,6 @@
 import { useFeature } from 'feature-provider';
 import PropTypes from 'prop-types';
 import React, { useCallback, useEffect, useReducer, useState } from 'react';
-import { version } from '../../../package.json';
 import Footer from '../../components/Footer/Footer';
 import Form from '../../components/Form/Form';
 import Loading from '../../components/Loading/Loading';
@@ -113,7 +112,7 @@ function App({ initialState, reducer }) {
         notification={notification}
         onClick={() => dispatch({ type: types.DISMISS_TOAST })}
       />
-      <Footer healthy={healthy} version={version} />
+      <Footer healthy={healthy} version="1.10.5" />
     </article>
   );
 }

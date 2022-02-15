@@ -14,7 +14,7 @@ describe('makeReplyToTweetCallback', () => {
     expect(mockDispatch).not.toBeCalled();
   });
 
-  it('no data', () => {
+  it('data', () => {
     const mockDispatch = jest.fn();
 
     const replyToTweetCallback = makeReplyToTweetCallback({

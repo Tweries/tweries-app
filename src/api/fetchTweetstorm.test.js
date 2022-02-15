@@ -1,7 +1,7 @@
 import fetchTweetstorm from './fetchTweetstorm';
 
 describe('fetchTweetstorm', () => {
-  it('data', async () => {
+  it.skip('data', async () => {
     const STATUS_ID = '1252017902485737472';
     const USER_ID = 'twitter|1183836409850814464';
 
