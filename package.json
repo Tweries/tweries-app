@@ -38,7 +38,8 @@
     "prettier": "prettier 'src/**/*.{css,js,json}'",
     "prettier:fix": "yarn prettier --write",
     "start": "react-scripts start",
-    "test": "react-scripts test --env=jest-environment-jsdom-sixteen"
+    "test": "react-scripts test --env=jest-environment-jsdom-sixteen",
+    "test:all": "yarn test --watchAll=false --coverage"
   },
   "eslintConfig": {
     "extends": "react-app"
