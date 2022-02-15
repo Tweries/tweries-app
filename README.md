@@ -6,7 +6,7 @@
 
 ### Reply on Twitter
 
-Nice thread 🧵, thanks for sharing. For your next tweetstorm you may want to try @TweriesApp. https://tweries.com/ is a free tweet-storm-helper app that breaks up a long paragraph into multiple tweets.
+Nice thread 🧵; thanks for sharing. For your next tweetstorm you may want to try @TweriesApp. https://tweries.com/ is a free tweet-storm-helper app that breaks up a long paragraph into multiple tweets.
 
 ## Credits
 
