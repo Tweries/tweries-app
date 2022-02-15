@@ -114,7 +114,7 @@ function App({ initialState, reducer }) {
         notification={notification}
         onClick={() => dispatch({ type: types.DISMISS_TOAST })}
       />
-      <Footer healthy={healthy} version="1.10.6" />
+      <Footer healthy={healthy} version="1.10.7" />
     </article>
   );
 }
