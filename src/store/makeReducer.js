@@ -13,6 +13,7 @@ export const types = {
 };
 
 function makeReducer(feature) {
+  // eslint-disable-next-line default-param-last
   function reducer(state = makeInitialState({ feature }), action) {
     switch (action.type) {
       case types.APPEND_SCREEN_NAME: {
